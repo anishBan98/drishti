@@ -4,6 +4,17 @@ All notable changes to Drishti. Milestones follow `docs/14-SETUP-RUNBOOK.md` §8
 
 ## [Unreleased]
 
+### M2 · Engine core and demo snapshot (2026-10-19)
+
+- `packages/engine`: CSV reading with Indian number formats, ₹, %, and DD/MM/YYYY, DD-Mon-YYYY and Excel-serial dates; demo fact loaders (customer IDs hashed on read); Workspace Sheet tab loaders; analysis windows; KPI module.
+- Golden tests GOLD-01..04 pass against `expected_metrics.json` (sums exact, ratios within 0.001).
+- v1 models: MMM-lite regression on city-weeks (two-way fixed effects, non-negative ridge, bootstrap range), k-means customer types (seeded, k-means++, 10 restarts), review lexicon tagging with negation and star prior, price-change detector, threat rules, greedy budget optimiser with diminishing returns.
+- Snapshot builder for all eight screens, validated by the zod schema in `packages/shared`; deterministic version (SHA-256 of content, sync time excluded). `pnpm --filter @drishti/engine build:demo` writes `apps/web/public/demo/snapshot.json` (about 53 KB); the root `pnpm build` runs it before the web and Worker builds.
+- `packages/shared`: snapshot schema, formatting (₹ L/Cr, percentages, points, dates), good/bad metric directions, channel and media labels and colours, free-tier limits, action catalogue (docs/10 §3); copy deck extended with every snapshot string and action label.
+- Known v1 limits, to be replaced in M6: the regression cannot separate Amazon Ads and Flipkart Ads yet (shown capped at the platform claim with low confidence) and over-reads quick-commerce ads; the bridge has no rating or seasonality driver; the k-means problem type misses MOD-07's discount threshold by a point and keeps the name "Type 5".
+- The demo own-site files are a buyer cohort with almost no first orders after 11 Sep 2026, so new-buyer CAC widens to 90 or 365 days when a window has fewer than 30 sampled new buyers.
+- Golden key `reviews.pump_negative_last_30_days` (142) counts every review naming the pump or dispenser in the last 30 days, including 9 positive ones; the engine reports both 142 (mentions) and 133 (rated 3★ or below). A doc edit for docs/12 GOLD-04 is proposed.
+
 ### M1 · Worker skeleton and deploy (2026-10-19)
 
 - Cloudflare Worker (Hono) at `apps/worker`: `GET /api/health` (version = git sha), JSON error envelope with messages from the copy deck, SPA fallback through Static Assets (`run_worker_first` for `/api/*` and `/internal/*`).

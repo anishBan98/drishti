@@ -12,7 +12,7 @@
   "scripts": {
     "prepare": "simple-git-hooks",
     "dev": "pnpm --parallel --filter @drishti/web --filter @drishti/worker dev",
-    "build": "pnpm -r run build",
+    "build": "pnpm --filter @drishti/engine build:demo && pnpm -r --filter \"!@drishti/engine\" run build",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "pnpm --filter @drishti/e2e test",

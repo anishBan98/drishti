@@ -7,9 +7,13 @@
     ".": "./src/index.ts"
   },
   "scripts": {
+    "build:demo": "tsx scripts/build-demo.ts",
+    "build": "tsx scripts/build-demo.ts",
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@drishti/shared": "workspace:*"
+    "@drishti/shared": "workspace:*",
+    "@noble/hashes": "2.4.0",
+    "zod": "4.6.7"
   }
 }

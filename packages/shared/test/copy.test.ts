@@ -23,3 +23,14 @@ describe('copy deck', () => {
     for (const [key, value] of Object.entries(copy)) expect(value.trim(), key).not.toBe('');
   });
 });
+
+describe('action catalogue (docs/10 §3; ACT-30 groundwork)', () => {
+  it('every action type has a run label, a done label and steps in the copy deck', async () => {
+    const { ACTION_TYPES } = await import('../src/actions');
+    const deck = copy as Record<string, string>;
+    for (const type of Object.keys(ACTION_TYPES)) {
+      for (const field of ['run', 'done', 'steps'])
+        expect(deck[`action.${type}.${field}`], `${type}.${field}`).toBeTruthy();
+    }
+  });
+});
