@@ -1,0 +1,3 @@
+test_id,name,design,media,test_regions,control_regions,start_date,end_date,status
+T-01,Meta holdout,geo_holdout,meta,"Pune, Ahmedabad","Nagpur*, Surat*",2026-09-26,2026-10-24,running
+T-02,Brand search pause,geo_holdout,google,"Jaipur, Lucknow, Indore, Kochi",Matched by synthetic control,2026-10-11,2026-10-31,running

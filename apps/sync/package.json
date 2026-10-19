@@ -1,0 +1,19 @@
+{
+  "name": "@drishti/sync",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "drishti-sync": "./src/cli.ts",
+    "drishti-run-action": "./src/run-action.ts"
+  },
+  "scripts": {
+    "start": "tsx src/cli.ts",
+    "run-action": "tsx src/run-action.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@drishti/engine": "workspace:*",
+    "@drishti/shared": "workspace:*"
+  }
+}

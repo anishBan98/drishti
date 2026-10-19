@@ -1,0 +1,15 @@
+node_modules
+dist
+.wrangler
+coverage
+pnpm-lock.yaml
+docs
+design
+brand
+sample-data
+PreQL-Drishti-SPEC.md
+README.md
+CHANGELOG.md
+playwright-report
+test-results
+.claude

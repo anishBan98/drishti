@@ -1,0 +1,8 @@
+Drishti Workspace
+This Google Sheet is the control panel for Drishti. Drishti reads the green tabs and writes the grey tabs.
+"Share this sheet and the Drive folder ""Drishti Inbox"" with the service account email shown on the Data sources screen (Editor)."
+"Green tabs (you edit): Settings, Products, Channels, Watchlist, Creators, Targets, Calendar, Rules, Users, Mappings."
+"Grey tabs (Drishti writes; do not edit): Actions, Tests, Source status, Sync log."
+Row 1 is the header. Do not rename headers; add columns to the right if you need notes.
+Money is in rupees without symbols or commas. Dates are YYYY-MM-DD. Percentages are decimals (0.12 = 12%).
+All values in this template are fictional (Lumora Skin).

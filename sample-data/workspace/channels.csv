@@ -1,0 +1,6 @@
+channel,label,commission_pct,payment_fee_pct,shipping_per_order_inr,other_pct,notes
+own_site,Own site,0.0,0.02,62,0.0,Shopify
+amazon,Amazon,0.17,0.0,58,0.0,Seller Central
+quick_commerce,Quick commerce,0.24,0.0,0,0.0,"Blinkit, Zepto, Instamart"
+nykaa,Nykaa,0.3,0.0,0,0.0,Nykaa vendor
+flipkart,Flipkart,0.16,0.0,55,0.0,Seller Hub

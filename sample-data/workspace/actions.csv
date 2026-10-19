@@ -1,0 +1,4 @@
+action_id,created_at,screen,type,title,owner,status,expected_inr,expected_per,measured_inr,readout_date,output_file,notes
+A-0001,2026-10-08T10:02:00+05:30,Market,coupon_prepare,Match Rival B with a 12% Amazon coupon,Priya,measuring,900000,week,610000,2026-10-29,files/A-0001-coupon.csv,
+A-0002,2026-10-17T07:20:00+05:30,This week,budget_shift,Shift ₹30 L to quick commerce and creators,Analyst,awaiting_approval,3700000,month,,,files/A-0002-budget.csv,Over approval threshold
+A-0003,2026-10-12T09:01:00+05:30,Customers,shopify_discount_cap,Cap discounts at 15% for Deal Hunters,Arjun,measuring,1100000,month,780000,2026-11-02,,Undo data saved

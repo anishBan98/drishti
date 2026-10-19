@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Drishti — Customer voice</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;display=swap">
+<style>
+body{margin:0;background:#F4F6FB}
+.dr-root{--bg:#F4F6FB;--surface:#FFFFFF;--sunken:#F4F6FB;--ink:#151A30;--ink-2:#3A4160;--muted:#4A5172;--muted-2:#6B7290;--line:#E4E7F0;--line-2:#DDE1EC;--line-3:#C9CFE3;--line-soft:#F0F2F7;--chip:#EEF0F6;--plot:#FBFCFE;--sel:#F1F4FF;--strong:#141B45;--link:#2A4BC4;--primary:#1E2A6E;--primary-2:#26337D;--side:#141B45;--good:#0B7A3E;--good-bg:#E5F5EC;--good-soft:#EFF8F2;--good-chip:#CDEBD8;--good-strong:#0B6332;--good-line:#8FCDA8;--bad:#B42318;--bad-bg:#FDECEB;--bad-soft:#FFF3F1;--bad-chip:#FBD9D5;--bad-strong:#9E1C12;--warn:#8A5300;--warn-bg:#FFF4DB;--warn-soft:#FFF8EB;--warn-chip:#FDE7BF;--amz-bg:#FDEEE7;--amz-ink:#8A3412;--qc-bg:#E3F6EE;--qc-ink:#0E6145;--own-bg:#E7F0FB;--own-ink:#1A4E8F;--blue-text:#1F5FB0;--orange-text:#C04A0A}
+.dr-root[data-theme="dark"]{--bg:#0A0F1F;--surface:#121933;--sunken:#1A2241;--ink:#E9ECF8;--ink-2:#C4CAE2;--muted:#9AA3C6;--muted-2:#8189AD;--line:#252E50;--line-2:#303A60;--line-3:#3A4570;--line-soft:#1B2340;--chip:#222B4D;--plot:#0F1630;--sel:#1E2A57;--strong:#E9ECF8;--link:#8FA6FF;--primary:#3346B8;--primary-2:#4053C4;--side:#0E1430;--good:#45D483;--good-bg:#123A28;--good-soft:#0F2A1F;--good-chip:#17492F;--good-strong:#5FE39A;--good-line:#2F7A52;--bad:#FF8A7A;--bad-bg:#3D1A1C;--bad-soft:#24141C;--bad-chip:#4A1E22;--bad-strong:#FFA597;--warn:#F2B544;--warn-bg:#3A2C10;--warn-soft:#221C10;--warn-chip:#4A3812;--amz-bg:#3A2216;--amz-ink:#FFA77A;--qc-bg:#10362A;--qc-ink:#5EE0B0;--own-bg:#172A47;--own-ink:#8DBBFF;--blue-text:#7DB2F5;--orange-text:#FF9450;color-scheme:dark}
+
+.dr-root a{color:var(--link)}.dr-root a:hover{color:var(--strong)}
+button:focus-visible,a:focus-visible{outline:2px solid #2A78D6;outline-offset:2px}
+</style>
+</helmet>
+<div class="dr-root" data-theme="{{theme}}" style="width: 1440px; height: 900px; overflow: hidden; display: grid; grid-template-columns: 188px minmax(0, 1fr); background: var(--bg); color: var(--ink); font-family: 'Archivo', 'Helvetica Neue', Helvetica, sans-serif">
+
+<nav aria-label="Drishti sections" style="box-sizing: border-box; padding: 24px 12px 20px; display: flex; flex-direction: column; gap: 2px; background: var(--side)">
+<div style="padding: 0 4px 18px 6px; display: flex; align-items: center; gap: 8px">
+<svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true"><g transform="translate(0 -6)"><path d="M18 108 Q100 26 182 108" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round"></path><path d="M18 108 Q92 168 150 118 L184 80" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="100" cy="104" r="25" fill="#FF2E2E"></circle></g></svg>
+<div style="display: flex; flex-direction: column">
+<div style="font-size: 28px; font-weight: 900; letter-spacing: -0.045em; line-height: 1; color: #FFFFFF">drishti<span style="color: #FF2E2E">.</span></div>
+<div style="margin-top: 3px; font-size: 12px; color: #B9C1E3">by PreQL</div>
+</div>
+</div>
+<button type="button" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; margin: 0 0 14px; padding: 10px; border: 0; border-radius: 12px; background: #222B5C; color: #FFFFFF; font: inherit; text-align: left; cursor: pointer">
+<span style="font-size: 15px; font-weight: 700">Lumora Skin ▾</span>
+<span style="font-size: 12px; color: #B9C1E3">Demo, fictional data</span>
+</button>
+<a href="Main.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">This week</a>
+<a href="Actions.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Actions</a>
+<a href="Performance.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Performance</a>
+<a href="Impact.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Impact and ROI</a>
+<a href="Market.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Market</a>
+<a href="Customers.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Customers</a>
+<a aria-current="page" href="Voice.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 700; color: #141B45; background: #FFFFFF">Customer voice</a>
+<a href="Data.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Data sources</a>
+<div role="group" aria-label="Colour theme" style="margin: auto 10px 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; padding: 3px; border-radius: 999px; background: #222B5C">
+<button type="button" onClick="{{setLight}}" aria-pressed="{{isLight}}" style="min-height: 34px; border: 0; border-radius: 999px; background: {{lightBg}}; color: {{lightFg}}; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer">☀ Light</button>
+<button type="button" onClick="{{setDark}}" aria-pressed="{{isDark}}" style="min-height: 34px; border: 0; border-radius: 999px; background: {{darkBg}}; color: {{darkFg}}; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer">☾ Dark</button>
+</div>
+<p style="margin: 0; padding: 0 10px; font-size: 12px; line-height: 1.45; color: #B9C1E3">Your data stays in your own accounts. Synced today, 7:10 am.</p>
+</nav>
+
+<main style="box-sizing: border-box; height: 900px; min-width: 0; padding: 20px 24px; display: grid; grid-template-rows: 50px 124px minmax(0, 1fr); gap: 14px">
+
+<header style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; align-items: baseline; gap: 14px">
+<h1 style="margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.02em">Customer voice</h1>
+<span style="font-size: 16px; color: var(--muted)">Reviews of your products on Amazon, Flipkart, Nykaa and your site, last 90 days.</span>
+</div>
+<div style="display: flex; gap: 8px">
+<button type="button" style="min-height: 42px; padding: 0 16px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; cursor: pointer">All products ▾</button>
+<button type="button" style="min-height: 42px; padding: 0 16px; border: 0; border-radius: 999px; background: var(--primary); color: #FFFFFF; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">Read all reviews</button>
+</div>
+</header>
+
+<section aria-label="Summary" style="display: grid; grid-template-columns: 268px repeat(6, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 20px; overflow: hidden">
+<div style="background: var(--bad-soft); padding: 14px 20px; display: flex; flex-direction: column; justify-content: center; gap: 10px">
+<span style="align-self: flex-start; padding: 4px 12px; border-radius: 999px; background: var(--bad-chip); color: var(--bad-strong); font-size: 13px; font-weight: 700">▼ Rating slipping</span>
+<p style="margin: 0; font-size: 17px; line-height: 1.35; font-weight: 700; text-wrap: pretty">Pump complaints from one batch are pulling the rating down.</p>
+</div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Rating, 90 days</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">3.9 ★</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--bad-bg); color: var(--bad); font-size: 13px; font-weight: 700; white-space: nowrap">▼ 0.4</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Reviews read</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">4,860</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--chip); color: var(--muted); font-size: 13px; font-weight: 700; white-space: nowrap">4 platforms</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Positive</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">64%</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--bad-bg); color: var(--bad); font-size: 13px; font-weight: 700; white-space: nowrap">▼ 5 points</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Negative</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">21%</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--bad-bg); color: var(--bad); font-size: 13px; font-weight: 700; white-space: nowrap">▲ 6 points</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Pump mentions</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">11%</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--bad-bg); color: var(--bad); font-size: 13px; font-weight: 700; white-space: nowrap">▲ 8 points</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">You replied to</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">18%</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--warn-bg); color: var(--warn); font-size: 13px; font-weight: 700; white-space: nowrap">Target 60%</span></div>
+</section>
+
+<div style="min-height: 0; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 14px">
+
+<div style="min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) 248px; gap: 14px">
+
+<section aria-label="What buyers talk about" style="min-height: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 16px 22px 12px; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<h2 style="margin: 0; font-size: 19px; font-weight: 700">What buyers talk about, net sentiment</h2>
+<div style="display: flex; gap: 16px; font-size: 14px; color: var(--ink-2)">
+<span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 12px; height: 12px; border-radius: 3px; background: #2A78D6"></span>You</span>
+<span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 12px; height: 12px; border-radius: 3px; background: var(--line-3)"></span>Category</span>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: 170px minmax(0, 1fr) 70px 70px; gap: 12px; padding: 0 10px; font-size: 13px; color: var(--muted)">
+<span>Topic, mentions</span>
+<span style="display: flex; justify-content: space-between"><span>More negative</span><span>0</span><span>More positive</span></span>
+<span style="text-align: right">You</span><span style="text-align: right">Category</span>
+</div>
+<div style="flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
+<button type="button" onClick="{{r.pick}}" aria-pressed="{{r.selected}}" style="flex: 1 1 0; min-height: 40px; display: grid; grid-template-columns: 170px minmax(0, 1fr) 70px 70px; gap: 12px; align-items: center; width: 100%; padding: 0 10px; border: 0; border-radius: 12px; background: {{r.bg}}; color: var(--ink); font: inherit; text-align: left; cursor: pointer">
+<span style="display: flex; flex-direction: column; line-height: 1.2"><span style="font-size: 15px; font-weight: 700">{{r.name}}</span><span style="font-size: 12px; color: var(--muted)">{{r.mentions}} mentions</span></span>
+<span style="position: relative; height: 30px">
+<span style="position: absolute; left: 50%; top: -6px; bottom: -6px; border-left: 1px solid var(--line-3)"></span>
+<span title="You: {{r.usLabel}}" style="position: absolute; top: 2px; height: 12px; left: {{r.usLeft}}; width: {{r.usW}}; border-radius: 3px; background: {{r.usColor}}"></span>
+<span title="Category: {{r.catLabel}}" style="position: absolute; top: 17px; height: 10px; left: {{r.catLeft}}; width: {{r.catW}}; border-radius: 3px; background: var(--line-3)"></span>
+</span>
+<span style="text-align: right; font-size: 16px; font-weight: 700; color: {{r.usText}}">{{r.usLabel}}</span>
+<span style="text-align: right; font-size: 15px; color: var(--muted)">{{r.catLabel}}</span>
+</button>
+</sc-for>
+</div>
+<div style="font-size: 13px; color: var(--muted); padding: 0 10px">Net sentiment = % positive minus % negative mentions of each topic.</div>
+</section>
+
+<section aria-label="New and growing complaints" style="min-height: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 14px 12px 8px; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0 10px 6px">
+<h2 style="margin: 0; font-size: 19px; font-weight: 700">New and growing complaints</h2>
+<span style="font-size: 13px; color: var(--muted)">Last 30 days against the 30 before</span>
+</div>
+<div style="display: grid; grid-template-columns: 2fr 0.8fr 0.8fr 1.1fr 0.9fr; gap: 8px; padding: 6px 10px; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--line)">
+<div>Complaint</div><div style="text-align: right">Mentions</div><div style="text-align: right">Change</div><div>Mostly on</div><div>First seen</div>
+</div>
+<div style="flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; font-size: 15px; font-variant-numeric: tabular-nums">
+<div style="flex: 1 1 0; display: grid; grid-template-columns: 2fr 0.8fr 0.8fr 1.1fr 0.9fr; gap: 8px; align-items: center; padding: 0 10px; border-bottom: 1px solid var(--line-soft)"><span style="font-weight: 700">Pump stops working</span><span style="text-align: right">412</span><span style="justify-self: end; padding: 1px 8px; border-radius: 999px; background: var(--bad-bg); color: var(--bad); font-size: 13px; font-weight: 700">▲ 310%</span><span>Amazon, Nykaa</span><span>21 Sep</span></div>
+<div style="flex: 1 1 0; display: grid; grid-template-columns: 2fr 0.8fr 0.8fr 1.1fr 0.9fr; gap: 8px; align-items: center; padding: 0 10px; border-bottom: 1px solid var(--line-soft)"><span style="font-weight: 700">Bottle leaks in transit</span><span style="text-align: right">96</span><span style="justify-self: end; padding: 1px 8px; border-radius: 999px; background: var(--bad-bg); color: var(--bad); font-size: 13px; font-weight: 700">▲ 45%</span><span>Flipkart</span><span>2 Oct</span></div>
+<div style="flex: 1 1 0; display: grid; grid-template-columns: 2fr 0.8fr 0.8fr 1.1fr 0.9fr; gap: 8px; align-items: center; padding: 0 10px; border-bottom: 1px solid var(--line-soft)"><span style="font-weight: 700">Serum turned orange</span><span style="text-align: right">74</span><span style="justify-self: end; padding: 1px 8px; border-radius: 999px; background: var(--warn-bg); color: var(--warn); font-size: 13px; font-weight: 700">▲ 20%</span><span>All platforms</span><span>Aug</span></div>
+<div style="flex: 1 1 0; display: grid; grid-template-columns: 2fr 0.8fr 0.8fr 1.1fr 0.9fr; gap: 8px; align-items: center; padding: 0 10px"><span style="font-weight: 700">Sunscreen looks bigger</span><span style="text-align: right">58</span><span style="justify-self: end; padding: 1px 8px; border-radius: 999px; background: var(--bad-bg); color: var(--bad); font-size: 13px; font-weight: 700">New</span><span>Flipkart</span><span>5 Oct</span></div>
+</div>
+</section>
+</div>
+
+<div style="min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px">
+<section aria-label="What this means" style="background: var(--primary); color: #FFFFFF; border-radius: 20px; padding: 18px 22px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 700; color: #C9D1F2">What this means: {{sel.name}}</h2>
+<span style="padding: 2px 10px; border-radius: 999px; background: {{sel.tagBg}}; color: #FFFFFF; font-size: 13px; font-weight: 700">{{sel.tag}}</span>
+</div>
+<p style="margin: 0; font-size: 18px; line-height: 1.4; font-weight: 600; text-wrap: pretty">{{sel.headline}}</p>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{sel.quotes}}" as="q" hint-placeholder-count="2">
+<div style="padding: 8px 12px; border-radius: 10px; background: var(--primary-2); font-size: 14px; line-height: 1.4"><span style="color: #FFFFFF">“{{q.text}}”</span> <span style="color: #C9D1F2">{{q.src}}</span></div>
+</sc-for>
+</div>
+</section>
+
+<section aria-label="Suggested actions" style="min-height: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<h2 style="margin: 0; font-size: 19px; font-weight: 700">Suggested actions</h2>
+<span style="font-size: 13px; color: var(--muted)">For {{sel.name}} · <a href="Actions.dc.html" style="font-weight: 600">Action log</a></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{actions}}" as="a" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px 16px; border-radius: 14px; background: var(--sunken)">
+<div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline">
+<span style="font-size: 16px; font-weight: 700; line-height: 1.3">{{a.title}}</span>
+<span style="padding: 2px 9px; border-radius: 999px; background: var(--good-bg); color: var(--good); font-size: 13px; font-weight: 700; white-space: nowrap">{{a.impact}}</span>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.45; color: var(--ink-2)">{{a.why}}</p>
+<div style="display: flex; gap: 8px; align-items: center">
+<button type="button" onClick="{{a.run}}" style="min-height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: {{a.runBg}}; color: {{a.runFg}}; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">{{a.runLabel}}</button>
+<button type="button" style="min-height: 40px; padding: 0 16px; border: 1px solid var(--line-3); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer">Assign</button>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+</div>
+
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  static initTheme() {
+    try { const t = localStorage.getItem('drishti-theme'); if (t === 'light' || t === 'dark') return t; } catch (e) {}
+    try { return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; } catch (e) { return 'light'; }
+  }
+  setTheme(t) {
+    try { localStorage.setItem('drishti-theme', t); } catch (e) {}
+    this.setState({ theme: t });
+  }
+  themeVals() {
+    const dark = this.state.theme === 'dark';
+    return {
+      theme: dark ? 'dark' : 'light', isLight: dark ? 'false' : 'true', isDark: dark ? 'true' : 'false',
+      lightBg: dark ? 'transparent' : '#FFFFFF', lightFg: dark ? '#B9C1E3' : '#141B45',
+      darkBg: dark ? '#FFFFFF' : 'transparent', darkFg: dark ? '#141B45' : '#B9C1E3',
+      setLight: () => this.setTheme('light'), setDark: () => this.setTheme('dark')
+    };
+  }
+  constructor(props) {
+    super(props);
+    this.state = { theme: Component.initTheme(), pick: 0, done: {} };
+  }
+  renderVals() {
+    const topics = [
+      { name: 'Pump and packaging', mentions: 1180, us: -38, cat: 5, tag: 'Fix now', tagBg: '#C2341F',
+        headline: '412 pump complaints in 30 days, nearly all from the September batch. It is the main reason the rating fell.',
+        quotes: [ { text: 'Pump stopped working after a week, had to pour it out.', src: 'Amazon, 2★' }, { text: 'Love the serum, hate the pump. Second bottle, same problem.', src: 'Nykaa, 3★' } ],
+        actions: [
+          { title: 'Put the September batch on QA hold', impact: '+0.2 ★ in 6 wks', why: '9 in 10 pump complaints trace to batch 0925; 14,000 units are still in warehouses.', runLabel: 'Raise QA hold', doneLabel: 'Hold raised' },
+          { title: 'Reply to 380 pump reviews with a free replacement', impact: 'Rating', why: 'Replied reviews are updated upward 1 time in 4 on Amazon.', runLabel: 'Draft replies', doneLabel: 'Replies drafted' } ] },
+      { name: 'Gentle on skin', mentions: 1640, us: 62, cat: 31, tag: 'Strength', tagBg: '#16794A',
+        headline: 'Your strongest point: buyers with sensitive skin praise you twice as often as they praise rivals.',
+        quotes: [ { text: 'Finally a vitamin C that does not sting my sensitive skin.', src: 'Own site, 5★' }, { text: 'No redness at all, unlike the last one I tried.', src: 'Amazon, 5★' } ],
+        actions: [
+          { title: 'Lead the listing title with “gentle”', impact: '+0.6 pt share', why: 'No top-10 rival says it, and it is what your buyers say first.', runLabel: 'Update listing', doneLabel: 'Listing updated' },
+          { title: 'Brief creators on sensitive skin', impact: '+₹8 L/mo', why: 'Sensitive-skin creators drove the best lift in the last 14 posts.', runLabel: 'Send brief', doneLabel: 'Brief sent' } ] },
+      { name: 'Results', mentions: 1320, us: 18, cat: 24, tag: 'Behind', tagBg: '#A0620B',
+        headline: 'Buyers expect a visible change in 2 to 4 weeks, and a third say they did not see one. Rivals do slightly better.',
+        quotes: [ { text: 'Used it for 3 weeks, not sure it did anything yet.', src: 'Flipkart, 3★' }, { text: 'Brighter skin after a month, worth the wait.', src: 'Nykaa, 5★' } ],
+        actions: [
+          { title: 'Add a 4-week routine card in the box', impact: '+3 pt repeat', why: 'Buyers who use it daily for 4 weeks rate it 4.5 on average.', runLabel: 'Send brief', doneLabel: 'Brief sent' },
+          { title: 'Ask creators for 4-week before-and-after', impact: 'Trust', why: 'Results claims are the top reason buyers pick Rival A and Rival C.', runLabel: 'Send brief', doneLabel: 'Brief sent' } ] },
+      { name: 'Texture', mentions: 980, us: 40, cat: 22, tag: 'Strength', tagBg: '#16794A',
+        headline: 'Lightweight and non-sticky is a real edge, and Rival D is losing buyers over sticky texture.',
+        quotes: [ { text: 'Absorbs in seconds, not sticky under makeup.', src: 'Nykaa, 5★' }, { text: 'Much lighter than the one I used before.', src: 'Amazon, 4★' } ],
+        actions: [
+          { title: 'Add “non-sticky” to the listing', impact: '+0.2 pt share', why: 'Shoppers search for it 14,000 times a month on Amazon.', runLabel: 'Update listing', doneLabel: 'Listing updated' },
+          { title: 'Show ads on Rival D’s product pages', impact: '+₹4 L/mo', why: 'Their unhappy buyers complain about exactly what you do well.', runLabel: 'Create campaign', doneLabel: 'Campaign live' } ] },
+      { name: 'Value for money', mentions: 760, us: 8, cat: 14, tag: 'Watch', tagBg: 'rgba(255,255,255,0.18)',
+        headline: 'Value complaints doubled after Rival B cut its price. Most compare price per bottle, not per ml.',
+        quotes: [ { text: 'Good, but the other brand is ₹100 cheaper now.', src: 'Amazon, 3★' }, { text: 'Pricey for 30 ml but it lasts.', src: 'Own site, 4★' } ],
+        actions: [
+          { title: 'Show price per 10 ml on the listing', impact: 'Conversion', why: 'At ₹183 per 10 ml you are close to the ₹175 median.', runLabel: 'Update listing', doneLabel: 'Listing updated' },
+          { title: 'Match Rival B with a 12% coupon', impact: '+₹9 L/wk', why: 'Closes most of the gap without changing list price elsewhere.', runLabel: 'Create coupon', doneLabel: 'Coupon live' } ] },
+      { name: 'Delivery', mentions: 640, us: 20, cat: 22, tag: 'At par', tagBg: 'rgba(255,255,255,0.18)',
+        headline: 'At par with the category, except Flipkart, where leaking bottles drag delivery scores down.',
+        quotes: [ { text: 'Box was wet, bottle had leaked a bit.', src: 'Flipkart, 2★' }, { text: 'Came in 10 minutes on Blinkit.', src: 'Own site, 5★' } ],
+        actions: [
+          { title: 'Switch Flipkart orders to a sealed sleeve', impact: '-90 complaints', why: 'Leaks are only in Flipkart’s packing flow, not your own or Amazon’s.', runLabel: 'Raise request', doneLabel: 'Request raised' },
+          { title: 'File a damage claim for 96 orders', impact: '₹48k back', why: 'Flipkart reimburses transit damage claimed within 45 days.', runLabel: 'File claim', doneLabel: 'Claim filed' } ] }
+    ];
+    const p = this.state.pick;
+    const done = this.state.done;
+    const span = 80;
+    const bar = (v) => {
+      const w = Math.abs(v) / span * 50;
+      return { left: (v >= 0 ? 50 : 50 - w).toFixed(1) + '%', w: Math.max(w, 0.8).toFixed(1) + '%' };
+    };
+    const fmt = (v) => (v > 0 ? '+' : (v < 0 ? '−' : '')) + Math.abs(v);
+    const rows = topics.map((t, i) => {
+      const u = bar(t.us), c = bar(t.cat);
+      return {
+        name: t.name, mentions: t.mentions.toLocaleString('en-IN'),
+        usLeft: u.left, usW: u.w, catLeft: c.left, catW: c.w,
+        usColor: t.us < 0 ? '#D03B3B' : '#2A78D6',
+        usText: t.us < t.cat - 5 ? 'var(--bad)' : (t.us > t.cat + 5 ? 'var(--good)' : 'var(--ink)'),
+        usLabel: fmt(t.us), catLabel: fmt(t.cat),
+        selected: i === p ? 'true' : 'false',
+        bg: i === p ? 'var(--sel)' : 'transparent',
+        pick: () => this.setState({ pick: i })
+      };
+    });
+    const sel = topics[p];
+    const actions = sel.actions.map((a, j) => {
+      const key = p + '-' + j;
+      const isDone = !!done[key];
+      return { ...a,
+        runLabel: isDone ? '✓ ' + a.doneLabel : a.runLabel,
+        runBg: isDone ? 'var(--good-bg)' : 'var(--primary)',
+        runFg: isDone ? 'var(--good)' : '#FFFFFF',
+        run: () => this.setState({ done: { ...done, [key]: !done[key] } }) };
+    });
+    return { ...this.themeVals(),  rows, sel, actions };
+  }
+}
+</script>
+</body>
+</html>

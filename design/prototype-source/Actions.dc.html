@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Drishti — Actions</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;display=swap">
+<style>
+body{margin:0;background:#F4F6FB}
+.dr-root{--bg:#F4F6FB;--surface:#FFFFFF;--sunken:#F4F6FB;--ink:#151A30;--ink-2:#3A4160;--muted:#4A5172;--muted-2:#6B7290;--line:#E4E7F0;--line-2:#DDE1EC;--line-3:#C9CFE3;--line-soft:#F0F2F7;--chip:#EEF0F6;--plot:#FBFCFE;--sel:#F1F4FF;--strong:#141B45;--link:#2A4BC4;--primary:#1E2A6E;--primary-2:#26337D;--side:#141B45;--good:#0B7A3E;--good-bg:#E5F5EC;--good-soft:#EFF8F2;--good-chip:#CDEBD8;--good-strong:#0B6332;--good-line:#8FCDA8;--bad:#B42318;--bad-bg:#FDECEB;--bad-soft:#FFF3F1;--bad-chip:#FBD9D5;--bad-strong:#9E1C12;--warn:#8A5300;--warn-bg:#FFF4DB;--warn-soft:#FFF8EB;--warn-chip:#FDE7BF;--amz-bg:#FDEEE7;--amz-ink:#8A3412;--qc-bg:#E3F6EE;--qc-ink:#0E6145;--own-bg:#E7F0FB;--own-ink:#1A4E8F;--blue-text:#1F5FB0;--orange-text:#C04A0A}
+.dr-root[data-theme="dark"]{--bg:#0A0F1F;--surface:#121933;--sunken:#1A2241;--ink:#E9ECF8;--ink-2:#C4CAE2;--muted:#9AA3C6;--muted-2:#8189AD;--line:#252E50;--line-2:#303A60;--line-3:#3A4570;--line-soft:#1B2340;--chip:#222B4D;--plot:#0F1630;--sel:#1E2A57;--strong:#E9ECF8;--link:#8FA6FF;--primary:#3346B8;--primary-2:#4053C4;--side:#0E1430;--good:#45D483;--good-bg:#123A28;--good-soft:#0F2A1F;--good-chip:#17492F;--good-strong:#5FE39A;--good-line:#2F7A52;--bad:#FF8A7A;--bad-bg:#3D1A1C;--bad-soft:#24141C;--bad-chip:#4A1E22;--bad-strong:#FFA597;--warn:#F2B544;--warn-bg:#3A2C10;--warn-soft:#221C10;--warn-chip:#4A3812;--amz-bg:#3A2216;--amz-ink:#FFA77A;--qc-bg:#10362A;--qc-ink:#5EE0B0;--own-bg:#172A47;--own-ink:#8DBBFF;--blue-text:#7DB2F5;--orange-text:#FF9450;color-scheme:dark}
+
+.dr-root a{color:var(--link)}.dr-root a:hover{color:var(--strong)}
+button:focus-visible,a:focus-visible{outline:2px solid #2A78D6;outline-offset:2px}
+</style>
+</helmet>
+<div class="dr-root" data-theme="{{theme}}" style="width: 1440px; height: 900px; overflow: hidden; display: grid; grid-template-columns: 188px minmax(0, 1fr); background: var(--bg); color: var(--ink); font-family: 'Archivo', 'Helvetica Neue', Helvetica, sans-serif">
+
+<nav aria-label="Drishti sections" style="box-sizing: border-box; padding: 24px 12px 20px; display: flex; flex-direction: column; gap: 2px; background: var(--side)">
+<div style="padding: 0 4px 18px 6px; display: flex; align-items: center; gap: 8px">
+<svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true"><g transform="translate(0 -6)"><path d="M18 108 Q100 26 182 108" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round"></path><path d="M18 108 Q92 168 150 118 L184 80" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="100" cy="104" r="25" fill="#FF2E2E"></circle></g></svg>
+<div style="display: flex; flex-direction: column">
+<div style="font-size: 28px; font-weight: 900; letter-spacing: -0.045em; line-height: 1; color: #FFFFFF">drishti<span style="color: #FF2E2E">.</span></div>
+<div style="margin-top: 3px; font-size: 12px; color: #B9C1E3">by PreQL</div>
+</div>
+</div>
+<button type="button" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; margin: 0 0 14px; padding: 10px; border: 0; border-radius: 12px; background: #222B5C; color: #FFFFFF; font: inherit; text-align: left; cursor: pointer">
+<span style="font-size: 15px; font-weight: 700">Lumora Skin ▾</span>
+<span style="font-size: 12px; color: #B9C1E3">Demo, fictional data</span>
+</button>
+<a href="Main.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">This week</a>
+<a aria-current="page" href="Actions.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 700; color: #141B45; background: #FFFFFF">Actions</a>
+<a href="Performance.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Performance</a>
+<a href="Impact.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Impact and ROI</a>
+<a href="Market.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Market</a>
+<a href="Customers.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Customers</a>
+<a href="Voice.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Customer voice</a>
+<a href="Data.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Data sources</a>
+<div role="group" aria-label="Colour theme" style="margin: auto 10px 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; padding: 3px; border-radius: 999px; background: #222B5C">
+<button type="button" onClick="{{setLight}}" aria-pressed="{{isLight}}" style="min-height: 34px; border: 0; border-radius: 999px; background: {{lightBg}}; color: {{lightFg}}; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer">☀ Light</button>
+<button type="button" onClick="{{setDark}}" aria-pressed="{{isDark}}" style="min-height: 34px; border: 0; border-radius: 999px; background: {{darkBg}}; color: {{darkFg}}; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer">☾ Dark</button>
+</div>
+<p style="margin: 0; padding: 0 10px; font-size: 12px; line-height: 1.45; color: #B9C1E3">Your data stays in your own accounts. Synced today, 7:10 am.</p>
+</nav>
+
+<main style="box-sizing: border-box; height: 900px; min-width: 0; padding: 20px 24px; display: grid; grid-template-rows: 50px 124px minmax(0, 1fr); gap: 14px">
+
+<header style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; align-items: baseline; gap: 14px">
+<h1 style="margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.02em">Actions</h1>
+<span style="font-size: 16px; color: var(--muted)">Every button you pressed, what Drishti did, and whether it paid off.</span>
+</div>
+<div style="display: flex; gap: 8px">
+<button type="button" style="min-height: 42px; padding: 0 16px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; cursor: pointer">This month ▾</button>
+<button type="button" style="min-height: 42px; padding: 0 16px; border: 0; border-radius: 999px; background: var(--primary); color: #FFFFFF; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">Open Actions sheet</button>
+</div>
+</header>
+
+<section aria-label="Summary" style="display: grid; grid-template-columns: 268px repeat(6, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 20px; overflow: hidden">
+<div style="background: var(--warn-soft); padding: 14px 20px; display: flex; flex-direction: column; justify-content: center; gap: 10px">
+<span style="align-self: flex-start; padding: 4px 12px; border-radius: 999px; background: var(--warn-chip); color: var(--warn); font-size: 13px; font-weight: 700">● {{waiting}} waiting on you</span>
+<p style="margin: 0; font-size: 17px; line-height: 1.35; font-weight: 700; text-wrap: pretty">The ₹30 L budget shift needs CMO approval before it can run.</p>
+</div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Actions run</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">{{doneCount}}</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--chip); color: var(--muted); font-size: 13px; font-weight: 700; white-space: nowrap">of 9 this month</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Expected impact</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">₹1.1 Cr</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--chip); color: var(--muted); font-size: 13px; font-weight: 700; white-space: nowrap">a month, if all land</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Confirmed so far</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">₹38 L</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--good-bg); color: var(--good); font-size: 13px; font-weight: 700; white-space: nowrap">▲ measured</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Hit rate</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">64%</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--good-bg); color: var(--good); font-size: 13px; font-weight: 700; white-space: nowrap">Target 60%</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Being measured</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">4</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--chip); color: var(--muted); font-size: 13px; font-weight: 700; white-space: nowrap">Next readout 31 Oct</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Overdue</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">1</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--bad-bg); color: var(--bad); font-size: 13px; font-weight: 700; white-space: nowrap">Flipkart ads file</span></div>
+</section>
+
+<div style="min-height: 0; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 14px">
+
+<section aria-label="Action log" style="min-height: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 14px 12px 8px; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0 10px 6px">
+<h2 style="margin: 0; font-size: 19px; font-weight: 700">Action log</h2>
+<span style="font-size: 13px; color: var(--muted)">Also written to the Actions tab of your Google Sheet</span>
+</div>
+<div style="display: grid; grid-template-columns: 3fr 0.8fr 0.75fr 0.95fr 0.85fr 0.95fr; gap: 10px; padding: 6px 10px; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--line)">
+<div>Action</div><div>From</div><div>Owner</div><div>Status</div><div style="text-align: right">Expected</div><div style="text-align: right">Measured</div>
+</div>
+<div style="flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="9">
+<button type="button" onClick="{{r.pick}}" aria-pressed="{{r.selected}}" style="flex: 1 1 0; min-height: 0; display: grid; grid-template-columns: 3fr 0.8fr 0.75fr 0.95fr 0.85fr 0.95fr; gap: 10px; align-items: center; width: 100%; padding: 0 10px; border: 0; border-radius: 10px; background: {{r.bg}}; color: var(--ink); font: inherit; font-size: 15px; text-align: left; cursor: pointer">
+<span style="display: flex; flex-direction: column; min-width: 0; line-height: 1.25"><span style="font-weight: 700">{{r.title}}</span><span style="font-size: 12px; color: var(--muted)">{{r.how}}</span></span>
+<span style="font-size: 14px; color: var(--ink-2)">{{r.from}}</span>
+<span style="font-size: 14px; color: var(--ink-2)">{{r.owner}}</span>
+<span style="justify-self: start; padding: 2px 9px; border-radius: 999px; background: {{r.stBg}}; color: {{r.stFg}}; font-size: 13px; font-weight: 700; white-space: nowrap">{{r.status}}</span>
+<span style="text-align: right; font-size: 14px">{{r.expected}}</span>
+<span style="text-align: right; font-size: 14px; font-weight: 700; color: {{r.measColor}}">{{r.measured}}</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<div style="min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px">
+<section aria-label="Selected action" style="background: var(--primary); color: #FFFFFF; border-radius: 20px; padding: 18px 22px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 700; color: #C9D1F2">{{sel.how}}</h2>
+<span style="padding: 2px 10px; border-radius: 999px; background: rgba(255,255,255,0.18); font-size: 13px; font-weight: 700">{{sel.from}}</span>
+</div>
+<p style="margin: 0; font-size: 19px; line-height: 1.35; font-weight: 700; text-wrap: pretty">{{sel.title}}</p>
+<ol aria-label="Lifecycle" style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px">
+<sc-for list="{{stages}}" as="s" hint-placeholder-count="5">
+<li style="display: flex; flex-direction: column; gap: 6px"><span style="height: 6px; border-radius: 999px; background: {{s.bar}}"></span><span style="font-size: 12px; font-weight: {{s.weight}}; color: {{s.fg}}">{{s.label}}</span></li>
+</sc-for>
+</ol>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 12px; background: var(--primary-2)">
+<div style="font-size: 12px; color: #C9D1F2">Measured against expected</div>
+<div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-size: 20px; font-weight: 700">{{sel.measured}}</span><span style="font-size: 14px; color: #DCE2F7">expected {{sel.expected}}</span></div>
+<div style="height: 8px; border-radius: 999px; background: rgba(255,255,255,0.18); overflow: hidden"><div style="height: 100%; width: {{sel.progress}}; background: #5FE39A"></div></div>
+<div style="font-size: 13px; color: #DCE2F7">{{sel.readout}}</div>
+</div>
+</section>
+
+<section aria-label="What Drishti did" style="min-height: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<h2 style="margin: 0; font-size: 19px; font-weight: 700">What Drishti did</h2>
+<span style="font-size: 13px; color: var(--muted)">Owner: {{sel.owner}}</span>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{steps}}" as="st" hint-placeholder-count="4">
+<li style="display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 10px; align-items: center; font-size: 15px; line-height: 1.35"><span style="width: 24px; height: 24px; border-radius: 50%; background: {{st.dotBg}}; color: {{st.dotFg}}; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700">{{st.mark}}</span><span style="color: {{st.fg}}">{{st.text}}</span><span style="font-size: 13px; color: var(--muted); white-space: nowrap">{{st.when}}</span></li>
+</sc-for>
+</ol>
+<div style="margin-top: auto; display: flex; gap: 8px; flex-wrap: wrap; padding-top: 12px; border-top: 1px solid var(--line)">
+<sc-if value="{{sel.canApprove}}" hint-placeholder-val="{{false}}">
+<button type="button" onClick="{{approve}}" style="min-height: 40px; padding: 0 18px; border: 0; border-radius: 999px; background: var(--primary); color: #FFFFFF; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">Approve and run</button>
+</sc-if>
+<sc-if value="{{sel.canUndo}}" hint-placeholder-val="{{true}}">
+<button type="button" onClick="{{undo}}" style="min-height: 40px; padding: 0 18px; border: 1px solid var(--line-3); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer">{{sel.undoLabel}}</button>
+</sc-if>
+<button type="button" style="min-height: 40px; padding: 0 18px; border: 1px solid var(--line-3); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer">{{sel.fileLabel}}</button>
+</div>
+</section>
+</div>
+
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  static initTheme() {
+    try { const t = localStorage.getItem('drishti-theme'); if (t === 'light' || t === 'dark') return t; } catch (e) {}
+    try { return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; } catch (e) { return 'light'; }
+  }
+  setTheme(t) {
+    try { localStorage.setItem('drishti-theme', t); } catch (e) {}
+    this.setState({ theme: t });
+  }
+  themeVals() {
+    const dark = this.state.theme === 'dark';
+    return {
+      theme: dark ? 'dark' : 'light', isLight: dark ? 'false' : 'true', isDark: dark ? 'true' : 'false',
+      lightBg: dark ? 'transparent' : '#FFFFFF', lightFg: dark ? '#B9C1E3' : '#141B45',
+      darkBg: dark ? '#FFFFFF' : 'transparent', darkFg: dark ? '#141B45' : '#B9C1E3',
+      setLight: () => this.setTheme('light'), setDark: () => this.setTheme('dark')
+    };
+  }
+  constructor(props) {
+    super(props);
+    this.state = { theme: Component.initTheme(), pick: 0, approved: {}, undone: {} };
+  }
+  renderVals() {
+    const acts = [
+      { title: 'Match Rival B with a 12% Amazon coupon', how: 'Prepared for Amazon, sent live by you', from: 'Market', owner: 'Priya', status: 'Measuring', stage: 3, expected: '+₹9 L/wk', measured: '+₹6.1 L/wk', meas: 1, progress: '68%', readout: 'Day 9 of 21. Units on the 30 ml pack are up 19% against the cities with no coupon.', file: 'Coupon file',
+        steps: [ { t: 'Built the coupon file: 30 ml serum, 12% off, 3 weeks', w: '8 Oct, 10:02', d: 1 }, { t: 'Opened Seller Central Coupons with the file ready to upload', w: '8 Oct, 10:02', d: 1 }, { t: 'Priya confirmed the coupon is live', w: '8 Oct, 11:40', d: 1 }, { t: 'Logged to the Actions sheet; readout booked on the team calendar', w: '8 Oct, 11:40', d: 1 }, { t: 'Readout: compare coupon weeks with the forecast', w: '29 Oct', d: 0 } ] },
+      { title: 'Shift ₹30 L to quick com. and creators', how: 'Needs approval: over ₹10 L', from: 'Weekly', owner: 'You', status: 'Waiting', stage: 0, expected: '+₹37 L/mo', measured: '—', meas: 0, progress: '0%', readout: 'Starts when approved. First readout 4 weeks later.', file: 'Budget sheet', approvable: true,
+        steps: [ { t: 'Built the new budget split by channel and city', w: '17 Oct, 7:20', d: 1 }, { t: 'Sent to the CMO for approval', w: '17 Oct, 7:20', d: 1 }, { t: 'On approval: export new budgets for Meta, Blinkit and Zepto', w: 'Waiting', d: 0 }, { t: 'Book a 4-week readout', w: 'Waiting', d: 0 } ] },
+      { title: 'Cap discounts at 15% for Deal Hunters', how: 'Ran in Shopify', from: 'Customers', owner: 'Arjun', status: 'Measuring', stage: 3, expected: '+₹11 L', measured: '+₹7.8 L', meas: 1, progress: '71%', readout: 'Repeat rate unchanged so far, as predicted. Readout 2 Nov.', file: 'Shopify change log',
+        steps: [ { t: 'Found 3 discount codes above 15% used by this group', w: '12 Oct, 9:00', d: 1 }, { t: 'Changed them to 15% in Shopify through the API', w: '12 Oct, 9:01', d: 1 }, { t: 'Saved the old values so it can be undone in one click', w: '12 Oct, 9:01', d: 1 }, { t: 'Readout: margin and repeat rate for the group', w: '2 Nov', d: 0 } ] },
+      { title: 'Put pump batch 0925 on QA hold', how: 'Task for the QA team', from: 'Voice', owner: 'Rahul', status: 'Done', stage: 4, expected: '+0.2 ★', measured: '+0.1 ★', meas: 1, progress: '50%', readout: 'Pump complaints down 40% in new reviews. Rating takes about 6 weeks to recover.', file: 'QA ticket',
+        steps: [ { t: 'Raised a QA hold note with 412 complaints attached', w: '9 Oct, 15:10', d: 1 }, { t: 'Rahul confirmed 14,000 units held in warehouses', w: '10 Oct, 12:00', d: 1 }, { t: 'Drafted 380 review replies offering a free pump', w: '10 Oct, 12:05', d: 1 }, { t: 'Tracking pump mentions every day', w: 'Ongoing', d: 1 } ] },
+      { title: 'Auto-pause ads in empty dark stores', how: 'Rule, checked every 6 hours', from: 'Impact', owner: 'Auto', status: 'Running', stage: 3, expected: '₹1 L/wk', measured: '₹0.8 L/wk', meas: 1, progress: '80%', readout: 'Paused 21 store campaigns last week; all restarted within a day of restock.', file: 'Rule history',
+        steps: [ { t: 'Rule: stock below 1 day in a store, pause its search ads', w: '5 Oct', d: 1 }, { t: 'Checks store stock from the quick-commerce files', w: 'Every 6 h', d: 1 }, { t: 'Posts each pause to the team channel', w: 'Every 6 h', d: 1 } ] },
+      { title: 'Pause brand search in 4 test cities', how: 'Test with holdout cities', from: 'Impact', owner: 'Neha', status: 'Running', stage: 2, expected: 'Confidence', measured: 'Day 6 of 14', meas: 0, progress: '43%', readout: 'Test cities Jaipur, Lucknow, Indore, Kochi against 4 matched cities. Readout 31 Oct.', file: 'Test plan',
+        steps: [ { t: 'Picked 4 test and 4 matched cities by past sales', w: '11 Oct', d: 1 }, { t: 'Exported the city exclusion list for Google Ads', w: '11 Oct', d: 1 }, { t: 'Neha confirmed the pause is live', w: '11 Oct', d: 1 }, { t: 'Readout: real sales lost per ₹100 saved', w: '31 Oct', d: 0 } ] },
+      { title: 'Schedule Diwali gift-set campaign', how: 'Brief and audience prepared', from: 'Customers', owner: 'Meera', status: 'Scheduled', stage: 1, expected: '+₹22 L', measured: '—', meas: 0, progress: '0%', readout: 'Goes out 20 Oct to 15,200 Festive Gifters.', file: 'Campaign brief',
+        steps: [ { t: 'Exported the Festive Gifters audience file', w: '16 Oct', d: 1 }, { t: 'Wrote the brief to the Drive Outbox', w: '16 Oct', d: 1 }, { t: 'Send date set for 20 Oct', w: '20 Oct', d: 0 } ] },
+      { title: 'Lead listings with “gentle”', how: 'Listing copy prepared', from: 'Market', owner: 'Content', status: 'Waiting', stage: 0, expected: '+0.6 pt', measured: '—', meas: 0, progress: '0%', readout: 'Waiting for brand team sign-off on the new title.', file: 'Listing copy', approvable: true,
+        steps: [ { t: 'Wrote new titles and first bullets for 3 platforms', w: '15 Oct', d: 1 }, { t: 'Sent for brand sign-off', w: '15 Oct', d: 1 }, { t: 'On approval: open each listing editor with the copy ready', w: 'Waiting', d: 0 } ] },
+      { title: 'Upload Flipkart ads reports', how: 'Task, reminder every morning', from: 'Data', owner: 'Ads team', status: 'Overdue', stage: 1, expected: 'Data', measured: '5 days late', meas: -1, progress: '0%', readout: 'Flipkart figures stay low-confidence until this arrives.', file: 'Reminder',
+        steps: [ { t: 'Flagged the missing file at the 6 am sync', w: '13 Oct', d: 1 }, { t: 'Reminded the ads team in the team channel', w: 'Daily, 9 am', d: 1 }, { t: 'File received', w: 'Waiting', d: 0 } ] }
+    ];
+    const p = this.state.pick;
+    const ap = this.state.approved, un = this.state.undone;
+    const live = acts.map((a, i) => {
+      let status = a.status, stage = a.stage;
+      if (un[i]) { status = 'Undone'; stage = 4; }
+      else if (a.approvable && ap[i]) { status = 'Running'; stage = 2; }
+      return { ...a, status, stage };
+    });
+    const stColor = (s) => ({ Waiting: ['var(--warn-bg)', 'var(--warn)'], Measuring: ['var(--own-bg)', 'var(--own-ink)'], Running: ['var(--own-bg)', 'var(--own-ink)'], Done: ['var(--good-bg)', 'var(--good)'], Scheduled: ['var(--chip)', 'var(--muted)'], Overdue: ['var(--bad-bg)', 'var(--bad)'], Undone: ['var(--chip)', 'var(--muted)'] }[s]);
+    const rows = live.map((a, i) => {
+      const c = stColor(a.status);
+      return { title: a.title, how: a.how, from: a.from, owner: a.owner, status: a.status, stBg: c[0], stFg: c[1], expected: a.expected, measured: a.measured,
+        measColor: a.meas > 0 ? 'var(--good)' : (a.meas < 0 ? 'var(--bad)' : 'var(--muted)'),
+        selected: i === p ? 'true' : 'false', bg: i === p ? 'var(--sel)' : 'transparent', pick: () => this.setState({ pick: i }) };
+    });
+    const a = live[p];
+    const labels = ['Suggested', 'Approved', 'Running', 'Measuring', 'Result'];
+    const stages = labels.map((l, k) => ({ label: l, bar: k <= a.stage ? '#5FE39A' : 'rgba(255,255,255,0.2)', fg: k <= a.stage ? '#FFFFFF' : '#C9D1F2', weight: k === a.stage ? '700' : '500' }));
+    let stepList = a.steps;
+    if (a.approvable && ap[p]) stepList = a.steps.map((s, k) => k === 2 ? { ...s, d: 1, w: 'Just now' } : s);
+    if (un[p]) stepList = a.steps.concat([{ t: 'Undone: restored the earlier settings', w: 'Just now', d: 1 }]);
+    const steps = stepList.map((s) => ({ text: s.t, when: s.w, mark: s.d ? '✓' : '', dotBg: s.d ? 'var(--good-bg)' : 'var(--chip)', dotFg: 'var(--good)', fg: s.d ? 'var(--ink)' : 'var(--muted)' }));
+    const waiting = live.filter((x) => x.status === 'Waiting').length;
+    const doneCount = live.filter((x) => ['Done', 'Measuring', 'Running'].includes(x.status)).length;
+    const sel = { ...a, canApprove: !!a.approvable && !ap[p], canUndo: a.status !== 'Waiting' && a.status !== 'Overdue' && a.status !== 'Undone', undoLabel: 'Undo', fileLabel: 'Open ' + a.file.toLowerCase() };
+    return { ...this.themeVals(), 
+      rows, sel, stages, steps, waiting, doneCount,
+      approve: () => this.setState({ approved: { ...ap, [p]: true } }),
+      undo: () => this.setState({ undone: { ...un, [p]: true } })
+    };
+  }
+}
+</script>
+</body>
+</html>

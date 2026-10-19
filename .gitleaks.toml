@@ -1,0 +1,14 @@
+# gitleaks: default rules plus Drishti allowlists (docs/12 §8 "No secrets in the repo").
+title = "drishti"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Fictional sample data and design files contain hashes and IDs, not secrets"
+paths = [
+  '''^sample-data/''',
+  '''^design/''',
+  '''^brand/''',
+  '''^pnpm-lock\.yaml$''',
+]

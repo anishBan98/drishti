@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Drishti — Data sources</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;display=swap">
+<style>
+body{margin:0;background:#F4F6FB}
+.dr-root{--bg:#F4F6FB;--surface:#FFFFFF;--sunken:#F4F6FB;--ink:#151A30;--ink-2:#3A4160;--muted:#4A5172;--muted-2:#6B7290;--line:#E4E7F0;--line-2:#DDE1EC;--line-3:#C9CFE3;--line-soft:#F0F2F7;--chip:#EEF0F6;--plot:#FBFCFE;--sel:#F1F4FF;--strong:#141B45;--link:#2A4BC4;--primary:#1E2A6E;--primary-2:#26337D;--side:#141B45;--good:#0B7A3E;--good-bg:#E5F5EC;--good-soft:#EFF8F2;--good-chip:#CDEBD8;--good-strong:#0B6332;--good-line:#8FCDA8;--bad:#B42318;--bad-bg:#FDECEB;--bad-soft:#FFF3F1;--bad-chip:#FBD9D5;--bad-strong:#9E1C12;--warn:#8A5300;--warn-bg:#FFF4DB;--warn-soft:#FFF8EB;--warn-chip:#FDE7BF;--amz-bg:#FDEEE7;--amz-ink:#8A3412;--qc-bg:#E3F6EE;--qc-ink:#0E6145;--own-bg:#E7F0FB;--own-ink:#1A4E8F;--blue-text:#1F5FB0;--orange-text:#C04A0A}
+.dr-root[data-theme="dark"]{--bg:#0A0F1F;--surface:#121933;--sunken:#1A2241;--ink:#E9ECF8;--ink-2:#C4CAE2;--muted:#9AA3C6;--muted-2:#8189AD;--line:#252E50;--line-2:#303A60;--line-3:#3A4570;--line-soft:#1B2340;--chip:#222B4D;--plot:#0F1630;--sel:#1E2A57;--strong:#E9ECF8;--link:#8FA6FF;--primary:#3346B8;--primary-2:#4053C4;--side:#0E1430;--good:#45D483;--good-bg:#123A28;--good-soft:#0F2A1F;--good-chip:#17492F;--good-strong:#5FE39A;--good-line:#2F7A52;--bad:#FF8A7A;--bad-bg:#3D1A1C;--bad-soft:#24141C;--bad-chip:#4A1E22;--bad-strong:#FFA597;--warn:#F2B544;--warn-bg:#3A2C10;--warn-soft:#221C10;--warn-chip:#4A3812;--amz-bg:#3A2216;--amz-ink:#FFA77A;--qc-bg:#10362A;--qc-ink:#5EE0B0;--own-bg:#172A47;--own-ink:#8DBBFF;--blue-text:#7DB2F5;--orange-text:#FF9450;color-scheme:dark}
+
+.dr-root a{color:var(--link)}.dr-root a:hover{color:var(--strong)}
+button:focus-visible,a:focus-visible{outline:2px solid #2A78D6;outline-offset:2px}
+</style>
+</helmet>
+<div class="dr-root" data-theme="{{theme}}" style="width: 1440px; height: 900px; overflow: hidden; display: grid; grid-template-columns: 188px minmax(0, 1fr); background: var(--bg); color: var(--ink); font-family: 'Archivo', 'Helvetica Neue', Helvetica, sans-serif">
+
+<nav aria-label="Drishti sections" style="box-sizing: border-box; padding: 24px 12px 20px; display: flex; flex-direction: column; gap: 2px; background: var(--side)">
+<div style="padding: 0 4px 18px 6px; display: flex; align-items: center; gap: 8px">
+<svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true"><g transform="translate(0 -6)"><path d="M18 108 Q100 26 182 108" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round"></path><path d="M18 108 Q92 168 150 118 L184 80" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="100" cy="104" r="25" fill="#FF2E2E"></circle></g></svg>
+<div style="display: flex; flex-direction: column">
+<div style="font-size: 28px; font-weight: 900; letter-spacing: -0.045em; line-height: 1; color: #FFFFFF">drishti<span style="color: #FF2E2E">.</span></div>
+<div style="margin-top: 3px; font-size: 12px; color: #B9C1E3">by PreQL</div>
+</div>
+</div>
+<button type="button" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; margin: 0 0 14px; padding: 10px; border: 0; border-radius: 12px; background: #222B5C; color: #FFFFFF; font: inherit; text-align: left; cursor: pointer">
+<span style="font-size: 15px; font-weight: 700">Lumora Skin ▾</span>
+<span style="font-size: 12px; color: #B9C1E3">Demo, fictional data</span>
+</button>
+<a href="Main.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">This week</a>
+<a href="Actions.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Actions</a>
+<a href="Performance.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Performance</a>
+<a href="Impact.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Impact and ROI</a>
+<a href="Market.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Market</a>
+<a href="Customers.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Customers</a>
+<a href="Voice.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Customer voice</a>
+<a aria-current="page" href="Data.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 700; color: #141B45; background: #FFFFFF">Data sources</a>
+<div role="group" aria-label="Colour theme" style="margin: auto 10px 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; padding: 3px; border-radius: 999px; background: #222B5C">
+<button type="button" onClick="{{setLight}}" aria-pressed="{{isLight}}" style="min-height: 34px; border: 0; border-radius: 999px; background: {{lightBg}}; color: {{lightFg}}; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer">☀ Light</button>
+<button type="button" onClick="{{setDark}}" aria-pressed="{{isDark}}" style="min-height: 34px; border: 0; border-radius: 999px; background: {{darkBg}}; color: {{darkFg}}; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer">☾ Dark</button>
+</div>
+<p style="margin: 0; padding: 0 10px; font-size: 12px; line-height: 1.45; color: #B9C1E3">Your data stays in your own accounts. Synced today, 7:10 am.</p>
+</nav>
+
+<main style="box-sizing: border-box; height: 900px; min-width: 0; padding: 20px 24px; display: grid; grid-template-rows: 50px 124px minmax(0, 1fr); gap: 14px">
+
+<header style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; align-items: baseline; gap: 14px">
+<h1 style="margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.02em">Data sources</h1>
+<span style="font-size: 16px; color: var(--muted)">Where every number comes from. Data stays in your own Google and Cloudflare accounts.</span>
+</div>
+<div style="display: flex; gap: 8px">
+<button type="button" style="min-height: 42px; padding: 0 16px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; cursor: pointer">Upload a file</button>
+<button type="button" onClick="{{refreshAll}}" style="min-height: 42px; padding: 0 16px; border: 0; border-radius: 999px; background: {{allBg}}; color: {{allFg}}; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">{{allLabel}}</button>
+</div>
+</header>
+
+<section aria-label="Summary" style="display: grid; grid-template-columns: 268px repeat(6, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 20px; overflow: hidden">
+<div style="background: {{verdictBg}}; padding: 14px 20px; display: flex; flex-direction: column; justify-content: center; gap: 10px">
+<span style="align-self: flex-start; padding: 4px 12px; border-radius: 999px; background: {{verdictChipBg}}; color: {{verdictChipFg}}; font-size: 13px; font-weight: 700">{{verdictChip}}</span>
+<p style="margin: 0; font-size: 17px; line-height: 1.35; font-weight: 700; text-wrap: pretty">{{verdict}}</p>
+</div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Up to date</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">{{freshCount}} of 13</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: {{freshChipBg}}; color: {{freshChipFg}}; font-size: 13px; font-weight: 700; white-space: nowrap">{{freshChip}}</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Revenue covered</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">98%</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--good-bg); color: var(--good); font-size: 13px; font-weight: 700; white-space: nowrap">All channels</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">History</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">18 mo</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--chip); color: var(--muted); font-size: 13px; font-weight: 700; white-space: nowrap">Since Apr 2025</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Rows stored</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">4.2 M</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--chip); color: var(--muted); font-size: 13px; font-weight: 700; white-space: nowrap">310 MB</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Third parties</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">None</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--good-bg); color: var(--good); font-size: 13px; font-weight: 700; white-space: nowrap">Your accounts only</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Cost</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">₹0</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--good-bg); color: var(--good); font-size: 13px; font-weight: 700; white-space: nowrap">No paid APIs</span></div>
+</section>
+
+<div style="min-height: 0; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 14px">
+
+<section aria-label="Sources" style="min-height: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 14px 12px 8px; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0 10px 6px">
+<h2 style="margin: 0; font-size: 19px; font-weight: 700">Sources</h2>
+<span style="font-size: 13px; color: var(--muted)">Select one to see how it works</span>
+</div>
+<div style="display: grid; grid-template-columns: 1.6fr 1.7fr 0.9fr 1fr; gap: 10px; padding: 6px 10px; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--line)">
+<div>Source</div><div>How we get it</div><div>How often</div><div>Status</div>
+</div>
+<div style="flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="13">
+<button type="button" onClick="{{r.pick}}" aria-pressed="{{r.selected}}" style="flex: 1 1 0; min-height: 0; display: grid; grid-template-columns: 1.6fr 1.7fr 0.9fr 1fr; gap: 10px; align-items: center; width: 100%; padding: 0 10px; border: 0; border-radius: 10px; background: {{r.bg}}; color: var(--ink); font: inherit; font-size: 15px; text-align: left; cursor: pointer">
+<span style="font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{r.name}}</span>
+<span style="color: var(--ink-2); font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{r.method}}</span>
+<span style="color: var(--ink-2); font-size: 14px">{{r.cadence}}</span>
+<span style="justify-self: start; display: inline-flex; align-items: center; gap: 6px; padding: 2px 9px; border-radius: 999px; background: {{r.stBg}}; color: {{r.stFg}}; font-size: 13px; font-weight: 700; white-space: nowrap">{{r.status}}</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<div style="min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px">
+<section aria-label="How this source works" style="background: var(--primary); color: #FFFFFF; border-radius: 20px; padding: 18px 22px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 700; color: #C9D1F2">How we get it: {{sel.name}}</h2>
+<span style="padding: 2px 10px; border-radius: 999px; background: rgba(255,255,255,0.18); font-size: 13px; font-weight: 700">{{sel.cadence}}</span>
+</div>
+<p style="margin: 0; font-size: 18px; line-height: 1.4; font-weight: 600; text-wrap: pretty">{{sel.how}}</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: rgba(255,255,255,0.16); border-radius: 12px; overflow: hidden">
+<div style="background: var(--primary-2); padding: 10px 12px"><div style="font-size: 12px; color: #C9D1F2">Feeds</div><div style="font-size: 15px; font-weight: 700; line-height: 1.35">{{sel.feeds}}</div></div>
+<div style="background: var(--primary-2); padding: 10px 12px"><div style="font-size: 12px; color: #C9D1F2">Last received</div><div style="font-size: 15px; font-weight: 700; line-height: 1.35">{{sel.last}}</div></div>
+</div>
+<div style="font-size: 13px; line-height: 1.45; color: #DCE2F7">Rule: {{sel.rule}}</div>
+</section>
+
+<section aria-label="Actions" style="min-height: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<h2 style="margin: 0; font-size: 19px; font-weight: 700">Suggested actions</h2>
+<span style="font-size: 13px; color: var(--muted)">For {{sel.name}}</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{actions}}" as="a" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px 16px; border-radius: 14px; background: var(--sunken)">
+<span style="font-size: 16px; font-weight: 700; line-height: 1.3">{{a.title}}</span>
+<p style="margin: 0; font-size: 14px; line-height: 1.45; color: var(--ink-2)">{{a.why}}</p>
+<div style="display: flex; gap: 8px; align-items: center">
+<button type="button" onClick="{{a.run}}" style="min-height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: {{a.runBg}}; color: {{a.runFg}}; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">{{a.runLabel}}</button>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid var(--line)">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 700">Privacy mode</span><span style="font-size: 13px; color: var(--muted)">Hide customer names and phone numbers everywhere</span></div>
+<button type="button" role="switch" aria-checked="{{privacyOn}}" onClick="{{togglePrivacy}}" style="width: 52px; height: 30px; padding: 3px; border: 0; border-radius: 999px; background: {{privacyBg}}; cursor: pointer; display: flex; justify-content: {{privacyJustify}}"><span style="width: 24px; height: 24px; border-radius: 50%; background: var(--surface)"></span></button>
+</div>
+</section>
+</div>
+
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  static initTheme() {
+    try { const t = localStorage.getItem('drishti-theme'); if (t === 'light' || t === 'dark') return t; } catch (e) {}
+    try { return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; } catch (e) { return 'light'; }
+  }
+  setTheme(t) {
+    try { localStorage.setItem('drishti-theme', t); } catch (e) {}
+    this.setState({ theme: t });
+  }
+  themeVals() {
+    const dark = this.state.theme === 'dark';
+    return {
+      theme: dark ? 'dark' : 'light', isLight: dark ? 'false' : 'true', isDark: dark ? 'true' : 'false',
+      lightBg: dark ? 'transparent' : '#FFFFFF', lightFg: dark ? '#B9C1E3' : '#141B45',
+      darkBg: dark ? '#FFFFFF' : 'transparent', darkFg: dark ? '#141B45' : '#B9C1E3',
+      setLight: () => this.setTheme('light'), setDark: () => this.setTheme('dark')
+    };
+  }
+  constructor(props) {
+    super(props);
+    this.state = { theme: Component.initTheme(), pick: 5, done: {}, privacy: true, all: false };
+  }
+  renderVals() {
+    const src = [
+      { name: 'Own site (Shopify)', method: 'Read-only app key', cadence: 'Live', ok: true, last: 'Today, 7:10 am', feeds: 'Orders, buyers, customer types',
+        how: 'A read-only key lets the sync job pull new orders and customers every 6 hours. Nothing in your store can be changed.', rule: 'read-only scope; customer details masked in privacy mode.',
+        actions: [ { title: 'Refresh now', why: 'Pulls orders placed since 7:10 am.', runLabel: 'Refresh', doneLabel: 'Refreshed' } ] },
+      { name: 'Amazon Seller Central', method: 'Emailed CSV to Drive Inbox', cadence: 'Daily', ok: true, last: 'Today, 7:02 am', feeds: 'Sales, units, sessions by product',
+        how: 'Seller Central emails the daily report; a Gmail filter saves it to your Drive Inbox and the next sync reads it.', rule: 'your own account data only, downloaded by you.',
+        actions: [ { title: 'Upload today’s report', why: 'The report for 16 Oct is ready in Seller Central.', runLabel: 'Upload file', doneLabel: 'Uploaded' } ] },
+      { name: 'Amazon Brand Analytics', method: 'CSVs to Drive Inbox', cadence: 'Weekly', ok: true, last: '13 Oct', feeds: 'Search share, rivals, repeat buyers',
+        how: 'Search query, item comparison and repeat purchase reports show your share of searches and which rivals shoppers buy instead.', rule: 'available to brand-registered sellers at no cost.',
+        actions: [ { title: 'Upload this week’s reports', why: 'New week opens on Sunday; three files.', runLabel: 'Upload files', doneLabel: 'Uploaded' } ] },
+      { name: 'Amazon Ads', method: 'Emailed CSV to Drive Inbox', cadence: 'Daily', ok: true, last: 'Today, 6:55 am', feeds: 'Spend, claimed sales by keyword', how: 'The daily campaign report gives spend and what Amazon claims each campaign sold.', rule: 'claims are kept, but ROI uses measured real sales.',
+        actions: [ { title: 'Refresh now', why: 'Adds yesterday’s spend.', runLabel: 'Upload file', doneLabel: 'Uploaded' } ] },
+      { name: 'Flipkart Seller Hub', method: 'CSV to Drive Inbox', cadence: 'Daily', ok: true, last: 'Today, 7:00 am', feeds: 'Sales, returns, cancellations', how: 'Orders and returns exports from Seller Hub, dropped here once a day.', rule: 'your own account data only.',
+        actions: [ { title: 'Upload today’s export', why: 'Keeps the returns rate current.', runLabel: 'Upload file', doneLabel: 'Uploaded' } ] },
+      { name: 'Flipkart Ads', method: 'CSV to Drive Inbox', cadence: 'Daily', ok: false, overdue: '5 days late', last: '11 Oct', feeds: 'Flipkart spend and claimed sales',
+        how: 'The ads report has not been uploaded for 5 days, so Flipkart’s real return on the Impact screen is less certain.', rule: 'until it arrives, Flipkart figures are marked low confidence.',
+        actions: [ { title: 'Upload the missing reports', why: 'Download 12 to 16 Oct from Flipkart Ads and drop them here.', runLabel: 'Upload files', doneLabel: 'Uploaded' }, { title: 'Remind the ads team daily', why: 'Sends a 9 am reminder until the file arrives.', runLabel: 'Set reminder', doneLabel: 'Reminder set' } ] },
+      { name: 'Nykaa', method: 'CSV to Drive Inbox', cadence: 'Weekly', ok: true, last: '14 Oct', feeds: 'Sales and returns on Nykaa', how: 'The weekly vendor sales report from the Nykaa partner portal.', rule: 'your own account data only.',
+        actions: [ { title: 'Upload next week’s report', why: 'Due on Monday.', runLabel: 'Upload file', doneLabel: 'Uploaded' } ] },
+      { name: 'Blinkit, Zepto, Instamart', method: 'Store CSVs to Drive Inbox', cadence: 'Daily', ok: true, last: 'Today, 6:40 am', feeds: 'Sales and stock by dark store', how: 'Store-level sales and stock from each partner portal show where you ran out and what it cost.', rule: 'stockout weeks double as natural experiments for ad impact.',
+        actions: [ { title: 'Upload today’s files', why: 'Three files, one per app.', runLabel: 'Upload files', doneLabel: 'Uploaded' } ] },
+      { name: 'Meta and Google Ads', method: 'Read-only API', cadence: 'Daily', ok: true, last: 'Today, 6:50 am', feeds: 'Spend by campaign and city', how: 'Spend by campaign and city. City detail is what lets Drishti compare test and holdout cities.', rule: 'claimed conversions are shown but never used as truth.',
+        actions: [ { title: 'Refresh now', why: 'Adds yesterday’s spend.', runLabel: 'Upload files', doneLabel: 'Uploaded' } ] },
+      { name: 'Creator tracker', method: 'Tab in your Google Sheet', cadence: 'Weekly', ok: false, overdue: '12 days late', last: '5 Oct', feeds: 'Post dates, creators, regions', how: 'Your team’s creator sheet: who posted, when, and where their audience lives. Lift is measured from that.', rule: 'without post dates, creator impact cannot be measured.',
+        actions: [ { title: 'Upload the latest sheet', why: 'Six posts went live since 5 Oct and are not counted yet.', runLabel: 'Upload file', doneLabel: 'Uploaded' }, { title: 'Ask the team to update it', why: 'Sends the sheet owner a note with the missing dates.', runLabel: 'Send note', doneLabel: 'Note sent' } ] },
+      { name: 'Watchlist capture', method: 'Extension and rival sites', cadence: 'Every 6 hours', ok: true, last: 'Today, 7:05 am', feeds: 'Rival prices, ratings, reviews', how: 'On marketplaces, one click in the extension saves the page you are on. Rival brand sites are checked every 6 hours from their public product data.', rule: 'no automated visits to marketplaces; rival sites only where robots.txt allows.',
+        actions: [ { title: 'Capture all 7 watched products', why: 'Opens each page in turn; you click capture on each.', runLabel: 'Start capture', doneLabel: 'Captured' } ] },
+      { name: 'Google Trends', method: 'CSV to Drive Inbox', cadence: 'Weekly', ok: true, last: '13 Oct', feeds: 'Search interest by state', how: 'Search interest for your brand and category by state, used to check creator and ad lift.', rule: 'public data; free.',
+        actions: [ { title: 'Download this week', why: 'Opens Trends with your terms filled in.', runLabel: 'Open Trends', doneLabel: 'Downloaded' } ] },
+      { name: 'Costs and margins', method: 'Tab in your Google Sheet', cadence: 'Monthly', ok: true, last: '1 Oct', feeds: 'Product cost, fees, shipping', how: 'Product cost, marketplace fees and shipping per channel. Turns revenue into margin.', rule: 'only owners and analysts can edit it.',
+        actions: [ { title: 'Update November costs', why: 'Courier rates change on 1 Nov.', runLabel: 'Edit sheet', doneLabel: 'Updated' } ] }
+    ];
+    const p = this.state.pick;
+    const done = this.state.done;
+    const all = this.state.all;
+    const isOk = (s, i) => s.ok || all || !!done[i + '-0'];
+    const rows = src.map((s, i) => {
+      const ok = isOk(s, i);
+      return {
+        name: s.name, method: s.method, cadence: s.cadence,
+        status: ok ? '● ' + (s.ok ? 'Up to date' : 'Received') : '● ' + s.overdue,
+        stBg: ok ? 'var(--good-bg)' : 'var(--bad-bg)', stFg: ok ? 'var(--good)' : 'var(--bad)',
+        selected: i === p ? 'true' : 'false',
+        bg: i === p ? 'var(--sel)' : 'transparent',
+        pick: () => this.setState({ pick: i })
+      };
+    });
+    const fresh = src.filter((s, i) => isOk(s, i)).length;
+    const sel = src[p];
+    const actions = sel.actions.map((a, j) => {
+      const key = p + '-' + j;
+      const isDone = !!done[key];
+      return { ...a,
+        runLabel: isDone ? '✓ ' + a.doneLabel : a.runLabel,
+        runBg: isDone ? 'var(--good-bg)' : 'var(--primary)',
+        runFg: isDone ? 'var(--good)' : '#FFFFFF',
+        run: () => this.setState({ done: { ...done, [key]: !done[key] } }) };
+    });
+    const allFresh = fresh === 13;
+    const pv = this.state.privacy;
+    return { ...this.themeVals(), 
+      rows, sel, actions,
+      freshCount: fresh,
+      freshChip: allFresh ? 'All fresh' : (13 - fresh) + ' need a file',
+      freshChipBg: allFresh ? 'var(--good-bg)' : 'var(--bad-bg)', freshChipFg: allFresh ? 'var(--good)' : 'var(--bad)',
+      verdictBg: allFresh ? 'var(--good-soft)' : 'var(--warn-soft)',
+      verdictChipBg: allFresh ? 'var(--good-chip)' : 'var(--warn-chip)', verdictChipFg: allFresh ? 'var(--good-strong)' : 'var(--warn)',
+      verdictChip: allFresh ? '▲ All set' : '● Two gaps',
+      verdict: allFresh ? 'Every source is current. Numbers on all screens are complete.' : 'Flipkart ads and the creator tracker are late, so their numbers are less certain.',
+      allLabel: all ? '✓ Requests sent' : 'Request missing files',
+      allBg: all ? 'var(--good-bg)' : 'var(--primary)', allFg: all ? 'var(--good)' : '#FFFFFF',
+      refreshAll: () => this.setState({ all: !all }),
+      privacyOn: pv ? 'true' : 'false', privacyBg: pv ? 'var(--good)' : 'var(--line-3)', privacyJustify: pv ? 'flex-end' : 'flex-start',
+      togglePrivacy: () => this.setState({ privacy: !pv })
+    };
+  }
+}
+</script>
+</body>
+</html>

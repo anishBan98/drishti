@@ -1,0 +1,6 @@
+rule_id,name,condition,action,status,owner
+R01,Pause quick-commerce ads in stores with under 1 day of stock,qc_stock_days < 1,pause_store_ads,on,Auto
+R02,Alert if a watched rival cuts price by 10% or more,rival_price_change_pct <= -0.10,notify,on,Priya
+R03,Alert if pump mentions exceed 5% of new reviews,"aspect_share(pump, 7d) > 0.05",notify,on,Rahul
+R04,Alert if a source is more than 2 days late,source_lag_days > 2,notify,on,Analyst
+R05,Alert if true ROAS for any channel falls below 1.2,"true_roas(channel, 28d) < 1.2",notify,off,You

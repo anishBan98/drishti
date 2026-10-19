@@ -1,0 +1,209 @@
+captured_at,platform,label,brand,product_name,pack_ml,price_inr,mrp_inr,rating,review_count,in_stock,capture_method,url
+2026-10-01T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,22240,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-01T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3788,yes,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-01T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,4.0,5376,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-01T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,899,1120,4.4,5010,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-01T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,549,690,4.2,31772,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-01T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,11486,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-01T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,664,870,4.3,2688,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-01T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,332,420,3.9,14664,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-01T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,315,390,3.8,37882,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-01T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,315,390,3.8,10998,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-01T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,505,660,4.0,8798,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-02T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,22295,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-02T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3797,yes,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-02T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,4.0,5390,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-02T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,899,1120,4.4,5022,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-02T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,4.2,31850,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-02T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,11515,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-02T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,2695,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-02T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,332,420,3.9,14700,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-02T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,315,390,3.8,37975,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-02T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,315,390,3.8,11025,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-02T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,505,660,4.0,8820,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-03T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,522,690,3.9,22349,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-03T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3806,yes,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-03T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,4.0,5403,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-03T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,899,1120,4.4,5034,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-03T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,4.2,31928,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-03T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,11543,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-03T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,2701,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-03T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,332,420,3.9,14736,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-03T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,315,390,3.8,38068,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-03T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,315,390,3.8,11052,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-03T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,505,660,4.0,8841,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-04T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,22404,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-04T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3816,yes,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-04T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,4.0,5416,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-04T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,854,1120,4.4,5047,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-04T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,4.2,32006,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-04T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,11571,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-04T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,2708,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-04T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,332,420,3.9,14772,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-04T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,315,390,3.8,38161,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-04T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,315,390,3.8,11079,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-04T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,532,660,4.0,8863,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-05T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,522,690,3.9,22458,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-05T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3825,yes,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-05T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,4.0,5429,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-05T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,899,1120,4.4,5059,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-05T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,4.2,32084,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-05T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,664,870,4.3,11599,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-05T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,2714,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-05T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,332,420,3.9,14808,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-05T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,315,390,3.8,38254,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-05T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,315,390,3.8,11106,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-05T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,532,660,4.0,8884,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-06T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,22513,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-06T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3834,yes,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-06T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,4.0,5442,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-06T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,899,1120,4.4,5071,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-06T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,4.2,32162,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-06T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,11627,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-06T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,2721,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-06T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,332,420,3.9,14844,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-06T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,38347,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-06T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,11133,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-06T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,532,660,4.0,8906,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-07T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,22568,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-07T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3844,yes,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-07T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,522,690,4.0,5456,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-07T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,899,1120,4.4,5084,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-07T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,4.2,32240,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-07T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,11656,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-07T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,2728,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-07T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,332,420,3.9,14880,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-07T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,38440,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-07T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,284,390,3.8,11160,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-07T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,532,660,4.0,8928,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-08T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,22622,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-08T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3853,no,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-08T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,4.0,5469,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-08T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,899,1120,4.4,5096,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-08T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,4.2,32318,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-08T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,11684,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-08T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,2734,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-08T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,332,420,3.9,14916,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-08T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,38533,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-08T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,11187,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-08T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,532,660,4.0,8949,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-09T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,22677,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-09T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3862,no,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-09T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,4.0,5482,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-09T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,899,1120,4.4,5108,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-09T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,4.2,32396,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-09T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,11712,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-09T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,664,870,4.3,2741,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-09T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,332,420,3.9,14952,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-09T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,38626,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-09T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,11214,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-09T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,479,660,4.0,8971,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-10T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,22731,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-10T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3871,no,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-10T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,4.0,5495,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-10T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,899,1120,4.4,5120,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-10T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,4.2,32474,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-10T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,664,870,4.3,11740,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-10T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,2747,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-10T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,332,420,3.9,14988,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-10T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,38719,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-10T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,11241,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-10T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,479,660,4.0,8992,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-11T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,22786,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-11T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3881,yes,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-11T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,4.0,5508,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-11T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,899,1120,4.4,5133,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-11T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,4.2,32552,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-11T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,11768,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-11T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,2754,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-11T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,349,420,3.9,15024,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-11T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,38812,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-11T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,11268,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-11T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,479,660,4.0,9014,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-12T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,522,690,3.9,22841,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-12T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3890,yes,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-12T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,4.0,5522,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-12T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,899,1120,4.4,5145,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-12T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,4.2,32630,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-12T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,11797,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-12T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,2761,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-12T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,349,420,3.9,15060,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-12T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,38905,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-12T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,11295,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-12T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,455,660,4.0,9036,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-13T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,22895,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-13T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3899,yes,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-13T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,522,690,4.0,5535,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-13T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,899,1120,4.4,5157,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-13T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,4.2,32708,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-13T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,11825,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-13T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,2767,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-13T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,349,420,3.9,15096,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-13T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,38998,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-13T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,11322,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-13T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,479,660,4.0,9057,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-14T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,522,690,3.9,22950,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-14T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3909,yes,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-14T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,4.0,5548,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-14T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,899,1120,4.4,5170,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-14T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,4.2,32786,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-14T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,11853,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-14T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,2774,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-14T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,349,420,3.9,15132,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-14T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,39091,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-14T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,11349,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-14T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,479,660,4.0,9079,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-15T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,23004,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-15T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3918,yes,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-15T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,4.0,5561,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-15T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,899,1120,4.4,5182,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-15T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,4.2,32864,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-15T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,11881,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-15T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,2780,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-15T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,349,420,3.9,15168,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-15T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,39184,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-15T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,11376,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-15T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,479,660,4.0,9100,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-16T07:05:00+05:30,Amazon,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,522,690,3.9,23059,yes,extension,https://example.com/amazon/lumora-vitamin-c-30ml
+2026-10-16T07:05:00+05:30,Flipkart,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,3.9,3927,yes,extension,https://example.com/flipkart/lumora-vitamin-c-30ml
+2026-10-16T07:05:00+05:30,Nykaa,Lumora (you),Lumora,Lumora Vitamin C Serum 30 ml,30,549,690,4.0,5574,yes,extension,https://example.com/nykaa/lumora-vitamin-c-30ml
+2026-10-16T07:05:00+05:30,Nykaa,Rival A,Aurelle,Aurelle Vitamin C Serum 30 ml,30,899,1120,4.4,5194,yes,extension,https://example.com/nykaa/aurelle-vitamin-c-30ml
+2026-10-16T07:05:00+05:30,Amazon,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,4.2,32942,yes,extension,https://example.com/amazon/glowvia-vitamin-c-30ml
+2026-10-16T07:05:00+05:30,Amazon,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,11909,yes,extension,https://example.com/amazon/dermiq-lab-vitamin-c-30ml
+2026-10-16T07:05:00+05:30,Nykaa,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,4.3,2787,yes,extension,https://example.com/nykaa/dermiq-lab-vitamin-c-30ml
+2026-10-16T07:05:00+05:30,Amazon,Rival D,Sublime Skin,Sublime Skin Vitamin C Serum 20 ml,20,349,420,3.9,15204,yes,extension,https://example.com/amazon/sublime-skin-vitamin-c-20ml
+2026-10-16T07:05:00+05:30,Amazon,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,39277,yes,extension,https://example.com/amazon/budgetglow-vitamin-c-30ml
+2026-10-16T07:05:00+05:30,Flipkart,Rival E,BudgetGlow,BudgetGlow Vitamin C Serum 30 ml,30,299,390,3.8,11403,yes,extension,https://example.com/flipkart/budgetglow-vitamin-c-30ml
+2026-10-16T07:05:00+05:30,Flipkart,Rival F,Pure Petal,Pure Petal Vitamin C Serum 30 ml,30,479,660,4.0,9122,yes,extension,https://example.com/flipkart/pure-petal-vitamin-c-30ml
+2026-10-01T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,549,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-01T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum
+2026-10-02T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-02T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum
+2026-10-03T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-03T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum
+2026-10-04T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-04T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum
+2026-10-05T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-05T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum
+2026-10-06T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-06T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum
+2026-10-07T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-07T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum
+2026-10-08T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-08T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum
+2026-10-09T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-09T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum
+2026-10-10T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-10T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum
+2026-10-11T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-11T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum
+2026-10-12T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-12T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum
+2026-10-13T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-13T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum
+2026-10-14T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-14T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum
+2026-10-15T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-15T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum
+2026-10-16T06:00:00+05:30,Brand site,Rival B,Glowvia,Glowvia Vitamin C Serum 30 ml,30,449,690,,,yes,site_json,https://www.glowvia.example/products/vitamin-c-serum
+2026-10-16T06:00:00+05:30,Brand site,Rival C,Dermiq Lab,Dermiq Lab Vitamin C Serum 30 ml,30,699,870,,,yes,site_json,https://www.dermiqlab.example/products/vitamin-c-serum

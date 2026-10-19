@@ -1,0 +1,469 @@
+Week,Term,Region,Interest
+2026-04-19,lumora,Maharashtra,30
+2026-04-19,lumora,Karnataka,32
+2026-04-19,lumora,Delhi,37
+2026-04-19,lumora,Tamil Nadu,22
+2026-04-19,lumora,Gujarat,34
+2026-04-19,lumora,Rajasthan,41
+2026-04-19,vitamin c serum,Maharashtra,74
+2026-04-19,vitamin c serum,Karnataka,66
+2026-04-19,vitamin c serum,Delhi,76
+2026-04-19,vitamin c serum,Tamil Nadu,60
+2026-04-19,vitamin c serum,Gujarat,62
+2026-04-19,vitamin c serum,Rajasthan,68
+2026-04-19,sunscreen,Maharashtra,100
+2026-04-19,sunscreen,Karnataka,96
+2026-04-19,sunscreen,Delhi,100
+2026-04-19,sunscreen,Tamil Nadu,97
+2026-04-19,sunscreen,Gujarat,92
+2026-04-19,sunscreen,Rajasthan,95
+2026-04-26,lumora,Maharashtra,39
+2026-04-26,lumora,Karnataka,25
+2026-04-26,lumora,Delhi,32
+2026-04-26,lumora,Tamil Nadu,42
+2026-04-26,lumora,Gujarat,25
+2026-04-26,lumora,Rajasthan,30
+2026-04-26,vitamin c serum,Maharashtra,66
+2026-04-26,vitamin c serum,Karnataka,72
+2026-04-26,vitamin c serum,Delhi,69
+2026-04-26,vitamin c serum,Tamil Nadu,60
+2026-04-26,vitamin c serum,Gujarat,63
+2026-04-26,vitamin c serum,Rajasthan,63
+2026-04-26,sunscreen,Maharashtra,100
+2026-04-26,sunscreen,Karnataka,97
+2026-04-26,sunscreen,Delhi,88
+2026-04-26,sunscreen,Tamil Nadu,89
+2026-04-26,sunscreen,Gujarat,99
+2026-04-26,sunscreen,Rajasthan,92
+2026-05-03,lumora,Maharashtra,36
+2026-05-03,lumora,Karnataka,39
+2026-05-03,lumora,Delhi,31
+2026-05-03,lumora,Tamil Nadu,35
+2026-05-03,lumora,Gujarat,27
+2026-05-03,lumora,Rajasthan,34
+2026-05-03,vitamin c serum,Maharashtra,62
+2026-05-03,vitamin c serum,Karnataka,77
+2026-05-03,vitamin c serum,Delhi,67
+2026-05-03,vitamin c serum,Tamil Nadu,67
+2026-05-03,vitamin c serum,Gujarat,68
+2026-05-03,vitamin c serum,Rajasthan,66
+2026-05-03,sunscreen,Maharashtra,95
+2026-05-03,sunscreen,Karnataka,93
+2026-05-03,sunscreen,Delhi,99
+2026-05-03,sunscreen,Tamil Nadu,88
+2026-05-03,sunscreen,Gujarat,84
+2026-05-03,sunscreen,Rajasthan,97
+2026-05-10,lumora,Maharashtra,36
+2026-05-10,lumora,Karnataka,26
+2026-05-10,lumora,Delhi,36
+2026-05-10,lumora,Tamil Nadu,31
+2026-05-10,lumora,Gujarat,25
+2026-05-10,lumora,Rajasthan,40
+2026-05-10,vitamin c serum,Maharashtra,82
+2026-05-10,vitamin c serum,Karnataka,69
+2026-05-10,vitamin c serum,Delhi,86
+2026-05-10,vitamin c serum,Tamil Nadu,68
+2026-05-10,vitamin c serum,Gujarat,68
+2026-05-10,vitamin c serum,Rajasthan,67
+2026-05-10,sunscreen,Maharashtra,90
+2026-05-10,sunscreen,Karnataka,95
+2026-05-10,sunscreen,Delhi,94
+2026-05-10,sunscreen,Tamil Nadu,94
+2026-05-10,sunscreen,Gujarat,99
+2026-05-10,sunscreen,Rajasthan,100
+2026-05-17,lumora,Maharashtra,42
+2026-05-17,lumora,Karnataka,41
+2026-05-17,lumora,Delhi,31
+2026-05-17,lumora,Tamil Nadu,33
+2026-05-17,lumora,Gujarat,32
+2026-05-17,lumora,Rajasthan,28
+2026-05-17,vitamin c serum,Maharashtra,78
+2026-05-17,vitamin c serum,Karnataka,60
+2026-05-17,vitamin c serum,Delhi,80
+2026-05-17,vitamin c serum,Tamil Nadu,61
+2026-05-17,vitamin c serum,Gujarat,77
+2026-05-17,vitamin c serum,Rajasthan,65
+2026-05-17,sunscreen,Maharashtra,100
+2026-05-17,sunscreen,Karnataka,100
+2026-05-17,sunscreen,Delhi,81
+2026-05-17,sunscreen,Tamil Nadu,97
+2026-05-17,sunscreen,Gujarat,100
+2026-05-17,sunscreen,Rajasthan,100
+2026-05-24,lumora,Maharashtra,35
+2026-05-24,lumora,Karnataka,36
+2026-05-24,lumora,Delhi,16
+2026-05-24,lumora,Tamil Nadu,40
+2026-05-24,lumora,Gujarat,40
+2026-05-24,lumora,Rajasthan,29
+2026-05-24,vitamin c serum,Maharashtra,68
+2026-05-24,vitamin c serum,Karnataka,71
+2026-05-24,vitamin c serum,Delhi,74
+2026-05-24,vitamin c serum,Tamil Nadu,66
+2026-05-24,vitamin c serum,Gujarat,70
+2026-05-24,vitamin c serum,Rajasthan,70
+2026-05-24,sunscreen,Maharashtra,91
+2026-05-24,sunscreen,Karnataka,98
+2026-05-24,sunscreen,Delhi,100
+2026-05-24,sunscreen,Tamil Nadu,84
+2026-05-24,sunscreen,Gujarat,98
+2026-05-24,sunscreen,Rajasthan,100
+2026-05-31,lumora,Maharashtra,32
+2026-05-31,lumora,Karnataka,36
+2026-05-31,lumora,Delhi,39
+2026-05-31,lumora,Tamil Nadu,32
+2026-05-31,lumora,Gujarat,37
+2026-05-31,lumora,Rajasthan,35
+2026-05-31,vitamin c serum,Maharashtra,64
+2026-05-31,vitamin c serum,Karnataka,65
+2026-05-31,vitamin c serum,Delhi,64
+2026-05-31,vitamin c serum,Tamil Nadu,59
+2026-05-31,vitamin c serum,Gujarat,77
+2026-05-31,vitamin c serum,Rajasthan,79
+2026-05-31,sunscreen,Maharashtra,100
+2026-05-31,sunscreen,Karnataka,99
+2026-05-31,sunscreen,Delhi,93
+2026-05-31,sunscreen,Tamil Nadu,97
+2026-05-31,sunscreen,Gujarat,97
+2026-05-31,sunscreen,Rajasthan,99
+2026-06-07,lumora,Maharashtra,28
+2026-06-07,lumora,Karnataka,37
+2026-06-07,lumora,Delhi,34
+2026-06-07,lumora,Tamil Nadu,21
+2026-06-07,lumora,Gujarat,37
+2026-06-07,lumora,Rajasthan,39
+2026-06-07,vitamin c serum,Maharashtra,60
+2026-06-07,vitamin c serum,Karnataka,77
+2026-06-07,vitamin c serum,Delhi,72
+2026-06-07,vitamin c serum,Tamil Nadu,85
+2026-06-07,vitamin c serum,Gujarat,73
+2026-06-07,vitamin c serum,Rajasthan,70
+2026-06-07,sunscreen,Maharashtra,93
+2026-06-07,sunscreen,Karnataka,83
+2026-06-07,sunscreen,Delhi,91
+2026-06-07,sunscreen,Tamil Nadu,80
+2026-06-07,sunscreen,Gujarat,85
+2026-06-07,sunscreen,Rajasthan,85
+2026-06-14,lumora,Maharashtra,29
+2026-06-14,lumora,Karnataka,36
+2026-06-14,lumora,Delhi,39
+2026-06-14,lumora,Tamil Nadu,35
+2026-06-14,lumora,Gujarat,40
+2026-06-14,lumora,Rajasthan,41
+2026-06-14,vitamin c serum,Maharashtra,64
+2026-06-14,vitamin c serum,Karnataka,68
+2026-06-14,vitamin c serum,Delhi,66
+2026-06-14,vitamin c serum,Tamil Nadu,70
+2026-06-14,vitamin c serum,Gujarat,63
+2026-06-14,vitamin c serum,Rajasthan,68
+2026-06-14,sunscreen,Maharashtra,94
+2026-06-14,sunscreen,Karnataka,91
+2026-06-14,sunscreen,Delhi,82
+2026-06-14,sunscreen,Tamil Nadu,81
+2026-06-14,sunscreen,Gujarat,97
+2026-06-14,sunscreen,Rajasthan,90
+2026-06-21,lumora,Maharashtra,36
+2026-06-21,lumora,Karnataka,22
+2026-06-21,lumora,Delhi,25
+2026-06-21,lumora,Tamil Nadu,34
+2026-06-21,lumora,Gujarat,21
+2026-06-21,lumora,Rajasthan,35
+2026-06-21,vitamin c serum,Maharashtra,59
+2026-06-21,vitamin c serum,Karnataka,73
+2026-06-21,vitamin c serum,Delhi,67
+2026-06-21,vitamin c serum,Tamil Nadu,69
+2026-06-21,vitamin c serum,Gujarat,68
+2026-06-21,vitamin c serum,Rajasthan,66
+2026-06-21,sunscreen,Maharashtra,96
+2026-06-21,sunscreen,Karnataka,85
+2026-06-21,sunscreen,Delhi,85
+2026-06-21,sunscreen,Tamil Nadu,89
+2026-06-21,sunscreen,Gujarat,95
+2026-06-21,sunscreen,Rajasthan,89
+2026-06-28,lumora,Maharashtra,35
+2026-06-28,lumora,Karnataka,36
+2026-06-28,lumora,Delhi,47
+2026-06-28,lumora,Tamil Nadu,35
+2026-06-28,lumora,Gujarat,42
+2026-06-28,lumora,Rajasthan,27
+2026-06-28,vitamin c serum,Maharashtra,68
+2026-06-28,vitamin c serum,Karnataka,74
+2026-06-28,vitamin c serum,Delhi,82
+2026-06-28,vitamin c serum,Tamil Nadu,72
+2026-06-28,vitamin c serum,Gujarat,71
+2026-06-28,vitamin c serum,Rajasthan,70
+2026-06-28,sunscreen,Maharashtra,89
+2026-06-28,sunscreen,Karnataka,85
+2026-06-28,sunscreen,Delhi,89
+2026-06-28,sunscreen,Tamil Nadu,89
+2026-06-28,sunscreen,Gujarat,84
+2026-06-28,sunscreen,Rajasthan,85
+2026-07-05,lumora,Maharashtra,25
+2026-07-05,lumora,Karnataka,31
+2026-07-05,lumora,Delhi,37
+2026-07-05,lumora,Tamil Nadu,35
+2026-07-05,lumora,Gujarat,31
+2026-07-05,lumora,Rajasthan,25
+2026-07-05,vitamin c serum,Maharashtra,70
+2026-07-05,vitamin c serum,Karnataka,57
+2026-07-05,vitamin c serum,Delhi,60
+2026-07-05,vitamin c serum,Tamil Nadu,68
+2026-07-05,vitamin c serum,Gujarat,68
+2026-07-05,vitamin c serum,Rajasthan,72
+2026-07-05,sunscreen,Maharashtra,88
+2026-07-05,sunscreen,Karnataka,85
+2026-07-05,sunscreen,Delhi,84
+2026-07-05,sunscreen,Tamil Nadu,88
+2026-07-05,sunscreen,Gujarat,88
+2026-07-05,sunscreen,Rajasthan,90
+2026-07-12,lumora,Maharashtra,39
+2026-07-12,lumora,Karnataka,36
+2026-07-12,lumora,Delhi,33
+2026-07-12,lumora,Tamil Nadu,31
+2026-07-12,lumora,Gujarat,32
+2026-07-12,lumora,Rajasthan,31
+2026-07-12,vitamin c serum,Maharashtra,75
+2026-07-12,vitamin c serum,Karnataka,63
+2026-07-12,vitamin c serum,Delhi,79
+2026-07-12,vitamin c serum,Tamil Nadu,71
+2026-07-12,vitamin c serum,Gujarat,79
+2026-07-12,vitamin c serum,Rajasthan,72
+2026-07-12,sunscreen,Maharashtra,70
+2026-07-12,sunscreen,Karnataka,85
+2026-07-12,sunscreen,Delhi,89
+2026-07-12,sunscreen,Tamil Nadu,88
+2026-07-12,sunscreen,Gujarat,80
+2026-07-12,sunscreen,Rajasthan,82
+2026-07-19,lumora,Maharashtra,29
+2026-07-19,lumora,Karnataka,36
+2026-07-19,lumora,Delhi,38
+2026-07-19,lumora,Tamil Nadu,31
+2026-07-19,lumora,Gujarat,31
+2026-07-19,lumora,Rajasthan,25
+2026-07-19,vitamin c serum,Maharashtra,66
+2026-07-19,vitamin c serum,Karnataka,69
+2026-07-19,vitamin c serum,Delhi,60
+2026-07-19,vitamin c serum,Tamil Nadu,70
+2026-07-19,vitamin c serum,Gujarat,77
+2026-07-19,vitamin c serum,Rajasthan,74
+2026-07-19,sunscreen,Maharashtra,78
+2026-07-19,sunscreen,Karnataka,81
+2026-07-19,sunscreen,Delhi,92
+2026-07-19,sunscreen,Tamil Nadu,89
+2026-07-19,sunscreen,Gujarat,86
+2026-07-19,sunscreen,Rajasthan,81
+2026-07-26,lumora,Maharashtra,35
+2026-07-26,lumora,Karnataka,28
+2026-07-26,lumora,Delhi,22
+2026-07-26,lumora,Tamil Nadu,34
+2026-07-26,lumora,Gujarat,46
+2026-07-26,lumora,Rajasthan,39
+2026-07-26,vitamin c serum,Maharashtra,72
+2026-07-26,vitamin c serum,Karnataka,72
+2026-07-26,vitamin c serum,Delhi,68
+2026-07-26,vitamin c serum,Tamil Nadu,66
+2026-07-26,vitamin c serum,Gujarat,67
+2026-07-26,vitamin c serum,Rajasthan,80
+2026-07-26,sunscreen,Maharashtra,78
+2026-07-26,sunscreen,Karnataka,86
+2026-07-26,sunscreen,Delhi,88
+2026-07-26,sunscreen,Tamil Nadu,89
+2026-07-26,sunscreen,Gujarat,85
+2026-07-26,sunscreen,Rajasthan,90
+2026-08-02,lumora,Maharashtra,42
+2026-08-02,lumora,Karnataka,41
+2026-08-02,lumora,Delhi,45
+2026-08-02,lumora,Tamil Nadu,34
+2026-08-02,lumora,Gujarat,29
+2026-08-02,lumora,Rajasthan,42
+2026-08-02,vitamin c serum,Maharashtra,73
+2026-08-02,vitamin c serum,Karnataka,63
+2026-08-02,vitamin c serum,Delhi,80
+2026-08-02,vitamin c serum,Tamil Nadu,68
+2026-08-02,vitamin c serum,Gujarat,64
+2026-08-02,vitamin c serum,Rajasthan,71
+2026-08-02,sunscreen,Maharashtra,82
+2026-08-02,sunscreen,Karnataka,88
+2026-08-02,sunscreen,Delhi,93
+2026-08-02,sunscreen,Tamil Nadu,85
+2026-08-02,sunscreen,Gujarat,84
+2026-08-02,sunscreen,Rajasthan,87
+2026-08-09,lumora,Maharashtra,30
+2026-08-09,lumora,Karnataka,23
+2026-08-09,lumora,Delhi,27
+2026-08-09,lumora,Tamil Nadu,38
+2026-08-09,lumora,Gujarat,32
+2026-08-09,lumora,Rajasthan,37
+2026-08-09,vitamin c serum,Maharashtra,68
+2026-08-09,vitamin c serum,Karnataka,76
+2026-08-09,vitamin c serum,Delhi,66
+2026-08-09,vitamin c serum,Tamil Nadu,62
+2026-08-09,vitamin c serum,Gujarat,72
+2026-08-09,vitamin c serum,Rajasthan,71
+2026-08-09,sunscreen,Maharashtra,91
+2026-08-09,sunscreen,Karnataka,89
+2026-08-09,sunscreen,Delhi,85
+2026-08-09,sunscreen,Tamil Nadu,74
+2026-08-09,sunscreen,Gujarat,82
+2026-08-09,sunscreen,Rajasthan,92
+2026-08-16,lumora,Maharashtra,38
+2026-08-16,lumora,Karnataka,30
+2026-08-16,lumora,Delhi,38
+2026-08-16,lumora,Tamil Nadu,44
+2026-08-16,lumora,Gujarat,49
+2026-08-16,lumora,Rajasthan,43
+2026-08-16,vitamin c serum,Maharashtra,65
+2026-08-16,vitamin c serum,Karnataka,73
+2026-08-16,vitamin c serum,Delhi,73
+2026-08-16,vitamin c serum,Tamil Nadu,78
+2026-08-16,vitamin c serum,Gujarat,78
+2026-08-16,vitamin c serum,Rajasthan,78
+2026-08-16,sunscreen,Maharashtra,84
+2026-08-16,sunscreen,Karnataka,93
+2026-08-16,sunscreen,Delhi,85
+2026-08-16,sunscreen,Tamil Nadu,85
+2026-08-16,sunscreen,Gujarat,86
+2026-08-16,sunscreen,Rajasthan,92
+2026-08-23,lumora,Maharashtra,47
+2026-08-23,lumora,Karnataka,43
+2026-08-23,lumora,Delhi,41
+2026-08-23,lumora,Tamil Nadu,34
+2026-08-23,lumora,Gujarat,32
+2026-08-23,lumora,Rajasthan,36
+2026-08-23,vitamin c serum,Maharashtra,70
+2026-08-23,vitamin c serum,Karnataka,69
+2026-08-23,vitamin c serum,Delhi,71
+2026-08-23,vitamin c serum,Tamil Nadu,66
+2026-08-23,vitamin c serum,Gujarat,67
+2026-08-23,vitamin c serum,Rajasthan,61
+2026-08-23,sunscreen,Maharashtra,84
+2026-08-23,sunscreen,Karnataka,85
+2026-08-23,sunscreen,Delhi,79
+2026-08-23,sunscreen,Tamil Nadu,89
+2026-08-23,sunscreen,Gujarat,77
+2026-08-23,sunscreen,Rajasthan,80
+2026-08-30,lumora,Maharashtra,43
+2026-08-30,lumora,Karnataka,30
+2026-08-30,lumora,Delhi,38
+2026-08-30,lumora,Tamil Nadu,43
+2026-08-30,lumora,Gujarat,37
+2026-08-30,lumora,Rajasthan,28
+2026-08-30,vitamin c serum,Maharashtra,74
+2026-08-30,vitamin c serum,Karnataka,78
+2026-08-30,vitamin c serum,Delhi,71
+2026-08-30,vitamin c serum,Tamil Nadu,68
+2026-08-30,vitamin c serum,Gujarat,70
+2026-08-30,vitamin c serum,Rajasthan,68
+2026-08-30,sunscreen,Maharashtra,79
+2026-08-30,sunscreen,Karnataka,95
+2026-08-30,sunscreen,Delhi,89
+2026-08-30,sunscreen,Tamil Nadu,88
+2026-08-30,sunscreen,Gujarat,80
+2026-08-30,sunscreen,Rajasthan,84
+2026-09-06,lumora,Maharashtra,29
+2026-09-06,lumora,Karnataka,40
+2026-09-06,lumora,Delhi,32
+2026-09-06,lumora,Tamil Nadu,25
+2026-09-06,lumora,Gujarat,36
+2026-09-06,lumora,Rajasthan,39
+2026-09-06,vitamin c serum,Maharashtra,60
+2026-09-06,vitamin c serum,Karnataka,58
+2026-09-06,vitamin c serum,Delhi,84
+2026-09-06,vitamin c serum,Tamil Nadu,67
+2026-09-06,vitamin c serum,Gujarat,69
+2026-09-06,vitamin c serum,Rajasthan,57
+2026-09-06,sunscreen,Maharashtra,84
+2026-09-06,sunscreen,Karnataka,87
+2026-09-06,sunscreen,Delhi,92
+2026-09-06,sunscreen,Tamil Nadu,75
+2026-09-06,sunscreen,Gujarat,85
+2026-09-06,sunscreen,Rajasthan,92
+2026-09-13,lumora,Maharashtra,35
+2026-09-13,lumora,Karnataka,33
+2026-09-13,lumora,Delhi,31
+2026-09-13,lumora,Tamil Nadu,38
+2026-09-13,lumora,Gujarat,21
+2026-09-13,lumora,Rajasthan,22
+2026-09-13,vitamin c serum,Maharashtra,74
+2026-09-13,vitamin c serum,Karnataka,72
+2026-09-13,vitamin c serum,Delhi,72
+2026-09-13,vitamin c serum,Tamil Nadu,67
+2026-09-13,vitamin c serum,Gujarat,75
+2026-09-13,vitamin c serum,Rajasthan,68
+2026-09-13,sunscreen,Maharashtra,87
+2026-09-13,sunscreen,Karnataka,81
+2026-09-13,sunscreen,Delhi,84
+2026-09-13,sunscreen,Tamil Nadu,88
+2026-09-13,sunscreen,Gujarat,82
+2026-09-13,sunscreen,Rajasthan,86
+2026-09-20,lumora,Maharashtra,38
+2026-09-20,lumora,Karnataka,24
+2026-09-20,lumora,Delhi,45
+2026-09-20,lumora,Tamil Nadu,35
+2026-09-20,lumora,Gujarat,29
+2026-09-20,lumora,Rajasthan,40
+2026-09-20,vitamin c serum,Maharashtra,71
+2026-09-20,vitamin c serum,Karnataka,71
+2026-09-20,vitamin c serum,Delhi,71
+2026-09-20,vitamin c serum,Tamil Nadu,74
+2026-09-20,vitamin c serum,Gujarat,72
+2026-09-20,vitamin c serum,Rajasthan,63
+2026-09-20,sunscreen,Maharashtra,82
+2026-09-20,sunscreen,Karnataka,85
+2026-09-20,sunscreen,Delhi,87
+2026-09-20,sunscreen,Tamil Nadu,89
+2026-09-20,sunscreen,Gujarat,93
+2026-09-20,sunscreen,Rajasthan,80
+2026-09-27,lumora,Maharashtra,32
+2026-09-27,lumora,Karnataka,37
+2026-09-27,lumora,Delhi,34
+2026-09-27,lumora,Tamil Nadu,36
+2026-09-27,lumora,Gujarat,32
+2026-09-27,lumora,Rajasthan,33
+2026-09-27,vitamin c serum,Maharashtra,72
+2026-09-27,vitamin c serum,Karnataka,78
+2026-09-27,vitamin c serum,Delhi,69
+2026-09-27,vitamin c serum,Tamil Nadu,66
+2026-09-27,vitamin c serum,Gujarat,75
+2026-09-27,vitamin c serum,Rajasthan,62
+2026-09-27,sunscreen,Maharashtra,79
+2026-09-27,sunscreen,Karnataka,100
+2026-09-27,sunscreen,Delhi,94
+2026-09-27,sunscreen,Tamil Nadu,89
+2026-09-27,sunscreen,Gujarat,84
+2026-09-27,sunscreen,Rajasthan,90
+2026-10-04,lumora,Maharashtra,38
+2026-10-04,lumora,Karnataka,29
+2026-10-04,lumora,Delhi,30
+2026-10-04,lumora,Tamil Nadu,41
+2026-10-04,lumora,Gujarat,33
+2026-10-04,lumora,Rajasthan,21
+2026-10-04,vitamin c serum,Maharashtra,67
+2026-10-04,vitamin c serum,Karnataka,55
+2026-10-04,vitamin c serum,Delhi,69
+2026-10-04,vitamin c serum,Tamil Nadu,70
+2026-10-04,vitamin c serum,Gujarat,76
+2026-10-04,vitamin c serum,Rajasthan,70
+2026-10-04,sunscreen,Maharashtra,76
+2026-10-04,sunscreen,Karnataka,89
+2026-10-04,sunscreen,Delhi,91
+2026-10-04,sunscreen,Tamil Nadu,98
+2026-10-04,sunscreen,Gujarat,87
+2026-10-04,sunscreen,Rajasthan,90
+2026-10-11,lumora,Maharashtra,32
+2026-10-11,lumora,Karnataka,27
+2026-10-11,lumora,Delhi,33
+2026-10-11,lumora,Tamil Nadu,35
+2026-10-11,lumora,Gujarat,39
+2026-10-11,lumora,Rajasthan,34
+2026-10-11,vitamin c serum,Maharashtra,82
+2026-10-11,vitamin c serum,Karnataka,76
+2026-10-11,vitamin c serum,Delhi,60
+2026-10-11,vitamin c serum,Tamil Nadu,61
+2026-10-11,vitamin c serum,Gujarat,76
+2026-10-11,vitamin c serum,Rajasthan,57
+2026-10-11,sunscreen,Maharashtra,83
+2026-10-11,sunscreen,Karnataka,86
+2026-10-11,sunscreen,Delhi,82
+2026-10-11,sunscreen,Tamil Nadu,83
+2026-10-11,sunscreen,Gujarat,87
+2026-10-11,sunscreen,Rajasthan,87

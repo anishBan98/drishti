@@ -1,0 +1,7 @@
+sku,name,category,pack_ml,mrp,unit_cost,launch_date,hero,asin,fsn,nykaa_id
+LUM-VC30,Lumora Vitamin C Serum 30 ml,Serum,30,549,118,2023-02-01,True,B0LUMVC301,SRMLUMVC30,NYK-LUM-101
+LUM-NIA30,Lumora Niacinamide Serum 30 ml,Serum,30,499,102,2024-06-15,False,B0LUMNIA30,SRMLUMNI30,NYK-LUM-102
+LUM-SPF50,"Lumora Sunscreen SPF 50, 50 g",Sunscreen,50,449,96,2024-11-01,False,B0LUMSPF50,SNSLUMSP50,NYK-LUM-103
+LUM-MOI50,Lumora Ceramide Moisturiser 50 ml,Moisturiser,50,399,84,2023-08-10,False,B0LUMMOI50,MSTLUMMO50,NYK-LUM-104
+LUM-CLN100,Lumora Gentle Cleanser 100 ml,Cleanser,100,299,61,2023-02-01,False,B0LUMCLN10,CLNLUMCL10,NYK-LUM-105
+LUM-KIT,Lumora Morning Routine Kit,Kit,80,899,205,2025-09-20,False,B0LUMKIT01,KITLUMKT01,NYK-LUM-106

@@ -1,0 +1,10 @@
+{
+  "name": "@drishti/e2e",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "echo \"E2E suite lands in milestone M3\"",
+    "test:visual": "echo \"Visual suite lands in milestone M3\""
+  }
+}

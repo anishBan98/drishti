@@ -1,0 +1,113 @@
+post_date,creator,handle,platform,followers,audience_cities,cost_inr,product_sku,post_url,discount_code
+2025-05-31,Ananya Glows,@ananyaglows,YouTube,423000,"Pune, Mumbai, Kochi",573000,LUM-SPF50,https://example.com/creator-post/1,LUMANANY1
+2025-06-01,SkinBySana,@skinbysana,Instagram,160000,"Pune, Delhi",362000,LUM-VC30,https://example.com/creator-post/2,LUMSKINB2
+2025-06-02,Dr. Rhea Derm,@drrheaderm,Instagram,680000,"Bengaluru, Chennai",505000,LUM-VC30,https://example.com/creator-post/3,LUMDR.3
+2025-06-13,TheDewyEdit,@thedewyedit,YouTube,578000,"Mumbai, Pune",521000,LUM-VC30,https://example.com/creator-post/4,LUMTHEDE4
+2025-06-26,Kavya Routines,@kavyaroutines,Instagram,661000,"Kolkata, Chennai",447000,LUM-SPF50,https://example.com/creator-post/5,LUMKAVYA5
+2025-07-02,Meher Minimal,@meherminimal,Instagram,893000,"Delhi, Kolkata, Kochi",536000,LUM-VC30,https://example.com/creator-post/6,LUMMEHER6
+2025-07-04,GlowWithIsha,@glowwithisha,YouTube,710000,"Mumbai, Delhi",513000,LUM-VC30,https://example.com/creator-post/7,LUMGLOWW7
+2025-07-25,Rohan Grooms,@rohangrooms,Instagram,92000,"Kolkata, Delhi",537000,LUM-VC30,https://example.com/creator-post/8,LUMROHAN8
+2025-07-27,Tara Tests,@taratests,Instagram,114000,"Delhi, Pune",397000,LUM-SPF50,https://example.com/creator-post/9,LUMTARA9
+2025-08-07,Nisha Naturals,@nishanaturals,YouTube,527000,"Mumbai, Pune",619000,LUM-VC30,https://example.com/creator-post/10,LUMNISHA10
+2025-08-20,Ananya Glows,@ananyaglows,Instagram,858000,"Ahmedabad, Chennai, Kochi",330000,LUM-VC30,https://example.com/creator-post/11,LUMANANY11
+2025-08-26,SkinBySana,@skinbysana,Instagram,267000,"Pune, Bengaluru",320000,LUM-VC30,https://example.com/creator-post/12,LUMSKINB12
+2025-08-29,Dr. Rhea Derm,@drrheaderm,YouTube,229000,"Mumbai, Kolkata",614000,LUM-SPF50,https://example.com/creator-post/13,LUMDR.13
+2025-09-08,TheDewyEdit,@thedewyedit,Instagram,470000,"Bengaluru, Kolkata",201000,LUM-VC30,https://example.com/creator-post/14,LUMTHEDE14
+2025-09-14,Kavya Routines,@kavyaroutines,Instagram,211000,"Kolkata, Pune",457000,LUM-VC30,https://example.com/creator-post/15,LUMKAVYA15
+2025-09-21,Meher Minimal,@meherminimal,YouTube,383000,"Kolkata, Pune, Kochi",475000,LUM-VC30,https://example.com/creator-post/16,LUMMEHER16
+2025-09-22,GlowWithIsha,@glowwithisha,Instagram,805000,"Delhi, Hyderabad",206000,LUM-SPF50,https://example.com/creator-post/17,LUMGLOWW17
+2025-09-25,Rohan Grooms,@rohangrooms,Instagram,419000,"Ahmedabad, Hyderabad",491000,LUM-VC30,https://example.com/creator-post/18,LUMROHAN18
+2025-10-01,Tara Tests,@taratests,YouTube,315000,"Kolkata, Delhi",553000,LUM-VC30,https://example.com/creator-post/19,LUMTARA19
+2025-10-04,Nisha Naturals,@nishanaturals,Instagram,251000,"Pune, Kolkata",461000,LUM-VC30,https://example.com/creator-post/20,LUMNISHA20
+2025-10-05,Ananya Glows,@ananyaglows,Instagram,758000,"Chennai, Pune, Kochi",262000,LUM-SPF50,https://example.com/creator-post/21,LUMANANY21
+2025-10-15,SkinBySana,@skinbysana,YouTube,707000,"Chennai, Delhi",435000,LUM-VC30,https://example.com/creator-post/22,LUMSKINB22
+2025-10-19,Dr. Rhea Derm,@drrheaderm,Instagram,592000,"Ahmedabad, Pune",584000,LUM-VC30,https://example.com/creator-post/23,LUMDR.23
+2025-10-23,TheDewyEdit,@thedewyedit,Instagram,688000,"Kolkata, Pune",244000,LUM-VC30,https://example.com/creator-post/24,LUMTHEDE24
+2025-10-26,Kavya Routines,@kavyaroutines,YouTube,397000,"Ahmedabad, Hyderabad",524000,LUM-SPF50,https://example.com/creator-post/25,LUMKAVYA25
+2025-11-05,Meher Minimal,@meherminimal,Instagram,528000,"Hyderabad, Bengaluru, Kochi",225000,LUM-VC30,https://example.com/creator-post/26,LUMMEHER26
+2025-11-14,GlowWithIsha,@glowwithisha,Instagram,731000,"Mumbai, Chennai",310000,LUM-VC30,https://example.com/creator-post/27,LUMGLOWW27
+2025-11-16,Rohan Grooms,@rohangrooms,YouTube,653000,"Bengaluru, Hyderabad",316000,LUM-VC30,https://example.com/creator-post/28,LUMROHAN28
+2025-11-18,Tara Tests,@taratests,Instagram,191000,"Mumbai, Kolkata",476000,LUM-SPF50,https://example.com/creator-post/29,LUMTARA29
+2025-11-24,Nisha Naturals,@nishanaturals,Instagram,279000,"Bengaluru, Mumbai",517000,LUM-VC30,https://example.com/creator-post/30,LUMNISHA30
+2025-11-28,Ananya Glows,@ananyaglows,YouTube,252000,"Pune, Delhi, Kochi",314000,LUM-VC30,https://example.com/creator-post/31,LUMANANY31
+2025-11-29,SkinBySana,@skinbysana,Instagram,850000,"Bengaluru, Ahmedabad",324000,LUM-VC30,https://example.com/creator-post/32,LUMSKINB32
+2025-11-30,Dr. Rhea Derm,@drrheaderm,Instagram,214000,"Kolkata, Pune",426000,LUM-SPF50,https://example.com/creator-post/33,LUMDR.33
+2025-12-09,TheDewyEdit,@thedewyedit,YouTube,471000,"Chennai, Delhi",234000,LUM-VC30,https://example.com/creator-post/34,LUMTHEDE34
+2025-12-12,Kavya Routines,@kavyaroutines,Instagram,796000,"Kolkata, Pune",483000,LUM-VC30,https://example.com/creator-post/35,LUMKAVYA35
+2025-12-26,Meher Minimal,@meherminimal,Instagram,826000,"Mumbai, Bengaluru, Kochi",289000,LUM-VC30,https://example.com/creator-post/36,LUMMEHER36
+2025-12-30,GlowWithIsha,@glowwithisha,YouTube,624000,"Ahmedabad, Bengaluru",303000,LUM-SPF50,https://example.com/creator-post/37,LUMGLOWW37
+2026-01-01,Rohan Grooms,@rohangrooms,Instagram,332000,"Pune, Delhi",376000,LUM-VC30,https://example.com/creator-post/38,LUMROHAN38
+2026-01-09,Tara Tests,@taratests,Instagram,366000,"Delhi, Pune",607000,LUM-VC30,https://example.com/creator-post/39,LUMTARA39
+2026-01-11,Nisha Naturals,@nishanaturals,YouTube,766000,"Mumbai, Hyderabad",351000,LUM-VC30,https://example.com/creator-post/40,LUMNISHA40
+2026-01-12,Ananya Glows,@ananyaglows,Instagram,337000,"Chennai, Hyderabad, Kochi",215000,LUM-SPF50,https://example.com/creator-post/41,LUMANANY41
+2026-01-15,SkinBySana,@skinbysana,Instagram,361000,"Ahmedabad, Kolkata",568000,LUM-VC30,https://example.com/creator-post/42,LUMSKINB42
+2026-01-17,Dr. Rhea Derm,@drrheaderm,YouTube,279000,"Delhi, Kolkata",325000,LUM-VC30,https://example.com/creator-post/43,LUMDR.43
+2026-01-25,TheDewyEdit,@thedewyedit,Instagram,41000,"Mumbai, Ahmedabad",509000,LUM-VC30,https://example.com/creator-post/44,LUMTHEDE44
+2026-02-01,Kavya Routines,@kavyaroutines,Instagram,458000,"Kolkata, Pune",505000,LUM-SPF50,https://example.com/creator-post/45,LUMKAVYA45
+2026-02-03,Meher Minimal,@meherminimal,YouTube,551000,"Mumbai, Pune, Kochi",239000,LUM-VC30,https://example.com/creator-post/46,LUMMEHER46
+2026-02-08,GlowWithIsha,@glowwithisha,Instagram,569000,"Delhi, Kolkata",454000,LUM-VC30,https://example.com/creator-post/47,LUMGLOWW47
+2026-02-11,Rohan Grooms,@rohangrooms,Instagram,244000,"Delhi, Bengaluru",216000,LUM-VC30,https://example.com/creator-post/48,LUMROHAN48
+2026-02-13,Tara Tests,@taratests,YouTube,506000,"Kolkata, Hyderabad",530000,LUM-SPF50,https://example.com/creator-post/49,LUMTARA49
+2026-02-16,Nisha Naturals,@nishanaturals,Instagram,283000,"Pune, Ahmedabad",377000,LUM-VC30,https://example.com/creator-post/50,LUMNISHA50
+2026-02-24,Ananya Glows,@ananyaglows,Instagram,61000,"Hyderabad, Delhi, Kochi",403000,LUM-VC30,https://example.com/creator-post/51,LUMANANY51
+2026-02-28,SkinBySana,@skinbysana,YouTube,115000,"Mumbai, Bengaluru",571000,LUM-VC30,https://example.com/creator-post/52,LUMSKINB52
+2026-03-04,Dr. Rhea Derm,@drrheaderm,Instagram,628000,"Pune, Bengaluru",614000,LUM-SPF50,https://example.com/creator-post/53,LUMDR.53
+2026-03-06,TheDewyEdit,@thedewyedit,Instagram,608000,"Mumbai, Bengaluru",264000,LUM-VC30,https://example.com/creator-post/54,LUMTHEDE54
+2026-03-07,Kavya Routines,@kavyaroutines,YouTube,417000,"Delhi, Pune",542000,LUM-VC30,https://example.com/creator-post/55,LUMKAVYA55
+2026-03-11,Meher Minimal,@meherminimal,Instagram,198000,"Ahmedabad, Chennai, Kochi",564000,LUM-VC30,https://example.com/creator-post/56,LUMMEHER56
+2026-03-13,GlowWithIsha,@glowwithisha,Instagram,688000,"Chennai, Kolkata",442000,LUM-SPF50,https://example.com/creator-post/57,LUMGLOWW57
+2026-03-15,Rohan Grooms,@rohangrooms,YouTube,367000,"Ahmedabad, Kolkata",549000,LUM-VC30,https://example.com/creator-post/58,LUMROHAN58
+2026-03-22,Tara Tests,@taratests,Instagram,843000,"Chennai, Bengaluru",540000,LUM-VC30,https://example.com/creator-post/59,LUMTARA59
+2026-03-27,Nisha Naturals,@nishanaturals,Instagram,527000,"Bengaluru, Hyderabad",468000,LUM-VC30,https://example.com/creator-post/60,LUMNISHA60
+2026-04-01,Ananya Glows,@ananyaglows,YouTube,410000,"Bengaluru, Chennai, Kochi",262000,LUM-SPF50,https://example.com/creator-post/61,LUMANANY61
+2026-04-04,SkinBySana,@skinbysana,Instagram,775000,"Chennai, Ahmedabad",535000,LUM-VC30,https://example.com/creator-post/62,LUMSKINB62
+2026-04-06,Dr. Rhea Derm,@drrheaderm,Instagram,650000,"Hyderabad, Ahmedabad",436000,LUM-VC30,https://example.com/creator-post/63,LUMDR.63
+2026-04-07,TheDewyEdit,@thedewyedit,YouTube,222000,"Mumbai, Ahmedabad",593000,LUM-VC30,https://example.com/creator-post/64,LUMTHEDE64
+2026-04-08,Kavya Routines,@kavyaroutines,Instagram,538000,"Ahmedabad, Bengaluru",477000,LUM-SPF50,https://example.com/creator-post/65,LUMKAVYA65
+2026-04-13,Meher Minimal,@meherminimal,Instagram,229000,"Ahmedabad, Pune, Kochi",609000,LUM-VC30,https://example.com/creator-post/66,LUMMEHER66
+2026-04-19,GlowWithIsha,@glowwithisha,YouTube,724000,"Pune, Bengaluru",602000,LUM-VC30,https://example.com/creator-post/67,LUMGLOWW67
+2026-04-21,Rohan Grooms,@rohangrooms,Instagram,438000,"Chennai, Bengaluru",288000,LUM-VC30,https://example.com/creator-post/68,LUMROHAN68
+2026-04-24,Tara Tests,@taratests,Instagram,479000,"Pune, Mumbai",537000,LUM-SPF50,https://example.com/creator-post/69,LUMTARA69
+2026-04-25,Nisha Naturals,@nishanaturals,YouTube,215000,"Kolkata, Mumbai",501000,LUM-VC30,https://example.com/creator-post/70,LUMNISHA70
+2026-04-26,Ananya Glows,@ananyaglows,Instagram,306000,"Pune, Ahmedabad, Kochi",520000,LUM-VC30,https://example.com/creator-post/71,LUMANANY71
+2026-05-02,SkinBySana,@skinbysana,Instagram,680000,"Hyderabad, Pune",235000,LUM-VC30,https://example.com/creator-post/72,LUMSKINB72
+2026-05-06,Dr. Rhea Derm,@drrheaderm,YouTube,686000,"Ahmedabad, Bengaluru",266000,LUM-SPF50,https://example.com/creator-post/73,LUMDR.73
+2026-05-18,TheDewyEdit,@thedewyedit,Instagram,453000,"Bengaluru, Hyderabad",344000,LUM-VC30,https://example.com/creator-post/74,LUMTHEDE74
+2026-05-22,Kavya Routines,@kavyaroutines,Instagram,837000,"Delhi, Pune",205000,LUM-VC30,https://example.com/creator-post/75,LUMKAVYA75
+2026-05-25,Meher Minimal,@meherminimal,YouTube,449000,"Kolkata, Pune, Kochi",615000,LUM-VC30,https://example.com/creator-post/76,LUMMEHER76
+2026-05-30,GlowWithIsha,@glowwithisha,Instagram,253000,"Bengaluru, Delhi",331000,LUM-SPF50,https://example.com/creator-post/77,LUMGLOWW77
+2026-06-02,Rohan Grooms,@rohangrooms,Instagram,756000,"Mumbai, Chennai",531000,LUM-VC30,https://example.com/creator-post/78,LUMROHAN78
+2026-06-04,Tara Tests,@taratests,YouTube,609000,"Pune, Bengaluru",293000,LUM-VC30,https://example.com/creator-post/79,LUMTARA79
+2026-06-05,Nisha Naturals,@nishanaturals,Instagram,358000,"Delhi, Chennai",594000,LUM-VC30,https://example.com/creator-post/80,LUMNISHA80
+2026-06-10,Ananya Glows,@ananyaglows,Instagram,743000,"Ahmedabad, Bengaluru, Kochi",477000,LUM-SPF50,https://example.com/creator-post/81,LUMANANY81
+2026-06-23,SkinBySana,@skinbysana,YouTube,469000,"Ahmedabad, Bengaluru",406000,LUM-VC30,https://example.com/creator-post/82,LUMSKINB82
+2026-06-25,Dr. Rhea Derm,@drrheaderm,Instagram,691000,"Kolkata, Hyderabad",539000,LUM-VC30,https://example.com/creator-post/83,LUMDR.83
+2026-06-29,TheDewyEdit,@thedewyedit,Instagram,462000,"Mumbai, Kolkata",235000,LUM-VC30,https://example.com/creator-post/84,LUMTHEDE84
+2026-07-02,Kavya Routines,@kavyaroutines,YouTube,234000,"Chennai, Delhi",375000,LUM-SPF50,https://example.com/creator-post/85,LUMKAVYA85
+2026-07-03,Meher Minimal,@meherminimal,Instagram,207000,"Delhi, Hyderabad, Kochi",589000,LUM-VC30,https://example.com/creator-post/86,LUMMEHER86
+2026-07-05,GlowWithIsha,@glowwithisha,Instagram,340000,"Hyderabad, Ahmedabad",589000,LUM-VC30,https://example.com/creator-post/87,LUMGLOWW87
+2026-07-11,Rohan Grooms,@rohangrooms,YouTube,630000,"Chennai, Hyderabad",293000,LUM-VC30,https://example.com/creator-post/88,LUMROHAN88
+2026-07-20,Tara Tests,@taratests,Instagram,172000,"Mumbai, Delhi",547000,LUM-SPF50,https://example.com/creator-post/89,LUMTARA89
+2026-07-24,Nisha Naturals,@nishanaturals,Instagram,507000,"Hyderabad, Mumbai",474000,LUM-VC30,https://example.com/creator-post/90,LUMNISHA90
+2026-07-25,Ananya Glows,@ananyaglows,YouTube,397000,"Hyderabad, Bengaluru, Kochi",470000,LUM-VC30,https://example.com/creator-post/91,LUMANANY91
+2026-07-29,SkinBySana,@skinbysana,Instagram,274000,"Delhi, Mumbai",206000,LUM-VC30,https://example.com/creator-post/92,LUMSKINB92
+2026-08-02,Dr. Rhea Derm,@drrheaderm,Instagram,193000,"Mumbai, Pune",412000,LUM-SPF50,https://example.com/creator-post/93,LUMDR.93
+2026-08-03,TheDewyEdit,@thedewyedit,YouTube,429000,"Mumbai, Pune",266000,LUM-VC30,https://example.com/creator-post/94,LUMTHEDE94
+2026-08-05,Kavya Routines,@kavyaroutines,Instagram,844000,"Hyderabad, Ahmedabad",459000,LUM-VC30,https://example.com/creator-post/95,LUMKAVYA95
+2026-08-07,Meher Minimal,@meherminimal,Instagram,762000,"Pune, Ahmedabad, Kochi",438000,LUM-VC30,https://example.com/creator-post/96,LUMMEHER96
+2026-08-08,GlowWithIsha,@glowwithisha,YouTube,92000,"Mumbai, Kolkata",293000,LUM-SPF50,https://example.com/creator-post/97,LUMGLOWW97
+2026-08-11,Rohan Grooms,@rohangrooms,Instagram,892000,"Bengaluru, Chennai",363000,LUM-VC30,https://example.com/creator-post/98,LUMROHAN98
+2026-08-12,Tara Tests,@taratests,Instagram,629000,"Mumbai, Delhi",261000,LUM-VC30,https://example.com/creator-post/99,LUMTARA99
+2026-08-17,Nisha Naturals,@nishanaturals,YouTube,398000,"Chennai, Ahmedabad",522000,LUM-VC30,https://example.com/creator-post/100,LUMNISHA100
+2026-08-18,Ananya Glows,@ananyaglows,Instagram,66000,"Hyderabad, Mumbai, Kochi",434000,LUM-SPF50,https://example.com/creator-post/101,LUMANANY101
+2026-08-22,SkinBySana,@skinbysana,Instagram,286000,"Chennai, Bengaluru",428000,LUM-VC30,https://example.com/creator-post/102,LUMSKINB102
+2026-08-27,Dr. Rhea Derm,@drrheaderm,YouTube,844000,"Kolkata, Pune",537000,LUM-VC30,https://example.com/creator-post/103,LUMDR.103
+2026-08-28,TheDewyEdit,@thedewyedit,Instagram,403000,"Hyderabad, Kolkata",399000,LUM-VC30,https://example.com/creator-post/104,LUMTHEDE104
+2026-09-01,Kavya Routines,@kavyaroutines,Instagram,444000,"Ahmedabad, Hyderabad",437000,LUM-SPF50,https://example.com/creator-post/105,LUMKAVYA105
+2026-09-02,Meher Minimal,@meherminimal,YouTube,652000,"Delhi, Pune, Kochi",384000,LUM-VC30,https://example.com/creator-post/106,LUMMEHER106
+2026-09-03,GlowWithIsha,@glowwithisha,Instagram,723000,"Kolkata, Hyderabad",519000,LUM-VC30,https://example.com/creator-post/107,LUMGLOWW107
+2026-09-05,Rohan Grooms,@rohangrooms,Instagram,781000,"Delhi, Bengaluru",486000,LUM-VC30,https://example.com/creator-post/108,LUMROHAN108
+2026-09-11,Tara Tests,@taratests,YouTube,562000,"Hyderabad, Kolkata",229000,LUM-SPF50,https://example.com/creator-post/109,LUMTARA109
+2026-09-16,Nisha Naturals,@nishanaturals,Instagram,361000,"Mumbai, Kolkata",413000,LUM-VC30,https://example.com/creator-post/110,LUMNISHA110
+2026-09-20,Ananya Glows,@ananyaglows,Instagram,243000,"Chennai, Kolkata, Kochi",416000,LUM-VC30,https://example.com/creator-post/111,LUMANANY111
+2026-09-27,SkinBySana,@skinbysana,YouTube,475000,"Mumbai, Delhi",378000,LUM-VC30,https://example.com/creator-post/112,LUMSKINB112

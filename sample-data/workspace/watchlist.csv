@@ -1,0 +1,12 @@
+watch_id,label,brand,platform,url,pack_ml,is_us,capture_method
+W01,Lumora (you),Lumora,Amazon,https://example.com/amazon/lumora-vitamin-c-30ml,30,yes,extension
+W02,Lumora (you),Lumora,Flipkart,https://example.com/flipkart/lumora-vitamin-c-30ml,30,yes,extension
+W03,Lumora (you),Lumora,Nykaa,https://example.com/nykaa/lumora-vitamin-c-30ml,30,yes,extension
+W04,Rival A,Aurelle,Nykaa,https://example.com/nykaa/aurelle-vitamin-c-30ml,30,no,extension
+W05,Rival B,Glowvia,Amazon,https://example.com/amazon/glowvia-vitamin-c-30ml,30,no,extension
+W06,Rival B,Glowvia,Brand site,https://www.glowvia.example/products/vitamin-c-serum,30,no,site_json
+W07,Rival C,Dermiq Lab,Amazon,https://example.com/amazon/dermiq-lab-vitamin-c-30ml,30,no,extension
+W08,Rival C,Dermiq Lab,Brand site,https://www.dermiqlab.example/products/vitamin-c-serum,30,no,site_json
+W09,Rival D,Sublime Skin,Amazon,https://example.com/amazon/sublime-skin-vitamin-c-20ml,20,no,extension
+W10,Rival E,BudgetGlow,Amazon,https://example.com/amazon/budgetglow-vitamin-c-30ml,30,no,extension
+W11,Rival F,Pure Petal,Flipkart,https://example.com/flipkart/pure-petal-vitamin-c-30ml,30,no,extension

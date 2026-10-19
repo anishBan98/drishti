@@ -1,0 +1,637 @@
+Day,Campaign name,Ad set name,Region,Amount spent (INR),Impressions,Link clicks,Purchases,Purchases conversion value
+2026-09-17,Prospecting | Broad,Prospecting | Mumbai,Mumbai,58716.9,326205,4194,345,248447.1
+2026-09-17,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,48041.1,266895,3431,282,203274.9
+2026-09-17,Prospecting | Broad,Prospecting | Pune,Pune,27631.45,153508,1973,168,121650.65
+2026-09-17,Retargeting | 30d visitors,Retargeting | Pune,Pune,22607.55,125597,1614,138,99532.35
+2026-09-17,Prospecting | Broad,Prospecting | Delhi,Delhi,55262.9,307016,3947,256,184506.3
+2026-09-17,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,45215.1,251195,3229,209,150959.7
+2026-09-17,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,51808.9,287827,3700,311,224522.65
+2026-09-17,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,42389.1,235495,3027,255,183700.35
+2026-09-17,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,31085.45,172696,2220,185,133873.3
+2026-09-17,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,25433.55,141297,1816,152,109532.7
+2026-09-17,Prospecting | Broad,Prospecting | Chennai,Chennai,24177.45,134319,1726,140,101141.7
+2026-09-17,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,19781.55,109897,1412,114,82752.3
+2026-09-17,Prospecting | Broad,Prospecting | Ahmedabad,Ahmedabad,20723.45,115130,1480,115,83474.6
+2026-09-17,Retargeting | 30d visitors,Retargeting | Ahmedabad,Ahmedabad,16955.55,94197,1211,94,68297.4
+2026-09-17,Prospecting | Broad,Prospecting | Kolkata,Kolkata,20723.45,115130,1480,109,78646.7
+2026-09-17,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,16955.55,94197,1211,89,64347.3
+2026-09-17,Prospecting | Broad,Prospecting | Jaipur,Jaipur,15542.45,86346,1110,90,64990.2
+2026-09-17,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,12716.55,70647,908,73,53173.8
+2026-09-17,Prospecting | Broad,Prospecting | Lucknow,Lucknow,13815.45,76752,986,74,53352.2
+2026-09-17,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,11303.55,62797,807,60,43651.8
+2026-09-17,Prospecting | Broad,Prospecting | Indore,Indore,12089.0,67161,863,71,51123.6
+2026-09-17,Retargeting | 30d visitors,Retargeting | Indore,Indore,9891.0,54950,706,58,41828.4
+2026-09-17,Prospecting | Broad,Prospecting | Kochi,Kochi,10362.0,57566,740,55,39942.65
+2026-09-17,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,8478.0,47100,605,45,32680.35
+2026-09-18,Prospecting | Broad,Prospecting | Mumbai,Mumbai,68814.35,382301,4915,374,269722.75
+2026-09-18,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,56302.65,312792,4021,306,220682.25
+2026-09-18,Prospecting | Broad,Prospecting | Pune,Pune,32383.45,179908,2313,167,120734.9
+2026-09-18,Retargeting | 30d visitors,Retargeting | Pune,Pune,26495.55,147197,1892,137,98783.1
+2026-09-18,Prospecting | Broad,Prospecting | Delhi,Delhi,64766.9,359816,4626,359,258586.9
+2026-09-18,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,52991.1,294395,3785,293,211571.1
+2026-09-18,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,60718.9,337327,4337,338,243610.95
+2026-09-18,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,49679.1,275995,3548,276,199318.05
+2026-09-18,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,36431.45,202396,2602,222,160392.65
+2026-09-18,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,29807.55,165597,2129,182,131230.35
+2026-09-18,Prospecting | Broad,Prospecting | Chennai,Chennai,28335.45,157419,2023,159,114512.75
+2026-09-18,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,23183.55,128797,1655,130,93692.25
+2026-09-18,Prospecting | Broad,Prospecting | Ahmedabad,Ahmedabad,24287.45,134930,1734,104,75361.55
+2026-09-18,Retargeting | 30d visitors,Retargeting | Ahmedabad,Ahmedabad,19871.55,110397,1419,85,61659.45
+2026-09-18,Prospecting | Broad,Prospecting | Kolkata,Kolkata,24287.45,134930,1734,161,116586.8
+2026-09-18,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,19871.55,110397,1419,132,95389.2
+2026-09-18,Prospecting | Broad,Prospecting | Jaipur,Jaipur,18215.45,101196,1301,96,69463.9
+2026-09-18,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,14903.55,82797,1064,78,56834.1
+2026-09-18,Prospecting | Broad,Prospecting | Lucknow,Lucknow,16191.45,89952,1156,78,56186.9
+2026-09-18,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,13247.55,73597,946,63,45971.1
+2026-09-18,Prospecting | Broad,Prospecting | Indore,Indore,14167.45,78708,1011,85,61597.25
+2026-09-18,Retargeting | 30d visitors,Retargeting | Indore,Indore,11591.55,64397,827,69,50397.75
+2026-09-18,Prospecting | Broad,Prospecting | Kochi,Kochi,12144.0,67466,867,72,51935.95
+2026-09-18,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9936.0,55200,709,59,42493.05
+2026-09-19,Prospecting | Broad,Prospecting | Mumbai,Mumbai,66149.05,367494,4724,357,257731.1
+2026-09-19,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,54121.95,300677,3865,292,210870.9
+2026-09-19,Prospecting | Broad,Prospecting | Pune,Pune,31128.9,172938,2223,156,112400.2
+2026-09-19,Retargeting | 30d visitors,Retargeting | Pune,Pune,25469.1,141495,1819,127,91963.8
+2026-09-19,Prospecting | Broad,Prospecting | Delhi,Delhi,62257.8,345876,4446,353,254255.1
+2026-09-19,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,50938.2,282990,3638,288,208026.9
+2026-09-19,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,58367.1,324261,4169,313,226039.0
+2026-09-19,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,47754.9,265305,3411,256,184941.0
+2026-09-19,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,35020.15,194556,2501,195,140595.95
+2026-09-19,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,28652.85,159182,2046,159,115033.05
+2026-09-19,Prospecting | Broad,Prospecting | Chennai,Chennai,27237.65,151320,1945,152,109570.45
+2026-09-19,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,22285.35,123807,1591,124,89648.55
+2026-09-19,Prospecting | Broad,Prospecting | Ahmedabad,Ahmedabad,23346.95,129705,1667,109,79104.85
+2026-09-19,Retargeting | 30d visitors,Retargeting | Ahmedabad,Ahmedabad,19102.05,106122,1364,89,64722.15
+2026-09-19,Prospecting | Broad,Prospecting | Kolkata,Kolkata,23346.95,129705,1667,123,89158.85
+2026-09-19,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,19102.05,106122,1364,101,72948.15
+2026-09-19,Prospecting | Broad,Prospecting | Jaipur,Jaipur,17509.8,97276,1250,93,67462.45
+2026-09-19,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,14326.2,79590,1023,76,55196.55
+2026-09-19,Prospecting | Broad,Prospecting | Lucknow,Lucknow,15564.45,86469,1111,85,61823.85
+2026-09-19,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,12734.55,70747,909,70,50583.15
+2026-09-19,Prospecting | Broad,Prospecting | Indore,Indore,13619.1,75661,972,75,54582.0
+2026-09-19,Retargeting | 30d visitors,Retargeting | Indore,Indore,11142.9,61905,795,62,44658.0
+2026-09-19,Prospecting | Broad,Prospecting | Kochi,Kochi,11673.2,64851,833,56,40562.5
+2026-09-19,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9550.8,53060,682,46,33187.5
+2026-09-20,Prospecting | Broad,Prospecting | Mumbai,Mumbai,75746.55,420814,5410,399,287964.05
+2026-09-20,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,61974.45,344302,4426,327,235606.95
+2026-09-20,Prospecting | Broad,Prospecting | Pune,Pune,35645.5,198030,2546,193,139528.95
+2026-09-20,Retargeting | 30d visitors,Retargeting | Pune,Pune,29164.5,162025,2083,158,114160.05
+2026-09-20,Prospecting | Broad,Prospecting | Delhi,Delhi,71290.45,396058,5092,388,279579.85
+2026-09-20,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,58328.55,324047,4166,317,228747.15
+2026-09-20,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,66834.9,371305,4773,402,289667.4
+2026-09-20,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,54683.1,303795,3905,329,237000.6
+2026-09-20,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,40101.05,222783,2864,235,169481.95
+2026-09-20,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,32809.95,182277,2343,192,138667.05
+2026-09-20,Prospecting | Broad,Prospecting | Chennai,Chennai,31189.4,173274,2227,211,152464.95
+2026-09-20,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,25518.6,141770,1822,173,124744.05
+2026-09-20,Prospecting | Broad,Prospecting | Ahmedabad,Ahmedabad,26733.85,148521,1909,135,97777.35
+2026-09-20,Retargeting | 30d visitors,Retargeting | Ahmedabad,Ahmedabad,21873.15,121517,1562,111,79999.65
+2026-09-20,Prospecting | Broad,Prospecting | Kolkata,Kolkata,26733.85,148521,1909,159,114796.0
+2026-09-20,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,21873.15,121517,1562,130,93924.0
+2026-09-20,Prospecting | Broad,Prospecting | Jaipur,Jaipur,20050.25,111390,1432,114,82382.3
+2026-09-20,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,16404.75,91137,1171,93,67403.7
+2026-09-20,Prospecting | Broad,Prospecting | Lucknow,Lucknow,17822.75,99015,1273,96,69477.1
+2026-09-20,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,14582.25,81012,1041,78,56844.9
+2026-09-20,Prospecting | Broad,Prospecting | Indore,Indore,15594.7,86637,1113,89,64133.85
+2026-09-20,Retargeting | 30d visitors,Retargeting | Indore,Indore,12759.3,70885,911,72,52473.15
+2026-09-20,Prospecting | Broad,Prospecting | Kochi,Kochi,13367.2,74262,954,81,58517.8
+2026-09-20,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,10936.8,60760,781,66,47878.2
+2026-09-21,Prospecting | Broad,Prospecting | Mumbai,Mumbai,62821.55,349008,4487,340,245483.7
+2026-09-21,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,51399.45,285552,3671,278,200850.3
+2026-09-21,Prospecting | Broad,Prospecting | Pune,Pune,29563.05,164239,2111,177,127998.75
+2026-09-21,Retargeting | 30d visitors,Retargeting | Pune,Pune,24187.95,134377,1727,145,104726.25
+2026-09-21,Prospecting | Broad,Prospecting | Delhi,Delhi,59126.1,328478,4223,336,242193.6
+2026-09-21,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,48375.9,268755,3455,275,198158.4
+2026-09-21,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,55430.65,307948,3959,309,223134.45
+2026-09-21,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,45352.35,251957,3239,253,182564.55
+2026-09-21,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,33258.5,184769,2375,219,158220.7
+2026-09-21,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,27211.5,151175,1943,179,129453.3
+2026-09-21,Prospecting | Broad,Prospecting | Chennai,Chennai,25867.6,143708,1847,133,96037.7
+2026-09-21,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,21164.4,117580,1511,109,78576.3
+2026-09-21,Prospecting | Broad,Prospecting | Ahmedabad,Ahmedabad,22172.15,123178,1583,130,93664.45
+2026-09-21,Retargeting | 30d visitors,Retargeting | Ahmedabad,Ahmedabad,18140.85,100782,1295,106,76634.55
+2026-09-21,Prospecting | Broad,Prospecting | Kolkata,Kolkata,22172.15,123178,1583,134,96594.3
+2026-09-21,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,18140.85,100782,1295,109,79031.7
+2026-09-21,Prospecting | Broad,Prospecting | Jaipur,Jaipur,16629.25,92384,1187,95,68966.15
+2026-09-21,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,13605.75,75587,971,78,56426.85
+2026-09-21,Prospecting | Broad,Prospecting | Lucknow,Lucknow,14781.8,82121,1055,80,57825.9
+2026-09-21,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,12094.2,67190,863,65,47312.1
+2026-09-21,Prospecting | Broad,Prospecting | Indore,Indore,12933.8,71854,923,73,52768.1
+2026-09-21,Retargeting | 30d visitors,Retargeting | Indore,Indore,10582.2,58790,755,59,43173.9
+2026-09-21,Prospecting | Broad,Prospecting | Kochi,Kochi,11086.35,61590,791,54,39519.7
+2026-09-21,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9070.65,50392,647,44,32334.3
+2026-09-22,Prospecting | Broad,Prospecting | Mumbai,Mumbai,71686.45,398258,5120,370,266853.4
+2026-09-22,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,58652.55,325847,4189,303,218334.6
+2026-09-22,Prospecting | Broad,Prospecting | Pune,Pune,33734.8,187415,2409,200,144227.6
+2026-09-22,Retargeting | 30d visitors,Retargeting | Pune,Pune,27601.2,153340,1971,163,118004.4
+2026-09-22,Prospecting | Broad,Prospecting | Delhi,Delhi,67469.6,374831,4819,358,257846.6
+2026-09-22,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,55202.4,306680,3943,293,210965.4
+2026-09-22,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,63252.75,351404,4518,320,231080.85
+2026-09-22,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,51752.25,287512,3696,262,189066.15
+2026-09-22,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,37951.65,210842,2710,217,156455.2
+2026-09-22,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,31051.35,172507,2217,177,128008.8
+2026-09-22,Prospecting | Broad,Prospecting | Chennai,Chennai,29517.95,163988,2108,157,113500.75
+2026-09-22,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,24151.05,134172,1725,128,92864.25
+2026-09-22,Prospecting | Broad,Prospecting | Ahmedabad,Ahmedabad,25301.1,140561,1807,146,105282.65
+2026-09-22,Retargeting | 30d visitors,Retargeting | Ahmedabad,Ahmedabad,20700.9,115005,1478,119,86140.35
+2026-09-22,Prospecting | Broad,Prospecting | Kolkata,Kolkata,25301.1,140561,1807,161,116500.45
+2026-09-22,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,20700.9,115005,1478,132,95318.55
+2026-09-22,Prospecting | Broad,Prospecting | Jaipur,Jaipur,18976.1,105422,1355,104,75213.05
+2026-09-22,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,15525.9,86255,1108,85,61537.95
+2026-09-22,Prospecting | Broad,Prospecting | Lucknow,Lucknow,16867.4,93707,1204,90,65170.6
+2026-09-22,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,13800.6,76670,985,74,53321.4
+2026-09-22,Prospecting | Broad,Prospecting | Indore,Indore,14759.25,81995,1054,75,54138.15
+2026-09-22,Retargeting | 30d visitors,Retargeting | Indore,Indore,12075.75,67087,862,61,44294.85
+2026-09-22,Prospecting | Broad,Prospecting | Kochi,Kochi,12650.55,70280,903,65,47406.7
+2026-09-22,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,10350.45,57502,739,53,38787.3
+2026-09-23,Prospecting | Broad,Prospecting | Mumbai,Mumbai,68275.9,379310,4876,366,264182.05
+2026-09-23,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,55862.1,310344,3990,300,216148.95
+2026-09-23,Prospecting | Broad,Prospecting | Pune,Pune,32129.9,178499,2294,157,113250.5
+2026-09-23,Retargeting | 30d visitors,Retargeting | Pune,Pune,26288.1,146045,1877,128,92659.5
+2026-09-23,Prospecting | Broad,Prospecting | Delhi,Delhi,64259.8,356998,4589,384,277003.65
+2026-09-23,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,52576.2,292090,3755,314,226639.35
+2026-09-23,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,60243.15,334684,4303,326,235100.25
+2026-09-23,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,49289.85,273832,3520,267,192354.75
+2026-09-23,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,36146.0,200811,2581,209,150978.85
+2026-09-23,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,29574.0,164300,2112,171,123528.15
+2026-09-23,Prospecting | Broad,Prospecting | Chennai,Chennai,28113.8,156187,2008,161,116222.15
+2026-09-23,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,23002.2,127790,1643,132,95090.85
+2026-09-23,Prospecting | Broad,Prospecting | Ahmedabad,Ahmedabad,24097.15,133873,1721,139,100174.25
+2026-09-23,Retargeting | 30d visitors,Retargeting | Ahmedabad,Ahmedabad,19715.85,109532,1408,113,81960.75
+2026-09-23,Prospecting | Broad,Prospecting | Kolkata,Kolkata,24097.15,133873,1721,131,94621.45
+2026-09-23,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,19715.85,109532,1408,107,77417.55
+2026-09-23,Prospecting | Broad,Prospecting | Jaipur,Jaipur,18073.0,100405,1290,107,77360.8
+2026-09-23,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,14787.0,82150,1056,87,63295.2
+2026-09-23,Prospecting | Broad,Prospecting | Lucknow,Lucknow,16064.95,89249,1147,96,69284.05
+2026-09-23,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,13144.05,73022,938,78,56686.95
+2026-09-23,Prospecting | Broad,Prospecting | Indore,Indore,14056.9,78093,1004,79,57333.65
+2026-09-23,Retargeting | 30d visitors,Retargeting | Indore,Indore,11501.1,63895,821,65,46909.35
+2026-09-23,Prospecting | Broad,Prospecting | Kochi,Kochi,12048.85,66938,860,60,43571.55
+2026-09-23,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9858.15,54767,704,49,35649.45
+2026-09-24,Prospecting | Broad,Prospecting | Mumbai,Mumbai,71584.7,397692,5113,437,315349.65
+2026-09-24,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,58569.3,325385,4183,358,258013.35
+2026-09-24,Prospecting | Broad,Prospecting | Pune,Pune,33686.95,187149,2406,178,128738.5
+2026-09-24,Retargeting | 30d visitors,Retargeting | Pune,Pune,27562.05,153122,1968,146,105331.5
+2026-09-24,Prospecting | Broad,Prospecting | Delhi,Delhi,67373.9,374299,4812,404,291016.0
+2026-09-24,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,55124.1,306245,3937,330,238104.0
+2026-09-24,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,63163.1,350906,4511,363,261928.7
+2026-09-24,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,51678.9,287105,3691,297,214305.3
+2026-09-24,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,37897.75,210543,2706,195,140737.85
+2026-09-24,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,31007.25,172262,2214,159,115149.15
+2026-09-24,Prospecting | Broad,Prospecting | Chennai,Chennai,29476.15,163756,2105,168,121406.45
+2026-09-24,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,24116.85,133982,1722,137,99332.55
+2026-09-24,Prospecting | Broad,Prospecting | Ahmedabad,Ahmedabad,25265.35,140363,1804,134,97141.55
+2026-09-24,Retargeting | 30d visitors,Retargeting | Ahmedabad,Ahmedabad,20671.65,114842,1476,110,79479.45
+2026-09-24,Prospecting | Broad,Prospecting | Kolkata,Kolkata,25265.35,140363,1804,134,96824.75
+2026-09-24,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,20671.65,114842,1476,110,79220.25
+2026-09-24,Prospecting | Broad,Prospecting | Jaipur,Jaipur,18949.15,105273,1353,116,84127.45
+2026-09-24,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,15503.85,86132,1107,95,68831.55
+2026-09-24,Prospecting | Broad,Prospecting | Lucknow,Lucknow,16843.75,93576,1203,84,60784.9
+2026-09-24,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,13781.25,76562,984,69,49733.1
+2026-09-24,Prospecting | Broad,Prospecting | Indore,Indore,14737.8,81876,1052,82,59469.3
+2026-09-24,Retargeting | 30d visitors,Retargeting | Indore,Indore,12058.2,66990,861,67,48656.7
+2026-09-24,Prospecting | Broad,Prospecting | Kochi,Kochi,12632.4,70180,902,75,54484.65
+2026-09-24,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,10335.6,57420,738,61,44578.35
+2026-09-25,Prospecting | Broad,Prospecting | Mumbai,Mumbai,74611.35,414507,5329,417,300649.8
+2026-09-25,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,61045.65,339142,4360,341,245986.2
+2026-09-25,Prospecting | Broad,Prospecting | Pune,Pune,35110.9,195060,2507,181,130907.7
+2026-09-25,Retargeting | 30d visitors,Retargeting | Pune,Pune,28727.1,159595,2051,148,107106.3
+2026-09-25,Prospecting | Broad,Prospecting | Delhi,Delhi,70222.35,390124,5015,408,293921.65
+2026-09-25,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,57454.65,319192,4103,334,240481.35
+2026-09-25,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,65833.35,365740,4702,351,252838.3
+2026-09-25,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,53863.65,299242,3847,287,206867.7
+2026-09-25,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,39499.9,219443,2821,213,153753.05
+2026-09-25,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,32318.1,179545,2308,174,125797.95
+2026-09-25,Prospecting | Broad,Prospecting | Chennai,Chennai,30722.45,170680,2194,142,102770.8
+2026-09-25,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,25136.55,139647,1795,116,84085.2
+2026-09-25,Prospecting | Broad,Prospecting | Ahmedabad,Ahmedabad,26333.45,146296,1880,157,113711.95
+2026-09-25,Retargeting | 30d visitors,Retargeting | Ahmedabad,Ahmedabad,21545.55,119697,1538,129,93037.05
+2026-09-25,Prospecting | Broad,Prospecting | Kolkata,Kolkata,26333.45,146296,1880,153,110768.9
+2026-09-25,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,21545.55,119697,1538,125,90629.1
+2026-09-25,Prospecting | Broad,Prospecting | Jaipur,Jaipur,19749.95,109721,1410,115,83260.65
+2026-09-25,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,16159.05,89772,1154,94,68122.35
+2026-09-25,Prospecting | Broad,Prospecting | Lucknow,Lucknow,17555.45,97530,1253,90,65056.75
+2026-09-25,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,14363.55,79797,1025,73,53228.25
+2026-09-25,Prospecting | Broad,Prospecting | Indore,Indore,15360.95,85338,1097,77,55982.3
+2026-09-25,Retargeting | 30d visitors,Retargeting | Indore,Indore,12568.05,69822,897,63,45803.7
+2026-09-25,Prospecting | Broad,Prospecting | Kochi,Kochi,13166.45,73146,940,76,54731.6
+2026-09-25,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,10772.55,59847,769,62,44780.4
+2026-09-26,Prospecting | Broad,Prospecting | Mumbai,Mumbai,70331.25,390729,5023,396,285610.6
+2026-09-26,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,57543.75,319687,4110,324,233681.4
+2026-09-26,Prospecting | Broad,Prospecting | Delhi,Delhi,66194.15,367745,4728,424,305673.5
+2026-09-26,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,54158.85,300882,3868,347,250096.5
+2026-09-26,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,62057.05,344761,4432,362,260828.15
+2026-09-26,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,50773.95,282077,3626,296,213404.85
+2026-09-26,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,37233.9,206855,2659,192,138381.1
+2026-09-26,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,30464.1,169245,2176,157,113220.9
+2026-09-26,Prospecting | Broad,Prospecting | Chennai,Chennai,28959.7,160887,2068,148,106924.4
+2026-09-26,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,23694.3,131635,1692,121,87483.6
+2026-09-26,Prospecting | Broad,Prospecting | Kolkata,Kolkata,24822.6,137903,1773,141,101557.5
+2026-09-26,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,20309.4,112830,1450,115,83092.5
+2026-09-26,Prospecting | Broad,Prospecting | Jaipur,Jaipur,18616.95,103427,1329,109,78537.8
+2026-09-26,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,15232.05,84622,1088,89,64258.2
+2026-09-26,Prospecting | Broad,Prospecting | Lucknow,Lucknow,16548.4,91935,1182,100,72174.3
+2026-09-26,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,13539.6,75220,967,82,59051.7
+2026-09-26,Prospecting | Broad,Prospecting | Indore,Indore,14479.85,80443,1034,82,59704.7
+2026-09-26,Retargeting | 30d visitors,Retargeting | Indore,Indore,11847.15,65817,846,67,48849.3
+2026-09-26,Prospecting | Broad,Prospecting | Kochi,Kochi,12411.3,68951,886,65,47165.8
+2026-09-26,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,10154.7,56415,725,53,38590.2
+2026-09-27,Prospecting | Broad,Prospecting | Mumbai,Mumbai,67610.95,375616,4829,362,261122.95
+2026-09-27,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,55318.05,307322,3951,296,213646.05
+2026-09-27,Prospecting | Broad,Prospecting | Delhi,Delhi,63633.9,353521,4545,319,229819.15
+2026-09-27,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,52064.1,289245,3718,261,188033.85
+2026-09-27,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,59656.85,331426,4261,363,261802.2
+2026-09-27,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,48810.15,271167,3486,297,214201.8
+2026-09-27,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,35794.0,198855,2556,199,143826.1
+2026-09-27,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,29286.0,162700,2091,163,117675.9
+2026-09-27,Prospecting | Broad,Prospecting | Chennai,Chennai,27839.9,154666,1988,116,83681.4
+2026-09-27,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,22778.1,126545,1627,95,68466.6
+2026-09-27,Prospecting | Broad,Prospecting | Kolkata,Kolkata,23862.85,132571,1704,138,99916.85
+2026-09-27,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,19524.15,108467,1394,113,81750.15
+2026-09-27,Prospecting | Broad,Prospecting | Jaipur,Jaipur,17897.0,99427,1278,99,71368.0
+2026-09-27,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,14643.0,81350,1045,81,58392.0
+2026-09-27,Prospecting | Broad,Prospecting | Lucknow,Lucknow,15908.2,88378,1136,84,60954.85
+2026-09-27,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,13015.8,72310,929,69,49872.15
+2026-09-27,Prospecting | Broad,Prospecting | Indore,Indore,13919.95,77333,994,78,56821.05
+2026-09-27,Retargeting | 30d visitors,Retargeting | Indore,Indore,11389.05,63272,813,64,46489.95
+2026-09-27,Prospecting | Broad,Prospecting | Kochi,Kochi,11931.15,66284,852,67,48655.75
+2026-09-27,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9761.85,54232,697,55,39809.25
+2026-09-28,Prospecting | Broad,Prospecting | Mumbai,Mumbai,66001.65,366675,4714,387,278736.7
+2026-09-28,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,54001.35,300007,3857,316,228057.3
+2026-09-28,Prospecting | Broad,Prospecting | Delhi,Delhi,62119.2,345106,4437,356,256715.25
+2026-09-28,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,50824.8,282360,3630,291,210039.75
+2026-09-28,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,58236.75,323537,4159,331,238953.0
+2026-09-28,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,47648.25,264712,3403,271,195507.0
+2026-09-28,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,34942.05,194122,2495,188,135372.05
+2026-09-28,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,28588.95,158827,2042,153,110758.95
+2026-09-28,Prospecting | Broad,Prospecting | Chennai,Chennai,27177.15,150984,1941,162,116999.85
+2026-09-28,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,22235.85,123532,1588,132,95727.15
+2026-09-28,Prospecting | Broad,Prospecting | Kolkata,Kolkata,23294.7,129414,1663,108,78118.15
+2026-09-28,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,19059.3,105884,1361,88,63914.85
+2026-09-28,Prospecting | Broad,Prospecting | Jaipur,Jaipur,17470.75,97059,1247,99,71413.1
+2026-09-28,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,14294.25,79412,1021,81,58428.9
+2026-09-28,Prospecting | Broad,Prospecting | Lucknow,Lucknow,15529.8,86276,1109,78,56482.25
+2026-09-28,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,12706.2,70590,907,64,46212.75
+2026-09-28,Prospecting | Broad,Prospecting | Indore,Indore,13588.3,75490,970,74,53307.65
+2026-09-28,Retargeting | 30d visitors,Retargeting | Indore,Indore,11117.7,61765,794,60,43615.35
+2026-09-28,Prospecting | Broad,Prospecting | Kochi,Kochi,11647.35,64707,831,67,48692.6
+2026-09-28,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9529.65,52942,680,55,39839.4
+2026-09-29,Prospecting | Broad,Prospecting | Mumbai,Mumbai,66021.45,366785,4715,356,256565.65
+2026-09-29,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,54017.55,300097,3858,291,209917.35
+2026-09-29,Prospecting | Broad,Prospecting | Delhi,Delhi,62137.9,345210,4438,339,244159.85
+2026-09-29,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,50840.1,282445,3631,277,199767.15
+2026-09-29,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,58254.35,323635,4161,344,248344.8
+2026-09-29,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,47662.65,264792,3404,282,203191.2
+2026-09-29,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,34952.5,194180,2496,174,125605.15
+2026-09-29,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,28597.5,158875,2042,142,102767.85
+2026-09-29,Prospecting | Broad,Prospecting | Chennai,Chennai,27185.4,151030,1941,160,115281.1
+2026-09-29,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,22242.6,123570,1588,131,94320.9
+2026-09-29,Prospecting | Broad,Prospecting | Kolkata,Kolkata,23301.85,129454,1664,127,91682.25
+2026-09-29,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,19065.15,105917,1361,104,75012.75
+2026-09-29,Prospecting | Broad,Prospecting | Jaipur,Jaipur,17476.25,97090,1248,107,77511.5
+2026-09-29,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,14298.75,79437,1021,88,63418.5
+2026-09-29,Prospecting | Broad,Prospecting | Lucknow,Lucknow,15534.75,86304,1109,80,58155.9
+2026-09-29,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,12710.25,70612,907,66,47582.1
+2026-09-29,Prospecting | Broad,Prospecting | Indore,Indore,13592.7,75515,970,78,56725.35
+2026-09-29,Retargeting | 30d visitors,Retargeting | Indore,Indore,11121.3,61785,794,64,46411.65
+2026-09-29,Prospecting | Broad,Prospecting | Kochi,Kochi,11650.65,64725,832,67,48271.3
+2026-09-29,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9532.35,52957,680,54,39494.7
+2026-09-30,Prospecting | Broad,Prospecting | Mumbai,Mumbai,60480.75,336004,4320,287,206641.6
+2026-09-30,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,49484.25,274912,3534,234,169070.4
+2026-09-30,Prospecting | Broad,Prospecting | Delhi,Delhi,56922.8,316237,4065,323,233176.9
+2026-09-30,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,46573.2,258740,3326,264,190781.1
+2026-09-30,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,53365.4,296474,3811,311,224249.85
+2026-09-30,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,43662.6,242570,3118,254,183477.15
+2026-09-30,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,32019.35,177885,2287,170,122788.6
+2026-09-30,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,26197.65,145542,1871,139,100463.4
+2026-09-30,Prospecting | Broad,Prospecting | Chennai,Chennai,24904.0,138355,1778,153,110250.25
+2026-09-30,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,20376.0,113200,1455,125,90204.75
+2026-09-30,Prospecting | Broad,Prospecting | Kolkata,Kolkata,21346.05,118589,1524,106,76731.05
+2026-09-30,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,17464.95,97027,1247,87,62779.95
+2026-09-30,Prospecting | Broad,Prospecting | Jaipur,Jaipur,16009.4,88941,1143,80,57950.75
+2026-09-30,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,13098.6,72770,935,65,47414.25
+2026-09-30,Prospecting | Broad,Prospecting | Lucknow,Lucknow,14230.7,79059,1016,75,54154.65
+2026-09-30,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,11643.3,64685,831,61,44308.35
+2026-09-30,Prospecting | Broad,Prospecting | Indore,Indore,12452.0,69177,889,64,46469.5
+2026-09-30,Retargeting | 30d visitors,Retargeting | Indore,Indore,10188.0,56600,727,52,38020.5
+2026-09-30,Prospecting | Broad,Prospecting | Kochi,Kochi,10673.3,59296,762,60,43789.9
+2026-09-30,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,8732.7,48515,623,49,35828.1
+2026-10-01,Prospecting | Broad,Prospecting | Mumbai,Mumbai,66650.1,370278,4760,392,282475.05
+2026-10-01,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,54531.9,302955,3895,320,231115.95
+2026-10-01,Prospecting | Broad,Prospecting | Delhi,Delhi,62729.15,348495,4480,314,226433.35
+2026-10-01,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,51323.85,285132,3665,257,185263.65
+2026-10-01,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,58808.75,326715,4200,312,225272.85
+2026-10-01,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,48116.25,267312,3436,255,184314.15
+2026-10-01,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,35285.25,196029,2520,190,137295.95
+2026-10-01,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,28869.75,160387,2062,156,112333.05
+2026-10-01,Prospecting | Broad,Prospecting | Chennai,Chennai,27443.9,152466,1960,157,113446.3
+2026-10-01,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,22454.1,124745,1603,128,92819.7
+2026-10-01,Prospecting | Broad,Prospecting | Kolkata,Kolkata,23523.5,130686,1680,117,84889.75
+2026-10-01,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,19246.5,106925,1374,96,69455.25
+2026-10-01,Prospecting | Broad,Prospecting | Jaipur,Jaipur,17642.9,98016,1260,87,63129.0
+2026-10-01,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,14435.1,80195,1031,71,51651.0
+2026-10-01,Prospecting | Broad,Prospecting | Lucknow,Lucknow,15682.15,87123,1120,86,62605.4
+2026-10-01,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,12830.85,71282,916,71,51222.6
+2026-10-01,Prospecting | Broad,Prospecting | Indore,Indore,13721.95,76233,980,77,55974.05
+2026-10-01,Retargeting | 30d visitors,Retargeting | Indore,Indore,11227.05,62372,801,63,45796.95
+2026-10-01,Prospecting | Broad,Prospecting | Kochi,Kochi,11761.75,65343,840,69,50193.55
+2026-10-01,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9623.25,53462,687,57,41067.45
+2026-10-02,Prospecting | Broad,Prospecting | Mumbai,Mumbai,66285.45,368252,4734,440,317205.9
+2026-10-02,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,54233.55,301297,3873,360,259532.1
+2026-10-02,Prospecting | Broad,Prospecting | Delhi,Delhi,62385.95,346588,4456,328,236859.15
+2026-10-02,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,51043.05,283572,3645,269,193793.85
+2026-10-02,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,58487.0,324927,4177,304,219305.9
+2026-10-02,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,47853.0,265850,3418,249,179432.1
+2026-10-02,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,35092.2,194956,2506,202,145447.5
+2026-10-02,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,28711.8,159510,2050,165,119002.5
+2026-10-02,Prospecting | Broad,Prospecting | Chennai,Chennai,27293.75,151631,1949,153,110589.6
+2026-10-02,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,22331.25,124062,1595,125,90482.4
+2026-10-02,Prospecting | Broad,Prospecting | Kolkata,Kolkata,23394.8,129971,1671,140,101279.2
+2026-10-02,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,19141.2,106340,1367,115,82864.8
+2026-10-02,Prospecting | Broad,Prospecting | Jaipur,Jaipur,17546.1,97478,1253,94,67966.8
+2026-10-02,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,14355.9,79755,1025,77,55609.2
+2026-10-02,Prospecting | Broad,Prospecting | Lucknow,Lucknow,15596.35,86646,1114,80,58240.05
+2026-10-02,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,12760.65,70892,911,66,47650.95
+2026-10-02,Prospecting | Broad,Prospecting | Indore,Indore,13647.15,75817,974,80,57988.7
+2026-10-02,Retargeting | 30d visitors,Retargeting | Indore,Indore,11165.85,62032,797,65,47445.3
+2026-10-02,Prospecting | Broad,Prospecting | Kochi,Kochi,11697.4,64985,835,65,47051.95
+2026-10-02,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9570.6,53170,683,53,38497.05
+2026-10-03,Prospecting | Broad,Prospecting | Mumbai,Mumbai,65164.0,362022,4654,392,282814.4
+2026-10-03,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,53316.0,296200,3808,321,231393.6
+2026-10-03,Prospecting | Broad,Prospecting | Delhi,Delhi,61331.05,340728,4380,342,246262.5
+2026-10-03,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,50179.95,278777,3584,279,201487.5
+2026-10-03,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,57497.55,319430,4106,323,232675.3
+2026-10-03,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,47043.45,261352,3360,264,190370.7
+2026-10-03,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,34498.75,191659,2464,166,119930.8
+2026-10-03,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,28226.25,156812,2016,136,98125.2
+2026-10-03,Prospecting | Broad,Prospecting | Chennai,Chennai,26832.3,149068,1916,139,100757.8
+2026-10-03,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,21953.7,121965,1568,114,82438.2
+2026-10-03,Prospecting | Broad,Prospecting | Kolkata,Kolkata,22998.8,127771,1642,136,98132.1
+2026-10-03,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,18817.2,104540,1344,111,80289.9
+2026-10-03,Prospecting | Broad,Prospecting | Jaipur,Jaipur,17249.1,95828,1232,112,80672.9
+2026-10-03,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,14112.9,78405,1008,91,66005.1
+2026-10-03,Prospecting | Broad,Prospecting | Lucknow,Lucknow,15332.9,85182,1095,95,68538.8
+2026-10-03,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,12545.1,69695,896,77,56077.2
+2026-10-03,Prospecting | Broad,Prospecting | Indore,Indore,13416.15,74534,958,84,61140.2
+2026-10-03,Retargeting | 30d visitors,Retargeting | Indore,Indore,10976.85,60982,784,69,50023.8
+2026-10-03,Prospecting | Broad,Prospecting | Kochi,Kochi,11499.4,63885,821,63,45383.8
+2026-10-03,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9408.6,52270,672,51,37132.2
+2026-10-04,Prospecting | Broad,Prospecting | Mumbai,Mumbai,65819.6,365664,4701,379,273050.25
+2026-10-04,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,53852.4,299180,3846,310,223404.75
+2026-10-04,Prospecting | Broad,Prospecting | Delhi,Delhi,61948.15,344156,4424,353,254591.15
+2026-10-04,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,50684.85,281582,3620,289,208301.85
+2026-10-04,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,58076.15,322645,4148,309,223023.9
+2026-10-04,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,47516.85,263982,3394,253,182474.1
+2026-10-04,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,34845.8,193587,2488,194,139837.5
+2026-10-04,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,28510.2,158390,2036,158,114412.5
+2026-10-04,Prospecting | Broad,Prospecting | Chennai,Chennai,27102.35,150568,1935,153,110608.3
+2026-10-04,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,22174.65,123192,1583,125,90497.7
+2026-10-04,Prospecting | Broad,Prospecting | Kolkata,Kolkata,23230.35,129057,1659,120,86625.55
+2026-10-04,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,19006.65,105592,1357,98,70875.45
+2026-10-04,Prospecting | Broad,Prospecting | Jaipur,Jaipur,17422.9,96793,1244,100,72079.15
+2026-10-04,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,14255.1,79195,1018,81,58973.85
+2026-10-04,Prospecting | Broad,Prospecting | Lucknow,Lucknow,15486.9,86038,1106,89,64432.5
+2026-10-04,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,12671.1,70395,905,73,52717.5
+2026-10-04,Prospecting | Broad,Prospecting | Indore,Indore,13550.9,75282,967,70,50648.95
+2026-10-04,Retargeting | 30d visitors,Retargeting | Indore,Indore,11087.1,61595,791,57,41440.05
+2026-10-04,Prospecting | Broad,Prospecting | Kochi,Kochi,11615.45,64530,829,60,43292.7
+2026-10-04,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9503.55,52797,678,49,35421.3
+2026-10-05,Prospecting | Broad,Prospecting | Mumbai,Mumbai,64848.85,360271,4632,359,258644.65
+2026-10-05,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,53058.15,294767,3789,293,211618.35
+2026-10-05,Prospecting | Broad,Prospecting | Delhi,Delhi,61034.6,339081,4359,344,247829.45
+2026-10-05,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,49937.4,277430,3566,281,202769.55
+2026-10-05,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,57219.8,317887,4087,302,217715.85
+2026-10-05,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,46816.2,260090,3344,247,178131.15
+2026-10-05,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,34332.1,190733,2452,212,152811.45
+2026-10-05,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,28089.9,156055,2006,173,125027.55
+2026-10-05,Prospecting | Broad,Prospecting | Chennai,Chennai,26702.5,148347,1907,181,130448.45
+2026-10-05,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,21847.5,121375,1560,148,106730.55
+2026-10-05,Prospecting | Broad,Prospecting | Kolkata,Kolkata,22887.7,127153,1634,162,117240.75
+2026-10-05,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,18726.3,104035,1337,133,95924.25
+2026-10-05,Prospecting | Broad,Prospecting | Jaipur,Jaipur,17166.05,95366,1226,92,66464.75
+2026-10-05,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,14044.95,78027,1003,75,54380.25
+2026-10-05,Prospecting | Broad,Prospecting | Lucknow,Lucknow,15258.65,84770,1089,81,58681.15
+2026-10-05,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,12484.35,69357,891,66,48011.85
+2026-10-05,Prospecting | Broad,Prospecting | Indore,Indore,13351.25,74173,953,69,50017.0
+2026-10-05,Retargeting | 30d visitors,Retargeting | Indore,Indore,10923.75,60687,780,56,40923.0
+2026-10-05,Prospecting | Broad,Prospecting | Kochi,Kochi,11443.85,63576,817,68,49065.5
+2026-10-05,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9363.15,52017,668,55,40144.5
+2026-10-06,Prospecting | Broad,Prospecting | Mumbai,Mumbai,71530.8,397393,5109,370,266778.05
+2026-10-06,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,58525.2,325140,4180,303,218272.95
+2026-10-06,Prospecting | Broad,Prospecting | Delhi,Delhi,67322.75,374015,4808,391,282191.25
+2026-10-06,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,55082.25,306012,3934,320,230883.75
+2026-10-06,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,63115.25,350640,4508,366,264210.65
+2026-10-06,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,51639.75,286887,3688,300,216172.35
+2026-10-06,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,37869.15,210384,2704,230,165745.8
+2026-10-06,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,30983.85,172132,2213,188,135610.2
+2026-10-06,Prospecting | Broad,Prospecting | Chennai,Chennai,29453.6,163631,2103,175,126401.0
+2026-10-06,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,24098.4,133880,1721,143,103419.0
+2026-10-06,Prospecting | Broad,Prospecting | Kolkata,Kolkata,25246.1,140256,1803,144,103973.65
+2026-10-06,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,20655.9,114755,1475,118,85069.35
+2026-10-06,Prospecting | Broad,Prospecting | Jaipur,Jaipur,18934.85,105193,1352,102,73918.9
+2026-10-06,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,15492.15,86067,1106,83,60479.1
+2026-10-06,Prospecting | Broad,Prospecting | Lucknow,Lucknow,16830.55,93503,1202,100,72067.05
+2026-10-06,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,13770.45,76502,983,81,58963.95
+2026-10-06,Prospecting | Broad,Prospecting | Indore,Indore,14726.8,81815,1051,91,66107.8
+2026-10-06,Retargeting | 30d visitors,Retargeting | Indore,Indore,12049.2,66940,860,75,54088.2
+2026-10-06,Prospecting | Broad,Prospecting | Kochi,Kochi,12623.05,70128,901,71,51465.15
+2026-10-06,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,10327.95,57377,737,58,42107.85
+2026-10-07,Prospecting | Broad,Prospecting | Mumbai,Mumbai,63446.9,352482,4531,361,260242.4
+2026-10-07,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,51911.1,288395,3707,295,212925.6
+2026-10-07,Prospecting | Broad,Prospecting | Delhi,Delhi,59714.6,331747,4265,295,212883.55
+2026-10-07,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,48857.4,271430,3489,241,174177.45
+2026-10-07,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,55982.3,311012,3998,293,211127.95
+2026-10-07,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,45803.7,254465,3271,239,172741.05
+2026-10-07,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,33589.6,186608,2399,176,127180.9
+2026-10-07,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,27482.4,152680,1963,144,104057.1
+2026-10-07,Prospecting | Broad,Prospecting | Chennai,Chennai,26125.0,145138,1866,139,100383.8
+2026-10-07,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,21375.0,118750,1526,114,82132.2
+2026-10-07,Prospecting | Broad,Prospecting | Kolkata,Kolkata,22393.25,124406,1599,141,101773.65
+2026-10-07,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,18321.75,101787,1308,115,83269.35
+2026-10-07,Prospecting | Broad,Prospecting | Jaipur,Jaipur,16794.8,93304,1199,90,64992.4
+2026-10-07,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,13741.2,76340,981,73,53175.6
+2026-10-07,Prospecting | Broad,Prospecting | Lucknow,Lucknow,14928.65,82936,1066,84,60848.7
+2026-10-07,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,12214.35,67857,872,69,49785.3
+2026-10-07,Prospecting | Broad,Prospecting | Indore,Indore,13062.5,72569,933,72,51998.1
+2026-10-07,Retargeting | 30d visitors,Retargeting | Indore,Indore,10687.5,59375,763,59,42543.9
+2026-10-07,Prospecting | Broad,Prospecting | Kochi,Kochi,11196.35,62201,799,65,47026.65
+2026-10-07,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9160.65,50892,654,53,38476.35
+2026-10-08,Prospecting | Broad,Prospecting | Mumbai,Mumbai,62638.4,347991,4474,334,240537.55
+2026-10-08,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,51249.6,284719,3660,273,196803.45
+2026-10-08,Prospecting | Broad,Prospecting | Delhi,Delhi,58953.95,327521,4210,289,208529.75
+2026-10-08,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,48235.05,267972,3445,236,170615.25
+2026-10-08,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,55268.95,307049,3947,333,239980.95
+2026-10-08,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,45220.05,251222,3230,272,196348.05
+2026-10-08,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,33161.7,184231,2368,189,136393.95
+2026-10-08,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,27132.3,150734,1938,154,111595.05
+2026-10-08,Prospecting | Broad,Prospecting | Chennai,Chennai,25792.25,143290,1842,154,111304.6
+2026-10-08,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,21102.75,117237,1507,126,91067.4
+2026-10-08,Prospecting | Broad,Prospecting | Kolkata,Kolkata,22107.8,122821,1579,133,96404.55
+2026-10-08,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,18088.2,100490,1292,109,78876.45
+2026-10-08,Prospecting | Broad,Prospecting | Jaipur,Jaipur,16580.85,92115,1184,86,62162.1
+2026-10-08,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,13566.15,75367,969,70,50859.9
+2026-10-08,Prospecting | Broad,Prospecting | Lucknow,Lucknow,14738.35,81879,1052,83,60286.6
+2026-10-08,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,12058.65,66992,861,68,49325.4
+2026-10-08,Prospecting | Broad,Prospecting | Indore,Indore,12896.4,71646,921,67,48541.35
+2026-10-08,Retargeting | 30d visitors,Retargeting | Indore,Indore,10551.6,58620,753,55,39715.65
+2026-10-08,Prospecting | Broad,Prospecting | Kochi,Kochi,11053.9,61410,789,50,36265.35
+2026-10-08,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9044.1,50245,646,41,29671.65
+2026-10-09,Prospecting | Broad,Prospecting | Mumbai,Mumbai,60961.45,338674,4354,323,233247.85
+2026-10-09,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,49877.55,277097,3562,265,190839.15
+2026-10-09,Prospecting | Broad,Prospecting | Delhi,Delhi,57375.45,318752,4098,300,216281.45
+2026-10-09,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,46943.55,260797,3353,245,176957.55
+2026-10-09,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,53789.45,298830,3842,317,228340.75
+2026-10-09,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,44009.55,244497,3143,259,186824.25
+2026-10-09,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,32274.0,179300,2305,176,126842.65
+2026-10-09,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,26406.0,146700,1886,144,103780.35
+2026-10-09,Prospecting | Broad,Prospecting | Chennai,Chennai,25102.0,139455,1793,146,105711.1
+2026-10-09,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,20538.0,114100,1467,120,86490.9
+2026-10-09,Prospecting | Broad,Prospecting | Kolkata,Kolkata,21516.0,119533,1536,125,90453.0
+2026-10-09,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,17604.0,97800,1257,102,74007.0
+2026-10-09,Prospecting | Broad,Prospecting | Jaipur,Jaipur,16137.0,89650,1152,81,58479.85
+2026-10-09,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,13203.0,73350,943,66,47847.15
+2026-10-09,Prospecting | Broad,Prospecting | Lucknow,Lucknow,14344.0,79688,1024,72,52540.95
+2026-10-09,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,11736.0,65200,838,59,42988.05
+2026-10-09,Prospecting | Broad,Prospecting | Indore,Indore,12551.0,69727,896,72,51980.5
+2026-10-09,Retargeting | 30d visitors,Retargeting | Indore,Indore,10269.0,57050,733,59,42529.5
+2026-10-09,Prospecting | Broad,Prospecting | Kochi,Kochi,10758.0,59766,768,53,38623.75
+2026-10-09,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,8802.0,48900,628,43,31601.25
+2026-10-10,Prospecting | Broad,Prospecting | Mumbai,Mumbai,59925.8,332921,4280,312,225233.8
+2026-10-10,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,49030.2,272390,3502,255,184282.2
+2026-10-10,Prospecting | Broad,Prospecting | Delhi,Delhi,56400.85,313338,4028,341,245589.85
+2026-10-10,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,46146.15,256367,3296,279,200937.15
+2026-10-10,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,52875.9,293755,3776,290,208967.0
+2026-10-10,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,43262.1,240345,3090,237,170973.0
+2026-10-10,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,31725.65,176253,2266,148,106715.4
+2026-10-10,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,25957.35,144207,1854,121,87312.6
+2026-10-10,Prospecting | Broad,Prospecting | Chennai,Chennai,24675.2,137084,1762,121,87516.0
+2026-10-10,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,20188.8,112160,1442,99,71604.0
+2026-10-10,Prospecting | Broad,Prospecting | Kolkata,Kolkata,21150.25,117501,1510,128,92811.4
+2026-10-10,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,17304.75,96137,1236,105,75936.6
+2026-10-10,Prospecting | Broad,Prospecting | Jaipur,Jaipur,15862.55,88125,1133,92,66792.55
+2026-10-10,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,12978.45,72102,927,75,54648.45
+2026-10-10,Prospecting | Broad,Prospecting | Lucknow,Lucknow,14100.35,78335,1007,74,53995.15
+2026-10-10,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,11536.65,64092,824,61,44177.85
+2026-10-10,Prospecting | Broad,Prospecting | Indore,Indore,12337.6,68542,881,69,50234.8
+2026-10-10,Retargeting | 30d visitors,Retargeting | Indore,Indore,10094.4,56080,721,57,41101.2
+2026-10-10,Prospecting | Broad,Prospecting | Kochi,Kochi,10575.4,58752,755,63,45408.55
+2026-10-10,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,8652.6,48070,618,51,37152.45
+2026-10-11,Prospecting | Broad,Prospecting | Mumbai,Mumbai,59144.25,328579,4224,304,219271.8
+2026-10-11,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,48390.75,268837,3456,249,179404.2
+2026-10-11,Prospecting | Broad,Prospecting | Delhi,Delhi,55664.95,309249,3976,320,231060.5
+2026-10-11,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,45544.05,253022,3253,262,189049.5
+2026-10-11,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,52185.65,289920,3727,269,194353.5
+2026-10-11,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,42697.35,237207,3049,220,159016.5
+2026-10-11,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,31311.5,173952,2236,180,129647.65
+2026-10-11,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,25618.5,142325,1829,147,106075.35
+2026-10-11,Prospecting | Broad,Prospecting | Chennai,Chennai,24353.45,135296,1739,146,105782.6
+2026-10-11,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,19925.55,110697,1423,120,86549.4
+2026-10-11,Prospecting | Broad,Prospecting | Kolkata,Kolkata,20874.15,115967,1491,127,91560.7
+2026-10-11,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,17078.85,94882,1219,104,74913.3
+2026-10-11,Prospecting | Broad,Prospecting | Jaipur,Jaipur,15655.75,86976,1118,85,61625.3
+2026-10-11,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,12809.25,71162,914,70,50420.7
+2026-10-11,Prospecting | Broad,Prospecting | Lucknow,Lucknow,13916.1,77311,994,81,58945.7
+2026-10-11,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,11385.9,63254,813,66,48228.3
+2026-10-11,Prospecting | Broad,Prospecting | Indore,Indore,12176.45,67646,869,70,50587.9
+2026-10-11,Retargeting | 30d visitors,Retargeting | Indore,Indore,9962.55,55347,711,57,41390.1
+2026-10-11,Prospecting | Broad,Prospecting | Kochi,Kochi,10437.35,57985,745,55,39900.85
+2026-10-11,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,8539.65,47442,609,45,32646.15
+2026-10-12,Prospecting | Broad,Prospecting | Mumbai,Mumbai,60540.15,336334,4324,301,217104.8
+2026-10-12,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,49532.85,275182,3538,246,177631.2
+2026-10-12,Prospecting | Broad,Prospecting | Delhi,Delhi,56978.9,316549,4069,349,251467.7
+2026-10-12,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,46619.1,258995,3329,285,205746.3
+2026-10-12,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,53418.2,296767,3815,296,213303.75
+2026-10-12,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,43705.8,242810,3121,242,174521.25
+2026-10-12,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,32050.7,178059,2289,174,125848.25
+2026-10-12,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,26223.3,145685,1873,143,102966.75
+2026-10-12,Prospecting | Broad,Prospecting | Chennai,Chennai,24928.2,138490,1780,144,103925.8
+2026-10-12,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,20395.8,113310,1456,118,85030.2
+2026-10-12,Prospecting | Broad,Prospecting | Kolkata,Kolkata,21366.95,118705,1526,138,100002.1
+2026-10-12,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,17482.05,97122,1248,113,81819.9
+2026-10-12,Prospecting | Broad,Prospecting | Jaipur,Jaipur,16025.35,89029,1144,74,53493.0
+2026-10-12,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,13111.65,72842,936,60,43767.0
+2026-10-12,Prospecting | Broad,Prospecting | Lucknow,Lucknow,14245.0,79138,1017,91,65646.9
+2026-10-12,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,11655.0,64750,832,74,53711.1
+2026-10-12,Prospecting | Broad,Prospecting | Indore,Indore,12464.1,69245,890,68,49357.0
+2026-10-12,Retargeting | 30d visitors,Retargeting | Indore,Indore,10197.9,56655,728,56,40383.0
+2026-10-12,Prospecting | Broad,Prospecting | Kochi,Kochi,10683.75,59354,763,59,43094.15
+2026-10-12,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,8741.25,48562,624,48,35258.85
+2026-10-13,Prospecting | Broad,Prospecting | Mumbai,Mumbai,63713.65,353964,4550,326,234977.6
+2026-10-13,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,52129.35,289607,3723,267,192254.4
+2026-10-13,Prospecting | Broad,Prospecting | Delhi,Delhi,59965.4,333141,4283,291,209565.4
+2026-10-13,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,49062.6,272570,3504,238,171462.6
+2026-10-13,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,56217.7,312320,4015,323,233169.2
+2026-10-13,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,45996.3,255535,3285,264,190774.8
+2026-10-13,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,33730.95,187394,2409,182,131190.95
+2026-10-13,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,27598.05,153322,1971,149,107338.05
+2026-10-13,Prospecting | Broad,Prospecting | Chennai,Chennai,26235.0,145750,1873,138,99951.5
+2026-10-13,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,21465.0,119250,1533,113,81778.5
+2026-10-13,Prospecting | Broad,Prospecting | Kolkata,Kolkata,22487.3,124929,1606,116,83664.35
+2026-10-13,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,18398.7,102215,1314,95,68452.65
+2026-10-13,Prospecting | Broad,Prospecting | Jaipur,Jaipur,16865.2,93695,1204,79,57573.45
+2026-10-13,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,13798.8,76660,985,65,47105.55
+2026-10-13,Prospecting | Broad,Prospecting | Lucknow,Lucknow,14991.35,83285,1070,82,59275.15
+2026-10-13,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,12265.65,68142,876,67,48497.85
+2026-10-13,Prospecting | Broad,Prospecting | Indore,Indore,13117.5,72875,936,73,53016.15
+2026-10-13,Retargeting | 30d visitors,Retargeting | Indore,Indore,10732.5,59625,766,60,43376.85
+2026-10-13,Prospecting | Broad,Prospecting | Kochi,Kochi,11243.65,62464,803,65,47498.0
+2026-10-13,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9199.35,51107,657,53,38862.0
+2026-10-14,Prospecting | Broad,Prospecting | Mumbai,Mumbai,65303.15,362795,4664,369,265986.05
+2026-10-14,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,53429.85,296832,3816,302,217624.95
+2026-10-14,Prospecting | Broad,Prospecting | Delhi,Delhi,61461.95,341455,4390,342,246580.4
+2026-10-14,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,50287.05,279372,3591,280,201747.6
+2026-10-14,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,57620.2,320112,4115,292,210343.1
+2026-10-14,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,47143.8,261910,3367,239,172098.9
+2026-10-14,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,34572.45,192069,2469,206,148507.15
+2026-10-14,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,28286.55,157147,2020,168,121505.85
+2026-10-14,Prospecting | Broad,Prospecting | Chennai,Chennai,26889.5,149386,1920,145,104492.85
+2026-10-14,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,22000.5,122225,1571,118,85494.15
+2026-10-14,Prospecting | Broad,Prospecting | Kolkata,Kolkata,23048.3,128046,1646,130,93652.9
+2026-10-14,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,18857.7,104765,1346,106,76625.1
+2026-10-14,Prospecting | Broad,Prospecting | Jaipur,Jaipur,17285.95,96033,1234,90,65109.55
+2026-10-14,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,14143.05,78572,1010,73,53271.45
+2026-10-14,Prospecting | Broad,Prospecting | Lucknow,Lucknow,15365.35,85363,1097,91,65766.8
+2026-10-14,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,12571.65,69842,897,74,53809.2
+2026-10-14,Prospecting | Broad,Prospecting | Indore,Indore,13444.75,74693,960,81,59004.55
+2026-10-14,Retargeting | 30d visitors,Retargeting | Indore,Indore,11000.25,61112,785,67,48276.45
+2026-10-14,Prospecting | Broad,Prospecting | Kochi,Kochi,11524.15,64023,823,61,43931.8
+2026-10-14,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9428.85,52382,673,49,35944.2
+2026-10-15,Prospecting | Broad,Prospecting | Mumbai,Mumbai,64249.9,356943,4589,402,290054.05
+2026-10-15,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,52568.1,292045,3754,329,237316.95
+2026-10-15,Prospecting | Broad,Prospecting | Delhi,Delhi,60470.3,335946,4319,362,261186.75
+2026-10-15,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,49475.7,274865,3533,296,213698.25
+2026-10-15,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,56690.7,314948,4049,366,264056.1
+2026-10-15,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,46383.3,257685,3313,300,216045.9
+2026-10-15,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,34014.75,188970,2429,209,150820.45
+2026-10-15,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,27830.25,154612,1987,171,123398.55
+2026-10-15,Prospecting | Broad,Prospecting | Chennai,Chennai,26455.55,146975,1889,147,106086.2
+2026-10-15,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,21645.45,120252,1546,120,86797.8
+2026-10-15,Prospecting | Broad,Prospecting | Kolkata,Kolkata,22676.5,125980,1619,113,81907.1
+2026-10-15,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,18553.5,103075,1325,93,67014.9
+2026-10-15,Prospecting | Broad,Prospecting | Jaipur,Jaipur,17007.1,94483,1214,97,70489.1
+2026-10-15,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,13914.9,77304,993,80,57672.9
+2026-10-15,Prospecting | Broad,Prospecting | Lucknow,Lucknow,15117.85,83988,1079,73,52780.75
+2026-10-15,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,12369.15,68717,883,59,43184.25
+2026-10-15,Prospecting | Broad,Prospecting | Indore,Indore,13228.05,73489,944,79,57283.05
+2026-10-15,Retargeting | 30d visitors,Retargeting | Indore,Indore,10822.95,60127,773,65,46867.95
+2026-10-15,Prospecting | Broad,Prospecting | Kochi,Kochi,11338.25,62990,809,64,46321.0
+2026-10-15,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,9276.75,51537,662,52,37899.0
+2026-10-16,Prospecting | Broad,Prospecting | Mumbai,Mumbai,61143.5,339686,4367,325,234282.95
+2026-10-16,Retargeting | 30d visitors,Retargeting | Mumbai,Mumbai,50026.5,277925,3573,266,191686.05
+2026-10-16,Prospecting | Broad,Prospecting | Delhi,Delhi,57547.05,319705,4110,314,226383.3
+2026-10-16,Retargeting | 30d visitors,Retargeting | Delhi,Delhi,47083.95,261577,3363,257,185222.7
+2026-10-16,Prospecting | Broad,Prospecting | Bengaluru,Bengaluru,53950.05,299722,3853,332,239208.75
+2026-10-16,Retargeting | 30d visitors,Retargeting | Bengaluru,Bengaluru,44140.95,245227,3152,271,195716.25
+2026-10-16,Prospecting | Broad,Prospecting | Hyderabad,Hyderabad,32370.25,179834,2312,186,134035.55
+2026-10-16,Retargeting | 30d visitors,Retargeting | Hyderabad,Hyderabad,26484.75,147137,1891,152,109665.45
+2026-10-16,Prospecting | Broad,Prospecting | Chennai,Chennai,25176.8,139871,1798,139,100565.3
+2026-10-16,Retargeting | 30d visitors,Retargeting | Chennai,Chennai,20599.2,114440,1471,114,82280.7
+2026-10-16,Prospecting | Broad,Prospecting | Kolkata,Kolkata,21580.35,119890,1541,116,83939.9
+2026-10-16,Retargeting | 30d visitors,Retargeting | Kolkata,Kolkata,17656.65,98092,1261,95,68678.1
+2026-10-16,Prospecting | Broad,Prospecting | Jaipur,Jaipur,16184.85,89915,1156,91,65731.05
+2026-10-16,Retargeting | 30d visitors,Retargeting | Jaipur,Jaipur,13242.15,73567,945,74,53779.95
+2026-10-16,Prospecting | Broad,Prospecting | Lucknow,Lucknow,14386.9,79927,1027,85,61428.95
+2026-10-16,Retargeting | 30d visitors,Retargeting | Lucknow,Lucknow,11771.1,65394,840,69,50260.05
+2026-10-16,Prospecting | Broad,Prospecting | Indore,Indore,12588.4,69935,899,72,52533.25
+2026-10-16,Retargeting | 30d visitors,Retargeting | Indore,Indore,10299.6,57220,735,59,42981.75
+2026-10-16,Prospecting | Broad,Prospecting | Kochi,Kochi,10789.9,59943,770,55,39725.4
+2026-10-16,Retargeting | 30d visitors,Retargeting | Kochi,Kochi,8828.1,49045,630,45,32502.6

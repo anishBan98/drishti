@@ -1,0 +1,9 @@
+kpi,period,target
+net_revenue_inr,month,200000000.0
+true_roas,month,2.2
+cac_new_buyer_inr,month,850.0
+ltv_to_cac,month,3.0
+repeat_90d,month,0.28
+rating,month,4.2
+reply_rate,month,0.6
+search_purchase_share_vitamin_c,week,0.095

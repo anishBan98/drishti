@@ -1,0 +1,10 @@
+source,file_column,drishti_field
+shopify_orders,Name,order_id
+shopify_orders,Created at,created_at
+shopify_orders,Total,net_inr
+amazon_business_report,(Child) ASIN,asin
+amazon_business_report,Ordered Product Sales,net_revenue_inr
+meta_ads,Amount spent (INR),spend_inr
+meta_ads,Purchases conversion value,platform_claimed_revenue_inr
+google_ads,Cost,spend_inr
+google_ads,Conv. value,platform_claimed_revenue_inr

@@ -1,0 +1,190 @@
+{
+  "generated_for": "Lumora Skin (fictional)",
+  "today": "2026-10-17",
+  "windows": {
+    "last_28_days": [
+      "2026-09-19",
+      "2026-10-16"
+    ],
+    "prior_28_days": [
+      "2026-08-22",
+      "2026-09-18"
+    ],
+    "this_week": [
+      "2026-10-05",
+      "2026-10-11"
+    ],
+    "prior_week": [
+      "2026-09-28",
+      "2026-10-04"
+    ]
+  },
+  "last_28_days": {
+    "net_revenue_inr": 181325870.0,
+    "orders": 283267,
+    "units": 381221,
+    "aov_inr": 640.12,
+    "return_rate": 0.0554
+  },
+  "prior_28_days": {
+    "net_revenue_inr": 185992565.0,
+    "orders": 290915,
+    "units": 391476,
+    "aov_inr": 639.34,
+    "return_rate": 0.052
+  },
+  "this_week": {
+    "net_revenue_inr": 41358802.0,
+    "orders": 64490,
+    "units": 86771,
+    "aov_inr": 641.32,
+    "return_rate": 0.0572
+  },
+  "prior_week": {
+    "net_revenue_inr": 43277221.0,
+    "orders": 67556,
+    "units": 90939,
+    "aov_inr": 640.61,
+    "return_rate": 0.0562
+  },
+  "last_28_days_by_channel": {
+    "own_site": {
+      "net_revenue_inr": 46844907.0,
+      "orders": 60111,
+      "units": 80934,
+      "aov_inr": 779.31,
+      "return_rate": 0.051
+    },
+    "amazon": {
+      "net_revenue_inr": 60129527.0,
+      "orders": 96976,
+      "units": 130445,
+      "aov_inr": 620.05,
+      "return_rate": 0.0851
+    },
+    "quick_commerce": {
+      "net_revenue_inr": 41721256.0,
+      "orders": 75404,
+      "units": 101585,
+      "aov_inr": 553.3,
+      "return_rate": 0.0106
+    },
+    "nykaa": {
+      "net_revenue_inr": 18055575.0,
+      "orders": 24800,
+      "units": 33371,
+      "aov_inr": 728.05,
+      "return_rate": 0.0417
+    },
+    "flipkart": {
+      "net_revenue_inr": 14574605.0,
+      "orders": 25976,
+      "units": 34886,
+      "aov_inr": 561.08,
+      "return_rate": 0.0981
+    }
+  },
+  "last_28_days_media": {
+    "meta": {
+      "spend_inr": 17486697.0,
+      "platform_claimed_revenue_inr": 70209135.0,
+      "claimed_roas": 4.015,
+      "true_roas_used_to_generate": 1.53
+    },
+    "google": {
+      "spend_inr": 8797595.0,
+      "platform_claimed_revenue_inr": 44505156.0,
+      "claimed_roas": 5.059,
+      "true_roas_used_to_generate": 1.65
+    },
+    "amazon_ads": {
+      "spend_inr": 12354657.0,
+      "platform_claimed_revenue_inr": 54897592.0,
+      "claimed_roas": 4.443,
+      "true_roas_used_to_generate": 2.17
+    },
+    "flipkart_ads": {
+      "spend_inr": 3424198.0,
+      "platform_claimed_revenue_inr": 11888452.0,
+      "claimed_roas": 3.472,
+      "true_roas_used_to_generate": 1.5
+    },
+    "qc_ads": {
+      "spend_inr": 7785674.0,
+      "platform_claimed_revenue_inr": 36212313.0,
+      "claimed_roas": 4.651,
+      "true_roas_used_to_generate": 2.93
+    },
+    "creators": {
+      "spend_inr": 3059000.0,
+      "platform_claimed_revenue_inr": 2480382.0,
+      "claimed_roas": 0.811,
+      "true_roas_used_to_generate": 2.6
+    }
+  },
+  "last_28_days_total_spend_inr": 52907821.0,
+  "last_28_days_total_claimed_revenue_inr": 220193030.0,
+  "own_site_sample": {
+    "customers": 6350,
+    "orders": 8807,
+    "orders_last_28_days": 284,
+    "buyers_last_28_days": 264,
+    "repeat_customers_share_12m": 0.2408,
+    "cod_share": 0.3967,
+    "rto_share_of_cod": 0.1694
+  },
+  "reviews": {
+    "count_last_90_days": 4791,
+    "avg_rating_last_90_days": 3.718,
+    "pump_negative_last_30_days": 142,
+    "reply_rate": 0.1799
+  },
+  "planted_effects": {
+    "meta_holdout_cities_from": [
+      "Pune",
+      "Ahmedabad",
+      "2026-09-26"
+    ],
+    "brand_search_pause_cities_from": [
+      "Jaipur",
+      "Lucknow",
+      "Indore",
+      "Kochi",
+      "2026-10-11"
+    ],
+    "rival_b_price_cut": [
+      "2026-10-02",
+      -0.182
+    ],
+    "mumbai_quick_commerce_stockout": [
+      "2026-10-05",
+      "2026-10-07"
+    ],
+    "pump_defect_from": "2026-09-21",
+    "flipkart_ads_file_missing_after": "2026-10-11",
+    "creator_sheet_missing_posts_after": "2026-10-05",
+    "true_roas": {
+      "meta": 1.53,
+      "google": 1.65,
+      "amazon_ads": 2.17,
+      "flipkart_ads": 1.5,
+      "qc_ads": 2.93,
+      "creators": 2.6
+    },
+    "claimed_roas": {
+      "meta": 4.0,
+      "google": 5.06,
+      "amazon_ads": 4.42,
+      "flipkart_ads": 3.5,
+      "qc_ads": 4.67,
+      "creators": 0.8
+    }
+  },
+  "tolerances": {
+    "sums": "exact to the rupee",
+    "ratios": "abs difference <= 0.001",
+    "incrementality": "Meta holdout (Pune, Ahmedabad vs synthetic control, 26 Sep to 16 Oct): point estimate of real revenue per rupee between 0.6 and 2.4 (planted 1.53) and the 90% interval must contain the estimate; QC ads natural experiment (Mumbai stockout) estimate positive; all channel true ROAS estimates below their claimed ROAS except creators (above claimed).",
+    "clusters": "k-means on own_site_orders_sample with k=5: the cluster with the highest LTV:CAC has mean orders/customer >= 2.5 and mean AOV >= 850; the cluster flagged as problem has discount share >= 0.6 and COD share >= 0.6. Exact membership is not tested.",
+    "reviews": "pump aspect share of negative mentions in the last 30 days > 25%; aspect classifier agreement with keyword truth >= 85% on reviews.csv"
+  }
+}

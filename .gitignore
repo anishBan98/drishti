@@ -1,0 +1,40 @@
+# dependencies and build output
+node_modules/
+dist/
+build/
+.wrangler/
+.turbo/
+coverage/
+*.tsbuildinfo
+playwright-report/
+test-results/
+blob-report/
+.vite/
+
+# generated demo snapshot (build artifact, not committed: docs/06 §6)
+apps/web/public/demo/snapshot.json
+
+# local env and secrets (never commit)
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+*.secret*
+*.pem
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# raw build-pack inputs kept locally (their contents live in docs/, design/, brand/, sample-data/)
+/PreQL-Drishti-BuildPack.zip
+/dashboard ui/
+/logo/
+/Drishti-Workspace-Template.xlsx
+
+# local Claude Code app config
+.claude/

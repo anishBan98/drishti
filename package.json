@@ -1,0 +1,46 @@
+{
+  "name": "drishti",
+  "version": "0.0.0",
+  "private": true,
+  "description": "PreQL Presents Drishti: a free, self-hosted marketing intelligence workspace for Indian D2C brands.",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "prepare": "simple-git-hooks",
+    "dev": "pnpm --parallel --filter @drishti/web --filter @drishti/worker dev",
+    "build": "pnpm -r run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "pnpm --filter @drishti/e2e test",
+    "test:visual": "pnpm --filter @drishti/e2e test:visual",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "typecheck": "pnpm -r run typecheck",
+    "check:files": "node scripts/precommit-check.mjs --all",
+    "deploy:staging": "pnpm --filter @drishti/worker deploy:staging",
+    "deploy:prod": "pnpm --filter @drishti/worker deploy:prod",
+    "db:migrate:staging": "pnpm --filter @drishti/worker db:migrate:staging",
+    "db:migrate:prod": "pnpm --filter @drishti/worker db:migrate:prod",
+    "seed:shopify": "tsx scripts/seed-shopify.ts"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "node scripts/precommit-check.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "22.20.5",
+    "eslint": "10.13.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "globals": "17.13.0",
+    "prettier": "3.9.10",
+    "simple-git-hooks": "2.14.0",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.2",
+    "vitest": "4.1.12"
+  }
+}

@@ -1,0 +1,5 @@
+source,method,last_received_at,status,rows_last_sync
+shopify,api,2026-10-17T07:10:00+05:30,ok,412
+amazon_business_report,drive_inbox,2026-10-17T07:02:00+05:30,ok,180
+flipkart_ads,drive_inbox,2026-10-11T07:00:00+05:30,late,0
+creators,sheet,2026-10-05T18:00:00+05:30,late,0

@@ -1,0 +1,15 @@
+key,value,notes
+brand_name,Lumora Skin,Shown in the sidebar
+currency,INR,Only INR in v1
+timezone,Asia/Kolkata,Used for day boundaries
+week_starts_on,Monday,This week = Monday to Sunday
+fiscal_year_start_month,4,April
+approval_threshold_inr,1000000,Budget actions above this need an Approver
+sync_every_hours,6,"Scheduled sync frequency: 3, 6, 12 or 24"
+target_cac_inr,850,New-buyer cost target
+target_ltv_to_cac,3,Value to cost target
+target_reply_rate,0.6,Share of reviews answered
+category_label,Vitamin C serums,Market screen title
+privacy_mode_default,on,Hide customer names and phones
+notify_slack_webhook,,"Optional: Slack incoming webhook URL (store in Drishti secrets, not here, in production)"
+team_calendar_id,,Optional: Google Calendar ID shared with the service account

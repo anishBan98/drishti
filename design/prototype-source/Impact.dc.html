@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Drishti — Impact and ROI</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;display=swap">
+<style>
+body{margin:0;background:#F4F6FB}
+.dr-root{--bg:#F4F6FB;--surface:#FFFFFF;--sunken:#F4F6FB;--ink:#151A30;--ink-2:#3A4160;--muted:#4A5172;--muted-2:#6B7290;--line:#E4E7F0;--line-2:#DDE1EC;--line-3:#C9CFE3;--line-soft:#F0F2F7;--chip:#EEF0F6;--plot:#FBFCFE;--sel:#F1F4FF;--strong:#141B45;--link:#2A4BC4;--primary:#1E2A6E;--primary-2:#26337D;--side:#141B45;--good:#0B7A3E;--good-bg:#E5F5EC;--good-soft:#EFF8F2;--good-chip:#CDEBD8;--good-strong:#0B6332;--good-line:#8FCDA8;--bad:#B42318;--bad-bg:#FDECEB;--bad-soft:#FFF3F1;--bad-chip:#FBD9D5;--bad-strong:#9E1C12;--warn:#8A5300;--warn-bg:#FFF4DB;--warn-soft:#FFF8EB;--warn-chip:#FDE7BF;--amz-bg:#FDEEE7;--amz-ink:#8A3412;--qc-bg:#E3F6EE;--qc-ink:#0E6145;--own-bg:#E7F0FB;--own-ink:#1A4E8F;--blue-text:#1F5FB0;--orange-text:#C04A0A}
+.dr-root[data-theme="dark"]{--bg:#0A0F1F;--surface:#121933;--sunken:#1A2241;--ink:#E9ECF8;--ink-2:#C4CAE2;--muted:#9AA3C6;--muted-2:#8189AD;--line:#252E50;--line-2:#303A60;--line-3:#3A4570;--line-soft:#1B2340;--chip:#222B4D;--plot:#0F1630;--sel:#1E2A57;--strong:#E9ECF8;--link:#8FA6FF;--primary:#3346B8;--primary-2:#4053C4;--side:#0E1430;--good:#45D483;--good-bg:#123A28;--good-soft:#0F2A1F;--good-chip:#17492F;--good-strong:#5FE39A;--good-line:#2F7A52;--bad:#FF8A7A;--bad-bg:#3D1A1C;--bad-soft:#24141C;--bad-chip:#4A1E22;--bad-strong:#FFA597;--warn:#F2B544;--warn-bg:#3A2C10;--warn-soft:#221C10;--warn-chip:#4A3812;--amz-bg:#3A2216;--amz-ink:#FFA77A;--qc-bg:#10362A;--qc-ink:#5EE0B0;--own-bg:#172A47;--own-ink:#8DBBFF;--blue-text:#7DB2F5;--orange-text:#FF9450;color-scheme:dark}
+
+.dr-root a{color:var(--link)}.dr-root a:hover{color:var(--strong)}
+button:focus-visible,a:focus-visible{outline:2px solid #2A78D6;outline-offset:2px}
+</style>
+</helmet>
+<div class="dr-root" data-theme="{{theme}}" style="width: 1440px; height: 900px; overflow: hidden; display: grid; grid-template-columns: 188px minmax(0, 1fr); background: var(--bg); color: var(--ink); font-family: 'Archivo', 'Helvetica Neue', Helvetica, sans-serif">
+
+<nav aria-label="Drishti sections" style="box-sizing: border-box; padding: 24px 12px 20px; display: flex; flex-direction: column; gap: 2px; background: var(--side)">
+<div style="padding: 0 4px 18px 6px; display: flex; align-items: center; gap: 8px">
+<svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true"><g transform="translate(0 -6)"><path d="M18 108 Q100 26 182 108" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round"></path><path d="M18 108 Q92 168 150 118 L184 80" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="100" cy="104" r="25" fill="#FF2E2E"></circle></g></svg>
+<div style="display: flex; flex-direction: column">
+<div style="font-size: 28px; font-weight: 900; letter-spacing: -0.045em; line-height: 1; color: #FFFFFF">drishti<span style="color: #FF2E2E">.</span></div>
+<div style="margin-top: 3px; font-size: 12px; color: #B9C1E3">by PreQL</div>
+</div>
+</div>
+<button type="button" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; margin: 0 0 14px; padding: 10px; border: 0; border-radius: 12px; background: #222B5C; color: #FFFFFF; font: inherit; text-align: left; cursor: pointer">
+<span style="font-size: 15px; font-weight: 700">Lumora Skin ▾</span>
+<span style="font-size: 12px; color: #B9C1E3">Demo, fictional data</span>
+</button>
+<a href="Main.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">This week</a>
+<a href="Actions.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Actions</a>
+<a href="Performance.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Performance</a>
+<a aria-current="page" href="Impact.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 700; color: #141B45; background: #FFFFFF">Impact and ROI</a>
+<a href="Market.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Market</a>
+<a href="Customers.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Customers</a>
+<a href="Voice.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Customer voice</a>
+<a href="Data.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Data sources</a>
+<div role="group" aria-label="Colour theme" style="margin: auto 10px 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; padding: 3px; border-radius: 999px; background: #222B5C">
+<button type="button" onClick="{{setLight}}" aria-pressed="{{isLight}}" style="min-height: 34px; border: 0; border-radius: 999px; background: {{lightBg}}; color: {{lightFg}}; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer">☀ Light</button>
+<button type="button" onClick="{{setDark}}" aria-pressed="{{isDark}}" style="min-height: 34px; border: 0; border-radius: 999px; background: {{darkBg}}; color: {{darkFg}}; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer">☾ Dark</button>
+</div>
+<p style="margin: 0; padding: 0 10px; font-size: 12px; line-height: 1.45; color: #B9C1E3">Your data stays in your own accounts. Synced today, 7:10 am.</p>
+</nav>
+
+<main style="box-sizing: border-box; height: 900px; min-width: 0; padding: 20px 24px; display: grid; grid-template-rows: 50px 124px minmax(0, 1fr); gap: 14px">
+
+<header style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; align-items: baseline; gap: 14px">
+<h1 style="margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.02em">Impact and ROI</h1>
+<span style="font-size: 16px; color: var(--muted)">Last 28 days. Real sales = sales that would not have happened without the ad.</span>
+</div>
+<div style="display: flex; gap: 8px">
+<button type="button" style="min-height: 42px; padding: 0 16px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; cursor: pointer">Last 28 days ▾</button>
+<button type="button" style="min-height: 42px; padding: 0 16px; border: 0; border-radius: 999px; background: var(--primary); color: #FFFFFF; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">Plan a test</button>
+</div>
+</header>
+
+<section aria-label="Summary" style="display: grid; grid-template-columns: 268px repeat(6, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 20px; overflow: hidden">
+<div style="background: var(--bad-soft); padding: 14px 20px; display: flex; flex-direction: column; justify-content: center; gap: 10px">
+<span style="align-self: flex-start; padding: 4px 12px; border-radius: 999px; background: var(--bad-chip); color: var(--bad-strong); font-size: 13px; font-weight: 700">▼ Over-credited</span>
+<p style="margin: 0; font-size: 17px; line-height: 1.35; font-weight: 700; text-wrap: pretty">Platforms claim ₹22.5 Cr in an ₹18.4 Cr month. Ads really added ₹11.0 Cr.</p>
+</div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Ad spend</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">₹5.6 Cr</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--chip); color: var(--muted); font-size: 13px; font-weight: 700; white-space: nowrap">30% of revenue</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Claimed ROAS</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap; color: var(--muted-2)">4.0x</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--chip); color: var(--muted); font-size: 13px; font-weight: 700; white-space: nowrap">Platform reports</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">True ROAS</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">2.0x</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--bad-bg); color: var(--bad); font-size: 13px; font-weight: 700; white-space: nowrap">▼ 0.1</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Real ad sales</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">₹11.0 Cr</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--chip); color: var(--muted); font-size: 13px; font-weight: 700; white-space: nowrap">60% of revenue</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">CAC, new buyers</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">₹888</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--bad-bg); color: var(--bad); font-size: 13px; font-weight: 700; white-space: nowrap">▲ 4.0%</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Value to CAC</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">2.6x</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--warn-bg); color: var(--warn); font-size: 13px; font-weight: 700; white-space: nowrap">Target 3x</span></div>
+</section>
+
+<div style="min-height: 0; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 14px">
+
+<div style="min-height: 0; display: grid; grid-template-rows: minmax(0, 1.15fr) minmax(0, 1fr); gap: 14px">
+<section aria-label="Claimed against real sales" style="min-height: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 18px 22px 14px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<h2 style="margin: 0; font-size: 19px; font-weight: 700">Sales per ₹100 of ad spend</h2>
+<div style="display: flex; gap: 16px; font-size: 14px; color: var(--ink-2)">
+<span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 12px; height: 12px; border-radius: 3px; background: var(--line-3)"></span>Platform claims</span>
+<span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 12px; height: 12px; border-radius: 3px; background: var(--primary)"></span>Real, measured</span>
+</div>
+</div>
+<div style="flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
+<button type="button" onClick="{{r.pick}}" aria-pressed="{{r.selected}}" style="flex: 1 1 0; min-height: 40px; display: grid; grid-template-columns: 150px minmax(0, 1fr) 96px; gap: 14px; align-items: center; width: 100%; padding: 0 10px; border: 0; border-radius: 12px; background: {{r.bg}}; color: var(--ink); font: inherit; text-align: left; cursor: pointer">
+<span style="font-size: 15px; font-weight: 700">{{r.name}}</span>
+<span style="display: flex; flex-direction: column; gap: 3px">
+<span title="{{r.claimTip}}" style="height: 11px; width: {{r.claimW}}; border-radius: 0 4px 4px 0; background: var(--line-3)"></span>
+<span title="{{r.realTip}}" style="height: 11px; width: {{r.realW}}; border-radius: 0 4px 4px 0; background: var(--primary)"></span>
+</span>
+<span style="display: flex; flex-direction: column; align-items: flex-end; line-height: 1.15">
+<span style="font-size: 13px; color: var(--muted-2)">₹{{r.claim}}</span>
+<span style="font-size: 16px; font-weight: 700; color: {{r.realColor}}">₹{{r.real}}</span>
+</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<section aria-label="Acquisition cost and payback" style="min-height: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 16px 12px 10px; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0 10px 8px">
+<h2 style="margin: 0; font-size: 19px; font-weight: 700">New-buyer cost and payback, own site</h2>
+<span style="font-size: 13px; color: var(--muted)">Target: value 3x the cost</span>
+</div>
+<div style="display: grid; grid-template-columns: 1.3fr repeat(4, minmax(0, 1fr)); gap: 8px; padding: 6px 10px; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--line)">
+<div>Source</div><div style="text-align: right">Cost per buyer</div><div style="text-align: right">12-month value</div><div style="text-align: right">Value to cost</div><div style="text-align: right">Payback</div>
+</div>
+<div style="flex: 1 1 auto; display: flex; flex-direction: column; font-size: 15px; font-variant-numeric: tabular-nums">
+<div style="flex: 1 1 0; display: grid; grid-template-columns: 1.3fr repeat(4, minmax(0, 1fr)); gap: 8px; align-items: center; padding: 0 10px; border-bottom: 1px solid var(--line-soft)"><span style="font-weight: 700">Meta</span><span style="text-align: right">₹1,050</span><span style="text-align: right">₹1,680</span><span style="justify-self: end; padding: 2px 9px; border-radius: 999px; background: var(--bad-bg); color: var(--bad); font-size: 13px; font-weight: 700">1.6x</span><span style="text-align: right; color: var(--bad); font-weight: 700">8.2 mo</span></div>
+<div style="flex: 1 1 0; display: grid; grid-template-columns: 1.3fr repeat(4, minmax(0, 1fr)); gap: 8px; align-items: center; padding: 0 10px; border-bottom: 1px solid var(--line-soft)"><span style="font-weight: 700">Google</span><span style="text-align: right">₹720</span><span style="text-align: right">₹1,730</span><span style="justify-self: end; padding: 2px 9px; border-radius: 999px; background: var(--warn-bg); color: var(--warn); font-size: 13px; font-weight: 700">2.4x</span><span style="text-align: right">5.1 mo</span></div>
+<div style="flex: 1 1 0; display: grid; grid-template-columns: 1.3fr repeat(4, minmax(0, 1fr)); gap: 8px; align-items: center; padding: 0 10px; border-bottom: 1px solid var(--line-soft)"><span style="font-weight: 700">Creators</span><span style="text-align: right">₹610</span><span style="text-align: right">₹1,890</span><span style="justify-self: end; padding: 2px 9px; border-radius: 999px; background: var(--good-bg); color: var(--good); font-size: 13px; font-weight: 700">3.1x</span><span style="text-align: right; color: var(--good); font-weight: 700">3.6 mo</span></div>
+<div style="flex: 1 1 0; display: grid; grid-template-columns: 1.3fr repeat(4, minmax(0, 1fr)); gap: 8px; align-items: center; padding: 0 10px"><span style="font-weight: 700">Referrals</span><span style="text-align: right">₹240</span><span style="text-align: right">₹1,250</span><span style="justify-self: end; padding: 2px 9px; border-radius: 999px; background: var(--good-bg); color: var(--good); font-size: 13px; font-weight: 700">5.2x</span><span style="text-align: right; color: var(--good); font-weight: 700">1.9 mo</span></div>
+</div>
+</section>
+</div>
+
+<div style="min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px">
+<section aria-label="What this means" style="background: var(--primary); color: #FFFFFF; border-radius: 20px; padding: 18px 22px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 700; color: #C9D1F2">What this means for {{sel.name}}</h2>
+<span style="padding: 2px 10px; border-radius: 999px; background: rgba(255,255,255,0.14); font-size: 13px; font-weight: 700">Confidence {{sel.conf}}</span>
+</div>
+<p style="margin: 0; font-size: 18px; line-height: 1.4; font-weight: 600; text-wrap: pretty">{{sel.headline}}</p>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: rgba(255,255,255,0.16); border-radius: 12px; overflow: hidden">
+<div style="background: var(--primary-2); padding: 10px 12px"><div style="font-size: 12px; color: #C9D1F2">Spend</div><div style="font-size: 18px; font-weight: 700">{{sel.spend}}</div></div>
+<div style="background: var(--primary-2); padding: 10px 12px"><div style="font-size: 12px; color: #C9D1F2">Claimed sales</div><div style="font-size: 18px; font-weight: 700">{{sel.claimed}}</div></div>
+<div style="background: var(--primary-2); padding: 10px 12px"><div style="font-size: 12px; color: #C9D1F2">Real sales</div><div style="font-size: 18px; font-weight: 700">{{sel.realTotal}}</div></div>
+</div>
+<div style="font-size: 13px; line-height: 1.45; color: #DCE2F7">Evidence: {{sel.evidence}}</div>
+</section>
+
+<section aria-label="Suggested actions" style="min-height: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<h2 style="margin: 0; font-size: 19px; font-weight: 700">Suggested actions</h2>
+<span style="font-size: 13px; color: var(--muted)">For {{sel.name}} · <a href="Actions.dc.html" style="font-weight: 600">Action log</a></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{actions}}" as="a" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border-radius: 14px; background: var(--sunken)">
+<div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline">
+<span style="font-size: 16px; font-weight: 700; line-height: 1.3">{{a.title}}</span>
+<span style="padding: 2px 9px; border-radius: 999px; background: var(--good-bg); color: var(--good); font-size: 13px; font-weight: 700; white-space: nowrap">{{a.impact}}</span>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.45; color: var(--ink-2)">{{a.why}}</p>
+<div style="display: flex; gap: 8px; align-items: center">
+<button type="button" onClick="{{a.run}}" style="min-height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: {{a.runBg}}; color: {{a.runFg}}; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">{{a.runLabel}}</button>
+<button type="button" style="min-height: 40px; padding: 0 16px; border: 1px solid var(--line-3); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer">Assign</button>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px; padding-top: 12px; border-top: 1px solid var(--line)">
+<div style="display: flex; justify-content: space-between; font-size: 14px"><span style="font-weight: 700">Holdout test, Pune and Ahmedabad</span><span style="color: var(--muted)">Day 19 of 28</span></div>
+<div style="height: 8px; border-radius: 999px; background: var(--line); overflow: hidden"><div style="width: 68%; height: 100%; background: #2A78D6"></div></div>
+<div style="font-size: 13px; color: var(--muted)">Readout on 26 Oct. Meta and Google numbers firm up after it.</div>
+</div>
+</section>
+</div>
+
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  static initTheme() {
+    try { const t = localStorage.getItem('drishti-theme'); if (t === 'light' || t === 'dark') return t; } catch (e) {}
+    try { return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; } catch (e) { return 'light'; }
+  }
+  setTheme(t) {
+    try { localStorage.setItem('drishti-theme', t); } catch (e) {}
+    this.setState({ theme: t });
+  }
+  themeVals() {
+    const dark = this.state.theme === 'dark';
+    return {
+      theme: dark ? 'dark' : 'light', isLight: dark ? 'false' : 'true', isDark: dark ? 'true' : 'false',
+      lightBg: dark ? 'transparent' : '#FFFFFF', lightFg: dark ? '#B9C1E3' : '#141B45',
+      darkBg: dark ? '#FFFFFF' : 'transparent', darkFg: dark ? '#141B45' : '#B9C1E3',
+      setLight: () => this.setTheme('light'), setDark: () => this.setTheme('dark')
+    };
+  }
+  constructor(props) {
+    super(props);
+    this.state = { theme: Component.initTheme(), pick: 0, done: {} };
+  }
+  renderVals() {
+    const data = [
+      { name: 'Meta', claim: 400, real: 153, conf: 'high', spend: '₹1.90 Cr', claimed: '₹7.6 Cr', realTotal: '₹2.9 Cr', headline: 'Meta claims ₹4 for every ₹1; the real figure is ₹1.53. Most retargeting sales would have happened anyway.', evidence: 'three natural experiments and a live holdout in Pune and Ahmedabad.', actions: [
+        { title: 'Cut prospecting by ₹12 L a month', impact: '+₹4 L margin', why: 'Prospecting brings mostly one-time trialists with a value-to-cost of 0.4x.', runLabel: 'Apply cut', doneLabel: 'Cut applied' },
+        { title: 'Extend the holdout test to 28 days', impact: 'Confidence', why: 'Nine more days narrows the estimate from ±₹40 to ±₹20 per ₹100.', runLabel: 'Extend test', doneLabel: 'Test extended' } ] },
+      { name: 'Google', claim: 506, real: 165, conf: 'medium', spend: '₹0.85 Cr', claimed: '₹4.3 Cr', realTotal: '₹1.4 Cr', headline: 'Google over-claims the most. Brand search mostly catches people who were already looking for you.', evidence: 'a two-week brand-search pause in Jaipur in August.', actions: [
+        { title: 'Pause brand search in 4 test cities', impact: 'Test', why: 'Confirms how much brand search really adds before a national cut.', runLabel: 'Launch test', doneLabel: 'Test running' },
+        { title: 'Move ₹18 L to quick-commerce search', impact: '+₹23 L/mo', why: 'Quick commerce returns ₹293 per ₹100 against ₹165 here.', runLabel: 'Apply shift', doneLabel: 'Shift applied' } ] },
+      { name: 'Amazon Ads', claim: 442, real: 217, conf: 'medium', spend: '₹1.20 Cr', claimed: '₹5.3 Cr', realTotal: '₹2.6 Cr', headline: 'Solid real return, but ads on your own brand name take sales you would win organically.', evidence: 'weekly bid changes compared with organic rank and sales.', actions: [
+        { title: 'Lower bids on brand-name keywords 30%', impact: '+₹3 L margin', why: 'You rank first organically for your brand name on 9 of 10 searches.', runLabel: 'Apply bids', doneLabel: 'Bids lowered' },
+        { title: 'Target Rival B’s product pages', impact: '+₹5 L/mo', why: 'Shoppers comparing Rival B are your likeliest switchers after the price match.', runLabel: 'Create campaign', doneLabel: 'Campaign live' } ] },
+      { name: 'Flipkart Ads', claim: 350, real: 150, conf: 'low', spend: '₹0.40 Cr', claimed: '₹1.4 Cr', realTotal: '₹0.6 Cr', headline: 'The weakest real return of any channel, and the least evidence behind it.', evidence: 'one budget change in September; treat as indicative.', actions: [
+        { title: 'Cut Flipkart ads by ₹5 L a month', impact: '+₹2 L margin', why: 'Every ₹100 returns ₹150; quick commerce returns almost double.', runLabel: 'Reduce budget', doneLabel: 'Budget cut' },
+        { title: 'Run a 3-week geo test first', impact: 'Confidence', why: 'Pause in 5 states to confirm the estimate before a larger cut.', runLabel: 'Launch test', doneLabel: 'Test running' } ] },
+      { name: 'Quick com. ads', claim: 467, real: 293, conf: 'high', spend: '₹0.75 Cr', claimed: '₹3.5 Cr', realTotal: '₹2.2 Cr', headline: 'Your best real return. The only thing holding it back is stock in the dark stores.', evidence: 'stockout weeks across 120 dark stores act as natural holdouts.', actions: [
+        { title: 'Add ₹18 L to Blinkit and Zepto search', impact: '+₹40 L/mo', why: 'Returns stay above ₹250 per ₹100 up to roughly ₹1.1 Cr a month.', runLabel: 'Approve budget', doneLabel: 'Budget approved' },
+        { title: 'Auto-pause ads in out-of-stock stores', impact: '₹1 L/wk saved', why: 'Ads spent ₹1.1 L last week in stores with nothing to sell.', runLabel: 'Turn on', doneLabel: 'Auto-pause on' } ] },
+      { name: 'Creators', claim: 80, real: 260, conf: 'medium', spend: '₹0.50 Cr', claimed: '₹0.4 Cr', realTotal: '₹1.3 Cr', headline: 'Under-credited by three times: links catch a fraction, but branded search and quick-commerce sales jump after each post.', evidence: 'sales and search lifts in the states each creator reaches, after 14 posts.', actions: [
+        { title: 'Add ₹12 L to creator partnerships', impact: '+₹31 L/mo', why: 'Real return of ₹260 per ₹100, with the best value-to-cost of any paid source.', runLabel: 'Approve budget', doneLabel: 'Budget approved' },
+        { title: 'Brief 6 creators on the sunscreen', impact: '+₹8 L/mo', why: 'Sunscreen is growing fastest and has no creator content yet.', runLabel: 'Send brief', doneLabel: 'Brief sent' } ] }
+    ];
+    const p = this.state.pick;
+    const done = this.state.done;
+    const max = 520;
+    const rows = data.map((d, i) => ({
+      name: d.name,
+      claim: d.claim,
+      real: d.real,
+      claimW: (d.claim / max * 100).toFixed(1) + '%',
+      realW: (d.real / max * 100).toFixed(1) + '%',
+      claimTip: d.name + ' claims ₹' + d.claim + ' of sales per ₹100',
+      realTip: d.name + ' really adds ₹' + d.real + ' per ₹100',
+      realColor: d.real >= 250 ? 'var(--good)' : (d.real < 160 ? 'var(--bad)' : 'var(--ink)'),
+      selected: i === p ? 'true' : 'false',
+      bg: i === p ? 'var(--sel)' : 'transparent',
+      pick: () => this.setState({ pick: i })
+    }));
+    const sel = data[p];
+    const actions = sel.actions.map((a, j) => {
+      const key = p + '-' + j;
+      const isDone = !!done[key];
+      return {
+        ...a,
+        runLabel: isDone ? '✓ ' + a.doneLabel : a.runLabel,
+        runBg: isDone ? 'var(--good-bg)' : 'var(--primary)',
+        runFg: isDone ? 'var(--good)' : '#FFFFFF',
+        run: () => this.setState({ done: { ...done, [key]: !done[key] } })
+      };
+    });
+    return { ...this.themeVals(),  rows, sel, actions };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Drishti — Customers</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;display=swap">
+<style>
+body{margin:0;background:#F4F6FB}
+.dr-root{--bg:#F4F6FB;--surface:#FFFFFF;--sunken:#F4F6FB;--ink:#151A30;--ink-2:#3A4160;--muted:#4A5172;--muted-2:#6B7290;--line:#E4E7F0;--line-2:#DDE1EC;--line-3:#C9CFE3;--line-soft:#F0F2F7;--chip:#EEF0F6;--plot:#FBFCFE;--sel:#F1F4FF;--strong:#141B45;--link:#2A4BC4;--primary:#1E2A6E;--primary-2:#26337D;--side:#141B45;--good:#0B7A3E;--good-bg:#E5F5EC;--good-soft:#EFF8F2;--good-chip:#CDEBD8;--good-strong:#0B6332;--good-line:#8FCDA8;--bad:#B42318;--bad-bg:#FDECEB;--bad-soft:#FFF3F1;--bad-chip:#FBD9D5;--bad-strong:#9E1C12;--warn:#8A5300;--warn-bg:#FFF4DB;--warn-soft:#FFF8EB;--warn-chip:#FDE7BF;--amz-bg:#FDEEE7;--amz-ink:#8A3412;--qc-bg:#E3F6EE;--qc-ink:#0E6145;--own-bg:#E7F0FB;--own-ink:#1A4E8F;--blue-text:#1F5FB0;--orange-text:#C04A0A}
+.dr-root[data-theme="dark"]{--bg:#0A0F1F;--surface:#121933;--sunken:#1A2241;--ink:#E9ECF8;--ink-2:#C4CAE2;--muted:#9AA3C6;--muted-2:#8189AD;--line:#252E50;--line-2:#303A60;--line-3:#3A4570;--line-soft:#1B2340;--chip:#222B4D;--plot:#0F1630;--sel:#1E2A57;--strong:#E9ECF8;--link:#8FA6FF;--primary:#3346B8;--primary-2:#4053C4;--side:#0E1430;--good:#45D483;--good-bg:#123A28;--good-soft:#0F2A1F;--good-chip:#17492F;--good-strong:#5FE39A;--good-line:#2F7A52;--bad:#FF8A7A;--bad-bg:#3D1A1C;--bad-soft:#24141C;--bad-chip:#4A1E22;--bad-strong:#FFA597;--warn:#F2B544;--warn-bg:#3A2C10;--warn-soft:#221C10;--warn-chip:#4A3812;--amz-bg:#3A2216;--amz-ink:#FFA77A;--qc-bg:#10362A;--qc-ink:#5EE0B0;--own-bg:#172A47;--own-ink:#8DBBFF;--blue-text:#7DB2F5;--orange-text:#FF9450;color-scheme:dark}
+
+.dr-root a{color:var(--link)}.dr-root a:hover{color:var(--strong)}
+button:focus-visible,a:focus-visible{outline:2px solid #2A78D6;outline-offset:2px}
+</style>
+</helmet>
+<div class="dr-root" data-theme="{{theme}}" style="width: 1440px; height: 900px; overflow: hidden; display: grid; grid-template-columns: 188px minmax(0, 1fr); background: var(--bg); color: var(--ink); font-family: 'Archivo', 'Helvetica Neue', Helvetica, sans-serif">
+
+<nav aria-label="Drishti sections" style="box-sizing: border-box; padding: 24px 12px 20px; display: flex; flex-direction: column; gap: 2px; background: var(--side)">
+<div style="padding: 0 4px 18px 6px; display: flex; align-items: center; gap: 8px">
+<svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true"><g transform="translate(0 -6)"><path d="M18 108 Q100 26 182 108" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round"></path><path d="M18 108 Q92 168 150 118 L184 80" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="100" cy="104" r="25" fill="#FF2E2E"></circle></g></svg>
+<div style="display: flex; flex-direction: column">
+<div style="font-size: 28px; font-weight: 900; letter-spacing: -0.045em; line-height: 1; color: #FFFFFF">drishti<span style="color: #FF2E2E">.</span></div>
+<div style="margin-top: 3px; font-size: 12px; color: #B9C1E3">by PreQL</div>
+</div>
+</div>
+<button type="button" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; margin: 0 0 14px; padding: 10px; border: 0; border-radius: 12px; background: #222B5C; color: #FFFFFF; font: inherit; text-align: left; cursor: pointer">
+<span style="font-size: 15px; font-weight: 700">Lumora Skin ▾</span>
+<span style="font-size: 12px; color: #B9C1E3">Demo, fictional data</span>
+</button>
+<a href="Main.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">This week</a>
+<a href="Actions.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Actions</a>
+<a href="Performance.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Performance</a>
+<a href="Impact.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Impact and ROI</a>
+<a href="Market.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Market</a>
+<a aria-current="page" href="Customers.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 700; color: #141B45; background: #FFFFFF">Customers</a>
+<a href="Voice.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Customer voice</a>
+<a href="Data.dc.html" style="display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 500; color: #D3D9F2">Data sources</a>
+<div role="group" aria-label="Colour theme" style="margin: auto 10px 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; padding: 3px; border-radius: 999px; background: #222B5C">
+<button type="button" onClick="{{setLight}}" aria-pressed="{{isLight}}" style="min-height: 34px; border: 0; border-radius: 999px; background: {{lightBg}}; color: {{lightFg}}; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer">☀ Light</button>
+<button type="button" onClick="{{setDark}}" aria-pressed="{{isDark}}" style="min-height: 34px; border: 0; border-radius: 999px; background: {{darkBg}}; color: {{darkFg}}; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer">☾ Dark</button>
+</div>
+<p style="margin: 0; padding: 0 10px; font-size: 12px; line-height: 1.45; color: #B9C1E3">Your data stays in your own accounts. Synced today, 7:10 am.</p>
+</nav>
+
+<main style="box-sizing: border-box; height: 900px; min-width: 0; padding: 20px 24px; display: grid; grid-template-rows: 50px 124px minmax(0, 1fr); gap: 14px">
+
+<header style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; align-items: baseline; gap: 14px">
+<h1 style="margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.02em">Customers</h1>
+<span style="font-size: 16px; color: var(--muted)">1.27 lakh own-site buyers, last 12 months, grouped into 5 types by how they buy.</span>
+</div>
+<div style="display: flex; gap: 8px">
+<button type="button" style="min-height: 42px; padding: 0 16px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; cursor: pointer">Last 12 months ▾</button>
+<button type="button" style="min-height: 42px; padding: 0 16px; border: 0; border-radius: 999px; background: var(--primary); color: #FFFFFF; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">Re-run grouping</button>
+</div>
+</header>
+
+<section aria-label="Summary" style="display: grid; grid-template-columns: 268px repeat(6, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 20px; overflow: hidden">
+<div style="background: var(--warn-soft); padding: 14px 20px; display: flex; flex-direction: column; justify-content: center; gap: 10px">
+<span style="align-self: flex-start; padding: 4px 12px; border-radius: 999px; background: var(--warn-chip); color: var(--warn); font-size: 13px; font-weight: 700">● Mixed base</span>
+<p style="margin: 0; font-size: 17px; line-height: 1.35; font-weight: 700; text-wrap: pretty">Deal Hunters: 31% of buyers, only 17% of revenue.</p>
+</div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Buyers</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">1.27 L</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--good-bg); color: var(--good); font-size: 13px; font-weight: 700; white-space: nowrap">▲ 5.0%</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Bought again</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">34%</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--bad-bg); color: var(--bad); font-size: 13px; font-weight: 700; white-space: nowrap">▼ 2 points</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">12-month value</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">₹1,960</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--good-bg); color: var(--good); font-size: 13px; font-weight: 700; white-space: nowrap">▲ 3.1%</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Loyalists</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap; color: var(--blue-text)">14%</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--good-bg); color: var(--good); font-size: 13px; font-weight: 700; white-space: nowrap">▲ 1.5 points</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Deal Hunters</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap; color: var(--orange-text)">31%</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--bad-bg); color: var(--bad); font-size: 13px; font-weight: 700; white-space: nowrap">▲ 2.0 points</span></div>
+<div style="background: var(--surface); padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 14px; color: var(--muted)">Undelivered</div><div style="font-size: 29px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap">9.2%</div><span style="align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: var(--bad-bg); color: var(--bad); font-size: 13px; font-weight: 700; white-space: nowrap">▲ 1.1 points</span></div>
+</section>
+
+<div style="min-height: 0; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 14px">
+
+<div style="min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) 262px; gap: 14px">
+
+<section aria-label="Customer map" style="min-height: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 16px 22px 12px; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<h2 style="margin: 0; font-size: 19px; font-weight: 700">How each type buys</h2>
+<div style="display: flex; gap: 14px; font-size: 14px; color: var(--ink-2)">
+<span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 11px; height: 11px; border-radius: 50%; background: #2A78D6"></span>Preferred</span>
+<span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 11px; height: 11px; border-radius: 50%; background: #E8590C"></span>Problem</span>
+<span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 11px; height: 11px; border-radius: 50%; background: #9AA3C2"></span>Others</span>
+</div>
+</div>
+<div style="flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: 22px minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) 22px; gap: 4px">
+<div style="writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; font-size: 13px; color: var(--muted)">Average order, ₹300 to ₹1,500</div>
+<div style="position: relative; border-left: 1px solid var(--line-3); border-bottom: 1px solid var(--line-3); background: var(--plot)">
+<div style="position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid var(--chip)"></div>
+<div style="position: absolute; top: 0; bottom: 0; left: 50%; border-left: 1px solid var(--chip)"></div>
+<sc-for list="{{points}}" as="pt" hint-placeholder-count="20">
+<span style="position: absolute; left: {{pt.x}}; top: {{pt.y}}; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: {{pt.c}}; opacity: {{pt.o}}"></span>
+</sc-for>
+<sc-for list="{{segs}}" as="g" hint-placeholder-count="5">
+<button type="button" onClick="{{g.pick}}" aria-pressed="{{g.selected}}" style="position: absolute; left: {{g.cx}}; top: {{g.cy}}; transform: translate(-50%, -50%); display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px; border: {{g.border}}; background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; font-weight: 700; white-space: nowrap; cursor: pointer; box-shadow: 0 2px 6px rgba(20, 27, 69, 0.12)"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{g.c}}"></span>{{g.name}}</button>
+</sc-for>
+</div>
+<div></div>
+<div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--muted)"><span>0.5</span><span>Orders a year. Each dot is a sample of about 1,000 buyers</span><span>6.5</span></div>
+</div>
+</section>
+
+<section aria-label="Customer types" style="min-height: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 14px 12px 8px; display: flex; flex-direction: column">
+<div style="display: grid; grid-template-columns: 1.6fr repeat(7, minmax(0, 1fr)); gap: 8px; padding: 0 10px 8px; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--line)">
+<div>Type</div><div style="text-align: right">Buyers</div><div style="text-align: right">Revenue</div><div style="text-align: right">Avg order</div><div style="text-align: right">Orders/yr</div><div style="text-align: right">Repeat</div><div style="text-align: right">CAC</div><div style="text-align: right">LTV:CAC</div>
+</div>
+<div style="flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; font-variant-numeric: tabular-nums">
+<sc-for list="{{segs}}" as="g" hint-placeholder-count="5">
+<button type="button" onClick="{{g.pick}}" aria-pressed="{{g.selected}}" style="flex: 1 1 0; display: grid; grid-template-columns: 1.6fr repeat(7, minmax(0, 1fr)); gap: 8px; align-items: center; width: 100%; padding: 0 10px; border: 0; border-radius: 10px; background: {{g.bg}}; color: var(--ink); font: inherit; font-size: 15px; text-align: left; cursor: pointer">
+<span style="display: flex; align-items: center; gap: 8px; font-weight: 700; white-space: nowrap"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{g.c}}"></span>{{g.name}}</span>
+<span style="text-align: right">{{g.buyers}}%</span>
+<span style="text-align: right">{{g.rev}}%</span>
+<span style="text-align: right">₹{{g.aov}}</span>
+<span style="text-align: right">{{g.orders}}</span>
+<span style="text-align: right">{{g.repeat}}%</span>
+<span style="text-align: right">₹{{g.cac}}</span>
+<span style="justify-self: end; padding: 1px 8px; border-radius: 999px; background: {{g.vcBg}}; color: {{g.vcFg}}; font-size: 13px; font-weight: 700">{{g.vc}}x</span>
+</button>
+</sc-for>
+</div>
+</section>
+</div>
+
+<div style="min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px">
+<section aria-label="What this means" style="background: var(--primary); color: #FFFFFF; border-radius: 20px; padding: 18px 22px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 700; color: #C9D1F2">What this means: {{sel.name}}</h2>
+<span style="padding: 2px 10px; border-radius: 999px; background: {{sel.tagBg}}; color: #FFFFFF; font-size: 13px; font-weight: 700">{{sel.tag}}</span>
+</div>
+<p style="margin: 0; font-size: 18px; line-height: 1.4; font-weight: 600; text-wrap: pretty">{{sel.headline}}</p>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: rgba(255,255,255,0.16); border-radius: 12px; overflow: hidden">
+<div style="background: var(--primary-2); padding: 10px 12px"><div style="font-size: 12px; color: #C9D1F2">Use a discount</div><div style="font-size: 18px; font-weight: 700">{{sel.disc}}%</div></div>
+<div style="background: var(--primary-2); padding: 10px 12px"><div style="font-size: 12px; color: #C9D1F2">Pay on delivery</div><div style="font-size: 18px; font-weight: 700">{{sel.cod}}%</div></div>
+<div style="background: var(--primary-2); padding: 10px 12px"><div style="font-size: 12px; color: #C9D1F2">12-month value</div><div style="font-size: 18px; font-weight: 700">₹{{sel.ltv}}</div></div>
+</div>
+</section>
+
+<section aria-label="Suggested actions" style="min-height: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<h2 style="margin: 0; font-size: 19px; font-weight: 700">Suggested actions</h2>
+<span style="font-size: 13px; color: var(--muted)">For {{sel.name}} · <a href="Actions.dc.html" style="font-weight: 600">Action log</a></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{actions}}" as="a" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border-radius: 14px; background: var(--sunken)">
+<div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline">
+<span style="font-size: 16px; font-weight: 700; line-height: 1.3">{{a.title}}</span>
+<span style="padding: 2px 9px; border-radius: 999px; background: var(--good-bg); color: var(--good); font-size: 13px; font-weight: 700; white-space: nowrap">{{a.impact}}</span>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.45; color: var(--ink-2)">{{a.why}}</p>
+<div style="display: flex; gap: 8px; align-items: center">
+<button type="button" onClick="{{a.run}}" style="min-height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: {{a.runBg}}; color: {{a.runFg}}; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">{{a.runLabel}}</button>
+<button type="button" style="min-height: 40px; padding: 0 16px; border: 1px solid var(--line-3); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer">Assign</button>
+</div>
+</div>
+</sc-for>
+</div>
+<p style="margin: auto 0 0; padding-top: 10px; border-top: 1px solid var(--line); font-size: 13px; line-height: 1.45; color: var(--muted)">Grouped with k-means (5 groups, 6 buying signals) on own-site buyers. Marketplaces do not share who bought, so they are left out.</p>
+</section>
+</div>
+
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  static initTheme() {
+    try { const t = localStorage.getItem('drishti-theme'); if (t === 'light' || t === 'dark') return t; } catch (e) {}
+    try { return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; } catch (e) { return 'light'; }
+  }
+  setTheme(t) {
+    try { localStorage.setItem('drishti-theme', t); } catch (e) {}
+    this.setState({ theme: t });
+  }
+  themeVals() {
+    const dark = this.state.theme === 'dark';
+    return {
+      theme: dark ? 'dark' : 'light', isLight: dark ? 'false' : 'true', isDark: dark ? 'true' : 'false',
+      lightBg: dark ? 'transparent' : '#FFFFFF', lightFg: dark ? '#B9C1E3' : '#141B45',
+      darkBg: dark ? '#FFFFFF' : 'transparent', darkFg: dark ? '#141B45' : '#B9C1E3',
+      setLight: () => this.setTheme('light'), setDark: () => this.setTheme('dark')
+    };
+  }
+  constructor(props) {
+    super(props);
+    this.state = { theme: Component.initTheme(), pick: 3, done: {} };
+  }
+  renderVals() {
+    const segs = [
+      { name: 'Routine Loyalists', kind: 'preferred', buyers: 14, rev: 37, aov: 980, orders: 4.6, repeat: 71, cac: 610, ltv: '4,500', vc: 7.4, disc: 12, cod: 18, sx: 0.55, sy: 110,
+        tag: 'Preferred', headline: '14% of buyers bring 37% of revenue. They come via creators and referrals and rarely need a discount.',
+        actions: [
+          { title: 'Export a lookalike audience to Meta', impact: '-₹180 cost to win', why: 'Lookalikes of this group cost less to win and buy again twice as often.', runLabel: 'Export audience', doneLabel: 'Audience exported' },
+          { title: 'Offer a routine refill plan', impact: '+₹14 L/mo', why: '62% of them reorder the serum every 5 to 7 weeks; a 10% refill offer locks that in.', runLabel: 'Launch plan', doneLabel: 'Plan live' } ] },
+      { name: 'Ingredient Explorers', kind: 'other', buyers: 18, rev: 24, aov: 1050, orders: 2.2, repeat: 48, cac: 780, ltv: '2,310', vc: 3.0, disc: 18, cod: 22, sx: 0.4, sy: 120,
+        tag: 'Launch audience', headline: 'They buy new launches within two weeks and spend well. Your audience for the next launch.',
+        actions: [
+          { title: 'Give them early access to the next launch', impact: '+₹9 L launch week', why: 'Explorers bought 41% of the niacinamide launch in its first fortnight.', runLabel: 'Create list', doneLabel: 'List created' },
+          { title: 'Send a serum and sunscreen bundle', impact: '+₹5 L/mo', why: 'Explorers who buy both come back at the Loyalist rate.', runLabel: 'Send offer', doneLabel: 'Offer sent' } ] },
+      { name: 'Festive Gifters', kind: 'other', buyers: 12, rev: 14, aov: 1320, orders: 1.5, repeat: 22, cac: 690, ltv: '1,980', vc: 2.9, disc: 25, cod: 30, sx: 0.3, sy: 90,
+        tag: 'Seasonal', headline: 'They buy gift sets at Diwali and weddings. Diwali is three weeks away and they have not been contacted.',
+        actions: [
+          { title: 'Schedule the Diwali gift-set campaign', impact: '+₹22 L in Nov', why: 'Last year 58% of this group bought between 20 Oct and 10 Nov.', runLabel: 'Schedule', doneLabel: 'Scheduled' },
+          { title: 'Add a gift-wrap option at ₹49', impact: '+₹2 L', why: '1 in 3 gift orders asked for a note or wrapping last year.', runLabel: 'Turn on', doneLabel: 'Turned on' } ] },
+      { name: 'Deal Hunters', kind: 'problem', buyers: 31, rev: 17, aov: 420, orders: 2.3, repeat: 39, cac: 540, ltv: '970', vc: 1.8, disc: 61, cod: 72, sx: 0.45, sy: 60,
+        tag: 'Problem', headline: '31% of buyers, 17% of revenue. They wait for discounts, pay cash, and 18% of orders come back.',
+        actions: [
+          { title: 'Cap discounts at 15% for this group', impact: '+₹11 L margin', why: 'Their repeat rate barely changes between 15% and 30% off.', runLabel: 'Apply caps', doneLabel: 'Caps applied' },
+          { title: 'Ask for an OTP on cash orders over ₹500', impact: '-₹6 L returns', why: 'Unconfirmed cash orders are 3 in 4 of the undelivered returns.', runLabel: 'Turn on', doneLabel: 'Turned on' } ] },
+      { name: 'One-time Trialists', kind: 'other', buyers: 25, rev: 8, aov: 560, orders: 1.0, repeat: 6, cac: 910, ltv: '560', vc: 0.6, disc: 34, cod: 41, sx: 0.25, sy: 100,
+        tag: 'Losing money', headline: 'One order and gone: 94% never return. Each costs ₹910 to win and brings in ₹560.',
+        actions: [
+          { title: 'Send a refill nudge on day 21', impact: '+4 pt repeat', why: 'The serum runs out around day 30; reminders at day 21 doubled reorders in a test.', runLabel: 'Turn on nudge', doneLabel: 'Nudge on' },
+          { title: 'Cut the Meta prospecting that brings them', impact: '+₹4 L margin', why: '68% of Trialists came from broad Meta prospecting.', runLabel: 'Apply cut', doneLabel: 'Cut applied' } ] }
+    ];
+    const p = this.state.pick;
+    const done = this.state.done;
+    const col = (g) => g.kind === 'preferred' ? '#2A78D6' : (g.kind === 'problem' ? '#E8590C' : '#9AA3C2');
+    const xP = (o) => (o - 0.5) / 6 * 100;
+    const yP = (a) => 100 - (a - 300) / 1200 * 100;
+    let seed = 7;
+    const rnd = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+    const gauss = () => (rnd() + rnd() + rnd() - 1.5) / 1.5;
+    const points = [];
+    segs.forEach((g, i) => {
+      const n = Math.round(10 + g.buyers * 0.8);
+      for (let k = 0; k < n; k++) {
+        const o = g.orders + gauss() * g.sx * 2.2;
+        const a = g.aov + gauss() * g.sy * 2.2;
+        const x = Math.min(98, Math.max(2, xP(Math.max(0.6, o))));
+        const y = Math.min(97, Math.max(3, yP(a)));
+        points.push({ x: x.toFixed(1) + '%', y: y.toFixed(1) + '%', c: col(g), o: i === p ? '0.85' : '0.3' });
+      }
+    });
+    const rows = segs.map((g, i) => ({
+      name: g.name, buyers: g.buyers, rev: g.rev, aov: g.aov.toLocaleString('en-IN'), orders: g.orders.toFixed(1), repeat: g.repeat, cac: g.cac, vc: g.vc.toFixed(1),
+      vcBg: g.vc >= 3 ? 'var(--good-bg)' : (g.vc >= 1.5 ? 'var(--warn-bg)' : 'var(--bad-bg)'),
+      vcFg: g.vc >= 3 ? 'var(--good)' : (g.vc >= 1.5 ? 'var(--warn)' : 'var(--bad)'),
+      c: col(g),
+      cx: Math.max(16, xP(g.orders)).toFixed(1) + '%',
+      cy: (yP(g.aov) - 9).toFixed(1) + '%',
+      border: i === p ? '2px solid var(--strong)' : '1px solid var(--line-2)',
+      selected: i === p ? 'true' : 'false',
+      bg: i === p ? 'var(--sel)' : 'transparent',
+      pick: () => this.setState({ pick: i })
+    }));
+    const g = segs[p];
+    const tagBg = g.kind === 'preferred' ? '#2A78D6' : (g.kind === 'problem' ? '#C2341F' : (g.vc < 1 ? '#C2341F' : 'rgba(255,255,255,0.18)'));
+    const sel = { ...g, tagBg };
+    const actions = g.actions.map((a, j) => {
+      const key = p + '-' + j;
+      const isDone = !!done[key];
+      return { ...a,
+        runLabel: isDone ? '✓ ' + a.doneLabel : a.runLabel,
+        runBg: isDone ? 'var(--good-bg)' : 'var(--primary)',
+        runFg: isDone ? 'var(--good)' : '#FFFFFF',
+        run: () => this.setState({ done: { ...done, [key]: !done[key] } }) };
+    });
+    return { ...this.themeVals(),  segs: rows, points, sel, actions };
+  }
+}
+</script>
+</body>
+</html>
