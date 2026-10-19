@@ -1,0 +1,151 @@
+/* Screen-specific layouts (design/static-html). */
+
+/* This week */
+.weekLeft {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 14px;
+}
+.bridgeArea {
+  flex: 1 1 auto;
+  min-height: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: 22px;
+}
+.bridgeOverlay {
+  position: absolute;
+  top: 0;
+  bottom: 26px;
+  left: 246px;
+  right: 52px;
+  pointer-events: none;
+}
+.bridgeLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-left: 1px dashed #a3abc7;
+}
+.bridgeLabel {
+  position: absolute;
+  top: 0;
+  font-size: 13px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.bridgeNow {
+  font-weight: 700;
+  color: var(--ink);
+}
+.bridgeRow {
+  flex: 1 1 0;
+  min-height: 30px;
+  display: grid;
+  grid-template-columns: 234px minmax(0, 1fr) 40px;
+  gap: 12px;
+  align-items: center;
+}
+.bridgeName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  white-space: nowrap;
+  min-width: 0;
+}
+.bridgeTrack {
+  position: relative;
+  height: 20px;
+}
+.bridgeBar {
+  position: absolute;
+  height: 20px;
+  border-radius: 5px;
+  min-width: 3px;
+}
+.bridgeValue {
+  font-size: 17px;
+  font-weight: 700;
+  text-align: right;
+}
+.bridgeAxis {
+  display: grid;
+  grid-template-columns: 234px minmax(0, 1fr) 40px;
+  gap: 12px;
+  padding-top: 6px;
+}
+.caption {
+  font-size: 13px;
+  color: var(--muted-2);
+}
+.axisLine {
+  position: relative;
+  height: 18px;
+  border-top: 1px solid var(--line-2);
+  font-size: 13px;
+  color: var(--muted-2);
+}
+.axisTick {
+  position: absolute;
+  top: 4px;
+  white-space: nowrap;
+}
+
+.highlights {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.hl {
+  border-radius: 20px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+.hlGood {
+  background: var(--good-soft);
+  border: 1px solid var(--good-chip);
+}
+.hlBad {
+  background: var(--bad-soft);
+  border: 1px solid var(--bad-chip);
+}
+.hlTitle {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  font-weight: 700;
+}
+.hlItems {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 0;
+}
+.hlItem {
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.4;
+}
+.hlItem strong {
+  display: block;
+  font-size: 16px;
+  color: var(--ink);
+}
+.inference {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 600;
+  text-wrap: pretty;
+}

@@ -1,0 +1,86 @@
+/* Base styles (docs/09-FRONTEND.md §3, §4, §8). */
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+}
+body {
+  background: var(--page-bg, #f4f6fb);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+body[data-theme='dark'] {
+  --page-bg: #0a0f1f;
+}
+
+.dr-root {
+  font-family: Archivo, 'Helvetica Neue', Helvetica, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  font-variant-numeric: tabular-nums;
+}
+.dr-root *,
+.dr-root *::before,
+.dr-root *::after {
+  box-sizing: border-box;
+}
+.dr-root a {
+  color: var(--link);
+}
+.dr-root a:hover {
+  color: var(--strong);
+}
+.dr-root button {
+  font: inherit;
+  color: inherit;
+}
+.dr-root button:focus-visible,
+.dr-root a:focus-visible,
+.dr-root input:focus-visible,
+.dr-root [role='switch']:focus-visible {
+  outline: 2px solid #2a78d6;
+  outline-offset: 2px;
+}
+.dr-root h1,
+.dr-root h2,
+.dr-root h3,
+.dr-root p {
+  margin: 0;
+}
+
+/* Fixed 1440 × 900 stage, scaled proportionally between 1280 and 1920 px wide (docs/09 §4). */
+.stage-outer {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.stage {
+  width: 1440px;
+  height: 900px;
+  overflow: hidden;
+  zoom: var(--stage-zoom, 1);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dr-root *,
+  .dr-root *::before,
+  .dr-root *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
