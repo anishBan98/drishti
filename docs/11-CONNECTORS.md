@@ -32,6 +32,8 @@ Every file-based source has a sample in `sample-data/inbox/` with representative
 2. Enable APIs: Google Sheets API, Google Drive API, Google Calendar API (optional), Google Docs API (for briefs).
 3. Create a **service account** `drishti-sync`, create a JSON key, download it once. Store it as `GOOGLE_SA_JSON` in Cloudflare (Worker secret) and GitHub (Actions secret). Delete the local file.
 4. Create an **OAuth client ID** (type Web application) for Sign-In; authorised JavaScript origins: the Worker URLs (staging and production) and `http://localhost:5173`. Consent screen: External, Testing mode, add teammates as test users (up to 100; basic profile scopes need no verification).
+Steps 1–4 are done once by the deployer (runbook). Steps 5–6 are guided in the app by the onboarding wizard (`09-FRONTEND.md` §6.10), which also checks access live.
+
 5. In Google Drive: create folders `Drishti Inbox`, `Drishti Outbox`, `Drishti Archive` (and `Drishti Inbox/Unrecognised` is created automatically). Import `Drishti-Workspace-Template.xlsx` as a Google Sheet named `Drishti Workspace`.
 6. Share the Sheet and the three folders with the service account email as **Editor**. Optionally share a Google Calendar (Settings and sharing → Share with specific people → service account → "Make changes to events") and put its ID in Settings `team_calendar_id`.
 
@@ -148,7 +150,7 @@ Apps Script runs free in the brand's own Google account. It is optional; the run
 | `demo/search_share_weekly.csv` | 130 | 26 weeks × 5 queries |
 | `demo/products.csv` | 6 | |
 | `demo/creator_posts_truth.csv` | 118 | all posts including six not yet in the Creators tab (tests the "12 days late" case) |
-| `inbox/*.csv` | 13 files | raw-format samples for parser tests |
+| `inbox/*.csv` | 13 files | raw-format samples for parser tests; also published at `/samples/` for the data guide downloads |
 | `workspace/*.csv`, `Drishti-Workspace-Template.xlsx` | 15 tabs | Sheet template |
 | `expected/expected_metrics.json` | | golden KPI values, planted effects, test tolerances |
 

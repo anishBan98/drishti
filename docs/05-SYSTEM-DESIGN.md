@@ -49,7 +49,8 @@ Cloudflare's free plan gives each Worker invocation **10 ms of CPU time**, inclu
 | Engine | `packages/engine` | Node and browser | Parsers, column mapping, canonical facts, KPIs, incrementality models, bridge, market analytics, k-means, review aspects (lexicon), recommendation rules, expected-impact formulas, snapshot builder |
 | Shared | `packages/shared` | All | Types, zod schemas (snapshot, API), constants, copy deck, design tokens |
 | Extension | `apps/extension` | Chrome MV3 | Watchlist awareness, Capture button, site adapters, posting captures |
-| Demo data | `sample-data/` | Build time | Demo snapshot built by the engine during `pnpm build` |
+| Demo data | `sample-data/` | Build time | Demo snapshot built by the engine during `pnpm build`; template and sample files copied to `/samples/` for the data guide |
+| Sandbox | `apps/web` (`/try`) + `packages/engine` | Browser (Web Worker) | Parses dropped files and builds a snapshot locally with the same engine; no network writes |
 
 ## 3. Free-tier budget and governors
 
@@ -190,6 +191,7 @@ Rotation steps are in `04-ADMIN.md` §6.
 - `GET /api/snapshot/meta` → `{version, generated_at, data_through, sources_ok, sources_late}` from D1 (cheap).
 - The SPA validates the snapshot with the zod schema in `packages/shared`; on schema mismatch it shows the last good cached snapshot from IndexedDB and reports `SNAPSHOT_SCHEMA_MISMATCH`.
 - Demo: `GET /demo/snapshot.json` static asset built at deploy from `sample-data/demo`.
+- Sandbox: no server snapshot. The SPA builds one in a Web Worker from dropped files (§14).
 
 ## 12. Observability
 
@@ -206,3 +208,15 @@ Rotation steps are in `04-ADMIN.md` §6.
 | production | `https://drishti.<subdomain>.workers.dev` | the brand's Sheet and Drive | `deploy.yml` on a tag `v*` |
 
 Both workers share the code; each has its own D1 database, KV namespace and secrets.
+
+## 14. Deployment model and sandbox
+
+**One deployment per brand** (decided 19 Oct 2026, `01-PRD.md` §4.3). Each brand runs its own copy of this stack on its own free accounts; there is no shared multi-tenant service. This keeps every brand inside its own free limits, keeps its data in its own accounts, and keeps cost at ₹0 however many brands use Drishti. The PreQL showcase deployment serves only public pages (home, demo, data guide, sandbox) and holds no brand data.
+
+**Sandbox (`/try`).** The plug-and-play way to try Drishti:
+
+- Files dropped on the page (the filled template `.xlsx`, export CSVs, or a ZIP of them) are read in a Web Worker by `packages/engine`: the same header detection, parsers and models as the sync job (`11-CONNECTORS.md` §3), and the same snapshot builder.
+- Nothing is uploaded and no API is called. The snapshot lives in memory (and IndexedDB, wrapped in try/catch, so a reload keeps it); "Clear my data" deletes it.
+- Screens render exactly as in the demo, with `workspace.demo = true` and a "Your files, this browser only" chip. Actions are simulated as in demo mode (`10-ACTIONS.md` §7).
+- Limits: up to 50 MB of files in total; screens without enough data show the EmptyState with what to add.
+- Cost: zero server work (static assets only).

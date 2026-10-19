@@ -30,7 +30,7 @@
 
 > See what really worked.
 
-**Document set version:** 1.0 · **Date:** 17 Oct 2026 · **Status:** Ready for build · **Owner:** PreQL, AI & Analytics Club
+**Document set version:** 1.1 · **Date:** 19 Oct 2026 · **Status:** Ready for build · **Owner:** PreQL, AI & Analytics Club
 
 Drishti is a free, self-hosted marketing intelligence workspace for Indian D2C brands that sell across their own site, Amazon, Flipkart, Nykaa and quick commerce (Blinkit, Zepto, Instamart). It answers three questions every week:
 
@@ -161,6 +161,7 @@ The logo is the **lift eye**: an eye whose lower lid turns into a rising line, w
 
 ## 6. What "done" looks like
 
+- A public home page at `https://drishti.<your-subdomain>.workers.dev/` that explains what Drishti is and offers three ways in: open the demo, try it with your own files (sandbox, no login), or set up a workspace (guided onboarding with a downloadable template and sample files).
 - A public demo at `https://drishti.<your-subdomain>.workers.dev/demo` that a recruiter can open with no login and click through all eight screens in light and dark mode, with every action button producing a visible, logged result.
 - A private workspace at `/` that signs in with Google, syncs a real Google Sheet and Drive Inbox (seeded from the sample data), shows the same screens on synced data, and runs real actions against a Shopify development store, Google Drive, Google Calendar and Slack.
 - Green CI: unit, contract, golden, API, end-to-end, accessibility and visual regression suites.
@@ -237,6 +238,7 @@ Indian D2C brands in beauty, personal care, eyewear, audio and home (Nykaa's own
 - G6. Every suggested action executes, prepares, schedules or assigns something real; every action is logged with expected impact and measured at readout.
 - G7. Data arrives from Google Sheets, a Google Drive Inbox, Shopify, the extension and rival brand sites, with scheduled and manual refresh.
 - G8. Zero cost, no payment method, data in the brand's own accounts.
+- G9. Plug and play. A new brand goes from nothing to a working workspace through a guided onboarding with a downloadable template, sample files for every source and live checks. Anyone can try their own files in the browser sandbox with no login and see every screen change immediately.
 
 ### 4.2 Non-goals (v1)
 
@@ -246,6 +248,14 @@ Indian D2C brands in beauty, personal care, eyewear, audio and home (Nykaa's own
 - A full Bayesian media-mix model (v1 uses a constrained ridge model calibrated by experiments; Bayesian MMM is Phase 4).
 - Mobile-first layout (v1 is desktop 1280–1920 px; phones get a read-only summary in Phase 3).
 - Multi-brand agency workspaces (schema is ready; UI in Phase 4).
+- A shared multi-tenant hosted service. Drishti scales as **one free deployment per brand** (see §4.3).
+
+### 4.3 Deployment model (decided 19 Oct 2026)
+
+- **One deployment per brand.** Each brand runs its own Drishti on its own free Cloudflare, GitHub and Google accounts, so every brand gets its own free limits, its data never leaves its accounts, and the cost stays ₹0 at any number of brands. Setup is a guided, repeatable path (runbook plus the in-app onboarding wizard), not custom work.
+- **The PreQL showcase deployment** serves the home page, the demo, the data guide and the sandbox to anyone, with no login. It holds no brand data.
+- **The sandbox** is the plug-and-play path for trying Drishti: files are read and modelled in the visitor's browser by the same engine, so changes show immediately with no sync, no account and no server cost.
+- The schema keeps `workspace_id` on every table, so a hosted multi-workspace mode stays possible later without a rewrite.
 
 ## 5. Scope by screen
 
@@ -259,6 +269,8 @@ Indian D2C brands in beauty, personal care, eyewear, audio and home (Nykaa's own
 | 6 | Customers | Who buys and who costs us? | Customer map by orders a year vs order value; segment table | Lookalike export, discount caps, COD OTP, refill nudge |
 | 7 | Customer voice | What do reviews say and what is new? | Net sentiment by aspect, us vs category; growing complaints | QA hold, review replies, listing update, R&D brief |
 | 8 | Data sources | Where does every number come from and what is late? | Source table with method, cadence and status | Upload, request file, reminders, privacy mode |
+
+**Entry pages** (outside the eight-screen pattern): Home (`/` when signed out), Onboarding wizard (`/onboarding`), Data guide (`/guide`) and Sandbox (`/try`). See `09-FRONTEND.md` §6.0 and §6.10–6.12.
 
 Every analytical screen follows one pattern, top to bottom: **summary strip** (verdict plus six KPIs with colour-coded change) → **visualisation** → **analysis table** → **inference** ("What this means") → **suggested actions** with execute buttons. No page scrolls at 1440×900.
 
@@ -368,10 +380,10 @@ Product metrics (definitions in `12-QA-AND-METRICS.md` §7; targets and phases i
 
 | Release | Phase | Contents |
 | --- | --- | --- |
-| R0 Demo | Phase 0 | All eight screens on sample data, light and dark, simulated actions, public `/demo` |
-| R1 Measure | Phase 1 | Sign-in, Workspace Sheet, Drive Inbox, Shopify, sync (scheduled and manual), real snapshot, actions: prepare, task, rule, data, Shopify execute |
+| R0 Demo | Phase 0 | Home page; all eight screens on sample data, light and dark, simulated actions, public `/demo` |
+| R1 Measure | Phase 1 | Sign-in, Workspace Sheet, Drive Inbox, Shopify, sync (scheduled and manual), real snapshot, actions: prepare, task, rule, data, Shopify execute; onboarding wizard, data guide with sample files and file checker, sandbox |
 | R2 Act | Phase 2 | Geo test planner and automated readouts, Meta execute, Workers AI review tagging and drafts, extension, rival site watcher, approvals |
-| R3 Pilot | Phase 3 | Hardening, onboarding wizard, phone summary view, two pilot brands, case study |
+| R3 Pilot | Phase 3 | Hardening, phone summary view, two pilot brands, case study |
 | R4 Scale | Phase 4 | Multi-workspace, Amazon SP-API and Ads API, Google Ads API, Bayesian MMM |
 
 ## 10. Assumptions, risks and mitigations
@@ -403,7 +415,7 @@ Each journey lists the trigger, the steps (who does what, what the system does),
 
 | # | Who | Step | System |
 | --- | --- | --- | --- |
-| 1 | Visitor | Opens `/demo` (or `/` and clicks "Open the demo with fictional data") | Loads `demo/snapshot.json` from static assets; renders This week in the viewer's system theme |
+| 1 | Visitor | Opens `/` and reads the home page (what Drishti is, the three questions, how it works), then clicks "Open the demo" (or opens `/demo` directly) | Loads `demo/snapshot.json` from static assets; renders This week in the viewer's system theme |
 | 2 | Visitor | Reads the verdict "Revenue fell 6.5% to ₹4.30 Cr. ₹29 L of the drop is fixable." | Summary strip with colour-coded KPIs and sparklines |
 | 3 | Visitor | Hovers a bridge bar ("Rival B price cut −16") | Tooltip with method and evidence |
 | 4 | Visitor | Clicks Create coupon on the first action | Card expands into a confirm step listing what will happen; visitor clicks Run; steps tick; card shows "✓ Coupon file ready · View in Actions"; the coupon CSV downloads |
@@ -421,16 +433,31 @@ Each journey lists the trigger, the steps (who does what, what the system does),
 | # | Who | Step | System |
 | --- | --- | --- | --- |
 | 1 | Owner | Deploys Drishti (Claude Code does this from the runbook) | Worker live at `https://drishti.<subdomain>.workers.dev` |
-| 2 | Owner | Imports `Drishti-Workspace-Template.xlsx` into Google Sheets; creates Drive folders "Drishti Inbox" and "Drishti Outbox" | n/a |
-| 3 | Owner | Shares the Sheet and both folders with the service account email (Editor) | n/a |
-| 4 | Owner | Opens Drishti, signs in with Google | First user whose email equals `OWNER_EMAIL` secret becomes Owner; onboarding checklist appears on Data sources |
-| 5 | Owner | Pastes the Sheet URL and the two folder URLs into the checklist | Worker validates access with the service account; shows green ticks or the exact sharing fix |
+| 2 | Owner | Opens Drishti, clicks "Set up your workspace" on the home page, signs in with Google | First user whose email equals `OWNER_EMAIL` secret becomes Owner; the onboarding wizard (`/onboarding`) opens at step 1 |
+| 3 | Owner | Wizard step 1: downloads the template sheet and imports it into Google Sheets (the step shows how, with the "File → Import" path) | Template served from `/samples/Drishti-Workspace-Template.xlsx` |
+| 4 | Owner | Wizard step 2: creates Drive folders "Drishti Inbox", "Drishti Outbox" and "Drishti Archive"; step 3: shares the Sheet and folders with the service account email (Copy button) as Editor | Wizard shows the email and the exact sharing clicks |
+| 5 | Owner | Wizard step 4: pastes the Sheet URL and folder URLs | Worker validates access with the service account; green ticks or the exact sharing fix per link |
 | 6 | Owner | Enters the Shopify store domain; pastes the Admin API token (or skips) | Token stored encrypted in D1 (AES-GCM with `DATA_KEY` secret); test call lists shop name |
 | 7 | Owner | Fills Users tab with teammates and roles | Next sync loads users; teammates can sign in |
-| 8 | Owner | Drops the first exports into the Drive Inbox (or uses sample-data/inbox) and clicks Sync now | Sync job runs (2–4 min), files parsed and archived, snapshot built; status per source turns green |
+| 8 | Owner | Wizard step 6: opens the data guide to see which exports each source needs (sample file per source, "Check my file" before uploading), drops the first exports into the Drive Inbox (or uses the sample files) and clicks Sync now | Sync job runs (2–4 min), files parsed and archived, snapshot built; status per source turns green |
 | 9 | Owner | Opens This week | Real numbers |
 
-**End state:** workspace live, users invited, first snapshot built. Covered by E2E-20 (staging), API-01..05, SYNC-01..06.
+**End state:** workspace live, users invited, first snapshot built. Covered by E2E-20, E2E-22 (staging), API-01..05, SYNC-01..06.
+
+## J1b. Trying Drishti with your own files (anyone, no login, 5 minutes)
+
+**Persona:** a brand founder or showcase visitor who wants to see their own numbers before setting anything up.
+
+| # | Who | Step | System |
+| --- | --- | --- | --- |
+| 1 | Visitor | Clicks "Try with your own data" on the home page | Sandbox (`/try`) explains that files stay in this browser |
+| 2 | Visitor | Downloads the template sheet or any sample file from the data guide, fills it with their own data (or exports from Shopify, Amazon, Meta…) | Static files from `/samples/` |
+| 3 | Visitor | Drops the filled `.xlsx` and/or export CSVs on the sandbox | Engine in a Web Worker detects each file's source, parses it, lists what it found and what is missing |
+| 4 | Visitor | Clicks "Show my screens" | Engine builds a snapshot in the browser; all eight screens render with the visitor's numbers; screens without enough data show what to add |
+| 5 | Visitor | Edits a file and drops it again | Screens update immediately |
+| 6 | Visitor | Clicks "Set up your workspace" to keep it running | Onboarding wizard |
+
+**End state:** the visitor has seen their own data in Drishti without an account. Nothing was uploaded. Covered by E2E-24.
 
 ## J2. Monday review (CMO, 10 minutes)
 
@@ -840,7 +867,8 @@ Cloudflare's free plan gives each Worker invocation **10 ms of CPU time**, inclu
 | Engine | `packages/engine` | Node and browser | Parsers, column mapping, canonical facts, KPIs, incrementality models, bridge, market analytics, k-means, review aspects (lexicon), recommendation rules, expected-impact formulas, snapshot builder |
 | Shared | `packages/shared` | All | Types, zod schemas (snapshot, API), constants, copy deck, design tokens |
 | Extension | `apps/extension` | Chrome MV3 | Watchlist awareness, Capture button, site adapters, posting captures |
-| Demo data | `sample-data/` | Build time | Demo snapshot built by the engine during `pnpm build` |
+| Demo data | `sample-data/` | Build time | Demo snapshot built by the engine during `pnpm build`; template and sample files copied to `/samples/` for the data guide |
+| Sandbox | `apps/web` (`/try`) + `packages/engine` | Browser (Web Worker) | Parses dropped files and builds a snapshot locally with the same engine; no network writes |
 
 ## 3. Free-tier budget and governors
 
@@ -981,6 +1009,7 @@ Rotation steps are in `04-ADMIN.md` §6.
 - `GET /api/snapshot/meta` → `{version, generated_at, data_through, sources_ok, sources_late}` from D1 (cheap).
 - The SPA validates the snapshot with the zod schema in `packages/shared`; on schema mismatch it shows the last good cached snapshot from IndexedDB and reports `SNAPSHOT_SCHEMA_MISMATCH`.
 - Demo: `GET /demo/snapshot.json` static asset built at deploy from `sample-data/demo`.
+- Sandbox: no server snapshot. The SPA builds one in a Web Worker from dropped files (§14).
 
 ## 12. Observability
 
@@ -997,6 +1026,18 @@ Rotation steps are in `04-ADMIN.md` §6.
 | production | `https://drishti.<subdomain>.workers.dev` | the brand's Sheet and Drive | `deploy.yml` on a tag `v*` |
 
 Both workers share the code; each has its own D1 database, KV namespace and secrets.
+
+## 14. Deployment model and sandbox
+
+**One deployment per brand** (decided 19 Oct 2026, `01-PRD.md` §4.3). Each brand runs its own copy of this stack on its own free accounts; there is no shared multi-tenant service. This keeps every brand inside its own free limits, keeps its data in its own accounts, and keeps cost at ₹0 however many brands use Drishti. The PreQL showcase deployment serves only public pages (home, demo, data guide, sandbox) and holds no brand data.
+
+**Sandbox (`/try`).** The plug-and-play way to try Drishti:
+
+- Files dropped on the page (the filled template `.xlsx`, export CSVs, or a ZIP of them) are read in a Web Worker by `packages/engine`: the same header detection, parsers and models as the sync job (`11-CONNECTORS.md` §3), and the same snapshot builder.
+- Nothing is uploaded and no API is called. The snapshot lives in memory (and IndexedDB, wrapped in try/catch, so a reload keeps it); "Clear my data" deletes it.
+- Screens render exactly as in the demo, with `workspace.demo = true` and a "Your files, this browser only" chip. Actions are simulated as in demo mode (`10-ACTIONS.md` §7).
+- Limits: up to 50 MB of files in total; screens without enough data show the EmptyState with what to add.
+- Cost: zero server work (static assets only).
 
 
 
@@ -1407,6 +1448,7 @@ Per user: 60 writes per minute, 600 reads per minute. Per capture token: 300 per
 | --- | --- | --- |
 | GET | `/api/health` | `{ ok: true, version: "<git sha>", time }` |
 | GET | `/demo/snapshot.json` | Demo snapshot (static) |
+| GET | `/samples/*` | Template sheet (`Drishti-Workspace-Template.xlsx`), one CSV per Sheet tab, and one sample export per source (static, copied from `sample-data/` at build) |
 
 ## 3. Auth and session
 
@@ -1889,7 +1931,7 @@ The designs are the visual truth: `design/screens/*.png` (light and dark), `desi
 ```
 apps/web/src/
   app/ (router, providers, ThemeProvider, SnapshotProvider, DemoProvider)
-  screens/ (ThisWeek, Actions, Performance, Impact, Market, Customers, Voice, DataSources, SignIn, Onboarding)
+  screens/ (Home, ThisWeek, Actions, Performance, Impact, Market, Customers, Voice, DataSources, SignIn, Onboarding, DataGuide, Sandbox)
   components/ (Sidebar, Header, SummaryStrip, KpiCell, DeltaChip, Sparkline, Panel, InsightCard, ActionCard, ActionList,
                DataTable, SelectableRow, Bridge, StackedBars, ClaimVsReal, PositionMap, CustomerMap, DivergingBars,
                LifecycleBar, StepList, Toggle, Tabs, Tooltip, Toast, ConfirmInline, EmptyState, ErrorState, Skeleton)
@@ -2032,7 +2074,14 @@ Demo mode runs the same states with simulated timings (600 ms per step) and stor
 
 Each screen: Summary strip → Visual → Analysis → Inference → Suggested actions. Heights are for 1440 × 900.
 
-### 6.1 This week (`/`, `snapshot.week`) — design `01-this-week-*.png`
+### 6.0 Home (`/` when signed out)
+No design PNG; uses the same tokens, type scale and both themes, and fits 1440 × 900 with no page scroll.
+- Left (navy, like the sidebar): mark, wordmark, tagline "See what really worked.", one paragraph on what Drishti is, the three questions it answers (from `00-README.md`).
+- Right: "How it works" in three numbered steps (connect your sheet and exports; Drishti measures what really worked; act from every screen and see if it paid off), a strip of screen thumbnails (from `design/screens`, light or dark to match the theme) linking into the demo, and "Free. Your data stays in your own accounts."
+- Three buttons: **Open the demo** (primary, `/demo`), **Try with your own data** (`/try`), **Set up your workspace** (`/onboarding`, which signs in first). Links: "Download the sample sheet" (`/samples/Drishti-Workspace-Template.xlsx`) and "What data Drishti needs" (`/guide`).
+- Signed-in users at `/` see This week instead.
+
+### 6.1 This week (`/` when signed in, `/demo` in the demo, `snapshot.week`) — design `01-this-week-*.png`
 - Left top (fills): Bridge from `week.bridge`; header "What moved sales ₹ lakh", legend Lost/Added.
 - Left bottom (fixed ~286 px): two panels side by side: Working (`--good-soft`, ▲ title, 3 items) and Needs attention (`--bad-soft`, ▼ title, 3 items).
 - Right top: InsightCard "What this means" with `week.inference`.
@@ -2074,14 +2123,29 @@ Each screen: Summary strip → Visual → Analysis → Inference → Suggested a
 - Left (fills): Sources table (Source, How we get it, How often, Status chip).
 - Right: navy card "How we get it: {source}" (how, feeds, last received, rule); actions per source; footer Privacy mode switch.
 - Header buttons: Upload a file; Request missing files.
-- Onboarding checklist replaces the table until the workspace is configured (Sheet, Inbox, Outbox, Shopify optional, first sync).
+- Until the workspace is configured, the table is replaced by an onboarding progress card (Sheet, Inbox, Outbox, Shopify optional, first sync) with "Continue setup" opening the wizard at the first unfinished step.
 
 ### 6.9 Sign in (`/signin`) — design `brand/logo-board-InUse.png`
 Centered card: mark, "Sign in to drishti.", one-line description, "Continue with Google" (GIS button styled per Google brand rules), link "Or open the demo with fictional data".
 
+### 6.10 Onboarding wizard (`/onboarding`, Owner)
+Same frame as the screens (sidebar + content). Left: a step list with ✓ for done steps; right: the current step. Progress is saved in D1 (`GET /api/me` `onboarding` flags) so the wizard resumes where the Owner left off.
+1. **Get the template:** download `Drishti-Workspace-Template.xlsx`; import it as a Google Sheet named "Drishti Workspace" (File → Import → Upload → Replace spreadsheet). A short table lists every tab and what goes in it.
+2. **Create folders:** "Drishti Inbox", "Drishti Outbox", "Drishti Archive" in Google Drive.
+3. **Share:** the service account email with a Copy button; share the Sheet and the three folders with it as Editor.
+4. **Paste links:** Sheet URL and folder URLs; each is checked live (`PUT /api/admin/workspace`) and shows a green tick or the exact fix (`SHEET_NOT_SHARED`, `DRIVE_NOT_SHARED`).
+5. **Connect Shopify (optional):** store domain and token, Test; or Skip.
+6. **Add your first data:** which sources to start with (by the channels you sell on), a link to the data guide, then **Sync now**; the step shows sync progress and ends with "Open This week".
+
+### 6.11 Data guide (`/guide`, public)
+One row per source (the 13 file sources and the Sheet tabs): what it feeds, where to export it on the platform (menu path), how often, required columns with accepted aliases (from `11-CONNECTORS.md` §3), and **Download sample** (`/samples/<file>`). **Check my file:** drop a file and the engine (in the browser, nothing uploaded) says which source it is, how many rows parsed, the date range, and any missing columns with the fix. Signed-in Editors and above also get **Upload to Inbox** (`upload_file`).
+
+### 6.12 Sandbox (`/try`, public, no login)
+A drop zone ("Drop your filled template or exports here. Files stay in this browser."), a list of detected files (source, rows, dates, warnings), a coverage checklist of which screens have enough data, and **Show my screens**, which opens the eight screens at `/try/*` on the locally built snapshot. Header chip "Your files, this browser only"; **Clear my data**. See `05-SYSTEM-DESIGN.md` §14.
+
 ## 7. Data loading, polling and states
 
-- On load: `GET /api/me` → if not signed in and not `/demo`, redirect to `/signin`. Then `GET /api/snapshot` (ETag) → validate → render. Cache the last good snapshot in IndexedDB.
+- On load: `GET /api/me` → if not signed in: `/` shows Home; `/demo/*`, `/try/*`, `/guide` and `/signin` stay public; any other route redirects to `/signin`. Then `GET /api/snapshot` (ETag) → validate → render. Cache the last good snapshot in IndexedDB.
 - Poll `/api/snapshot/meta` every 60 s when visible; on new version fetch and swap; Toast "Updated just now".
 - Loading: skeletons that keep the exact layout (no layout shift). Empty (before first sync): each screen shows its frame with a centred EmptyState "No data yet. Connect your Sheet and run the first sync" linking to Data sources.
 - Errors: inline ErrorState in the panel that failed; global Toast for network errors with Retry.
@@ -2138,6 +2202,14 @@ All user-facing strings, keyed. Examples (full deck generated from the designs; 
 | stale.footer | Data is from {date} |
 | signin.title / body | Sign in to drishti. / See which rupee really worked, what rivals changed and what to do next. |
 | signin.demo | Or open the demo with fictional data |
+| home.lead | A free marketing intelligence workspace for D2C brands that sell on their own site, Amazon, Flipkart, Nykaa and quick commerce. |
+| home.how.title / steps | How it works / Connect your sheet and exports. · Drishti measures what really worked. · Act from every screen and see if it paid off. |
+| home.cta.demo / try / setup | Open the demo / Try with your own data / Set up your workspace |
+| home.sample / guide / free | Download the sample sheet / What data Drishti needs / Free. Your data stays in your own accounts. |
+| onboarding.title | Set up your workspace |
+| guide.title / subtitle | What data Drishti needs / Every source, where to export it, and a sample file for each. |
+| guide.check | Check my file |
+| try.title / drop / chip / show / clear | Try with your own data / Drop your filled template or exports here. Files stay in this browser. / Your files, this browser only / Show my screens / Clear my data |
 
 
 
@@ -2331,6 +2403,8 @@ Every file-based source has a sample in `sample-data/inbox/` with representative
 2. Enable APIs: Google Sheets API, Google Drive API, Google Calendar API (optional), Google Docs API (for briefs).
 3. Create a **service account** `drishti-sync`, create a JSON key, download it once. Store it as `GOOGLE_SA_JSON` in Cloudflare (Worker secret) and GitHub (Actions secret). Delete the local file.
 4. Create an **OAuth client ID** (type Web application) for Sign-In; authorised JavaScript origins: the Worker URLs (staging and production) and `http://localhost:5173`. Consent screen: External, Testing mode, add teammates as test users (up to 100; basic profile scopes need no verification).
+Steps 1–4 are done once by the deployer (runbook). Steps 5–6 are guided in the app by the onboarding wizard (`09-FRONTEND.md` §6.10), which also checks access live.
+
 5. In Google Drive: create folders `Drishti Inbox`, `Drishti Outbox`, `Drishti Archive` (and `Drishti Inbox/Unrecognised` is created automatically). Import `Drishti-Workspace-Template.xlsx` as a Google Sheet named `Drishti Workspace`.
 6. Share the Sheet and the three folders with the service account email as **Editor**. Optionally share a Google Calendar (Settings and sharing → Share with specific people → service account → "Make changes to events") and put its ID in Settings `team_calendar_id`.
 
@@ -2447,7 +2521,7 @@ Apps Script runs free in the brand's own Google account. It is optional; the run
 | `demo/search_share_weekly.csv` | 130 | 26 weeks × 5 queries |
 | `demo/products.csv` | 6 | |
 | `demo/creator_posts_truth.csv` | 118 | all posts including six not yet in the Creators tab (tests the "12 days late" case) |
-| `inbox/*.csv` | 13 files | raw-format samples for parser tests |
+| `inbox/*.csv` | 13 files | raw-format samples for parser tests; also published at `/samples/` for the data guide downloads |
 | `workspace/*.csv`, `Drishti-Workspace-Template.xlsx` | 15 tabs | Sheet template |
 | `expected/expected_metrics.json` | | golden KPI values, planted effects, test tolerances |
 
@@ -2471,7 +2545,7 @@ Design screens show illustrative numbers close to, but not identical with, the n
 | Golden (KPIs vs `expected_metrics.json`) | Vitest | `packages/engine/test/golden.test.ts` | every push |
 | Model property tests (incrementality, k-means, voice) | Vitest | `packages/engine/test/models/*` | every push |
 | Parser contract tests (every `sample-data/inbox` file) | Vitest | `packages/engine/test/parsers/*` | every push |
-| Worker API tests | Vitest with `@cloudflare/vitest-pool-workers` (local D1 and KV) | `apps/worker/test/*` | every push |
+| Worker API tests | Vitest with `@cloudflare/vitest-plugin` (local D1 and KV; renamed from `@cloudflare/vitest-pool-workers`) | `apps/worker/test/*` | every push |
 | Sync job integration (mock Google, Shopify, rival sites) | Vitest + msw | `apps/sync/test/*` | every push |
 | Extension adapters (fixture HTML) | Vitest + happy-dom | `apps/extension/test/*` | every push |
 | End-to-end | Playwright (Chromium) | `e2e/*` against local (`wrangler dev`) in CI, staging nightly, production after deploy | push (demo suite), nightly (full) |
@@ -2555,6 +2629,10 @@ CI must be green before any milestone is marked done.
 - **E2E-12** Assign opens owner picker and logs the assignment.
 - **E2E-13..16** Staging (signed-in test user via a test-only Google token mock in staging): coupon handoff, geo test plan, QA hold, discount cap on the Shopify development store.
 - **E2E-20** Staging onboarding: workspace links validated, first sync completes and screens render real data.
+- **E2E-21** Home page: signed out `/` shows the home page with no page scroll at 1440 × 900 in both themes; each of the three buttons and two links opens the right page or downloads the template.
+- **E2E-22** Onboarding wizard (staging): steps resume after reload; a bad link shows the sharing fix; finishing step 6 starts a sync and ends on This week.
+- **E2E-23** Data guide: every Download sample link returns its file; Check my file on each `sample-data/inbox` file names the right source with no upload request sent.
+- **E2E-24** Sandbox: dropping `Drishti-Workspace-Template.xlsx` plus the inbox samples renders all eight screens; editing a file and dropping it again changes the numbers; no network request other than static assets is made.
 
 ## 3. Fixtures
 
@@ -3011,9 +3089,9 @@ For production (a real brand), the brand's owner does the same with their own Sh
 | M0 | Repo and scaffold | Repo exists; monorepo builds; CI runs lint, typecheck and an empty test suite green; docs, sample-data, design and brand folders committed |
 | M1 | Worker skeleton and deploy | `wrangler deploy` (staging and production) serves the SPA shell and `/api/health`; D1 migrations applied; KV bound; crons registered; `deploy.yml` deploys staging on push |
 | M2 | Engine core and demo snapshot | Parsers for demo facts; KPI module; GOLD-01..04 pass; `build:demo` produces `demo/snapshot.json` validating against the zod schema (bridge, market, customers and voice may use v1 methods) |
-| M3 | Eight screens, light and dark, demo actions | All screens match the designs (visual suite within tolerance using `design-snapshot.json`); E2E-01..12, a11y and Lighthouse pass; `/demo` live on production |
-| M4 | Auth, roles, admin | Google Sign-In works on staging; API-01..03 pass; Admin screen (workspace links with access checks, connectors, users, usage, audit) |
-| M5 | Sync pipeline | Sheet and Drive Inbox ingestion for all 13 sources (CON tests); scheduled and manual sync; Data sources live with statuses; SYNC-01..07 pass; staging shows real-format data |
+| M3 | Home page, eight screens, light and dark, demo actions | Home page (E2E-21); all screens match the designs (visual suite within tolerance using `design-snapshot.json`); E2E-01..12, a11y and Lighthouse pass; `/demo` live on production |
+| M4 | Auth, roles, admin, onboarding wizard | Google Sign-In works on staging; API-01..03 pass; Admin screen (workspace links with access checks, connectors, users, usage, audit); onboarding wizard steps 1–5 |
+| M5 | Sync pipeline | Sheet and Drive Inbox ingestion for all 13 sources (CON tests); scheduled and manual sync; Data sources live with statuses; SYNC-01..07 pass; staging shows real-format data; data guide with sample downloads and Check my file (E2E-23); sandbox (E2E-24); wizard step 6 (E2E-22) |
 | M6 | Models on synced data | Incrementality (natural experiments, synthetic control, MMM-lite), bridge, market analytics, k-means, voice lexicon; MOD-01..08, VOICE-01 pass |
 | M7 | Action engine v1 | All prepare, task, rule and data executors; Shopify execute with undo on the development store; Actions screen on D1; Sheet mirror; ACT-01..08, 10, 14, 20..23, 30 pass; E2E-13, 16 on staging |
 | M8 | Tests and AI | Geo test planner, tracking, readouts; Workers AI tagging and drafts with governor; MOD-03, AI-01..04, MET-05 pass; E2E-14, 15 on staging |

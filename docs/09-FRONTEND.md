@@ -13,7 +13,7 @@ The designs are the visual truth: `design/screens/*.png` (light and dark), `desi
 ```
 apps/web/src/
   app/ (router, providers, ThemeProvider, SnapshotProvider, DemoProvider)
-  screens/ (ThisWeek, Actions, Performance, Impact, Market, Customers, Voice, DataSources, SignIn, Onboarding)
+  screens/ (Home, ThisWeek, Actions, Performance, Impact, Market, Customers, Voice, DataSources, SignIn, Onboarding, DataGuide, Sandbox)
   components/ (Sidebar, Header, SummaryStrip, KpiCell, DeltaChip, Sparkline, Panel, InsightCard, ActionCard, ActionList,
                DataTable, SelectableRow, Bridge, StackedBars, ClaimVsReal, PositionMap, CustomerMap, DivergingBars,
                LifecycleBar, StepList, Toggle, Tabs, Tooltip, Toast, ConfirmInline, EmptyState, ErrorState, Skeleton)
@@ -156,7 +156,14 @@ Demo mode runs the same states with simulated timings (600 ms per step) and stor
 
 Each screen: Summary strip → Visual → Analysis → Inference → Suggested actions. Heights are for 1440 × 900.
 
-### 6.1 This week (`/`, `snapshot.week`) — design `01-this-week-*.png`
+### 6.0 Home (`/` when signed out)
+No design PNG; uses the same tokens, type scale and both themes, and fits 1440 × 900 with no page scroll.
+- Left (navy, like the sidebar): mark, wordmark, tagline "See what really worked.", one paragraph on what Drishti is, the three questions it answers (from `00-README.md`).
+- Right: "How it works" in three numbered steps (connect your sheet and exports; Drishti measures what really worked; act from every screen and see if it paid off), a strip of screen thumbnails (from `design/screens`, light or dark to match the theme) linking into the demo, and "Free. Your data stays in your own accounts."
+- Three buttons: **Open the demo** (primary, `/demo`), **Try with your own data** (`/try`), **Set up your workspace** (`/onboarding`, which signs in first). Links: "Download the sample sheet" (`/samples/Drishti-Workspace-Template.xlsx`) and "What data Drishti needs" (`/guide`).
+- Signed-in users at `/` see This week instead.
+
+### 6.1 This week (`/` when signed in, `/demo` in the demo, `snapshot.week`) — design `01-this-week-*.png`
 - Left top (fills): Bridge from `week.bridge`; header "What moved sales ₹ lakh", legend Lost/Added.
 - Left bottom (fixed ~286 px): two panels side by side: Working (`--good-soft`, ▲ title, 3 items) and Needs attention (`--bad-soft`, ▼ title, 3 items).
 - Right top: InsightCard "What this means" with `week.inference`.
@@ -198,14 +205,29 @@ Each screen: Summary strip → Visual → Analysis → Inference → Suggested a
 - Left (fills): Sources table (Source, How we get it, How often, Status chip).
 - Right: navy card "How we get it: {source}" (how, feeds, last received, rule); actions per source; footer Privacy mode switch.
 - Header buttons: Upload a file; Request missing files.
-- Onboarding checklist replaces the table until the workspace is configured (Sheet, Inbox, Outbox, Shopify optional, first sync).
+- Until the workspace is configured, the table is replaced by an onboarding progress card (Sheet, Inbox, Outbox, Shopify optional, first sync) with "Continue setup" opening the wizard at the first unfinished step.
 
 ### 6.9 Sign in (`/signin`) — design `brand/logo-board-InUse.png`
 Centered card: mark, "Sign in to drishti.", one-line description, "Continue with Google" (GIS button styled per Google brand rules), link "Or open the demo with fictional data".
 
+### 6.10 Onboarding wizard (`/onboarding`, Owner)
+Same frame as the screens (sidebar + content). Left: a step list with ✓ for done steps; right: the current step. Progress is saved in D1 (`GET /api/me` `onboarding` flags) so the wizard resumes where the Owner left off.
+1. **Get the template:** download `Drishti-Workspace-Template.xlsx`; import it as a Google Sheet named "Drishti Workspace" (File → Import → Upload → Replace spreadsheet). A short table lists every tab and what goes in it.
+2. **Create folders:** "Drishti Inbox", "Drishti Outbox", "Drishti Archive" in Google Drive.
+3. **Share:** the service account email with a Copy button; share the Sheet and the three folders with it as Editor.
+4. **Paste links:** Sheet URL and folder URLs; each is checked live (`PUT /api/admin/workspace`) and shows a green tick or the exact fix (`SHEET_NOT_SHARED`, `DRIVE_NOT_SHARED`).
+5. **Connect Shopify (optional):** store domain and token, Test; or Skip.
+6. **Add your first data:** which sources to start with (by the channels you sell on), a link to the data guide, then **Sync now**; the step shows sync progress and ends with "Open This week".
+
+### 6.11 Data guide (`/guide`, public)
+One row per source (the 13 file sources and the Sheet tabs): what it feeds, where to export it on the platform (menu path), how often, required columns with accepted aliases (from `11-CONNECTORS.md` §3), and **Download sample** (`/samples/<file>`). **Check my file:** drop a file and the engine (in the browser, nothing uploaded) says which source it is, how many rows parsed, the date range, and any missing columns with the fix. Signed-in Editors and above also get **Upload to Inbox** (`upload_file`).
+
+### 6.12 Sandbox (`/try`, public, no login)
+A drop zone ("Drop your filled template or exports here. Files stay in this browser."), a list of detected files (source, rows, dates, warnings), a coverage checklist of which screens have enough data, and **Show my screens**, which opens the eight screens at `/try/*` on the locally built snapshot. Header chip "Your files, this browser only"; **Clear my data**. See `05-SYSTEM-DESIGN.md` §14.
+
 ## 7. Data loading, polling and states
 
-- On load: `GET /api/me` → if not signed in and not `/demo`, redirect to `/signin`. Then `GET /api/snapshot` (ETag) → validate → render. Cache the last good snapshot in IndexedDB.
+- On load: `GET /api/me` → if not signed in: `/` shows Home; `/demo/*`, `/try/*`, `/guide` and `/signin` stay public; any other route redirects to `/signin`. Then `GET /api/snapshot` (ETag) → validate → render. Cache the last good snapshot in IndexedDB.
 - Poll `/api/snapshot/meta` every 60 s when visible; on new version fetch and swap; Toast "Updated just now".
 - Loading: skeletons that keep the exact layout (no layout shift). Empty (before first sync): each screen shows its frame with a centred EmptyState "No data yet. Connect your Sheet and run the first sync" linking to Data sources.
 - Errors: inline ErrorState in the panel that failed; global Toast for network errors with Retry.
@@ -262,3 +284,11 @@ All user-facing strings, keyed. Examples (full deck generated from the designs; 
 | stale.footer | Data is from {date} |
 | signin.title / body | Sign in to drishti. / See which rupee really worked, what rivals changed and what to do next. |
 | signin.demo | Or open the demo with fictional data |
+| home.lead | A free marketing intelligence workspace for D2C brands that sell on their own site, Amazon, Flipkart, Nykaa and quick commerce. |
+| home.how.title / steps | How it works / Connect your sheet and exports. · Drishti measures what really worked. · Act from every screen and see if it paid off. |
+| home.cta.demo / try / setup | Open the demo / Try with your own data / Set up your workspace |
+| home.sample / guide / free | Download the sample sheet / What data Drishti needs / Free. Your data stays in your own accounts. |
+| onboarding.title | Set up your workspace |
+| guide.title / subtitle | What data Drishti needs / Every source, where to export it, and a sample file for each. |
+| guide.check | Check my file |
+| try.title / drop / chip / show / clear | Try with your own data / Drop your filled template or exports here. Files stay in this browser. / Your files, this browser only / Show my screens / Clear my data |

@@ -8,7 +8,7 @@ Each journey lists the trigger, the steps (who does what, what the system does),
 
 | # | Who | Step | System |
 | --- | --- | --- | --- |
-| 1 | Visitor | Opens `/demo` (or `/` and clicks "Open the demo with fictional data") | Loads `demo/snapshot.json` from static assets; renders This week in the viewer's system theme |
+| 1 | Visitor | Opens `/` and reads the home page (what Drishti is, the three questions, how it works), then clicks "Open the demo" (or opens `/demo` directly) | Loads `demo/snapshot.json` from static assets; renders This week in the viewer's system theme |
 | 2 | Visitor | Reads the verdict "Revenue fell 6.5% to ₹4.30 Cr. ₹29 L of the drop is fixable." | Summary strip with colour-coded KPIs and sparklines |
 | 3 | Visitor | Hovers a bridge bar ("Rival B price cut −16") | Tooltip with method and evidence |
 | 4 | Visitor | Clicks Create coupon on the first action | Card expands into a confirm step listing what will happen; visitor clicks Run; steps tick; card shows "✓ Coupon file ready · View in Actions"; the coupon CSV downloads |
@@ -26,16 +26,31 @@ Each journey lists the trigger, the steps (who does what, what the system does),
 | # | Who | Step | System |
 | --- | --- | --- | --- |
 | 1 | Owner | Deploys Drishti (Claude Code does this from the runbook) | Worker live at `https://drishti.<subdomain>.workers.dev` |
-| 2 | Owner | Imports `Drishti-Workspace-Template.xlsx` into Google Sheets; creates Drive folders "Drishti Inbox" and "Drishti Outbox" | n/a |
-| 3 | Owner | Shares the Sheet and both folders with the service account email (Editor) | n/a |
-| 4 | Owner | Opens Drishti, signs in with Google | First user whose email equals `OWNER_EMAIL` secret becomes Owner; onboarding checklist appears on Data sources |
-| 5 | Owner | Pastes the Sheet URL and the two folder URLs into the checklist | Worker validates access with the service account; shows green ticks or the exact sharing fix |
+| 2 | Owner | Opens Drishti, clicks "Set up your workspace" on the home page, signs in with Google | First user whose email equals `OWNER_EMAIL` secret becomes Owner; the onboarding wizard (`/onboarding`) opens at step 1 |
+| 3 | Owner | Wizard step 1: downloads the template sheet and imports it into Google Sheets (the step shows how, with the "File → Import" path) | Template served from `/samples/Drishti-Workspace-Template.xlsx` |
+| 4 | Owner | Wizard step 2: creates Drive folders "Drishti Inbox", "Drishti Outbox" and "Drishti Archive"; step 3: shares the Sheet and folders with the service account email (Copy button) as Editor | Wizard shows the email and the exact sharing clicks |
+| 5 | Owner | Wizard step 4: pastes the Sheet URL and folder URLs | Worker validates access with the service account; green ticks or the exact sharing fix per link |
 | 6 | Owner | Enters the Shopify store domain; pastes the Admin API token (or skips) | Token stored encrypted in D1 (AES-GCM with `DATA_KEY` secret); test call lists shop name |
 | 7 | Owner | Fills Users tab with teammates and roles | Next sync loads users; teammates can sign in |
-| 8 | Owner | Drops the first exports into the Drive Inbox (or uses sample-data/inbox) and clicks Sync now | Sync job runs (2–4 min), files parsed and archived, snapshot built; status per source turns green |
+| 8 | Owner | Wizard step 6: opens the data guide to see which exports each source needs (sample file per source, "Check my file" before uploading), drops the first exports into the Drive Inbox (or uses the sample files) and clicks Sync now | Sync job runs (2–4 min), files parsed and archived, snapshot built; status per source turns green |
 | 9 | Owner | Opens This week | Real numbers |
 
-**End state:** workspace live, users invited, first snapshot built. Covered by E2E-20 (staging), API-01..05, SYNC-01..06.
+**End state:** workspace live, users invited, first snapshot built. Covered by E2E-20, E2E-22 (staging), API-01..05, SYNC-01..06.
+
+## J1b. Trying Drishti with your own files (anyone, no login, 5 minutes)
+
+**Persona:** a brand founder or showcase visitor who wants to see their own numbers before setting anything up.
+
+| # | Who | Step | System |
+| --- | --- | --- | --- |
+| 1 | Visitor | Clicks "Try with your own data" on the home page | Sandbox (`/try`) explains that files stay in this browser |
+| 2 | Visitor | Downloads the template sheet or any sample file from the data guide, fills it with their own data (or exports from Shopify, Amazon, Meta…) | Static files from `/samples/` |
+| 3 | Visitor | Drops the filled `.xlsx` and/or export CSVs on the sandbox | Engine in a Web Worker detects each file's source, parses it, lists what it found and what is missing |
+| 4 | Visitor | Clicks "Show my screens" | Engine builds a snapshot in the browser; all eight screens render with the visitor's numbers; screens without enough data show what to add |
+| 5 | Visitor | Edits a file and drops it again | Screens update immediately |
+| 6 | Visitor | Clicks "Set up your workspace" to keep it running | Onboarding wizard |
+
+**End state:** the visitor has seen their own data in Drishti without an account. Nothing was uploaded. Covered by E2E-24.
 
 ## J2. Monday review (CMO, 10 minutes)
 

@@ -8,7 +8,7 @@
 | Golden (KPIs vs `expected_metrics.json`) | Vitest | `packages/engine/test/golden.test.ts` | every push |
 | Model property tests (incrementality, k-means, voice) | Vitest | `packages/engine/test/models/*` | every push |
 | Parser contract tests (every `sample-data/inbox` file) | Vitest | `packages/engine/test/parsers/*` | every push |
-| Worker API tests | Vitest with `@cloudflare/vitest-pool-workers` (local D1 and KV) | `apps/worker/test/*` | every push |
+| Worker API tests | Vitest with `@cloudflare/vitest-plugin` (local D1 and KV; renamed from `@cloudflare/vitest-pool-workers`) | `apps/worker/test/*` | every push |
 | Sync job integration (mock Google, Shopify, rival sites) | Vitest + msw | `apps/sync/test/*` | every push |
 | Extension adapters (fixture HTML) | Vitest + happy-dom | `apps/extension/test/*` | every push |
 | End-to-end | Playwright (Chromium) | `e2e/*` against local (`wrangler dev`) in CI, staging nightly, production after deploy | push (demo suite), nightly (full) |
@@ -92,6 +92,10 @@ CI must be green before any milestone is marked done.
 - **E2E-12** Assign opens owner picker and logs the assignment.
 - **E2E-13..16** Staging (signed-in test user via a test-only Google token mock in staging): coupon handoff, geo test plan, QA hold, discount cap on the Shopify development store.
 - **E2E-20** Staging onboarding: workspace links validated, first sync completes and screens render real data.
+- **E2E-21** Home page: signed out `/` shows the home page with no page scroll at 1440 × 900 in both themes; each of the three buttons and two links opens the right page or downloads the template.
+- **E2E-22** Onboarding wizard (staging): steps resume after reload; a bad link shows the sharing fix; finishing step 6 starts a sync and ends on This week.
+- **E2E-23** Data guide: every Download sample link returns its file; Check my file on each `sample-data/inbox` file names the right source with no upload request sent.
+- **E2E-24** Sandbox: dropping `Drishti-Workspace-Template.xlsx` plus the inbox samples renders all eight screens; editing a file and dropping it again changes the numbers; no network request other than static assets is made.
 
 ## 3. Fixtures
 

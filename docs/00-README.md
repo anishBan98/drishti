@@ -2,7 +2,7 @@
 
 > See what really worked.
 
-**Document set version:** 1.0 · **Date:** 17 Oct 2026 · **Status:** Ready for build · **Owner:** PreQL, AI & Analytics Club
+**Document set version:** 1.1 · **Date:** 19 Oct 2026 · **Status:** Ready for build · **Owner:** PreQL, AI & Analytics Club
 
 Drishti is a free, self-hosted marketing intelligence workspace for Indian D2C brands that sell across their own site, Amazon, Flipkart, Nykaa and quick commerce (Blinkit, Zepto, Instamart). It answers three questions every week:
 
@@ -133,6 +133,7 @@ The logo is the **lift eye**: an eye whose lower lid turns into a rising line, w
 
 ## 6. What "done" looks like
 
+- A public home page at `https://drishti.<your-subdomain>.workers.dev/` that explains what Drishti is and offers three ways in: open the demo, try it with your own files (sandbox, no login), or set up a workspace (guided onboarding with a downloadable template and sample files).
 - A public demo at `https://drishti.<your-subdomain>.workers.dev/demo` that a recruiter can open with no login and click through all eight screens in light and dark mode, with every action button producing a visible, logged result.
 - A private workspace at `/` that signs in with Google, syncs a real Google Sheet and Drive Inbox (seeded from the sample data), shows the same screens on synced data, and runs real actions against a Shopify development store, Google Drive, Google Calendar and Slack.
 - Green CI: unit, contract, golden, API, end-to-end, accessibility and visual regression suites.

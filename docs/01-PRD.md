@@ -63,6 +63,7 @@ Indian D2C brands in beauty, personal care, eyewear, audio and home (Nykaa's own
 - G6. Every suggested action executes, prepares, schedules or assigns something real; every action is logged with expected impact and measured at readout.
 - G7. Data arrives from Google Sheets, a Google Drive Inbox, Shopify, the extension and rival brand sites, with scheduled and manual refresh.
 - G8. Zero cost, no payment method, data in the brand's own accounts.
+- G9. Plug and play. A new brand goes from nothing to a working workspace through a guided onboarding with a downloadable template, sample files for every source and live checks. Anyone can try their own files in the browser sandbox with no login and see every screen change immediately.
 
 ### 4.2 Non-goals (v1)
 
@@ -72,6 +73,14 @@ Indian D2C brands in beauty, personal care, eyewear, audio and home (Nykaa's own
 - A full Bayesian media-mix model (v1 uses a constrained ridge model calibrated by experiments; Bayesian MMM is Phase 4).
 - Mobile-first layout (v1 is desktop 1280–1920 px; phones get a read-only summary in Phase 3).
 - Multi-brand agency workspaces (schema is ready; UI in Phase 4).
+- A shared multi-tenant hosted service. Drishti scales as **one free deployment per brand** (see §4.3).
+
+### 4.3 Deployment model (decided 19 Oct 2026)
+
+- **One deployment per brand.** Each brand runs its own Drishti on its own free Cloudflare, GitHub and Google accounts, so every brand gets its own free limits, its data never leaves its accounts, and the cost stays ₹0 at any number of brands. Setup is a guided, repeatable path (runbook plus the in-app onboarding wizard), not custom work.
+- **The PreQL showcase deployment** serves the home page, the demo, the data guide and the sandbox to anyone, with no login. It holds no brand data.
+- **The sandbox** is the plug-and-play path for trying Drishti: files are read and modelled in the visitor's browser by the same engine, so changes show immediately with no sync, no account and no server cost.
+- The schema keeps `workspace_id` on every table, so a hosted multi-workspace mode stays possible later without a rewrite.
 
 ## 5. Scope by screen
 
@@ -85,6 +94,8 @@ Indian D2C brands in beauty, personal care, eyewear, audio and home (Nykaa's own
 | 6 | Customers | Who buys and who costs us? | Customer map by orders a year vs order value; segment table | Lookalike export, discount caps, COD OTP, refill nudge |
 | 7 | Customer voice | What do reviews say and what is new? | Net sentiment by aspect, us vs category; growing complaints | QA hold, review replies, listing update, R&D brief |
 | 8 | Data sources | Where does every number come from and what is late? | Source table with method, cadence and status | Upload, request file, reminders, privacy mode |
+
+**Entry pages** (outside the eight-screen pattern): Home (`/` when signed out), Onboarding wizard (`/onboarding`), Data guide (`/guide`) and Sandbox (`/try`). See `09-FRONTEND.md` §6.0 and §6.10–6.12.
 
 Every analytical screen follows one pattern, top to bottom: **summary strip** (verdict plus six KPIs with colour-coded change) → **visualisation** → **analysis table** → **inference** ("What this means") → **suggested actions** with execute buttons. No page scrolls at 1440×900.
 
@@ -194,10 +205,10 @@ Product metrics (definitions in `12-QA-AND-METRICS.md` §7; targets and phases i
 
 | Release | Phase | Contents |
 | --- | --- | --- |
-| R0 Demo | Phase 0 | All eight screens on sample data, light and dark, simulated actions, public `/demo` |
-| R1 Measure | Phase 1 | Sign-in, Workspace Sheet, Drive Inbox, Shopify, sync (scheduled and manual), real snapshot, actions: prepare, task, rule, data, Shopify execute |
+| R0 Demo | Phase 0 | Home page; all eight screens on sample data, light and dark, simulated actions, public `/demo` |
+| R1 Measure | Phase 1 | Sign-in, Workspace Sheet, Drive Inbox, Shopify, sync (scheduled and manual), real snapshot, actions: prepare, task, rule, data, Shopify execute; onboarding wizard, data guide with sample files and file checker, sandbox |
 | R2 Act | Phase 2 | Geo test planner and automated readouts, Meta execute, Workers AI review tagging and drafts, extension, rival site watcher, approvals |
-| R3 Pilot | Phase 3 | Hardening, onboarding wizard, phone summary view, two pilot brands, case study |
+| R3 Pilot | Phase 3 | Hardening, phone summary view, two pilot brands, case study |
 | R4 Scale | Phase 4 | Multi-workspace, Amazon SP-API and Ads API, Google Ads API, Bayesian MMM |
 
 ## 10. Assumptions, risks and mitigations

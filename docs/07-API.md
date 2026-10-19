@@ -39,6 +39,7 @@ Per user: 60 writes per minute, 600 reads per minute. Per capture token: 300 per
 | --- | --- | --- |
 | GET | `/api/health` | `{ ok: true, version: "<git sha>", time }` |
 | GET | `/demo/snapshot.json` | Demo snapshot (static) |
+| GET | `/samples/*` | Template sheet (`Drishti-Workspace-Template.xlsx`), one CSV per Sheet tab, and one sample export per source (static, copied from `sample-data/` at build) |
 
 ## 3. Auth and session
 
