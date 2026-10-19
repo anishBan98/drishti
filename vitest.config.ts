@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 // vitest.config.ts when they need a custom environment (e.g. the Worker pool).
 export default defineConfig({
   test: {
-    projects: ['packages/*', 'apps/*'],
+    projects: ['packages/*', 'apps/*', 'scripts'],
     passWithNoTests: true,
   },
 });

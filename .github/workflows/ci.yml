@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   checks:
-    name: lint, typecheck, test, build
+    name: lint, typecheck, build, test
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -29,8 +29,8 @@ jobs:
         run: pnpm check:files
       - run: pnpm lint
       - run: pnpm typecheck
-      - run: pnpm test
       - run: pnpm build
+      - run: pnpm test
 
   gitleaks:
     name: gitleaks

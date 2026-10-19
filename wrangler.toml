@@ -1,0 +1,62 @@
+# wrangler.toml (production is the top level; staging is an env). docs/14-SETUP-RUNBOOK.md §5.
+name = "drishti"
+main = "apps/worker/src/index.ts"
+compatibility_date = "2026-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "apps/web/dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+run_worker_first = ["/api/*", "/internal/*"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "drishti"
+database_id = "4539a6ed-400e-4d4b-bb05-39b6cfd24fee"
+migrations_dir = "apps/worker/migrations"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "e238c411aad540a191ed3c67d1f01701"
+
+[ai]
+binding = "AI"
+
+[triggers]
+crons = ["*/30 * * * *", "40 20 * * *"] # every 30 min; 02:10 IST daily housekeeping
+
+[vars]
+ENVIRONMENT = "production"
+WORKSPACE_ID = "default"
+GITHUB_REPO = "anishBan98/drishti"
+GOOGLE_CLIENT_ID = "" # filled by setup (M4)
+DEMO_ENABLED = "true"
+VERSION = "dev" # overridden at deploy with the git sha
+
+[env.staging]
+name = "drishti-staging"
+
+[[env.staging.d1_databases]]
+binding = "DB"
+database_name = "drishti-staging"
+database_id = "a722941e-802b-4efc-b001-0b395a04a3f0"
+migrations_dir = "apps/worker/migrations"
+
+[[env.staging.kv_namespaces]]
+binding = "KV"
+id = "08382255eaae4c4aa56f8b7d73b571a2"
+
+[env.staging.ai]
+binding = "AI"
+
+[env.staging.triggers]
+crons = ["*/30 * * * *", "45 20 * * *"]
+
+[env.staging.vars]
+ENVIRONMENT = "staging"
+WORKSPACE_ID = "default"
+GITHUB_REPO = "anishBan98/drishti"
+GOOGLE_CLIENT_ID = "" # filled by setup (M4)
+DEMO_ENABLED = "true"
+VERSION = "dev"

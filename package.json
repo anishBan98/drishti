@@ -25,7 +25,9 @@
     "deploy:prod": "pnpm --filter @drishti/worker deploy:prod",
     "db:migrate:staging": "pnpm --filter @drishti/worker db:migrate:staging",
     "db:migrate:prod": "pnpm --filter @drishti/worker db:migrate:prod",
-    "seed:shopify": "tsx scripts/seed-shopify.ts"
+    "seed:shopify": "tsx scripts/seed-shopify.ts",
+    "spec:build": "node scripts/build-spec.mjs",
+    "spec:check": "node scripts/build-spec.mjs --check"
   },
   "simple-git-hooks": {
     "pre-commit": "node scripts/precommit-check.mjs"
@@ -41,6 +43,7 @@
     "tsx": "4.23.15",
     "typescript": "6.0.3",
     "typescript-eslint": "8.71.2",
-    "vitest": "4.1.12"
+    "vitest": "4.1.12",
+    "wrangler": "4.151.2"
   }
 }
