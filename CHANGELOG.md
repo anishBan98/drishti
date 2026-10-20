@@ -4,6 +4,12 @@ All notable changes to Drishti. Milestones follow `docs/14-SETUP-RUNBOOK.md` §8
 
 ## [Unreleased]
 
+### M4 pages and home page (2026-10-21)
+
+- Sign in with Google (`/signin`), the workspace start page (`/app`), onboarding steps 1–5 (`/onboarding`, live access checks on the Sheet and folders) and Admin (`/admin`: workspace links, users and Reload from Sheet, recent activity, sign everyone out). Signed-out visits go to Sign in; non-Owners go to the start page.
+- Home page: a clearer lead and a four-item “What Drishti shows you” list; the card on the right opens on a rotating banner, before Drishti against with Drishti, with the demo brand’s numbers and an animated chart per finding (ad returns, this week, rivals, customers). Pause and per-slide controls; it starts paused for reduced motion and keeps its numbers on phones.
+- Line icons replace text arrows across the app; the home links line up on one centre line.
+
 ### M6 · Measurement on demo data (2026-10-20)
 
 - Synthetic control (docs 08 §3.2): weights on the simplex by accelerated projected gradient, fit on 7-day sums, fit check by pre-period RMSPE ≤ 8% of the level (replaces R² ≥ 0.6, which rewarded windows that moved the answer away from the truth), 90% range by placebo-in-space or a block bootstrap. Donors exclude cities in other tests and cities with a quick-commerce stockout event. MOD-01, MOD-02, MOD-03: the Meta holdout in Pune and Ahmedabad reads ₹1.36 per ₹1 (planted 1.53).

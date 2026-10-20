@@ -49,3 +49,8 @@ e2e/playwright-report/
 .lighthouseci/
 .vercel/
 /Drishti-Sandbox-Sample.xlsx
+
+# Google service-account keys must never be committed
+*.iam.gserviceaccount.com.json
+drishti-preql-*.json
+*-sa-key*.json
