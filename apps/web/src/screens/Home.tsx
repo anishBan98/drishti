@@ -18,12 +18,9 @@ const EXTRA_CHANNELS = ['Blinkit', 'Zepto', 'Instamart', 'Meta', 'Google', 'Shop
 
 function useCountUp(target: number, ms = 1400) {
   const [v, setV] = useState(0);
+  const instant = reduced();
   useEffect(() => {
-    if (!target) return;
-    if (reduced()) {
-      setV(target);
-      return;
-    }
+    if (!target || instant) return;
     let raf = 0;
     const t0 = performance.now();
     const tick = (now: number) => {
@@ -33,8 +30,9 @@ function useCountUp(target: number, ms = 1400) {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [target, ms]);
-  return v;
+  }, [target, ms, instant]);
+  // Reduced motion: show the final number straight away.
+  return instant ? target : v;
 }
 
 function Rotator() {

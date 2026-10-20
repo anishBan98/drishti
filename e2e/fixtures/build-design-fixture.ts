@@ -18,7 +18,10 @@ const sg = (
   title: string,
   impactLabel: string,
   why: string,
-  extra: Partial<Suggestion> & { evidence?: string[]; stepVars?: Record<string, string | number> } = {},
+  extra: Omit<Partial<Suggestion>, 'evidence'> & {
+    evidence?: string[];
+    stepVars?: Record<string, string | number>;
+  } = {},
 ): Suggestion => {
   const { evidence, stepVars, ...rest } = extra;
   const s = suggest(
