@@ -2,7 +2,7 @@
 
 > See what really worked.
 
-**Document set version:** 1.1 · **Date:** 19 Oct 2026 · **Status:** Ready for build · **Owner:** PreQL, AI & Analytics Club
+**Document set version:** 1.2 · **Date:** 20 Oct 2026 · **Status:** Ready for build · **Owner:** PreQL, AI & Analytics Club
 
 Drishti is a free, self-hosted marketing intelligence workspace for Indian D2C brands that sell across their own site, Amazon, Flipkart, Nykaa and quick commerce (Blinkit, Zepto, Instamart). It answers three questions every week:
 

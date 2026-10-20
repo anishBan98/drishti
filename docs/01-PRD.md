@@ -39,6 +39,8 @@ Indian D2C brands in beauty, personal care, eyewear, audio and home (Nykaa's own
 
 **Showcase goal (for PreQL):** a working product that a recruiter or brand leader can open, understand in two minutes, and see enterprise-level depth: causal measurement, market intelligence, segmentation, text analytics and an action engine.
 
+**Company goal (added 20 Oct 2026):** become the measurement and action layer for India's multichannel D2C brands. The free, self-hosted product is the distribution and trust engine; revenue comes from a hosted Drishti Cloud and from measurement studies (§11). The showcase goal stays: the same demo serves recruiters, brands and investors.
+
 ## 3. Personas
 
 | Persona | Role | Goals | Pain today | Screens they live on |
@@ -210,6 +212,7 @@ Product metrics (definitions in `12-QA-AND-METRICS.md` §7; targets and phases i
 | R2 Act | Phase 2 | Geo test planner and automated readouts, Meta execute, Workers AI review tagging and drafts, extension, rival site watcher, approvals |
 | R3 Pilot | Phase 3 | Hardening, phone summary view, two pilot brands, case study |
 | R4 Scale | Phase 4 | Multi-workspace, Amazon SP-API and Ads API, Google Ads API, Bayesian MMM |
+| R5 Cloud | After funding | Hosted Drishti Cloud (paid tiers in §11) on paid infrastructure; until then every build stays on free tiers |
 
 ## 10. Assumptions, risks and mitigations
 
@@ -222,4 +225,65 @@ Product metrics (definitions in `12-QA-AND-METRICS.md` §7; targets and phases i
 | Platform export columns change | High | Medium | Header-signature detection plus the Mappings tab for overrides; contract tests; clear SCHEMA_MISMATCH errors |
 | Meta app permissions | Medium | Low | Read via CSV exports in Phase 1; API execution only in development mode on own ad account |
 | GitHub disables scheduled workflows in inactive public repos after 60 days | Medium | Medium | Keepalive workflow commits a heartbeat monthly; Data sources warns when the last scheduled sync is older than 26 hours |
+| No revenue model an investor accepts | High | High | Open-core model in §11; validate willingness to pay with letters of intent from design partners before raising (`13-STRATEGY-AND-KRAS.md` KRA 8) |
+| Free self-hosted version cannibalises Cloud | Medium | Medium | Cloud sells time and certainty (managed official-API connectors, multi-brand, measurement studies, support), not features hidden from the free version |
+| Ownership and IP unclear (built as a PreQL club project) | High | High | Founders and the club agree ownership, licence and contributor terms before any investor conversation (§11.8); owner: founders |
+| Measurement credibility challenged by an investor or a pilot | Medium | High | Milestone M6 moved forward (`14-SETUP-RUNBOOK.md` §8); every estimate shows its range and evidence; one geo test per design partner |
 | Google Sheets API quota overage billing (announced for later in 2026) | Low | Medium | Usage is tiny (under 50 requests per sync); throttle to 30 requests per minute; no billing account means no charges can apply |
+
+## 11. Business model and go-to-market (decided 20 Oct 2026)
+
+Numbers in this section marked *hypothesis* are starting points to test with design partners, not market data.
+
+### 11.1 Customer
+
+- **Design partners (Phase 3):** Indian D2C brands with ₹5–100 Cr annual revenue that sell on their own site and Amazon plus at least one of Nykaa, Flipkart or quick commerce (`13-STRATEGY-AND-KRAS.md` Phase 3).
+- **First paying customers (hypothesis):** brands spending ₹25 L or more a month on ads across at least three platforms, where a 10% budget misallocation costs more each month than the subscription.
+- **Buyer:** the CMO or founder (persona Aditi). **Daily users:** performance marketer, category manager, analyst.
+
+### 11.2 Offer ladder
+
+| Tier | What the brand gets | Runs on | Price |
+| --- | --- | --- | --- |
+| **Community** | The full product, self-hosted on the brand's own Cloudflare, GitHub and Google accounts; community support | Brand's free tiers | Free, always |
+| **Drishti Cloud** | Hosted and kept up to date by Drishti; managed official-API connectors (Amazon SP-API and Ads API, Google Ads, Meta); multiple brands per login; SSO; support with a response time | Drishti's paid infrastructure (after funding, R5) | *Hypothesis:* ₹25,000 to ₹1,50,000 a month, banded by monthly ad spend |
+| **Measurement study** | A designed geo test or natural-experiment readout with a written report and a budget recommendation | Either tier | *Hypothesis:* ₹1.5–3 L per study |
+| **Agency** | Cloud for agencies running many brands, with a client view | Drishti Cloud | *Hypothesis:* per brand per month, volume-discounted |
+
+### 11.3 Why open core
+
+- **Trust:** a brand can try Drishti without sending its data anywhere; data stays in its own accounts.
+- **Zero marginal cost** for Community, so free users never burn cash.
+- **Distribution:** PreQL, alumni and D2C founder communities, and agencies can deploy it without a sales call.
+- **Upgrade trigger:** keeping connectors, exports and tests running takes analyst time; Cloud sells that time back, plus certainty from measurement studies.
+
+### 11.4 Go-to-market
+
+1. **Land:** founder-led outreach to design partners; set up in under an hour on a call; first insight readout within 72 hours (Phase 3).
+2. **Prove:** one geo test or natural-experiment readout per partner; at least five measured actions; publish the hit rate.
+3. **Convert:** offer Cloud and a measurement study to partners with a measured win; ask for a letter of intent at a price point.
+4. **Scale:** agencies as resellers; case studies; the public demo and method write-ups as inbound.
+
+### 11.5 Unit economics (hypotheses)
+
+- Community costs Drishti ₹0 to serve.
+- Cloud gross margin target 80% or more: per-brand compute is small (the free-tier budget in `05-SYSTEM-DESIGN.md` §3 shows one brand fits in free limits); support and onboarding are the main cost.
+- Payback: a measurement study pays for itself if it moves 2–3% of a ₹50 L monthly ad budget to a channel with a measurably higher real return.
+
+### 11.6 Defensibility
+
+- **India channel coverage:** parsers and adapters for Amazon, Flipkart, Nykaa, Blinkit, Zepto and Instamart exports, kept current as columns change.
+- **Experiment library:** with each brand's consent and anonymised, test readouts become priors that make every new brand's measurement faster and tighter.
+- **Action loop data:** expected versus measured impact per action type, which turns into better suggestions and a published hit rate.
+
+### 11.7 Investor demo scope
+
+The investor and design-partner demo leads with four screens, polished first in milestone M3: **This week**, **Impact and ROI**, **Market** and **Actions**. The other four screens follow in the same milestone.
+
+### 11.8 Open decisions (owner: founders)
+
+| Decision | Options | Needed before |
+| --- | --- | --- |
+| Ownership and IP between the founding team and PreQL | Spin-out company with a licence or assignment from the club; club keeps a showcase licence | Any investor conversation |
+| Code licence for the public repo | MIT; AGPL-3.0 (copyleft keeps hosted forks open); a source-available licence for Cloud-only parts | Next public release (the repo currently has no LICENSE file, so all rights are reserved) |
+| Company entity and founders' time commitment | — | Fundraise |

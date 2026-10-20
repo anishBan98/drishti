@@ -4,6 +4,13 @@ All notable changes to Drishti. Milestones follow `docs/14-SETUP-RUNBOOK.md` §8
 
 ## [Unreleased]
 
+### Docs 1.2 · Founder framing (2026-10-20)
+
+- Business model and go-to-market (01 §11): open core. Community stays free and self-hosted; Drishti Cloud and measurement studies earn revenue after funding (prices marked as hypotheses to test with design partners). Company goal added to 01 §2; release R5 Cloud; new risks (revenue model, cannibalisation, ownership and IP, measurement credibility).
+- Strategy (13): objectives O6 (fundraise-ready) and O7 (willingness to pay); KRA 8 Fundraise readiness; investor narrative; design-partner letters of intent in Phase 3; progress table updated.
+- Build order (14 §8): M3 polishes This week, Impact and ROI, Market and Actions first; M6 methods run on demo data straight after M3, then M4, M5 and the rest.
+- Open founder decisions recorded (01 §11.8): ownership and IP with PreQL, code licence, entity. `package.json` licence changed from MIT to UNLICENSED, since the repo has no LICENSE file and the licence is not yet chosen.
+
 ### M2 · Engine core and demo snapshot (2026-10-19)
 
 - `packages/engine`: CSV reading with Indian number formats, ₹, %, and DD/MM/YYYY, DD-Mon-YYYY and Excel-serial dates; demo fact loaders (customer IDs hashed on read); Workspace Sheet tab loaders; analysis windows; KPI module.

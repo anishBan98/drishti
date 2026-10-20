@@ -226,6 +226,8 @@ For production (a real brand), the brand's owner does the same with their own Sh
 | M9 | Extension, rival sites, approvals, notifications | Extension adapters (EXT tests), rival site watcher (SITE-01), approvals and expiry, Slack and Calendar notifications, Monday summary |
 | M10 | Hardening and release | FREE-01..03; gitleaks; nightly E2E green twice; tag `v1.0.0`; production smoke E2E; README with demo link, screenshots and architecture |
 
+**Order of work (decided 20 Oct 2026, `01-PRD.md` §11.7):** M0 → M1 → M2 → **M3** (This week, Impact and ROI, Market and Actions polished first, then the other four screens) → **M6 on demo data** (synthetic control, natural experiments, MMM calibration; MOD-01..08 and VOICE-01 on `sample-data`) → M4 → M5 (M6's checks re-run on synced data to complete M6) → M7 → M8 → M9 → M10. Measurement credibility comes before breadth because it is the core of the investor and design-partner story.
+
 ## 9. Prompts for Claude Code
 
 ### 9.1 First prompt (full build, one session if possible)

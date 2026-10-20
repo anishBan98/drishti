@@ -9,6 +9,8 @@
 | O3 | Prove value with real data from at least two pilot brands | Converts "student project" into "used by a brand" |
 | O4 | Stay at ₹0 and keep brand data in brand accounts | Removes the two biggest objections: budget and data trust |
 | O5 | Leave a maintainable product the club can hand over every year | Long-term brand for PreQL |
+| O6 | Be fundraise-ready: design partners with measured wins, a repeatable onboarding, a clear ownership structure | Turns the project into a company an investor can back (`01-PRD.md` §11) |
+| O7 | Validate willingness to pay: letters of intent at a Cloud or measurement-study price | Proves the business model before raising |
 
 ## 2. Action maturity ladder (how "the buttons do something" grows)
 
@@ -35,8 +37,10 @@ Dates assume a start on Monday 19 Oct 2026, a core team of four (product, data, 
 | Eight screens in light and dark matching the designs; simulated actions (L0) | M3 |
 | Visual, a11y, E2E suites green; Lighthouse ≥ 90 | M3 |
 | Two-minute walkthrough video (screen recording, free tools) and a one-page case PDF | — |
+| Investor screens polished first: This week, Impact and ROI, Market, Actions | M3 |
+| Investor kit v1: pitch deck, investment memo, demo script, data-room checklist | — |
 
-**Gate to Phase 1:** E2E-01..12 green on production; three people outside the team complete the demo walkthrough unaided in under three minutes.
+**Gate to Phase 1:** E2E-01..12 green on production; three people outside the team complete the demo walkthrough unaided in under three minutes; the investor demo script runs in under two minutes on production.
 
 ### Phase 1 · Measure and assist (2 Nov – 29 Nov 2026, 4 weeks)
 
@@ -46,7 +50,7 @@ Dates assume a start on Monday 19 Oct 2026, a core team of four (product, data, 
 | --- | --- |
 | Google Sign-In, roles, sessions, Admin | M4 |
 | Workspace Sheet + Drive Inbox + parsers for all 13 sources; scheduled and manual sync; Data sources live | M5 |
-| Incrementality v1 (natural experiments + MMM-lite), bridge, market, k-means, voice (lexicon) on synced data | M6 |
+| Incrementality (natural experiments, synthetic control, MMM-lite), bridge, market, k-means, voice (lexicon): methods and MOD tests on demo data first, right after M3; re-checked on synced data after M5 | M6 |
 | Action engine: prepare, task, rule, data executors; Shopify execute with undo; Actions screen on D1; Sheet mirror | M7 |
 | Staging workspace on the template Sheet + Shopify development store | M5–M7 |
 
@@ -80,6 +84,7 @@ Diwali (8 Nov 2026) and the festive sales are the busiest weeks for brand teams,
 | Cadence | Weekly 20-minute review with the brand's marketer; capture hours saved and decisions made |
 | Evidence | At least one geo test per pilot; at least five measured actions per pilot |
 | Output | Two case studies with the brand's permission (or anonymised) |
+| Commercial | Ask each partner with a measured win for a letter of intent at a Cloud or measurement-study price (`01-PRD.md` §11.4); target 3–5 design partners, 2 letters of intent |
 
 **Gate to Phase 4:** at least one pilot reports a measured improvement and agrees to be referenced.
 
@@ -87,7 +92,8 @@ Diwali (8 Nov 2026) and the festive sales are the busiest weeks for brand teams,
 
 - Multi-workspace (agency view), onboarding wizard, phone summary view.
 - Amazon SP-API and Amazon Ads API connectors (official, free with registration), Google Ads API (developer token), Bayesian MMM option.
-- Annual club handover in April (`04-ADMIN.md` §9).
+- Annual club handover in April (`04-ADMIN.md` §9), or, if the founders spin out a company (`01-PRD.md` §11.8), a club showcase licence instead.
+- Pre-seed raise on design-partner evidence: measured wins, letters of intent, weekly use. Drishti Cloud (R5) is built only after funding.
 
 ## 4. Key Result Areas (KRAs), KPIs and targets
 
@@ -117,6 +123,12 @@ Diwali (8 Nov 2026) and the festive sales are the busiest weeks for brand teams,
 | | Recruiter or brand conversations using the demo | — | 5 | 15 | 25 | 40 | Partnerships lead | CRM sheet |
 | | Interviews, internships or live projects attributed | — | — | 2 | 5 | 8 | Club POR | club records |
 | | Case studies published | 0 | — | — | 1 (method write-up) | 2 (pilots) | Product lead | — |
+| **KRA 8 · Fundraise readiness** | Design partners signed | 0 | — | 2 in conversation | 3 agreed | 3–5 live | Founders | partner tracker |
+| | Design partners with a measured win (geo test or natural experiment) | 0 | — | — | 1 (staging) | ≥ 2 | Data lead | readouts |
+| | Letters of intent at a stated price | 0 | — | — | — | ≥ 2 | Founders | signed letters |
+| | Investor conversations using the demo | 0 | 3 | 8 | 12 | 20 | Founders | CRM sheet |
+| | Investor kit (deck, memo, demo script, data room) | — | v1 | v2 with staging data | v3 with first readout | v4 with pilot results | Product lead | kit versions |
+| | Ownership, licence and entity decided (`01-PRD.md` §11.8) | open | decided | — | — | — | Founders | signed agreement |
 
 KRA reviews: weekly 30-minute team check (KRA 1–5), fortnightly with the club POR (KRA 6–7). Each review updates the progress table in this file.
 
@@ -135,7 +147,8 @@ KRA reviews: weekly 30-minute team check (KRA 1–5), fortnightly with the club 
 
 1. **Assets:** live demo link, 2-minute walkthrough video, one-page PDF (problem, approach, screens, methods, results on sample data), GitHub repo with a clear README and the docs, LinkedIn post series (four posts: real vs claimed ROI; rival price moves; customer types; actions that measure themselves).
 2. **Narrative for interviews:** "Platforms claimed ₹22 Cr in an ₹18 Cr month. We built a free system that measures what each rupee really did with geo experiments, explains every week's change, and turns each insight into an action that is executed, logged and measured. Here it is."
-3. **Depth on demand:** be ready to explain synthetic control, natural experiments, MMM calibration, k-means feature design, aspect sentiment and the free-tier architecture (the docs are the script).
+3. **Narrative for investors:** "Indian D2C brands spend a quarter or more of revenue on ads across six platforms that all claim the same sale. Drishti measures what each rupee really did with experiments, built for Amazon, Flipkart, Nykaa and quick commerce, and closes the loop from insight to action to measured result. Free and self-hosted to earn trust; Drishti Cloud and measurement studies to earn revenue." Investor kit: pitch deck, investment memo, demo script and data-room checklist (private, kept by the founders).
+4. **Depth on demand:** be ready to explain synthetic control, natural experiments, MMM calibration, k-means feature design, aspect sentiment and the free-tier architecture (the docs are the script).
 
 ## 7. Risks to the plan
 
@@ -146,9 +159,12 @@ KRA reviews: weekly 30-minute team check (KRA 1–5), fortnightly with the club 
 | Free-tier change | Limits check fails | Adjust governors; document fallback (e.g. reduce sync frequency) |
 | Model credibility challenged | Pilot disputes a result | Show the test design and placebo distribution; run a holdout to settle it |
 | Team bandwidth during exams | Missed weekly reviews | Milestones sized to one Claude Code session each; pause between phases, not mid-milestone |
+| Investors see a project, not a company | Questions about revenue, ownership or commitment dominate meetings | Settle `01-PRD.md` §11.8 first; lead with design-partner evidence and the open-core model |
+| Design partners like it but will not pay | No letters of intent after a measured win | Test the measurement-study offer first (one-off, lower commitment); revisit Cloud pricing bands |
 
 ## 8. Progress table (update weekly)
 
 | Week | Phase | Milestones done | KRA notes |
 | --- | --- | --- | --- |
 | 19 Oct 2026 | 0 | — | Docs v1.0, designs, sample data ready |
+| 20 Oct 2026 | 0 | M0, M1, M2 | Repo, CI, Workers deployed (staging auto-deploys); engine and demo snapshot with GOLD-01..04 green. Founder framing added: business model, KRA 8, build order (M3 investor screens first, then M6) |
