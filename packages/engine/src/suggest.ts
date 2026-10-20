@@ -10,6 +10,7 @@ import {
   type Suggestion,
 } from '@drishti/shared';
 import { sha256 } from '@noble/hashes/sha2.js';
+import type { OpenAction } from './facts/workspace';
 import { bytesToHex, utf8ToBytes } from '@noble/hashes/utils.js';
 
 // Suggested actions (docs/08-METHODS.md §9). Expected impact comes from formulas in the section modules; this file
@@ -70,6 +71,31 @@ export function suggest(input: SuggestInput, approvalThresholdInr: number): Sugg
     executor: meta.executor,
     steps,
   };
+}
+
+const OPEN = new Set(['awaiting_approval', 'running', 'waiting_on_user', 'measuring']);
+
+/** What a suggestion acts on, for the no-duplicates rule (docs/08 §9.1). */
+export function suggestionTarget(s: Suggestion): string | undefined {
+  const p = s.params as Record<string, unknown>;
+  if (/^budget_/.test(s.type)) return 'budget';
+  const v = p.segment_id ?? p.city ?? p.aspect ?? p.source ?? (p.sku ? `${p.sku}|${p.platform ?? ''}` : undefined);
+  return v === undefined ? undefined : String(v);
+}
+
+/**
+ * docs/08 §9.1: a suggestion is not shown while an action of the same type and target is waiting, running or
+ * measuring (assigned ones count for 14 days). Budget actions share one target, since they move the same budget.
+ */
+export function isDuplicate(s: Suggestion, open: OpenAction[], today: string): boolean {
+  const family = (t: string) => (/^budget_/.test(t) ? 'budget' : t);
+  const target = suggestionTarget(s);
+  return open.some((a) => {
+    const live =
+      OPEN.has(a.status) ||
+      (a.status === 'assigned' && Date.parse(today) - Date.parse(a.created_at.slice(0, 10)) <= 14 * 86_400_000);
+    return live && family(a.type) === family(s.type) && a.target !== undefined && a.target === target;
+  });
 }
 
 export function topByPriority(list: Suggestion[], n: number): Suggestion[] {

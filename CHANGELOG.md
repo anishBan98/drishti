@@ -4,6 +4,16 @@ All notable changes to Drishti. Milestones follow `docs/14-SETUP-RUNBOOK.md` §8
 
 ## [Unreleased]
 
+### M6 · Measurement on demo data (2026-10-20)
+
+- Synthetic control (docs 08 §3.2): weights on the simplex by accelerated projected gradient, fit on 7-day sums, fit check by pre-period RMSPE ≤ 8% of the level (replaces R² ≥ 0.6, which rewarded windows that moved the answer away from the truth), 90% range by placebo-in-space or a block bootstrap. Donors exclude cities in other tests and cities with a quick-commerce stockout event. MOD-01, MOD-02, MOD-03: the Meta holdout in Pune and Ahmedabad reads ₹1.36 per ₹1 (planted 1.53).
+- Natural experiments (§3.3): spend shocks of a 40%+ drop or an 80%+ rise for 5+ days with national spend steady, 28-day cooldown; finds exactly the planted Kolkata, Hyderabad and Jaipur events (MOD-04) and reads them with synthetic control.
+- Evidence hierarchy (§3.1): tests, natural experiments and the regression combined by precision, plus a weak claim-ratio prior for media no experiment has reached. Real returns now sit below every platform claim and above it for creators (MOD-05); Meta reads high confidence on its holdout and natural experiment. The Impact screen says what each estimate rests on.
+- Customer types (§7): small-sample shrinkage of the share features; types named and flagged by the share of their customers; new name "COD Returners" for the cash-and-return group (MOD-07). Price changes (MOD-08), the weekly bridge (MOD-06) and emerging review issues (VOICE-01) have tests.
+- No suggestion repeats an open action (§9.1): the demo's waiting budget shift means This week no longer suggests a second one.
+- Fix (v0.4.1): a Google Sheet holding the template and the exports together read revenue and spend as zero, because the Mappings tab's Drishti field names were treated as renames. Found with a real link-shared sheet; regression test added.
+- Docs: 08 §3.1–3.3, §7, §9.1; 12 MOD-03, MOD-07, VOICE-01, E2E-10.
+
 ### Sandbox · Analyse your own company (2026-10-20)
 
 - `/try`: keep several companies in this browser. Each one can **link Google Sheets** (shared as "Anyone with the link can view") and **drop files** (the filled template, any of the 13 exports, or a ZIP). Every tab and file is detected by its columns, read in a Web Worker, and turned into the same eight screens as the demo. **Refresh** fetches linked sheets again (also on opening a company); dropping a newer export replaces the older file of the same source. Nothing is stored on a server (docs 05 §14, 09 §6.12).

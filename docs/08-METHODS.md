@@ -168,7 +168,7 @@ Weekly purchase share for tracked queries from Brand Analytics; change vs 4-week
 | days since last order | log1p, then negated (recency) |
 | days between orders (median, for ≥ 2 orders) | log1p; 365 if one order |
 
-Standardise each feature (z-score). Winsorise at ±3.
+The three shares are shrunk toward the population rate, (count + 2 × rate) ÷ (orders + 2), because most customers have one or two orders a year and raw shares would be only 0 or 1 (added 20 Oct 2026; on the demo data agreement with the planted types rises from 0.18 to 0.21 adjusted Rand). Standardise each feature (z-score). Winsorise at ±3.
 
 ### 7.2 Clustering
 - k-means++ initialisation with a seeded PRNG (mulberry32, seed 7), 10 restarts, max 300 iterations, tolerance 1e-6; keep the lowest inertia.
@@ -179,9 +179,9 @@ Standardise each feature (z-score). Winsorise at ±3.
 Per cluster compute buyers %, revenue %, AOV, orders a year, repeat %, discount %, COD %, RTO %, CAC (by acquisition source mix), 12-month value, LTV:CAC.
 
 - **Preferred** = highest LTV:CAC (ties: higher revenue %).
-- **Problem** = highest (discount % + COD % + 2 × RTO %) among clusters with LTV:CAC < 2.
-- Names by rule (first match): orders ≥ 3 and repeat ≥ 60% → "Routine Loyalists"; AOV in top 2 and orders ≥ 1.8 → "Ingredient Explorers"; ≥ 50% of orders in festival windows → "Festive Gifters"; discount ≥ 50% and COD ≥ 50% → "Deal Hunters"; orders ≈ 1 and repeat < 10% → "One-time Trialists"; else "Type N". Names are editable per workspace (Settings key `segment_names`).
-- Acceptance on demo data: the preferred cluster has mean orders ≥ 2.5 and AOV ≥ ₹850; the problem cluster has discount ≥ 0.6 and COD ≥ 0.6.
+- **Problem** = highest (discount customers % + COD customers % + 2 × RTO %) among clusters with LTV:CAC < 2. "Discount customers %" is the share of the type's customers with at least one discounted order this year (likewise COD); the order-based discount % and COD % stay for money estimates.
+- Names by rule (first match): orders ≥ 3 and repeat ≥ 60% → "Routine Loyalists"; AOV in top 2 and orders ≥ 1.8 → "Ingredient Explorers"; ≥ 50% of orders in festival windows → "Festive Gifters"; discount customers ≥ 50% and COD customers ≥ 50% → "Deal Hunters"; COD customers ≥ 60% and RTO ≥ 50% → "COD Returners" (added 20 Oct 2026); orders ≈ 1 and repeat < 10% → "One-time Trialists"; else "Type N". Names are editable per workspace (Settings key `segment_names`).
+- Acceptance on demo data: the preferred cluster has mean orders ≥ 2.5 and AOV ≥ ₹850; the problem cluster has discount customers ≥ 0.6 and COD customers ≥ 0.6.
 
 ### 7.4 Map
 x = orders a year (0.5–6.5), y = average order (₹300–₹1,500). Up to 120 sampled customers (stratified by cluster, deterministic) jittered ±0.08 orders; centroid label chips.

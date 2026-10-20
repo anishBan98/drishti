@@ -212,6 +212,8 @@ export function buildWeek(
     candidates: Suggestion[];
     sources: Snapshot['sources'];
     issue?: { label: string; share: number };
+    /** False for suggestions that repeat an open action (docs/08 §9.1). */
+    fresh?: (s: Suggestion) => boolean;
   },
 ): Snapshot['week'] {
   const { w, sales, ws } = ctx;
@@ -324,7 +326,7 @@ export function buildWeek(
       ),
     );
 
-  const suggestions = topByPriority([...input.candidates, ...own], 5);
+  const suggestions = topByPriority([...input.candidates, ...own].filter(input.fresh ?? (() => true)), 5);
 
   // Working and needs attention: the strongest positive and negative facts of the week.
   const best = [...MEDIA].sort((a, b) => ctx.real[b].roas - ctx.real[a].roas)[0]!;

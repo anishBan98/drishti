@@ -18,7 +18,7 @@ import { buildMarket } from './sections/market';
 import { buildPerformance } from './sections/performance';
 import { buildVoice, topIssue } from './sections/voice';
 import { buildWeek } from './sections/week';
-import { suggest } from './suggest';
+import { isDuplicate, suggest } from './suggest';
 import { t } from '@drishti/shared';
 
 // Snapshot builder (docs/05 §4 step 9, docs/06 §6). Deterministic: the same facts give the same version.
@@ -93,7 +93,9 @@ export function buildSnapshot(facts: Facts, ws: Workspace, opts: BuildOptions): 
     ...customers.segments.flatMap((s) => s.suggestions.filter((x) => x.type === 'shopify_discount_cap')),
     ...impact.section.channels.flatMap((c) => c.suggestions.filter((s) => s.type === 'budget_change')),
   ];
-  const week = buildWeek(ctx, { changes: market.changes, candidates, sources, issue });
+  // No suggestion repeats an open action (docs/08 §9.1); This week then takes the next best, so it still shows five.
+  const fresh = (s: Suggestion) => !isDuplicate(s, ws.actions, ctx.w.today);
+  const week = buildWeek(ctx, { changes: market.changes, candidates: candidates.filter(fresh), sources, issue, fresh });
 
   const body: Omit<Snapshot, 'version'> = {
     schema: SNAPSHOT_SCHEMA,
@@ -111,7 +113,19 @@ export function buildSnapshot(facts: Facts, ws: Workspace, opts: BuildOptions): 
     data: buildData(ctx, sources),
     rules_fired: [],
   };
+  dropDuplicates(body, fresh);
   const { generated_at: _g, ...hashed } = body;
   const version = bytesToHex(sha256(utf8ToBytes(stableStringify(hashed)))).slice(0, 32);
   return snapshotSchema.parse({ ...body, version });
+}
+
+/** Removes open-action duplicates from every suggestion list in the snapshot (docs/08 §9.1). */
+function dropDuplicates(node: unknown, keep: (s: Suggestion) => boolean): void {
+  if (Array.isArray(node)) for (const x of node) dropDuplicates(x, keep);
+  else if (node && typeof node === 'object')
+    for (const [k, v] of Object.entries(node as Record<string, unknown>)) {
+      if (k === 'suggestions' && Array.isArray(v))
+        (node as Record<string, unknown>)[k] = (v as Suggestion[]).filter(keep);
+      else dropDuplicates(v, keep);
+    }
 }

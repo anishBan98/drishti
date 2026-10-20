@@ -13,6 +13,7 @@ export const SEGMENT_NAMES = [
   'Festive Gifters',
   'Deal Hunters',
   'One-time Trialists',
+  'COD Returners',
 ] as const;
 
 export interface SegmentStats {
@@ -27,6 +28,9 @@ export interface SegmentStats {
   repeat_pct: number;
   discount_pct: number;
   cod_pct: number;
+  /** Share of the type's customers with at least one discounted (or COD) order this year: used to name and flag. */
+  discount_customers_pct: number;
+  cod_customers_pct: number;
   rto_pct: number;
   cac: number;
   ltv_12m: number;
@@ -40,6 +44,8 @@ export interface SegmentResult {
   signals: number;
   silhouette: number;
   segments: SegmentStats[];
+  /** Cluster index per customer key (for the stability check against the last run, docs/08 §7.2). */
+  assignment?: Map<string, number>;
 }
 
 interface CustomerRow {
@@ -86,7 +92,19 @@ export function segmentCustomers(input: {
   if (rows.length < MIN_CUSTOMERS) return { k, signals: 0, silhouette: 0, segments: [] };
   for (const r of rows) r.orders.sort((a, b) => (a.created_at < b.created_at ? -1 : 1));
 
-  // §7.1 features
+  // §7.1 features. The three shares are shrunk toward the population rate, (count + α·rate) ÷ (orders + α) with
+  // α = 2: one or two orders say little, and raw 0-or-1 shares would split customers on noise.
+  const ALPHA = 2;
+  const allYear = rows.flatMap((r) => r.orders);
+  const rateOf = (pred: (o: OwnSiteOrder) => boolean, of: OwnSiteOrder[]) =>
+    of.length ? of.filter(pred).length / of.length : 0;
+  const discRate = rateOf((o) => !!o.discount_code, allYear);
+  const codRate = rateOf((o) => o.payment_method === 'COD', allYear);
+  const rtoRate = rateOf(
+    (o) => o.status === 'RTO',
+    allYear.filter((o) => o.payment_method === 'COD'),
+  );
+  const shrink = (count: number, n: number, rate: number) => (count + ALPHA * rate) / (n + ALPHA);
   const raw = rows.map((r) => {
     const n = r.orders.length;
     const cod = r.orders.filter((o) => o.payment_method === 'COD');
@@ -97,9 +115,9 @@ export function segmentCustomers(input: {
     return [
       Math.log1p(n),
       Math.log(Math.max(1, mean(r.orders.map((o) => o.net_inr)))),
-      r.orders.filter((o) => o.discount_code).length / n,
-      cod.length / n,
-      cod.length ? cod.filter((o) => o.status === 'RTO').length / cod.length : 0,
+      shrink(r.orders.filter((o) => o.discount_code).length, n, discRate),
+      shrink(cod.length, n, codRate),
+      shrink(cod.filter((o) => o.status === 'RTO').length, cod.length, rtoRate),
       Math.min(cats.size, 4) / 4,
       -Math.log1p(daysBetween(r.orders[n - 1]!.date, w.today)),
       n >= 2 ? Math.log1p(median(gaps)) : Math.log1p(365),
@@ -143,6 +161,12 @@ export function segmentCustomers(input: {
       repeat_pct: members.length ? members.filter((m) => m.orders.length >= 2).length / members.length : 0,
       discount_pct: orders.length ? orders.filter((o) => o.discount_code).length / orders.length : 0,
       cod_pct: orders.length ? cod.length / orders.length : 0,
+      discount_customers_pct: members.length
+        ? members.filter((m) => m.orders.some((o) => o.discount_code)).length / members.length
+        : 0,
+      cod_customers_pct: members.length
+        ? members.filter((m) => m.orders.some((o) => o.payment_method === 'COD')).length / members.length
+        : 0,
       rto_pct: cod.length ? cod.filter((o) => o.status === 'RTO').length / cod.length : 0,
       cac,
       ltv_12m: ltv,
@@ -160,7 +184,8 @@ export function segmentCustomers(input: {
     ['Routine Loyalists', (s) => s.orders_per_year >= 3 && s.repeat_pct >= 0.6],
     ['Ingredient Explorers', (s) => aovRank.slice(0, 2).includes(s.index) && s.orders_per_year >= 1.8],
     ['Festive Gifters', (s) => s.festiveShare >= 0.5],
-    ['Deal Hunters', (s) => s.discount_pct >= 0.5 && s.cod_pct >= 0.5],
+    ['Deal Hunters', (s) => s.discount_customers_pct >= 0.5 && s.cod_customers_pct >= 0.5],
+    ['COD Returners', (s) => s.cod_customers_pct >= 0.6 && s.rto_pct >= 0.5],
     ['One-time Trialists', (s) => s.orders_per_year < 1.15 && s.repeat_pct < 0.1],
   ];
   // Each name goes to the best-matching cluster among those that pass its rule, in rule order.
@@ -168,7 +193,8 @@ export function segmentCustomers(input: {
     'Routine Loyalists': (s) => s.orders_per_year + s.repeat_pct,
     'Ingredient Explorers': (s) => s.aov,
     'Festive Gifters': (s) => s.festiveShare,
-    'Deal Hunters': (s) => s.discount_pct + s.cod_pct,
+    'Deal Hunters': (s) => s.discount_customers_pct + s.cod_customers_pct - s.rto_pct,
+    'COD Returners': (s) => s.rto_pct,
     'One-time Trialists': (s) => -s.orders_per_year,
   };
   const all = stats as (SegmentStats & { festiveShare: number })[];
@@ -184,7 +210,13 @@ export function segmentCustomers(input: {
   if (preferred) preferred.kind = 'preferred';
   const problem = stats
     .filter((s) => s.kind !== 'preferred' && s.ltv_cac < 2)
-    .sort((a, b) => b.discount_pct + b.cod_pct + 2 * b.rto_pct - (a.discount_pct + a.cod_pct + 2 * a.rto_pct))[0];
+    .sort(
+      (a, b) =>
+        b.discount_customers_pct +
+        b.cod_customers_pct +
+        2 * b.rto_pct -
+        (a.discount_customers_pct + a.cod_customers_pct + 2 * a.rto_pct),
+    )[0];
   if (problem) problem.kind = 'problem';
 
   // §7.4 map sample: up to 120 customers stratified by cluster, deterministic, jittered ±0.08 orders.
@@ -203,7 +235,13 @@ export function segmentCustomers(input: {
     delete (s as Partial<{ festiveShare: number }>).festiveShare;
   }
 
-  return { k, signals: dims, silhouette: silhouette(z, fit.labels, k), segments: stats };
+  return {
+    k,
+    signals: dims,
+    silhouette: silhouette(z, fit.labels, k),
+    segments: stats,
+    assignment: new Map(rows.map((r, i) => [r.key, fit.labels[i]!])),
+  };
 }
 
 const round2 = (v: number) => Math.round(v * 100) / 100;

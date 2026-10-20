@@ -31,7 +31,7 @@ CI must be green before any milestone is marked done.
 - **MOD-04** Natural-experiment detector finds Kolkata (Mar 2026), Hyderabad (Dec 2025), Jaipur (Aug 2026) events and no event for a city without planted changes over the same windows.
 - **MOD-05** Every medium's true ROAS estimate < claimed ROAS except creators (> claimed).
 - **MOD-06** Bridge explains ≥ 80% of the demo week change; Rival B and Mumbai stockout drivers are negative and among the top four.
-- **MOD-07** k-means is deterministic for a seed; preferred cluster mean orders ≥ 2.5 and AOV ≥ ₹850; problem cluster discount ≥ 0.6 and COD ≥ 0.6.
+- **MOD-07** k-means is deterministic for a seed; preferred cluster mean orders ≥ 2.5 and AOV ≥ ₹850; problem cluster: at least 60% of its customers used a discount and at least 60% paid COD (`08-METHODS.md` §7.3).
 - **MOD-08** Price-change detector flags Rival B (−18%, 2 Oct), Rival F (−10%, 9 Oct), Rival D (+5%, 11 Oct) and not the 1-day flash deals.
 - **MET-05** Readout calculator: hit, partial, miss and inconclusive boundaries on fixtures.
 
@@ -40,7 +40,7 @@ CI must be green before any milestone is marked done.
 - **AI-02** AI tagging client validates JSON with zod; invalid output triggers one retry then lexicon fallback (mocked model).
 - **AI-03** Budget governor blocks calls past 8,000 estimated neurons and records usage.
 - **AI-04** Drafts keep every number from the facts (number-preservation check rejects altered numbers).
-- **VOICE-01** Emerging issues: "pump" flagged as growing with first seen 21 Sep; "smaller than shown" flagged as new on Flipkart.
+- **VOICE-01** Emerging issues: "pump" flagged as growing with first seen 21 Sep; "smaller than shown" flagged as new on Flipkart. The sample reviews contain no size complaint, so the second part runs on a copy of the demo reviews with 25 such Flipkart reviews added in October (clarified 20 Oct 2026).
 
 ### Parsers and connectors
 - **CON-01..13** Each `sample-data/inbox/*.csv` is detected as the right source, parsed with zero errors, and its totals match the corresponding demo facts for the overlapping dates (where the inbox file is derived from them).
@@ -87,7 +87,7 @@ CI must be green before any milestone is marked done.
 - **E2E-07** Customers: selecting Routine Loyalists highlights its dots and changes actions.
 - **E2E-08** Data sources: selecting Flipkart Ads shows "5 days late" and its actions; privacy switch toggles.
 - **E2E-09** Demo action: Create coupon → confirm → steps tick → CSV downloads → "View in Actions" → the action is on top of the Actions log.
-- **E2E-10** Demo approval: budget shift shows Waiting for approval; Approve and run on Actions moves it to Running.
+- **E2E-10** Demo approval: budget shift shows Waiting for approval; Approve and run on Actions moves it to Running. The demo's open budget shift (A-0002) is the one approved; This week does not suggest a second one (`08-METHODS.md` §9.1).
 - **E2E-11** Demo undo on a done action shows Undone and the restore step.
 - **E2E-12** Assign opens owner picker and logs the assignment.
 - **E2E-13..16** Staging (signed-in test user via a test-only Google token mock in staging): coupon handoff, geo test plan, QA hold, discount cap on the Shopify development store.

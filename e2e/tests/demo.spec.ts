@@ -146,16 +146,20 @@ test('E2E-09 Create coupon: confirm, steps tick, CSV downloads, View in Actions 
 });
 
 test('E2E-10 Budget shift waits for approval; Approve and run on Actions moves it to Running', async ({ page }) => {
+  // The demo already has a budget shift waiting for approval, so This week does not suggest another (docs/08 §9.1).
   await open(page, '/demo');
-  const card = page.locator('[data-suggestion="budget_shift"]');
-  await card.getByRole('button').first().click();
-  await card.getByRole('button', { name: 'Apply budget shift' }).click();
-  await card.getByRole('button', { name: 'Run' }).click();
-  await expect(card).toContainText('Waiting for approval from');
-  await card.getByRole('link', { name: 'View in Actions' }).click();
+  await expect(page.locator('[data-suggestion]')).toHaveCount(5);
+  await expect(page.locator('[data-suggestion="budget_shift"]')).toHaveCount(0);
+  await page
+    .getByRole('navigation', { name: 'Drishti sections' })
+    .getByRole('link', { name: 'Actions', exact: true })
+    .click();
+  const log = page.getByRole('region', { name: 'Action log' });
+  const shift = log.getByRole('button', { name: /Shift ₹30 L/ });
+  await expect(shift).toContainText('Waiting');
+  await shift.click();
   await page.getByRole('button', { name: 'Approve and run' }).click();
-  const row = page.getByRole('region', { name: 'Action log' }).getByRole('button').first();
-  await expect(row).toContainText('Running');
+  await expect(shift).toContainText('Running');
   await expect(page.getByTestId('did-steps')).toContainText('Approved by');
 });
 

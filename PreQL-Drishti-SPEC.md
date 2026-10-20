@@ -1882,7 +1882,7 @@ Weekly purchase share for tracked queries from Brand Analytics; change vs 4-week
 | days since last order | log1p, then negated (recency) |
 | days between orders (median, for ≥ 2 orders) | log1p; 365 if one order |
 
-Standardise each feature (z-score). Winsorise at ±3.
+The three shares are shrunk toward the population rate, (count + 2 × rate) ÷ (orders + 2), because most customers have one or two orders a year and raw shares would be only 0 or 1 (added 20 Oct 2026; on the demo data agreement with the planted types rises from 0.18 to 0.21 adjusted Rand). Standardise each feature (z-score). Winsorise at ±3.
 
 ### 7.2 Clustering
 - k-means++ initialisation with a seeded PRNG (mulberry32, seed 7), 10 restarts, max 300 iterations, tolerance 1e-6; keep the lowest inertia.
@@ -1893,9 +1893,9 @@ Standardise each feature (z-score). Winsorise at ±3.
 Per cluster compute buyers %, revenue %, AOV, orders a year, repeat %, discount %, COD %, RTO %, CAC (by acquisition source mix), 12-month value, LTV:CAC.
 
 - **Preferred** = highest LTV:CAC (ties: higher revenue %).
-- **Problem** = highest (discount % + COD % + 2 × RTO %) among clusters with LTV:CAC < 2.
-- Names by rule (first match): orders ≥ 3 and repeat ≥ 60% → "Routine Loyalists"; AOV in top 2 and orders ≥ 1.8 → "Ingredient Explorers"; ≥ 50% of orders in festival windows → "Festive Gifters"; discount ≥ 50% and COD ≥ 50% → "Deal Hunters"; orders ≈ 1 and repeat < 10% → "One-time Trialists"; else "Type N". Names are editable per workspace (Settings key `segment_names`).
-- Acceptance on demo data: the preferred cluster has mean orders ≥ 2.5 and AOV ≥ ₹850; the problem cluster has discount ≥ 0.6 and COD ≥ 0.6.
+- **Problem** = highest (discount customers % + COD customers % + 2 × RTO %) among clusters with LTV:CAC < 2. "Discount customers %" is the share of the type's customers with at least one discounted order this year (likewise COD); the order-based discount % and COD % stay for money estimates.
+- Names by rule (first match): orders ≥ 3 and repeat ≥ 60% → "Routine Loyalists"; AOV in top 2 and orders ≥ 1.8 → "Ingredient Explorers"; ≥ 50% of orders in festival windows → "Festive Gifters"; discount customers ≥ 50% and COD customers ≥ 50% → "Deal Hunters"; COD customers ≥ 60% and RTO ≥ 50% → "COD Returners" (added 20 Oct 2026); orders ≈ 1 and repeat < 10% → "One-time Trialists"; else "Type N". Names are editable per workspace (Settings key `segment_names`).
+- Acceptance on demo data: the preferred cluster has mean orders ≥ 2.5 and AOV ≥ ₹850; the problem cluster has discount customers ≥ 0.6 and COD customers ≥ 0.6.
 
 ### 7.4 Map
 x = orders a year (0.5–6.5), y = average order (₹300–₹1,500). Up to 120 sampled customers (stratified by cluster, deterministic) jittered ±0.08 orders; centroid label chips.
@@ -2654,7 +2654,7 @@ CI must be green before any milestone is marked done.
 - **MOD-04** Natural-experiment detector finds Kolkata (Mar 2026), Hyderabad (Dec 2025), Jaipur (Aug 2026) events and no event for a city without planted changes over the same windows.
 - **MOD-05** Every medium's true ROAS estimate < claimed ROAS except creators (> claimed).
 - **MOD-06** Bridge explains ≥ 80% of the demo week change; Rival B and Mumbai stockout drivers are negative and among the top four.
-- **MOD-07** k-means is deterministic for a seed; preferred cluster mean orders ≥ 2.5 and AOV ≥ ₹850; problem cluster discount ≥ 0.6 and COD ≥ 0.6.
+- **MOD-07** k-means is deterministic for a seed; preferred cluster mean orders ≥ 2.5 and AOV ≥ ₹850; problem cluster: at least 60% of its customers used a discount and at least 60% paid COD (`08-METHODS.md` §7.3).
 - **MOD-08** Price-change detector flags Rival B (−18%, 2 Oct), Rival F (−10%, 9 Oct), Rival D (+5%, 11 Oct) and not the 1-day flash deals.
 - **MET-05** Readout calculator: hit, partial, miss and inconclusive boundaries on fixtures.
 
@@ -2663,7 +2663,7 @@ CI must be green before any milestone is marked done.
 - **AI-02** AI tagging client validates JSON with zod; invalid output triggers one retry then lexicon fallback (mocked model).
 - **AI-03** Budget governor blocks calls past 8,000 estimated neurons and records usage.
 - **AI-04** Drafts keep every number from the facts (number-preservation check rejects altered numbers).
-- **VOICE-01** Emerging issues: "pump" flagged as growing with first seen 21 Sep; "smaller than shown" flagged as new on Flipkart.
+- **VOICE-01** Emerging issues: "pump" flagged as growing with first seen 21 Sep; "smaller than shown" flagged as new on Flipkart. The sample reviews contain no size complaint, so the second part runs on a copy of the demo reviews with 25 such Flipkart reviews added in October (clarified 20 Oct 2026).
 
 ### Parsers and connectors
 - **CON-01..13** Each `sample-data/inbox/*.csv` is detected as the right source, parsed with zero errors, and its totals match the corresponding demo facts for the overlapping dates (where the inbox file is derived from them).
@@ -2710,7 +2710,7 @@ CI must be green before any milestone is marked done.
 - **E2E-07** Customers: selecting Routine Loyalists highlights its dots and changes actions.
 - **E2E-08** Data sources: selecting Flipkart Ads shows "5 days late" and its actions; privacy switch toggles.
 - **E2E-09** Demo action: Create coupon → confirm → steps tick → CSV downloads → "View in Actions" → the action is on top of the Actions log.
-- **E2E-10** Demo approval: budget shift shows Waiting for approval; Approve and run on Actions moves it to Running.
+- **E2E-10** Demo approval: budget shift shows Waiting for approval; Approve and run on Actions moves it to Running. The demo's open budget shift (A-0002) is the one approved; This week does not suggest a second one (`08-METHODS.md` §9.1).
 - **E2E-11** Demo undo on a done action shows Undone and the restore step.
 - **E2E-12** Assign opens owner picker and logs the assignment.
 - **E2E-13..16** Staging (signed-in test user via a test-only Google token mock in staging): coupon handoff, geo test plan, QA hold, discount cap on the Shopify development store.
