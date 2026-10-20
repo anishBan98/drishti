@@ -53,7 +53,7 @@ It is built entirely on free tiers with no credit card anywhere: Cloudflare Work
 **Rules for Claude Code that apply to every file in this set**
 
 - **Free only.** Never add a payment method, never upgrade a plan, never use a paid API or a paid tier. If a step would require a card, stop and say so.
-- **Allowed services:** GitHub (repo, Actions), Cloudflare (Workers, Static Assets, D1, KV, Workers AI, Cron Triggers), Google Cloud with no billing account (Sheets API, Drive API, Calendar API, Google Identity Services), Shopify Partners development store, and optionally Meta for Developers (development mode) and a Slack incoming webhook. npm packages bundled into the code are fine. Nothing else.
+- **Allowed services:** GitHub (repo, Actions), Cloudflare (Workers, Static Assets, D1, KV, Workers AI, Cron Triggers), Google Cloud with no billing account (Sheets API, Drive API, Calendar API, Google Identity Services), Shopify Partners development store, and optionally Meta for Developers (development mode) and a Slack incoming webhook. Vercel Hobby (free, no card) is allowed only as a mirror of the public static pages (decided 20 Oct 2026, `05-SYSTEM-DESIGN.md` §14). npm packages bundled into the code are fine. Nothing else.
 - **No automated visits to marketplaces.** Amazon, Flipkart, Nykaa and quick-commerce pages are only read when a person opens them and clicks Capture in the extension. Rival brands' own websites may be read on a schedule only when their `robots.txt` allows it (`11-CONNECTORS.md` §6).
 - **Numbers come from code, not from the AI.** All counting, metrics, models and expected impacts are plain TypeScript in `packages/engine`. Workers AI only classifies review text and drafts words (briefs, replies, narrative polish).
 - **Every user-facing string** comes from the copy deck in `09-FRONTEND.md` §10 so it can be edited in one place.
@@ -1105,6 +1105,7 @@ Both workers share the code; each has its own D1 database, KV namespace and secr
 - Files dropped on the page (the filled template `.xlsx`, export CSVs, or a ZIP of them) are read in a Web Worker by `packages/engine`: the same header detection, parsers and models as the sync job (`11-CONNECTORS.md` §3), and the same snapshot builder.
 - Nothing is uploaded and no API is called. The parsed facts and snapshot live in memory (and IndexedDB, wrapped in try/catch, so a reload keeps them); "Clear my data" deletes them.
 - **Linked Google Sheets (added 20 Oct 2026):** besides dropping files, a visitor can paste Google Sheets links shared as "Anyone with the link can view". The browser asks the Worker's `GET /api/sheet` (`07-API.md` §2) for the workbook, reads every tab with the same detection as files, and keeps the link. **Refresh** fetches every linked sheet again and rebuilds the snapshot; opening a company refreshes it too. This is the only sandbox call to the server, and it keeps nothing. Private sheets need the signed-in setup (M4), which reads them with the service account.
+- **Vercel mirror (added 20 Oct 2026):** the same static build of the public pages (home, demo, sandbox) can also be served from Vercel Hobby (`vercel.json`). Vercel only serves files; its `/api/*` is rewritten to the Cloudflare Worker, so linked sheets work the same, and signed-in workspaces stay on Cloudflare. Hobby is for non-commercial use: the mirror is for showing Drishti, and moves off Hobby (or is dropped) before any paid use.
 - Several companies can be kept at once, each under its own id with its files' parsed rows by source. Updating a company replaces only the sources in the new files and rebuilds its snapshot.
 - Screens render exactly as in the demo, with `workspace.demo = true` and a "Your files, this browser only" chip. Actions are simulated as in demo mode (`10-ACTIONS.md` §7).
 - Limits: up to 50 MB of files in total; screens without enough data show the EmptyState with what to add.
@@ -2988,6 +2989,7 @@ This runbook is written for Claude Code to follow, with the human (you) logging 
 | Google account (Gmail) | Google Cloud project (no billing), Sheets, Drive, Sign-In, Calendar | Free; **do not create a billing account** | You |
 | Shopify Partners | Free development store for staging and the showcase | Free | You (Phase 1, M7) |
 | Slack (optional) | Notifications via incoming webhook | Free workspace | You |
+| Vercel (optional mirror) | A second address for the public pages (home, demo, sandbox) | Hobby (free, no card; non-commercial use only) | You (sign up with GitHub) |
 | Meta for Developers (optional, Phase 2) | Ads API in development mode | Free | You |
 
 Use a club email (for example `preql.drishti@…`) for Cloudflare and Google so the club owns the deployment (`04-ADMIN.md` §9).
@@ -3004,6 +3006,7 @@ Use a club email (for example `preql.drishti@…`) for Cloudflare and Google so 
 | GitHub fine-grained PAT for sync dispatch | github.com → Settings → Developer settings | You | Stores it with `wrangler secret put GITHUB_DISPATCH_TOKEN` |
 | Shopify development store and custom app | partners.shopify.com | You | Seeds the store; you paste the token in Drishti Admin |
 | Slack webhook | api.slack.com/apps | You | You paste the URL in Drishti Admin |
+| Vercel login (optional mirror) | Terminal → browser | You approve | Runs `npx vercel login`, then `npx vercel deploy --prod` |
 
 ## 3. Local prerequisites
 
@@ -3215,7 +3218,8 @@ design/ and brand/. The docs are the source of truth. Read docs/00-README.md, th
 before writing code, and skim the rest.
 
 Rules: free tiers only, never add a payment method or upgrade any plan. Allowed services: GitHub, Cloudflare
-Workers/D1/KV/Workers AI, Google APIs with no billing account, Shopify development store, optional Slack webhook.
+Workers/D1/KV/Workers AI, Google APIs with no billing account, Shopify development store, optional Slack webhook,
+and Vercel Hobby as a mirror of the public pages only.
 No automated visits to marketplaces. All numbers from code; AI only for review tagging and drafts.
 Every user-facing string comes from the copy deck. Every button must do something real (docs/10-ACTIONS.md).
 Match design/screens/*.png and design/static-html/*.html in light and dark.
