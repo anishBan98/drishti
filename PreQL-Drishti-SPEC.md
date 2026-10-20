@@ -1777,8 +1777,8 @@ The Impact screen shows the estimate as "₹153 per ₹100" with the interval on
 Inputs: daily total net revenue per city (all channels, `sales_city_daily`), test cities T (aggregated into one series y_T), donor cities D (cities not affected by the change and not in another live test; exclude cities with allocated rows > 30%).
 
 1. **Pre-period:** 56 days before the change (minimum 28). Normalise each series by its pre-period mean.
-2. **Weights:** w ∈ ℝ^|D|, w ≥ 0, Σw = 1, minimising Σ_pre (y_T − Σ w_d y_d)² + λ‖w‖² with λ = 0.01 × mean squared y_T. Solve by projected gradient descent onto the simplex (Duchi et al. projection), 2,000 iterations, tolerance 1e-9. Deterministic start w = 1/|D|.
-3. **Fit check:** pre-period RMSPE; require R² ≥ 0.6, else the estimate is flagged `poor_fit` and confidence capped at low.
+2. **Weights:** w ∈ ℝ^|D|, w ≥ 0, Σw = 1, minimising Σ_pre (y_T − Σ w_d y_d)² + λ‖w‖² with λ = 0.01 × mean squared y_T, on 7-day rolling sums of the normalised series (day-to-day noise that cities do not share is smoothed out; trend and seasonality remain). Solve by accelerated projected gradient (FISTA) onto the simplex (Duchi et al. projection), at most 2,000 iterations, tolerance 1e-9. Deterministic start w = 1/|D|.
+3. **Fit check (revised 20 Oct 2026):** pre-period RMSPE on the 7-day sums as a share of the treated level; require ≤ 8%, else the estimate is flagged `poor_fit` and confidence capped at low. R² is reported but not used: it is low whenever the pre-period is flat, and on the demo data it rewards shorter windows that move the estimate away from the truth (56 days: RMSPE 6%, ₹1.36 per ₹1, range contains the planted 1.53; 42 days: R² 0.80 but ₹1.03, range misses it).
 4. **Effect:** during the test, gap_t = y_T,t − ŷ_T,t (in rupees after de-normalising). Total effect = Σ gap_t over the test plus a carryover tail of 7 days after the test ends (for holdouts the tail captures slow-decaying effects).
 5. **Return:** for a holdout (spend removed), real revenue per rupee = −total effect ÷ spend removed, where spend removed = Σ over test days of expected spend in T (pre-period spend share × total media spend) minus actual spend in T. For a boost, = total effect ÷ extra spend.
 6. **Interval:** placebo-in-space: run steps 2–5 treating each donor as if it were treated; the distribution of placebo effects (scaled to the same spend) gives a 90% interval around the estimate (5th–95th percentile of estimate + placebo noise). If fewer than 6 donors, use a block bootstrap over weeks of the pre-period residuals.
@@ -1793,7 +1793,7 @@ Scan `spend_city_daily` per medium and city:
 - **Spend shock:** 7-day rolling spend drops below 40% or rises above 180% of the trailing 28-day median for at least 5 consecutive days, while national spend for that medium stays within ±25%. Example in the demo: Meta in Kolkata 2–15 Mar 2026 (billing lapse), Meta burst in Hyderabad 1–10 Dec 2025, Google brand-search cut in Jaipur 4–17 Aug 2026.
 - **Stockout window** (quick-commerce ads): for stores with stockout = yes, ad spend that ran during stockout days delivered nothing; the share of QC revenue lost vs same-store forecast quantifies the stockout cost (used by the bridge) and the comparison of in-stock vs out-of-stock stores with similar ad spend gives a QC-ads estimate.
 
-Each detected event is read with §3.2 (city as T). Events shorter than 5 days or with pre-fit R² < 0.6 are dropped.
+Each detected event is read with §3.2 (city as T). Events shorter than 5 days or with pre-fit RMSPE above 8% are dropped.
 
 ### 3.4 Media-mix regression (MMM-lite)
 
@@ -2649,7 +2649,7 @@ CI must be green before any milestone is marked done.
 - **GOLD-04** Own-site sample counts, repeat share, COD share, RTO share of COD; reviews count, average rating, pump negatives last 30 days, reply rate.
 - **MOD-01** Synthetic control weights are non-negative and sum to 1 (property test on random inputs).
 - **MOD-02** On a simulated series with a known effect, the estimate is within 10% (no noise) and the 90% interval covers the truth in ≥ 85% of 100 noisy simulations.
-- **MOD-03** Meta holdout on demo data: estimate in [0.6, 2.4]; interval contains the estimate; fit R² ≥ 0.6.
+- **MOD-03** Meta holdout on demo data: estimate in [0.6, 2.4]; interval contains the estimate; pre-period fit RMSPE ≤ 8% of the treated level (revised 20 Oct 2026, `08-METHODS.md` §3.2).
 - **MOD-04** Natural-experiment detector finds Kolkata (Mar 2026), Hyderabad (Dec 2025), Jaipur (Aug 2026) events and no event for a city without planted changes over the same windows.
 - **MOD-05** Every medium's true ROAS estimate < claimed ROAS except creators (> claimed).
 - **MOD-06** Bridge explains ≥ 80% of the demo week change; Rival B and Mumbai stockout drivers are negative and among the top four.

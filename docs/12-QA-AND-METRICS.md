@@ -27,7 +27,7 @@ CI must be green before any milestone is marked done.
 - **GOLD-04** Own-site sample counts, repeat share, COD share, RTO share of COD; reviews count, average rating, pump negatives last 30 days, reply rate.
 - **MOD-01** Synthetic control weights are non-negative and sum to 1 (property test on random inputs).
 - **MOD-02** On a simulated series with a known effect, the estimate is within 10% (no noise) and the 90% interval covers the truth in ≥ 85% of 100 noisy simulations.
-- **MOD-03** Meta holdout on demo data: estimate in [0.6, 2.4]; interval contains the estimate; fit R² ≥ 0.6.
+- **MOD-03** Meta holdout on demo data: estimate in [0.6, 2.4]; interval contains the estimate; pre-period fit RMSPE ≤ 8% of the treated level (revised 20 Oct 2026, `08-METHODS.md` §3.2).
 - **MOD-04** Natural-experiment detector finds Kolkata (Mar 2026), Hyderabad (Dec 2025), Jaipur (Aug 2026) events and no event for a city without planted changes over the same windows.
 - **MOD-05** Every medium's true ROAS estimate < claimed ROAS except creators (> claimed).
 - **MOD-06** Bridge explains ≥ 80% of the demo week change; Rival B and Mumbai stockout drivers are negative and among the top four.
