@@ -416,11 +416,14 @@ export function Home() {
               <Link to="/demo" className={css.primary}>
                 {t('home.cta.demo')} →
               </Link>
-              <a href={SETUP_URL} target="_blank" rel="noreferrer" className={css.secondary}>
-                {t('home.cta.setup')}
-              </a>
+              <Link to="/try" className={css.secondary}>
+                {t('home.cta.try')}
+              </Link>
             </div>
             <div className={css.links}>
+              <a href={SETUP_URL} target="_blank" rel="noreferrer">
+                {t('home.cta.setup')}
+              </a>
               <a href="/samples/Drishti-Workspace-Template.xlsx" download>
                 ⬇ {t('home.sample')}
               </a>

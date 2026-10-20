@@ -131,6 +131,17 @@ describe('sandbox build (docs/05 §14)', () => {
     expect(names).toEqual(expect.arrayContaining(['Settings', 'Products', 'Channels', 'Creators', 'Tests']));
   });
 
+  it('reads the Products tab despite the Shopify "Name" mapping, and marks info tabs as known', () => {
+    const tabs = tables.filter((x) => x.name.startsWith('Drishti-Workspace-Template.xlsx'));
+    expect(tabs.find((x) => x.name.endsWith('Products'))!.detected).toEqual({ kind: 'tab', tab: 'products' });
+    expect(tabs.filter((x) => x.detected.kind === 'unknown').map((x) => x.name)).toEqual([]);
+    const a = assemble(tables);
+    expect(a.facts.products.find((p) => p.hero)?.name).toBe('Lumora Vitamin C Serum 30 ml');
+    expect(a.facts.sales_sku_daily.filter((r) => r.channel === 'amazon').every((r) => r.sku.startsWith('LUM-'))).toBe(
+      true,
+    );
+  });
+
   it('assembles facts: marketplace codes map to SKUs and city-less rows are allocated with totals kept', () => {
     const a = assemble(tables);
     expect(a.ws.settings.brand_name).toBe('Lumora Skin');

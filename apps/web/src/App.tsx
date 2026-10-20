@@ -1,7 +1,14 @@
 import { t, type Snapshot } from '@drishti/shared';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect, type ComponentType } from 'react';
-import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-router';
+import {
+  createBrowserRouter,
+  Navigate,
+  Outlet,
+  RouterProvider,
+  useOutletContext,
+  type RouteObject,
+} from 'react-router';
 import { useDemoWorkspace, useSnapshot } from './app/data';
 import { Stage } from './app/stage';
 import { ThemeProvider } from './app/theme';
@@ -18,6 +25,8 @@ import { Market } from './screens/Market';
 import { Performance } from './screens/Performance';
 import { ThisWeek } from './screens/ThisWeek';
 import { Voice } from './screens/Voice';
+import { TryHome, TryManage } from './screens/Try';
+import { TryLayout } from './sandbox/TryLayout';
 import ui from './components/ui.module.css';
 
 const queryClient = new QueryClient({ defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: false } } });
@@ -68,30 +77,37 @@ function DemoLayout() {
   );
 }
 
+/** A screen reads the snapshot its layout passes down: the demo's, or a sandbox company's. */
 const screen = (C: ComponentType<{ snapshot: Snapshot }>) =>
   function Screen() {
-    const { data } = useSnapshot();
+    const data = useOutletContext<Snapshot | undefined>();
     return data ? <C snapshot={data} /> : null;
   };
+
+/** The eight screens under a base path; a mistyped link lands on This week. */
+const screens = (base: string): RouteObject[] => [
+  { index: true, Component: screen(ThisWeek) },
+  { path: 'actions', Component: screen(Actions) },
+  { path: 'performance', Component: screen(Performance) },
+  { path: 'impact', Component: screen(Impact) },
+  { path: 'market', Component: screen(Market) },
+  { path: 'customers', Component: screen(Customers) },
+  { path: 'voice', Component: screen(Voice) },
+  { path: 'data', Component: screen(DataSources) },
+  { path: '*', element: <Navigate to={base} replace /> },
+];
 
 const router = createBrowserRouter([
   { path: '/', Component: Home },
   {
     path: '/demo',
     Component: DemoLayout,
-    children: [
-      { index: true, Component: screen(ThisWeek) },
-      { path: 'actions', Component: screen(Actions) },
-      { path: 'performance', Component: screen(Performance) },
-      { path: 'impact', Component: screen(Impact) },
-      { path: 'market', Component: screen(Market) },
-      { path: 'customers', Component: screen(Customers) },
-      { path: 'voice', Component: screen(Voice) },
-      { path: 'data', Component: screen(DataSources) },
-      // A mistyped demo link lands on the demo, not the home page.
-      { path: '*', element: <Navigate to="/demo" replace /> },
-    ],
+    children: screens('/demo'),
   },
+  // Sandbox: your own companies (docs/09 §6.12).
+  { path: '/try', Component: TryHome },
+  { path: '/try/:id/manage', Component: TryManage },
+  { path: '/try/:id', Component: TryLayout, children: screens('..') },
   { path: '*', element: <Navigate to="/" replace /> },
 ]);
 

@@ -292,7 +292,7 @@ All user-facing strings, keyed. Examples (full deck generated from the designs; 
 | signin.demo | Or open the demo with fictional data |
 | home.lead | A free marketing intelligence workspace for D2C brands that sell on their own site, Amazon, Flipkart, Nykaa and quick commerce. |
 | home.how.title / steps | How it works / Connect your sheet and exports. · Drishti measures what really worked. · Act from every screen and see if it paid off. |
-| home.cta.demo / try / setup | Open the demo / Try with your own data / Set up your workspace |
+| home.cta.demo / try / setup | Open the demo / Analyse your company / Set up your workspace |
 | home.sample / guide / free | Download the sample sheet / What data Drishti needs / Free. Your data stays in your own accounts. |
 | onboarding.title | Set up your workspace |
 | guide.title / subtitle | What data Drishti needs / Every source, where to export it, and a sample file for each. |

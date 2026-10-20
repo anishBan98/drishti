@@ -8,7 +8,7 @@ import { isXlsx, readXlsx, rowsToCsv } from './xlsx';
 // in a browser Web Worker.
 
 export { normHeader, SOURCES, WORKSPACE_TABS, type SourceDef } from './sources';
-export { readXlsx, isXlsx, rowsToCsv } from './xlsx';
+export { readXlsx, isXlsx, rowsToCsv, expandArchive } from './xlsx';
 
 export type Detected =
   { kind: 'source'; source: string; label: string } | { kind: 'tab'; tab: string } | { kind: 'unknown' };
@@ -45,6 +45,8 @@ export function detect(name: string, rawHeaders: string[], mapping: Record<strin
     return mapping[n] ? normHeader(mapping[n]) : n;
   });
   const base = strip(name.split('›').pop() ?? name);
+  // Informational template tabs (README, Source status, Sync log) are known but carry no data.
+  if (INFO_TABS.includes(base)) return { kind: 'tab', tab: base };
   const tabByName = WORKSPACE_TABS.find((w) => w.tab === base || w.tab === base.replace(/_/g, ''));
   if (tabByName && scoreOf(headers, tabByName.required)) return { kind: 'tab', tab: tabByName.tab };
   const byPrefix = SOURCES.find((s) => s.prefix?.test(base) && scoreOf(headers, s.required));
@@ -59,16 +61,36 @@ export function detect(name: string, rawHeaders: string[], mapping: Record<strin
   return tab ? { kind: 'tab', tab: tab.tab } : { kind: 'unknown' };
 }
 
+const INFO_TABS = ['readme', 'source_status', 'sync_log'];
+
+/** Mappings tab by source: source id (or its prefix, e.g. "shopify_orders") → file column → expected column. */
+export type SourceMappings = Record<string, Record<string, string>>;
+
 export interface ParseOptions {
   /** Salt for customer ID hashing (docs/05 §10). */
   hashKey: string;
-  /** Mappings tab: normalised file column → expected column. */
+  /** Column renames for this file, whatever its source: normalised file column → expected column. */
   mapping?: Record<string, string>;
+  /** The Mappings tab: renames that apply only to files of the source they name (docs/11 §3 step 3). */
+  mappings?: SourceMappings;
 }
+
+const sameSource = (id: string, named: string) => id === named || id.startsWith(named) || named.startsWith(id);
 
 function parseRows(name: string, raw: string[][], opts: ParseOptions): ParsedTable {
   const headers = (raw[0] ?? []).map((h) => h.trim());
-  const detected = detect(name, headers, opts.mapping);
+  let mapping = opts.mapping ?? {};
+  let detected = detect(name, headers, mapping);
+  // A Mappings row can make an unrecognised file recognisable; it applies only to the source it names.
+  for (const [named, map] of Object.entries(opts.mappings ?? {})) {
+    if (detected.kind === 'source' && sameSource(detected.source, named)) mapping = { ...map, ...mapping };
+    if (detected.kind !== 'unknown') continue;
+    const d = detect(name, headers, { ...map, ...mapping });
+    if (d.kind === 'source' && sameSource(d.source, named)) {
+      detected = d;
+      mapping = { ...map, ...mapping };
+    }
+  }
   const base: ParsedTable = {
     name,
     detected,
@@ -83,7 +105,7 @@ function parseRows(name: string, raw: string[][], opts: ParseOptions): ParsedTab
   if (detected.kind === 'unknown') return base;
   const src = SOURCES.find((s) => s.id === detected.source)!;
   const warnings: string[] = [];
-  const { part, skipped, dates } = src.parse(makeTable(raw, opts.mapping), { hashKey: opts.hashKey, warnings });
+  const { part, skipped, dates } = src.parse(makeTable(raw, mapping), { hashKey: opts.hashKey, warnings });
   const sorted = dates.filter(Boolean).sort();
   return {
     ...base,
@@ -98,22 +120,23 @@ function parseRows(name: string, raw: string[][], opts: ParseOptions): ParsedTab
 export function parseFile(name: string, content: string | Uint8Array, opts: ParseOptions): ParsedTable[] {
   if (typeof content !== 'string' && isXlsx(content)) {
     const sheets = readXlsx(content);
-    // A workbook's own Mappings tab applies to its other tabs.
+    // A workbook's own Mappings tab applies to its other tabs, each row to its own source.
     const mapTab = sheets.find((s) => strip(s.name) === 'mappings');
-    const mapping = { ...opts.mapping, ...(mapTab ? mappingFrom(rowsToCsv(mapTab.rows)) : {}) };
+    const mappings = { ...opts.mappings, ...(mapTab ? mappingsBySource(rowsToCsv(mapTab.rows)) : {}) };
     return sheets
       .filter((s) => s.rows.length > 1)
-      .map((s) => parseRows(`${name} › ${s.name}`, s.rows, { ...opts, mapping }));
+      .map((s) => parseRows(`${name} › ${s.name}`, s.rows, { ...opts, mappings }));
   }
   const text = typeof content === 'string' ? content : new TextDecoder().decode(content);
   return [parseRows(name, parseCsv(text), opts)];
 }
 
-/** Mappings tab rows (source, file_column, drishti_field) → normalised file column → expected column. */
-export function mappingFrom(csv: string): Record<string, string> {
-  const out: Record<string, string> = {};
+/** Mappings tab rows (source, file_column, drishti_field) → by source → normalised file column → expected column. */
+export function mappingsBySource(csv: string): SourceMappings {
+  const out: SourceMappings = {};
   for (const r of parseCsvObjects(csv).rows)
-    if (r.file_column && r.drishti_field) out[normHeader(r.file_column)] = r.drishti_field;
+    if (r.source && r.file_column && r.drishti_field)
+      (out[r.source.trim().toLowerCase()] ??= {})[normHeader(r.file_column)] = r.drishti_field;
   return out;
 }
 

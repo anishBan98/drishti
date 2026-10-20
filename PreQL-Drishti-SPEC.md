@@ -745,6 +745,7 @@ Covered by SYNC-07, CON-06.
 | GITHUB_DISPATCH_FAILED | 502 | Couldn't start a sync. An owner needs to renew the GitHub token. |
 | AI_UNAVAILABLE | 503 | Drafting is unavailable right now. We'll try again later. |
 | FREE_TIER_LIMIT | 503 | Daily free limit nearly reached. This will run tomorrow. |
+| SANDBOX_FULL | client | This browser keeps up to 50 MB per company. Remove a file or split it by month. |
 | SHEET_LINK_INVALID | 400 | That isn't a Google Sheets link. Copy it from the Share button. |
 | SHEET_NOT_PUBLIC | 403 | Drishti can't open this sheet. In Google Sheets choose Share → General access → Anyone with the link → Viewer, then try again. |
 | SHEET_TOO_LARGE | 413 | This sheet is over 20 MB. Split older months into another sheet. |
@@ -2287,7 +2288,7 @@ All user-facing strings, keyed. Examples (full deck generated from the designs; 
 | signin.demo | Or open the demo with fictional data |
 | home.lead | A free marketing intelligence workspace for D2C brands that sell on their own site, Amazon, Flipkart, Nykaa and quick commerce. |
 | home.how.title / steps | How it works / Connect your sheet and exports. · Drishti measures what really worked. · Act from every screen and see if it paid off. |
-| home.cta.demo / try / setup | Open the demo / Try with your own data / Set up your workspace |
+| home.cta.demo / try / setup | Open the demo / Analyse your company / Set up your workspace |
 | home.sample / guide / free | Download the sample sheet / What data Drishti needs / Free. Your data stays in your own accounts. |
 | onboarding.title | Set up your workspace |
 | guide.title / subtitle | What data Drishti needs / Every source, where to export it, and a sample file for each. |

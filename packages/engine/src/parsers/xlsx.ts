@@ -90,3 +90,13 @@ function readSheet(xml: string, shared: string[]): string[][] {
 export function rowsToCsv(rows: string[][]): string {
   return rows.map((r) => r.map((c) => (/[",\n\r]/.test(c) ? `"${c.replace(/"/g, '""')}"` : c)).join(',')).join('\n');
 }
+
+/** A ZIP of exports (not a workbook) → its CSV and XLSX files; anything else → the file itself (docs/11 §3). */
+export function expandArchive(name: string, bytes: Uint8Array): { name: string; bytes: Uint8Array }[] {
+  if (!isXlsx(bytes)) return [{ name, bytes }];
+  const files = unzipSync(bytes);
+  if (files['xl/workbook.xml']) return [{ name, bytes }];
+  return Object.entries(files)
+    .filter(([n, b]) => b.length && !n.endsWith('/') && !/(^|\/)(__MACOSX|\.)/.test(n) && /\.(csv|xlsx)$/i.test(n))
+    .map(([n, b]) => ({ name: n.split('/').pop() ?? n, bytes: b }));
+}

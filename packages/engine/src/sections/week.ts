@@ -238,7 +238,11 @@ export function buildWeek(
   const explainedSum = drivers.reduce((a, d) => a + d.value, 0);
   const unexplained = change - explainedSum;
   const explained = change ? Math.max(0, 1 - Math.abs(unexplained) / Math.abs(change)) : 1;
-  const shown = [...drivers].sort((a, b) => Math.abs(b.value) - Math.abs(a.value)).slice(0, 6);
+  // A driver that rounds to ₹0.0 L says nothing; leave it out.
+  const shown = [...drivers]
+    .filter((d) => Math.abs(d.value) >= 5_000)
+    .sort((a, b) => Math.abs(b.value) - Math.abs(a.value))
+    .slice(0, 6);
   if (Math.abs(unexplained) >= 100_000)
     shown.push({
       id: 'unexplained',

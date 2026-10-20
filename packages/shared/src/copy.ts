@@ -82,6 +82,7 @@ const baseCopy = {
   'error.IDEMPOTENCY_MISMATCH': 'This request was already sent with different details. Refresh and try again.',
   'error.UPLOAD_TOO_LARGE': 'Files up to 20 MB, please. Split larger exports by month.',
   'error.UPLOAD_TYPE_UNSUPPORTED': 'Use CSV, XLSX or ZIP files.',
+  'error.SANDBOX_FULL': 'This browser keeps up to 50 MB per company. Remove a file or split it by month.',
   'error.APPROVAL_REQUIRED': 'This is over ₹{threshold}, so it needs an approver. Sent to {approvers}.',
   'error.CONNECTOR_MISSING': "{connector} isn't connected. {fallback_text}",
   'error.UNDO_UNAVAILABLE': "This can't be undone from Drishti: {reason}.",
