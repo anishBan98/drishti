@@ -11,6 +11,8 @@ export interface DemoOutput {
   mime?: string;
   content?: string;
   url?: string;
+  /** Saved to the Drive Outbox (signed-in workspace). */
+  saved?: boolean;
 }
 
 const csv = (rows: (string | number)[][]) =>

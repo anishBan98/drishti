@@ -2,6 +2,7 @@ import { Hono } from 'hono';
 import { scheduled } from './cron';
 import type { AppEnv, Env } from './env';
 import { apiError } from './lib/errors';
+import { actionRoutes } from './routes/actions';
 import { adminRoutes } from './routes/admin';
 import { authRoutes } from './routes/auth';
 import { sheetRoutes } from './routes/sheet';
@@ -27,6 +28,8 @@ authRoutes(app);
 adminRoutes(app);
 // Sync: Sheet and Inbox bytes through the service account; the shared snapshot (docs/05 §6, compact).
 syncRoutes(app);
+// Actions: saved for the team, mirrored to the Sheet, files to the Drive Outbox (docs/10, compact).
+actionRoutes(app);
 
 app.notFound((c) => {
   const path = new URL(c.req.url).pathname;

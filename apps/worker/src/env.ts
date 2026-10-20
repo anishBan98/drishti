@@ -14,6 +14,8 @@ export interface Env {
   OWNER_EMAIL?: string;
   GOOGLE_SA_JSON?: string;
   E2E_SECRET?: string;
+  /** Optional Slack incoming webhook for action notifications (docs/10 §6). */
+  SLACK_WEBHOOK_URL?: string;
 }
 
 export type AppEnv = { Bindings: Env; Variables: { requestId: string } };
