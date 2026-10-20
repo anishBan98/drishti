@@ -67,7 +67,7 @@ function TopBar() {
   );
 }
 
-function Shell({ children }: { children: React.ReactNode }) {
+export function Shell({ children }: { children: React.ReactNode }) {
   const { theme } = useTheme();
   return (
     <div className="dr-root" data-theme={theme}>
@@ -391,7 +391,9 @@ function Found({ c }: { c: Company }) {
                       .join(' · ')
                   : tb.kind === 'tab'
                     ? t('try.found.tab', { tab: tb.source ?? '' })
-                    : t('try.found.unknown', { headers: tb.headers.join(', ') })}
+                    : tb.headers.length
+                      ? t('try.found.unknown', { headers: tb.headers.join(', ') })
+                      : t('try.found.empty')}
               </span>
             </span>
           </li>
@@ -432,7 +434,7 @@ function Ready({ c }: { c: Company }) {
           );
         })}
       </ul>
-      {c.snapshot && c.sources.length > 0 ? (
+      {c.snapshot && cover.some((x) => x.ok && x.screen !== 'actions' && x.screen !== 'data') ? (
         <Link className={`${ui.btnPrimary} ${css.show}`} to={screenHref(`/try/${c.id}`, 'week')}>
           {t('try.show')} →
         </Link>

@@ -10,6 +10,10 @@ export interface Env {
   GOOGLE_CLIENT_ID: string;
   DEMO_ENABLED: string;
   VERSION: string;
+  // Secrets (docs/05 §9), set with `wrangler secret put`.
+  OWNER_EMAIL?: string;
+  GOOGLE_SA_JSON?: string;
+  E2E_SECRET?: string;
 }
 
 export type AppEnv = { Bindings: Env; Variables: { requestId: string } };

@@ -62,22 +62,24 @@ export function buildCustomers(ctx: Context): {
         ),
       );
       const rtoSaved = (s.cod_pct * s.rto_pct * s.aov * s.customers * ctx.sampleScale * s.orders_per_year * 0.4) / 12;
-      list.push(
-        suggest(
-          {
-            type: 'cod_otp',
-            context: `segment=${s.name}`,
-            title: t('customers.sg.otp.title', { amount: '₹500' }),
-            why: t('customers.sg.otp.why'),
-            expectedInr: rtoSaved,
-            expectedPer: 'month',
-            impactLabel: t('impact.label.returns', { value: '−' + money(rtoSaved) }),
-            confidence: 'medium',
-            params: { segment_id: s.name, min_order_inr: 500 },
-          },
-          threshold,
-        ),
-      );
+      // Without returned-order data there is nothing for an OTP to save.
+      if (rtoSaved > 0)
+        list.push(
+          suggest(
+            {
+              type: 'cod_otp',
+              context: `segment=${s.name}`,
+              title: t('customers.sg.otp.title', { amount: '₹500' }),
+              why: t('customers.sg.otp.why'),
+              expectedInr: rtoSaved,
+              expectedPer: 'month',
+              impactLabel: t('impact.label.returns', { value: '−' + money(rtoSaved) }),
+              confidence: 'medium',
+              params: { segment_id: s.name, min_order_inr: 500 },
+            },
+            threshold,
+          ),
+        );
     } else if (s.kind === 'preferred') {
       list.push(
         suggest(
@@ -128,7 +130,7 @@ export function buildCustomers(ctx: Context): {
     }
     const headline =
       s.kind === 'problem'
-        ? t('customers.headline.problem', {
+        ? t(s.rto_pct > 0 ? 'customers.headline.problem' : 'customers.headline.problem_no_rto', {
             buyers_pct: Math.round(s.buyers_pct * 100),
             revenue_pct: Math.round(s.revenue_pct * 100),
             rto_pct: Math.round(s.rto_pct * 100),

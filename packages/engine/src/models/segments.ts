@@ -206,7 +206,11 @@ export function segmentCustomers(input: {
     }
   }
   for (const s of all) if (!s.name) s.name = `Type ${s.index + 1}`;
-  const preferred = [...stats].sort((a, b) => b.ltv_cac - a.ltv_cac || b.revenue_pct - a.revenue_pct)[0];
+  // Preferred = best value per acquisition rupee; when no CAC is known (no spend or sources), best 12-month value.
+  const cacKnown = stats.some((s) => s.ltv_cac > 0);
+  const preferred = [...stats].sort((a, b) =>
+    cacKnown ? b.ltv_cac - a.ltv_cac || b.revenue_pct - a.revenue_pct : b.ltv_12m - a.ltv_12m,
+  )[0];
   if (preferred) preferred.kind = 'preferred';
   const problem = stats
     .filter((s) => s.kind !== 'preferred' && s.ltv_cac < 2)

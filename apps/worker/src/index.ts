@@ -2,6 +2,8 @@ import { Hono } from 'hono';
 import { scheduled } from './cron';
 import type { AppEnv, Env } from './env';
 import { apiError } from './lib/errors';
+import { adminRoutes } from './routes/admin';
+import { authRoutes } from './routes/auth';
 import { sheetRoutes } from './routes/sheet';
 
 // Worker entry (docs/05 §2). Static assets are served by Cloudflare directly; only /api/* and
@@ -18,6 +20,10 @@ app.get('/api/health', (c) => c.json({ ok: true, version: c.env.VERSION, time: n
 
 // Sandbox linked Google Sheets (docs/07 §2).
 sheetRoutes(app);
+// Sign-in, sessions and the extension token (docs/07 §3).
+authRoutes(app);
+// Admin: workspace links, users, usage, audit (docs/07 §6).
+adminRoutes(app);
 
 app.notFound((c) => {
   const path = new URL(c.req.url).pathname;

@@ -79,6 +79,10 @@ export const screenCopy = {
   'verdict.all_up_to_date': 'All up to date',
 
   'week.verdict.down': 'Revenue fell {pct} to {revenue}. {fixable} of the drop is fixable.',
+  'week.verdict.down.plain': 'Revenue fell {pct} to {revenue}.',
+  'week.inference.unexplained':
+    'Too little history to say what moved sales yet. With 8 weeks or more of data, Drishti splits each change into its causes.',
+  'week.bridge.empty': 'Not enough weeks of data to split this change yet.',
   'week.verdict.up': 'Revenue rose {pct} to {revenue}.',
   'week.verdict.flat': 'Revenue held at {revenue}.',
   'week.inference.external':
@@ -154,6 +158,8 @@ export const screenCopy = {
     '{medium} claims ₹{claimed} for every ₹1. Drishti needs 120 days of history, or a test, to measure the real figure.',
   'note.needs_history': 'Needs 120 days',
   'impact.evidence.test': 'a live holdout in {cities}, read against matched cities, with the regression.',
+  'impact.evidence.test_natural.one':
+    'a live holdout in {cities} and a natural experiment, read against matched cities, with the regression.',
   'impact.evidence.test_natural':
     'a live holdout in {cities} and {n} natural experiments, read against matched cities, with the regression.',
   'impact.evidence.natural.one': 'a natural experiment ({what}), read against matched cities, with the regression.',
@@ -208,6 +214,8 @@ export const screenCopy = {
   'customers.tag.seasonal': 'Seasonal',
   'customers.tag.losing': 'Losing money',
   'customers.tag.other': 'Other',
+  'customers.headline.problem_no_rto':
+    '{buyers_pct}% of buyers, {revenue_pct}% of revenue. They wait for discounts and pay cash.',
   'customers.headline.problem':
     '{buyers_pct}% of buyers, {revenue_pct}% of revenue. They wait for discounts, pay cash, and {rto_pct}% of cash orders come back.',
   'customers.headline.preferred': '{buyers_pct}% of buyers bring {revenue_pct}% of revenue, at {ratio} value to cost.',

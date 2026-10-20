@@ -102,12 +102,17 @@ export function buildImpact(ctx: Context): {
     const test = runningTests.find((x) => x.media === m);
     // What the estimate rests on (docs/08 §3.1), strongest first.
     const naturals = ctx.experiments.filter((e) => e.media === m && e.kind === 'natural');
+    // A running test is cited only once its read is part of the estimate (it may be too young to read).
+    const testUsed = test && ctx.experiments.some((e) => e.kind === 'test' && e.id === test.test_id) ? test : undefined;
     const evidence = !ctx.measured
       ? t('impact.evidence.not_enough_history', { days: ctx.historyDays })
-      : test && naturals.length
-        ? t('impact.evidence.test_natural', { cities: joinList(test.test_regions), n: naturals.length })
-        : test
-          ? t('impact.evidence.test', { cities: joinList(test.test_regions) })
+      : testUsed && naturals.length
+        ? t(naturals.length === 1 ? 'impact.evidence.test_natural.one' : 'impact.evidence.test_natural', {
+            cities: joinList(testUsed.test_regions),
+            n: naturals.length,
+          })
+        : testUsed
+          ? t('impact.evidence.test', { cities: joinList(testUsed.test_regions) })
           : naturals.length > 1
             ? t('impact.evidence.natural.many', { n: naturals.length })
             : naturals.length === 1
