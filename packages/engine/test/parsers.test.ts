@@ -3,7 +3,9 @@ import path from 'node:path';
 import { snapshotSchema } from '@drishti/shared';
 import { describe, expect, it } from 'vitest';
 import { loadDemoFacts } from '../src/facts/demo';
+import { parseCsv } from '../src/csv';
 import { assemble, detect, parseFile, readXlsx, type ParsedTable } from '../src/parsers';
+import { buildXlsx } from './xlsx-write';
 import { buildSnapshot } from '../src/snapshot';
 
 // Parsers and connectors (docs/12 §2, CON-01..16) and the sandbox build (docs/05 §14).
@@ -140,6 +142,26 @@ describe('sandbox build (docs/05 §14)', () => {
     expect(a.facts.sales_sku_daily.filter((r) => r.channel === 'amazon').every((r) => r.sku.startsWith('LUM-'))).toBe(
       true,
     );
+  });
+
+  it('one workbook with the template and the exports (its Mappings tab applies) gives the same numbers as separate files', () => {
+    // Regression: the Mappings tab names Drishti fields ("Total" → net_inr); a mapped column must still be read.
+    const tpl = readXlsx(xlsx);
+    const tabs: [string, string[][]][] = [
+      ...tpl.map((s): [string, string[][]] => [s.name, s.rows]),
+      ...files.map((f): [string, string[][]] => [f, parseCsv(inbox(f))]),
+    ];
+    const one = parseFile('one.xlsx', buildXlsx(tabs), opts);
+    const sep = tables;
+    const total = (ts: ParsedTable[]) => {
+      const a = assemble(ts).facts;
+      return [
+        a.sales_city_daily.reduce((s, r) => s + r.net_revenue_inr, 0),
+        a.spend_city_daily.reduce((s, r) => s + r.spend_inr, 0),
+        a.orders_own_site.reduce((s, r) => s + r.net_inr, 0),
+      ];
+    };
+    expect(total(one)).toEqual(total(sep));
   });
 
   it('assembles facts: marketplace codes map to SKUs and city-less rows are allocated with totals kept', () => {
