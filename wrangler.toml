@@ -3,6 +3,8 @@ name = "drishti"
 main = "apps/worker/src/index.ts"
 compatibility_date = "2026-10-01"
 compatibility_flags = ["nodejs_compat"]
+# Build-time flag: the staging-only test login (docs/14 §6) is not compiled into production at all (API-03).
+define = { __DRISHTI_TEST_LOGIN__ = "false" }
 
 [assets]
 directory = "apps/web/dist"
@@ -30,12 +32,13 @@ crons = ["*/30 * * * *", "40 20 * * *"] # every 30 min; 02:10 IST daily housekee
 ENVIRONMENT = "production"
 WORKSPACE_ID = "default"
 GITHUB_REPO = "anishBan98/drishti"
-GOOGLE_CLIENT_ID = "" # filled by setup (M4)
+GOOGLE_CLIENT_ID = "125740974164-vi9if5r0o6t6dcc3lioiogf613jngokc.apps.googleusercontent.com" # OAuth client "Drishti web", project drishti-preql (public)
 DEMO_ENABLED = "true"
 VERSION = "dev" # overridden at deploy with the git sha
 
 [env.staging]
 name = "drishti-staging"
+define = { __DRISHTI_TEST_LOGIN__ = "true" }
 
 [[env.staging.d1_databases]]
 binding = "DB"
@@ -57,6 +60,6 @@ crons = ["*/30 * * * *", "45 20 * * *"]
 ENVIRONMENT = "staging"
 WORKSPACE_ID = "default"
 GITHUB_REPO = "anishBan98/drishti"
-GOOGLE_CLIENT_ID = "" # filled by setup (M4)
+GOOGLE_CLIENT_ID = "125740974164-vi9if5r0o6t6dcc3lioiogf613jngokc.apps.googleusercontent.com" # OAuth client "Drishti web", project drishti-preql (public)
 DEMO_ENABLED = "true"
 VERSION = "dev"

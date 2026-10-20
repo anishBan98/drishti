@@ -167,7 +167,11 @@ export function Customers({ snapshot }: { snapshot: Snapshot }) {
                   <span className={css.r}>{x.orders_per_year.toFixed(1)}</span>
                   <span className={css.r}>{formatPct(x.repeat_pct, { whole: true })}</span>
                   <span className={css.r}>{formatInr(x.cac)}</span>
-                  <span className={`${ui.tag} ${ratioTone(x.ltv_cac)} ${css.end}`}>{formatRoas(x.ltv_cac)}</span>
+                  {x.cac > 0 ? (
+                    <span className={`${ui.tag} ${ratioTone(x.ltv_cac)} ${css.end}`}>{formatRoas(x.ltv_cac)}</span>
+                  ) : (
+                    <span className={`${css.r} ${css.end}`}>—</span>
+                  )}
                 </button>
               ))}
             </div>

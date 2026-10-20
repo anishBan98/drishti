@@ -386,6 +386,7 @@ export const uiCopy = {
   'try.found.tab': 'Workspace tab: {tab}',
   'try.found.unknown': 'Not recognised. Columns: {headers}',
   'try.found.skipped': '{n} rows skipped',
+  'try.found.empty': 'Empty file: nothing to read.',
   'try.coverage.title': 'Screens ready',
   'try.coverage.ready': 'Ready',
   'try.need.sales':

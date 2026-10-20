@@ -95,6 +95,7 @@ export function Bridge({ bridge, channel }: { bridge: Snapshot['week']['bridge']
             </div>
           );
         })}
+        {bridge.drivers.length === 0 && <p className={ui.empty}>{t('week.bridge.empty')}</p>}
         <div className={css.bridgeAxis}>
           <div className={css.caption}>{t('week.bridge.caption', { pct: Math.round(bridge.explained_pct * 100) })}</div>
           <div className={css.axisLine}>

@@ -10,7 +10,16 @@ export default defineConfig(async () => {
       cloudflareTest({
         wrangler: { configPath: '../../wrangler.toml', environment: 'staging' },
         remoteBindings: false,
-        miniflare: { bindings: { TEST_MIGRATIONS: migrations, VERSION: 'test' } },
+        miniflare: {
+          // Test-only values (not secrets): the owner, a fake OAuth client ID and the staging E2E login key.
+          bindings: {
+            TEST_MIGRATIONS: migrations,
+            VERSION: 'test',
+            OWNER_EMAIL: 'owner@lumora.example',
+            GOOGLE_CLIENT_ID: 'test-client.apps.googleusercontent.com',
+            E2E_SECRET: 'e2e-test-secret',
+          },
+        },
       }),
     ],
     test: {

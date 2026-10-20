@@ -336,8 +336,10 @@ export function buildWeek(
       const s = weekly.revenue_by_channel[c];
       const now = s.at(-1) ?? 0;
       const before = s.at(-2) ?? 0;
-      return { c, g: before ? (now - before) / before : 0 };
+      return { c, g: before ? (now - before) / before : 0, live: now > 0 && before > 0 };
     })
+    // Only channels with sales in both weeks can be compared.
+    .filter((x) => x.live)
     .sort((a, b) => b.g - a.g);
   const working = [
     ...(ctx.measured
@@ -348,13 +350,17 @@ export function buildWeek(
           },
         ]
       : []),
-    {
-      title: t('week.working.channel', {
-        channel: CHANNEL_SHORT[channelGrowth[0]!.c],
-        pct: formatPct(channelGrowth[0]!.g, { signed: true }),
-      }),
-      detail: t('week.working.channel.detail'),
-    },
+    ...(channelGrowth[0] && channelGrowth[0].g > 0
+      ? [
+          {
+            title: t('week.working.channel', {
+              channel: CHANNEL_SHORT[channelGrowth[0].c],
+              pct: formatPct(channelGrowth[0].g, { signed: true }),
+            }),
+            detail: t('week.working.channel.detail'),
+          },
+        ]
+      : []),
     {
       title: t('week.working.orders', { n: count(sales.week.orders) }),
       detail: t('week.working.orders.detail', { aov: money(sales.week.aov_inr) }),
@@ -363,13 +369,16 @@ export function buildWeek(
   const late = input.sources.filter((s) => s.status === 'late');
   const cac = cacNewBuyers(ctx, w.week);
   const cacPrior = cacNewBuyers(ctx, w.prior_week);
-  const attention = [
+  const slowest = channelGrowth.at(-1);
+  const attentionAll = [
     rival
       ? { title: t('week.attention.rival'), detail: rival.evidence[0]!.label }
-      : {
-          title: t('week.attention.channel', { channel: CHANNEL_SHORT[channelGrowth.at(-1)!.c] }),
-          detail: t('week.attention.channel.detail', { pct: formatPct(channelGrowth.at(-1)!.g) }),
-        },
+      : slowest && slowest.g < 0
+        ? {
+            title: t('week.attention.channel', { channel: CHANNEL_SHORT[slowest.c] }),
+            detail: t('week.attention.channel.detail', { pct: formatPct(slowest.g) }),
+          }
+        : null,
     input.issue && input.issue.share > 0.05
       ? {
           title: t('week.attention.issue', { aspect: input.issue.label }),
@@ -383,14 +392,20 @@ export function buildWeek(
       ? { title: t('week.attention.late', { n: late.length }), detail: late.map((s) => s.label).join(', ') }
       : { title: t('week.attention.cac'), detail: t('week.attention.cac.detail', { cac: money(cac) }) },
   ];
+  // No empty or repeated cards (the cost-per-buyer fallback can appear twice, and says nothing when CAC is 0).
+  const attention = attentionAll.filter(
+    (a, i, all): a is { title: string; detail: string } =>
+      !!a && !(a.title === t('week.attention.cac') && !cac) && all.findIndex((b) => b?.title === a.title) === i,
+  );
 
   const negatives = drivers.filter((d) => d.value < 0);
   const external = negatives.filter((d) => d.id === 'rival_price_cut' || d.id === 'stockouts');
   const extShare = negatives.length
     ? external.reduce((a, d) => a + d.value, 0) / negatives.reduce((a, d) => a + d.value, 0)
     : 0;
-  const inference =
-    change < 0 && extShare >= 0.5
+  const inference = !drivers.some((d) => Math.abs(d.value) >= 5_000)
+    ? t('week.inference.unexplained')
+    : change < 0 && extShare >= 0.5
       ? t('week.inference.external', {
           share: formatPct(extShare),
           driver_list: joinList(external.map((d) => d.label)),
@@ -414,7 +429,9 @@ export function buildWeek(
       chip: t(tone === 'bad' ? 'verdict.down_week' : tone === 'good' ? 'verdict.up_week' : 'verdict.flat_week'),
       text:
         tone === 'bad'
-          ? t('week.verdict.down', { pct: formatPct(-pct), revenue: money(current), fixable: money(fixable) })
+          ? fixable > 0
+            ? t('week.verdict.down', { pct: formatPct(-pct), revenue: money(current), fixable: money(fixable) })
+            : t('week.verdict.down.plain', { pct: formatPct(-pct), revenue: money(current) })
           : tone === 'good'
             ? t('week.verdict.up', { pct: formatPct(pct), revenue: money(current) })
             : t('week.verdict.flat', { revenue: money(current) }),
