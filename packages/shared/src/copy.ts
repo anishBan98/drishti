@@ -77,6 +77,7 @@ const baseCopy = {
   'error.ROLE_FORBIDDEN': "Your role can't do this. {role_needed} and above can.",
   'error.DEMO_READ_ONLY': "This is the demo. Changes aren't saved.",
   'error.NOT_FOUND': "We couldn't find that.",
+  'error.WORKSPACE_NOT_CONFIGURED': 'Link your Workspace Sheet and Inbox folder first (Admin → Workspace links).',
   'error.SNAPSHOT_NONE': 'No data yet. Connect your Sheet and run the first sync.',
   'error.SYNC_ALREADY_RUNNING': 'A sync is already running (started {ago}).',
   'error.IDEMPOTENCY_MISMATCH': 'This request was already sent with different details. Refresh and try again.',

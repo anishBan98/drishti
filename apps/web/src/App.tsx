@@ -26,7 +26,7 @@ import { Performance } from './screens/Performance';
 import { ThisWeek } from './screens/ThisWeek';
 import { Voice } from './screens/Voice';
 import { TryHome, TryManage } from './screens/Try';
-import { Admin, Onboarding, SignIn, WorkspaceHome } from './screens/Account';
+import { Admin, Onboarding, SignIn, WorkspaceLayout } from './screens/Account';
 import { TryLayout } from './sandbox/TryLayout';
 import ui from './components/ui.module.css';
 
@@ -124,7 +124,7 @@ const router = createBrowserRouter([
   { path: '/try/:id', Component: TryLayout, children: screens('..') },
   // Signed-in workspace (docs/09 §6.10, docs/04 §4).
   { path: '/signin', Component: SignIn },
-  { path: '/app', Component: WorkspaceHome },
+  { path: '/app', Component: WorkspaceLayout, children: screens('/app') },
   { path: '/onboarding', Component: Onboarding },
   { path: '/admin', Component: Admin },
   { path: '*', element: <Navigate to="/" replace /> },
