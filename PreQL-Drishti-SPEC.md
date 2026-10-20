@@ -1111,6 +1111,17 @@ Both workers share the code; each has its own D1 database, KV namespace and secr
 - Limits: up to 50 MB of files in total; screens without enough data show the EmptyState with what to add.
 - Cost: zero server work (static assets only).
 
+## 15. Compact sync (decided 21 Oct 2026)
+
+Drishti is run as a working pitch for one brand at a time, with 10 to 20 users. Every feature stays; each is built in its smallest working form. Sync runs as follows:
+
+1. **Sync now** (Owner or Analyst) calls `GET /api/sync/sources`. The Worker lists the Workspace Sheet and the files in the Inbox folder with the service account.
+2. The browser fetches each one through `GET /api/sync/file/:id`. The Worker passes the bytes through, exporting the Sheet as xlsx. It serves only the Workspace Sheet or files inside the Inbox.
+3. The browser runs the engine in a Web Worker, the same one the sandbox uses. The free Workers plan allows about 10 ms of CPU per request, too little to build a snapshot.
+4. `PUT /api/snapshot` stores the snapshot in KV (`snapshot:<workspace>`) and records a `sync_runs` row. Every signed-in role reads it with `GET /api/snapshot`, and `/app` shows the eight screens on it.
+
+The scheduled GitHub Actions sync (§6) can be added later without changing these endpoints.
+
 
 
 ---
