@@ -1,6 +1,7 @@
 import { env } from 'cloudflare:workers';
 import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import { app } from '../src/index';
+import { serviceAccountEmail } from '../src/lib/google';
 import { idFromUrl } from '../src/routes/admin';
 
 // Admin workspace links with live access checks, and users from the Users tab (docs/04 §4, docs/07 §6).
@@ -86,6 +87,12 @@ const put = async (e: Record<string, unknown>, body: unknown) => {
 };
 
 describe('admin workspace links', () => {
+  it('reads a key stored with a byte-order mark (Windows PowerShell pipe)', () => {
+    expect(serviceAccountEmail('\uFEFF{"client_email":"sa@x.iam.gserviceaccount.com"}\r\n')).toBe(
+      'sa@x.iam.gserviceaccount.com',
+    );
+  });
+
   it('reads IDs out of Sheet and Drive folder links', () => {
     expect(idFromUrl(`https://docs.google.com/spreadsheets/d/${SHEET}/edit#gid=0`, 'sheet')).toBe(SHEET);
     expect(idFromUrl(`https://drive.google.com/drive/folders/${INBOX}?usp=sharing`, 'folder')).toBe(INBOX);
@@ -126,7 +133,7 @@ describe('admin workspace links', () => {
   it('asks for the links it could not read', async () => {
     const res = await put({ ...env, GOOGLE_SA_JSON: saJson }, { sheet_url: 'nope' });
     expect(res.status).toBe(400);
-    expect((await res.json<{ error: { message: string } }>()).error.message).toContain('sheet_url');
+    expect((await res.json<{ error: { message: string } }>()).error.message).toContain('Workspace Sheet link');
   });
 
   it('reloads users from the Users tab and keeps the owner', async () => {

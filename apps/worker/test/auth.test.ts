@@ -1,4 +1,5 @@
 import { env, exports } from 'cloudflare:workers';
+import { app } from '../src/index';
 import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import { GOOGLE_JWKS_URL, verifyIdToken } from '../src/lib/google';
 
@@ -199,5 +200,25 @@ describe('API-03 roles', () => {
       { ...env, ENVIRONMENT: 'production' },
     );
     expect(prod.status).toBe(404);
+  });
+});
+
+describe('sign-in redirect mode', () => {
+  it('sends a bad or forged form back to Sign in with the error', async () => {
+    const post = (body: string, cookie = '') =>
+      app.request(
+        'https://drishti.test/api/auth/google/redirect',
+        {
+          method: 'POST',
+          headers: { 'content-type': 'application/x-www-form-urlencoded', ...(cookie ? { cookie } : {}) },
+          body,
+        },
+        env,
+      );
+    const empty = await post('g_csrf_token=a');
+    expect(empty.status).toBe(303);
+    expect(empty.headers.get('location')).toBe('/signin?error=AUTH_TOKEN_INVALID');
+    const forged = await post('credential=x.y.z&g_csrf_token=a', 'g_csrf_token=b');
+    expect(forged.headers.get('location')).toBe('/signin?error=AUTH_TOKEN_INVALID');
   });
 });
