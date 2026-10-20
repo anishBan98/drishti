@@ -108,5 +108,7 @@
   --own-ink: #8dbbff;
   --blue-text: #7db2f5;
   --orange-text: #ff9450;
+  --insight-muted: #dce2f7;
+  --insight-evidence: #eef1fc;
   color-scheme: dark;
 }

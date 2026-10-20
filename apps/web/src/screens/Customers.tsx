@@ -25,12 +25,23 @@ export function Customers({ snapshot }: { snapshot: Snapshot }) {
   const buyers = c.kpis.find((k) => k.id === 'buyers');
   const cols = '1.9fr repeat(5, minmax(0, 0.8fr)) 0.7fr 0.8fr';
   // Centroid chips of nearby groups would overlap: stack each later one lower.
-  const chipPos = new Map<string, { left: number; top: number }>();
+  // Chip size as a share of the plot (about 830 × 300 px at 1440 × 900): width from the name, height 34 px.
+  const chipPos = new Map<string, { left: number; top: number; w: number }>();
+  const H = 13;
   for (const x of c.segments) {
-    const left = Math.min(85, Math.max(15, xPos(x.centroid.orders)));
-    let top = Math.min(92, Math.max(8, yPos(x.centroid.aov)));
-    while ([...chipPos.values()].some((p) => Math.abs(p.left - left) < 22 && Math.abs(p.top - top) < 9)) top += 9;
-    chipPos.set(x.id, { left, top: Math.min(94, top) });
+    const w = ((x.name.length * 8.5 + 48) / 830) * 100;
+    const left = Math.min(100 - w / 2 - 1, Math.max(w / 2 + 1, xPos(x.centroid.orders)));
+    const clash = (top: number) =>
+      [...chipPos.values()].some((p) => Math.abs(p.left - left) < (p.w + w) / 2 + 1 && Math.abs(p.top - top) < H);
+    const start = Math.min(100 - H / 2, Math.max(H / 2, yPos(x.centroid.aov)));
+    let top = start;
+    for (let step = 1; clash(top) && step < 12; step++) {
+      // Try below, then above, moving one chip height further each time.
+      const down = start + Math.ceil(step / 2) * H;
+      const up = start - Math.ceil(step / 2) * H;
+      top = step % 2 ? (down <= 100 - H / 2 ? down : up) : up >= H / 2 ? up : down;
+    }
+    chipPos.set(x.id, { left, top, w });
   }
   return (
     <Main>
@@ -75,29 +86,31 @@ export function Customers({ snapshot }: { snapshot: Snapshot }) {
             </div>
             <div className={css.custMap}>
               <div className={css.yLabel}>{t('ui.customers.axis.aov')}</div>
-              <div
-                className={css.plot}
-                role="img"
-                aria-label={c.segments
-                  .map((x) => `${x.name}: ${x.orders_per_year} orders a year, ${formatInr(x.aov)} average order`)
-                  .join('; ')}
-              >
-                <div className={css.refV} style={{ left: '50%' }} />
-                <div className={css.refH} style={{ top: '50%' }} />
-                {c.segments.flatMap((x) =>
-                  x.sample.map(([o, aov], i) => (
-                    <span
-                      key={`${x.id}-${i}`}
-                      className={css.custDot}
-                      style={{
-                        left: `${xPos(o)}%`,
-                        top: `${yPos(aov)}%`,
-                        background: KIND_COLOR[x.kind],
-                        opacity: x.id === selected ? 0.95 : 0.45,
-                      }}
-                    />
-                  )),
-                )}
+              <div className={css.plot}>
+                <div
+                  role="img"
+                  style={{ position: 'absolute', inset: 0 }}
+                  aria-label={c.segments
+                    .map((x) => `${x.name}: ${x.orders_per_year} orders a year, ${formatInr(x.aov)} average order`)
+                    .join('; ')}
+                >
+                  <div className={css.refV} style={{ left: '50%' }} />
+                  <div className={css.refH} style={{ top: '50%' }} />
+                  {c.segments.flatMap((x) =>
+                    x.sample.map(([o, aov], i) => (
+                      <span
+                        key={`${x.id}-${i}`}
+                        className={css.custDot}
+                        style={{
+                          left: `${xPos(o)}%`,
+                          top: `${yPos(aov)}%`,
+                          background: KIND_COLOR[x.kind],
+                          opacity: x.id === selected ? 0.95 : 0.45,
+                        }}
+                      />
+                    )),
+                  )}
+                </div>
                 {c.segments.map((x) => (
                   <button
                     key={x.id}

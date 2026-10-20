@@ -53,7 +53,11 @@ function PositionMap({
           ? t('ui.market.axis.rating', { low: rLo.toFixed(1), high: rHi.toFixed(1) })
           : `${t('ui.market.axis.value')} → ${t('ui.market.axis.premium')}`}
       </div>
-      <div className={css.plot}>
+      <div
+        className={css.plot}
+        role="img"
+        aria-label={ps.map((p) => `${p.label}: ₹${Math.round(p.per10)} per 10 ml, ${p.rating} stars`).join('; ')}
+      >
         {mode === 'price' ? (
           <>
             <div className={css.refV} style={{ left: `${medianX}%` }} />
@@ -99,11 +103,10 @@ function PositionMap({
           const label = `${p.label}: ₹${Math.round(p.per10)} per 10 ml, ${p.rating} stars, ${count(p.reviews)} reviews`;
           return (
             <span key={p.id}>
-              <button
-                type="button"
+              {/* Pointer shortcut; keyboard and screen readers select in the table below (same action). */}
+              <span
                 title={label}
-                aria-label={label}
-                aria-pressed={sel}
+                aria-hidden="true"
                 className={css.bubble}
                 style={{
                   left: `${px}%`,
@@ -116,6 +119,7 @@ function PositionMap({
                 onClick={() => onSelect(p.id)}
               />
               <span
+                aria-hidden="true"
                 className={css.bubbleLabel}
                 style={{
                   left: `${px}%`,

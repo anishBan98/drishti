@@ -213,7 +213,7 @@
 }
 .small {
   font-size: 13px;
-  color: var(--muted-2);
+  color: var(--muted);
 }
 .strongVal {
   font-size: 16px;
