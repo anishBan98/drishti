@@ -135,6 +135,8 @@ export const snapshotSchema = z.object({
         real_high: money,
         claimed_per100: z.number(),
         real_per100: z.number(),
+        /** false while history is too short to estimate real returns (docs/08 §3.4); screens show "—". */
+        measured: z.boolean().optional(),
         confidence,
         evidence: z.string(),
         headline: z.string(),

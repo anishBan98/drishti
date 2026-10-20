@@ -65,6 +65,9 @@ export const screenCopy = {
   'verdict.flat': 'Flat',
   'verdict.over_credited': 'Over-credited',
   'verdict.credited_fairly': 'Credited fairly',
+  'verdict.not_measured': 'Not measured yet',
+  'impact.verdict.unmeasured':
+    'Platforms claim {claimed}. With {days} days of history Drishti cannot yet say what ads really added; it needs 120 days or a test.',
   'verdict.losing_share': 'Losing share',
   'verdict.holding': 'Holding',
   'verdict.mixed_base': 'Mixed base',
@@ -145,6 +148,11 @@ export const screenCopy = {
   'impact.verdict': 'Platforms claim {claimed} in a {revenue} month. Ads really added {real}.',
   'impact.headline.over': '{medium} claims ₹{claimed} for every ₹1; the real figure is ₹{real}.',
   'impact.headline.under': '{medium} claims ₹{claimed} for every ₹1; the real figure is ₹{real}. It is under-credited.',
+  'impact.evidence.not_enough_history':
+    'not measured yet: {days} days of history, and the regression needs 120. Run a test to measure sooner.',
+  'impact.headline.unmeasured':
+    '{medium} claims ₹{claimed} for every ₹1. Drishti needs 120 days of history, or a test, to measure the real figure.',
+  'note.needs_history': 'Needs 120 days',
   'impact.evidence.test': 'regression on city-weeks and a live holdout in {cities}.',
   'impact.evidence.regression': 'regression on city-weeks; tests and natural experiments arrive next.',
   'impact.evidence.unidentified':

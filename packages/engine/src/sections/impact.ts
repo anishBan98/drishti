@@ -99,17 +99,24 @@ export function buildImpact(ctx: Context): {
     const claimedPer100 = sp ? (100 * cl) / sp : 0;
     const realPer100 = 100 * r.roas;
     const test = runningTests.find((x) => x.media === m);
-    const evidence = test
-      ? t('impact.evidence.test', { cities: joinList(test.test_regions) })
-      : r.identified
-        ? t('impact.evidence.regression')
-        : t('impact.evidence.unidentified');
+    const evidence = !ctx.measured
+      ? t('impact.evidence.not_enough_history', { days: ctx.historyDays })
+      : test
+        ? t('impact.evidence.test', { cities: joinList(test.test_regions) })
+        : r.identified
+          ? t('impact.evidence.regression')
+          : t('impact.evidence.unidentified');
     const under = realPer100 > claimedPer100;
-    const headline = t(under ? 'impact.headline.under' : 'impact.headline.over', {
-      medium: MEDIA_LABEL[m],
-      claimed: (claimedPer100 / 100).toFixed(2).replace(/0$/, ''),
-      real: (realPer100 / 100).toFixed(2),
-    });
+    const headline = !ctx.measured
+      ? t('impact.headline.unmeasured', {
+          medium: MEDIA_LABEL[m],
+          claimed: (claimedPer100 / 100).toFixed(2).replace(/0$/, ''),
+        })
+      : t(under ? 'impact.headline.under' : 'impact.headline.over', {
+          medium: MEDIA_LABEL[m],
+          claimed: (claimedPer100 / 100).toFixed(2).replace(/0$/, ''),
+          real: (realPer100 / 100).toFixed(2),
+        });
 
     const list: Suggestion[] = [];
     const monthlySpend = (sp / 28) * 30;
@@ -133,7 +140,7 @@ export function buildImpact(ctx: Context): {
         ),
       );
     }
-    if (under) {
+    if (under && ctx.measured) {
       const add = Math.round((monthlySpend * 0.3) / 100_000) * 100_000;
       list.push(
         suggest(
@@ -183,6 +190,7 @@ export function buildImpact(ctx: Context): {
       claimed_per100: round(claimedPer100, 1),
       real_per100: round(realPer100, 1),
       confidence: test && r.identified ? 'medium' : r.confidence,
+      measured: ctx.measured,
       evidence,
       headline,
       suggestions: list,
@@ -194,11 +202,17 @@ export function buildImpact(ctx: Context): {
   return {
     byMedia,
     section: {
-      verdict: {
-        tone: over ? 'bad' : 'good',
-        chip: t(over ? 'verdict.over_credited' : 'verdict.credited_fairly'),
-        text: t('impact.verdict', { claimed: money(claimed), revenue: money(revenue), real: money(realSales) }),
-      },
+      verdict: !ctx.measured
+        ? {
+            tone: 'warn',
+            chip: t('verdict.not_measured'),
+            text: t('impact.verdict.unmeasured', { claimed: money(claimed), days: ctx.historyDays }),
+          }
+        : {
+            tone: over ? 'bad' : 'good',
+            chip: t(over ? 'verdict.over_credited' : 'verdict.credited_fairly'),
+            text: t('impact.verdict', { claimed: money(claimed), revenue: money(revenue), real: money(realSales) }),
+          },
       kpis: [
         kpi('ad_spend', 'kpi.ad_spend', spend, money(spend), {
           note: t('note.pct_of_revenue', { pct: formatPct(spend / revenue) }),
@@ -208,11 +222,15 @@ export function buildImpact(ctx: Context): {
           note: t('note.platform_reports'),
           tone: 'neutral',
         }),
-        kpi('true_roas', 'kpi.true_roas', tr, formatRoas(tr), { delta: delta('true_roas', tr, trPrior, 'x') }),
-        kpi('real_sales', 'kpi.real_sales', realSales, money(realSales), {
-          note: t('note.pct_of_revenue', { pct: formatPct(realSales / revenue) }),
-          tone: 'neutral',
-        }),
+        ctx.measured
+          ? kpi('true_roas', 'kpi.true_roas', tr, formatRoas(tr), { delta: delta('true_roas', tr, trPrior, 'x') })
+          : kpi('true_roas', 'kpi.true_roas', 0, '—', { note: t('note.needs_history'), tone: 'neutral' }),
+        ctx.measured
+          ? kpi('real_sales', 'kpi.real_sales', realSales, money(realSales), {
+              note: t('note.pct_of_revenue', { pct: formatPct(realSales / revenue) }),
+              tone: 'neutral',
+            })
+          : kpi('real_sales', 'kpi.real_sales', 0, '—', { note: t('note.needs_history'), tone: 'neutral' }),
         kpi('cac', 'kpi.cac', cac, money(cac), { delta: delta('cac', cac, cacPrior) }),
         kpi('ltv_cac', 'kpi.ltv_cac', ltvCac, formatRoas(ltvCac), {
           note: t('note.target', { value: `${ws.settings.target_ltv_to_cac}x` }),

@@ -163,7 +163,7 @@ function holdoutDrivers(ctx: Context): Driver[] {
       }
     }
     const removed = Math.max(0, (preAll ? (preT / preAll) * nowAll : 0) - nowT);
-    if (!removed) continue;
+    if (!removed || !ctx.measured) continue;
     out.push({
       id: `test_${test.test_id}`,
       label: t('bridge.holdout', { medium: MEDIA_LABEL[m] }),
@@ -329,10 +329,14 @@ export function buildWeek(
     })
     .sort((a, b) => b.g - a.g);
   const working = [
-    {
-      title: t('week.working.media', { medium: MEDIA_LABEL[best] }),
-      detail: t('week.working.media.detail', { roas: `₹${ctx.real[best].roas.toFixed(2)}` }),
-    },
+    ...(ctx.measured
+      ? [
+          {
+            title: t('week.working.media', { medium: MEDIA_LABEL[best] }),
+            detail: t('week.working.media.detail', { roas: `₹${ctx.real[best].roas.toFixed(2)}` }),
+          },
+        ]
+      : []),
     {
       title: t('week.working.channel', {
         channel: CHANNEL_SHORT[channelGrowth[0]!.c],
@@ -418,10 +422,12 @@ export function buildWeek(
         delta: { ...delta('spend', spend, spendPrior), good: null },
         tone: 'neutral',
       }),
-      kpi('true_roas', 'kpi.true_roas', tr, formatRoas(tr), {
-        delta: delta('true_roas', tr, trPrior, 'x'),
-        note: t('note.claims', { value: formatRoas(spend ? claimed / spend : 0) }),
-      }),
+      ctx.measured
+        ? kpi('true_roas', 'kpi.true_roas', tr, formatRoas(tr), {
+            delta: delta('true_roas', tr, trPrior, 'x'),
+            note: t('note.claims', { value: formatRoas(spend ? claimed / spend : 0) }),
+          })
+        : kpi('true_roas', 'kpi.true_roas', 0, '—', { note: t('note.needs_history'), tone: 'neutral' }),
       kpi('cac', 'kpi.cac', cac, money(cac), { delta: delta('cac', cac, cacPrior) }),
     ],
     bridge: {
