@@ -3,7 +3,7 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { loadDemoFacts } from '../src/facts/demo';
 import { loadWorkspace } from '../src/facts/workspace';
-import { readTests, stockoutCities } from '../src/models/incrementality';
+import { detectShocks, readTests, stockoutCities } from '../src/models/incrementality';
 
 // MOD-03 (docs/12 §2): the Meta holdout in Pune and Ahmedabad, read with synthetic control on the demo data.
 
@@ -36,5 +36,18 @@ describe('planned tests', () => {
     expect(meta!.high).toBeGreaterThanOrEqual(meta!.roas);
     expect(meta!.rmspePct).toBeLessThanOrEqual(0.08);
     expect(meta!.poorFit).toBe(false);
+  });
+});
+
+describe('natural experiments', () => {
+  const shocks = detectShocks(facts, ws.tests);
+  it('MOD-04 finds the planted Kolkata, Hyderabad and Jaipur events and nothing in a city without changes', () => {
+    const has = (media: string, city: string, month: string) =>
+      shocks.some((s) => s.media === media && s.city === city && s.start.startsWith(month));
+    expect(has('meta', 'Kolkata', '2026-03')).toBe(true);
+    expect(has('meta', 'Hyderabad', '2025-12')).toBe(true);
+    expect(has('google', 'Jaipur', '2026-08')).toBe(true);
+    // Chennai had no planted change: no event over the same windows.
+    expect(shocks.filter((s) => s.city === 'Chennai')).toEqual([]);
   });
 });

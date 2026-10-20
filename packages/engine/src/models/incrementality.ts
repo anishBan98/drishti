@@ -197,3 +197,102 @@ function applied(facts: Facts, media: Media, cities: string[], from: string, to:
   const expected = actual - change;
   return expected > 0 ? -change / expected : 0;
 }
+
+export interface SpendShock {
+  media: Media;
+  city: string;
+  /** First and last day spend was off its usual level. */
+  start: string;
+  end: string;
+  direction: 'cut' | 'burst';
+}
+
+const median = (a: number[]) => {
+  if (!a.length) return 0;
+  const s = [...a].sort((x, y) => x - y);
+  const m = Math.floor(s.length / 2);
+  return s.length % 2 ? s[m]! : (s[m - 1]! + s[m]!) / 2;
+};
+
+/**
+ * Natural experiments (docs/08 §3.3): a medium's 7-day rolling spend in one city falls by at least 40% (below 60%
+ * of its trailing 28-day median) or rises above 180% of it, for at least 5 consecutive days, while national spend on
+ * that medium stays within ±25%. After an event, the same city and medium are not scanned for 28 days, so the
+ * return to normal is not read as a second event. Planned tests are not natural experiments and are left out.
+ */
+export const SHOCK_CUT = 0.6;
+export const SHOCK_BURST = 1.8;
+export function detectShocks(facts: Facts, tests: PlannedTest[] = []): SpendShock[] {
+  const out: SpendShock[] = [];
+  const byMedia = new Map<Media, Map<string, Map<string, number>>>();
+  const dates = new Set<string>();
+  for (const r of facts.spend_city_daily) {
+    if (r.media === 'creators') continue;
+    dates.add(r.date);
+    const m = byMedia.get(r.media) ?? new Map<string, Map<string, number>>();
+    const c = m.get(r.city) ?? new Map<string, number>();
+    c.set(r.date, (c.get(r.date) ?? 0) + r.spend_inr);
+    m.set(r.city, c);
+    byMedia.set(r.media, m);
+  }
+  const days = [...dates].sort();
+  if (days.length < 35) return out;
+  const all = dayList(days[0]!, days.at(-1)!);
+  const ratios = (series: number[]) =>
+    series.map((_, t) => {
+      if (t < 34) return 1;
+      const roll = series.slice(t - 6, t + 1).reduce((a, v) => a + v, 0) / 7;
+      const base = median(series.slice(t - 34, t - 6));
+      return base > 0 ? roll / base : 1;
+    });
+  for (const [media, cities] of byMedia) {
+    const national = all.map((d) => [...cities.values()].reduce((a, m) => a + (m.get(d) ?? 0), 0));
+    const natRatio = ratios(national);
+    for (const [city, m] of cities) {
+      const series = all.map((d) => m.get(d) ?? 0);
+      const r = ratios(series);
+      let runStart = -1;
+      let dir: SpendShock['direction'] = 'cut';
+      const close = (t: number) => {
+        if (runStart >= 0 && t - runStart >= 5) {
+          // The change itself: the days inside the flagged stretch (and the 6 before it) whose spend was off.
+          const base = median(series.slice(Math.max(0, runStart - 34), Math.max(1, runStart - 6)));
+          const off = (v: number) => (dir === 'cut' ? v < SHOCK_CUT * base : v > SHOCK_BURST * base);
+          let s = Math.max(0, runStart - 6);
+          while (s < t && !off(series[s]!)) s++;
+          let e = t - 1;
+          while (e > s && !off(series[e]!)) e--;
+          out.push({ media, city, start: all[s]!, end: all[e]!, direction: dir });
+          cooldown = t + 28;
+        }
+        runStart = -1;
+      };
+      let cooldown = -1;
+      for (let t = 0; t < all.length; t++) {
+        const natOk = Math.abs(natRatio[t]! - 1) <= 0.25;
+        const d: SpendShock['direction'] | null =
+          t < cooldown ? null : r[t]! < SHOCK_CUT ? 'cut' : r[t]! > SHOCK_BURST ? 'burst' : null;
+        if (d && natOk && (runStart < 0 || d === dir)) {
+          if (runStart < 0) {
+            runStart = t;
+            dir = d;
+          }
+        } else {
+          close(t);
+          if (d && natOk) {
+            runStart = t;
+            dir = d;
+          }
+        }
+      }
+      close(all.length);
+    }
+  }
+  // Planned tests are read as tests, not as natural experiments.
+  return out.filter(
+    (s) =>
+      !tests.some(
+        (x) => x.media === s.media && x.test_regions.includes(s.city) && s.start <= x.end_date && s.end >= x.start_date,
+      ),
+  );
+}

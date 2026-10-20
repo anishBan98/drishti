@@ -1790,7 +1790,7 @@ Expected on demo data: the Pune and Ahmedabad Meta holdout (from 26 Sep 2026) gi
 
 Scan `spend_city_daily` per medium and city:
 
-- **Spend shock:** 7-day rolling spend drops below 40% or rises above 180% of the trailing 28-day median for at least 5 consecutive days, while national spend for that medium stays within ±25%. Example in the demo: Meta in Kolkata 2–15 Mar 2026 (billing lapse), Meta burst in Hyderabad 1–10 Dec 2025, Google brand-search cut in Jaipur 4–17 Aug 2026.
+- **Spend shock:** 7-day rolling spend falls by at least 40% (below 60% of the trailing 28-day median) or rises above 180% of it, for at least 5 consecutive days, while national spend for that medium stays within ±25%. After an event the same city and medium are not scanned for 28 days, so the return to normal is not a second event. (Clarified 20 Oct 2026: "below 40%" could not find the Jaipur brand-search cut that MOD-04 requires, a 45% drop; with this rule the detector finds exactly the three planted events.) Example in the demo: Meta in Kolkata 2–15 Mar 2026 (billing lapse), Meta burst in Hyderabad 1–10 Dec 2025, Google brand-search cut in Jaipur 4–17 Aug 2026.
 - **Stockout window** (quick-commerce ads): for stores with stockout = yes, ad spend that ran during stockout days delivered nothing; the share of QC revenue lost vs same-store forecast quantifies the stockout cost (used by the bridge) and the comparison of in-stock vs out-of-stock stores with similar ad spend gives a QC-ads estimate.
 
 Each detected event is read with §3.2 (city as T). Events shorter than 5 days or with pre-fit RMSPE above 8% are dropped.
