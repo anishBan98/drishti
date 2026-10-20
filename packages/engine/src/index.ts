@@ -22,6 +22,7 @@ export {
   readXlsx,
   isXlsx,
   expandArchive,
+  rowsToCsv,
   SOURCES,
   type Assembled,
   type Detected,
