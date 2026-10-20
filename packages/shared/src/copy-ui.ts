@@ -513,4 +513,9 @@ export const uiCopy = {
   'admin.sessions': 'Sessions',
   'admin.sessions.revoke_all': 'Sign everyone out',
   'admin.sessions.done': 'Everyone was signed out.',
+  'admin.capture': 'Capture token',
+  'admin.capture.help':
+    'For the Drishti Capture browser extension: install it from apps/extension/chrome (Chrome → Extensions → Load unpacked), then paste this token in it. Valid 30 days; shown once.',
+  'admin.capture.new': 'Create a capture token',
+  'admin.capture.copy': 'Copy token',
 } as const;

@@ -1,3 +1,4 @@
+import { GOVERNORS } from '@drishti/shared';
 import type { Hono } from 'hono';
 import type { AppEnv } from '../env';
 import { apiError } from '../lib/errors';
@@ -13,7 +14,7 @@ const DRIVE = 'https://www.googleapis.com/drive/v3/files';
 const XLSX = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
 const GSHEET = 'application/vnd.google-apps.spreadsheet';
 const FOLDER = 'application/vnd.google-apps.folder';
-const MAX_SNAPSHOT_BYTES = 20 * 1024 * 1024;
+const MAX_SNAPSHOT_BYTES = GOVERNORS.snapshotMaxBytes;
 const snapshotKey = (ws: string) => `snapshot:${ws}`;
 
 interface DriveFile {

@@ -4,6 +4,18 @@ All notable changes to Drishti. Milestones follow `docs/14-SETUP-RUNBOOK.md` §8
 
 ## [Unreleased]
 
+### M10 · Hardening and v1.0 (2026-10-21)
+
+- FREE-02: a simulated busy day for 20 people stays under half of every free limit. The snapshot size now uses the 5 MB governor, and the rival-site watcher reads at most 15 sites a run, to stay under 50 subrequests.
+- README: live links (home, demo, sandbox, sign-in), how it works, and the architecture.
+
+### M9 · Capture, rival sites, approvals, notifications, compact (2026-10-21)
+
+- **Drishti Capture** Chrome extension (`apps/extension/chrome`, load unpacked): reads the product page the person is looking at, only when they open it, and posts price, MRP, rating, reviews and stock with a 30-day capture token from Admin. `GET /api/watchlist`, `POST /api/capture` (watchlist match, validation, one a minute), `GET /api/captures`. Captures are kept in D1 and appended to the watchlist_captures tab, so the next sync includes them.
+- **Rival-site watcher** (daily cron, SITE-01): Watchlist rows with capture method `site` are read from JSON-LD only where robots.txt allows; Amazon, Flipkart, Nykaa and quick-commerce hosts are never visited automatically.
+- **Approvals** expire after 72 hours; **Monday summary** (09:00 IST) posts the week's verdict and open actions to Slack when `SLACK_WEBHOOK_URL` is set.
+- Tests: JSON-LD reading, robots.txt rules, no marketplace visits, capture accepted, refused off-watchlist, rate limit, bad token, expiry, Monday summary once.
+
 ### M8 · AI drafts, compact (2026-10-21)
 
 - Draft actions (briefs, QA hold notes, listing copy, reply drafts, packaging and Nykaa requests) get a two-paragraph summary written by Workers AI from the document's own facts before they are saved to the Drive Outbox (docs 08 §11.3). The summary is labelled as AI-drafted, is dropped if it uses any number that is not in the facts, and stops when the daily budget of 8,000 neurons is spent (§11.4, counted in `usage_daily`). Model names and rates in `packages/shared/src/ai.ts`.
