@@ -100,6 +100,11 @@ const baseCopy = {
   'error.GITHUB_DISPATCH_FAILED': "Couldn't start a sync. An owner needs to renew the GitHub token.",
   'error.AI_UNAVAILABLE': "Drafting is unavailable right now. We'll try again later.",
   'error.FREE_TIER_LIMIT': 'Daily free limit nearly reached. This will run tomorrow.',
+  'error.SHEET_LINK_INVALID': "That isn't a Google Sheets link. Copy it from the Share button.",
+  'error.SHEET_NOT_PUBLIC':
+    "Drishti can't open this sheet. In Google Sheets choose Share → General access → Anyone with the link → Viewer, then try again.",
+  'error.SHEET_TOO_LARGE': 'This sheet is over 20 MB. Split older months into another sheet.',
+  'error.SHEET_FETCH_FAILED': "Google didn't send the sheet. Try Refresh in a minute.",
   'error.SNAPSHOT_SCHEMA_MISMATCH': 'Showing the last saved data while we update.',
   'error.ADAPTER_PARSE_FAILED': "Couldn't read the {field} on this page. You can type it.",
   'error.INTERNAL': 'Something went wrong on our side. Try again; if it repeats, tell your analyst (ref {request_id}).',

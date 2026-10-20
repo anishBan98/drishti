@@ -2,6 +2,7 @@ import { Hono } from 'hono';
 import { scheduled } from './cron';
 import type { AppEnv, Env } from './env';
 import { apiError } from './lib/errors';
+import { sheetRoutes } from './routes/sheet';
 
 // Worker entry (docs/05 §2). Static assets are served by Cloudflare directly; only /api/* and
 // /internal/* run this code first (wrangler.toml run_worker_first).
@@ -14,6 +15,9 @@ app.use('*', async (c, next) => {
 
 // Public health check (docs/07 §2).
 app.get('/api/health', (c) => c.json({ ok: true, version: c.env.VERSION, time: new Date().toISOString() }));
+
+// Sandbox linked Google Sheets (docs/07 §2).
+sheetRoutes(app);
 
 app.notFound((c) => {
   const path = new URL(c.req.url).pathname;
