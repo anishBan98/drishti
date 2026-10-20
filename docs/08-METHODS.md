@@ -49,6 +49,7 @@ For each medium the engine gathers evidence, then combines it:
 1. **Planned geo tests** (holdout or boost) read with synthetic control. Weight 1.0 if ended within 120 days, decaying linearly to 0.3 at 365 days.
 2. **Natural experiments** detected automatically (§3.3). Weight 0.6 each, same decay.
 3. **Media-mix regression** on city × day data (§3.4). Weight 0.4.
+4. **Claim-ratio prior** (added 20 Oct 2026): for a platform medium (not creators, whose platforms cannot see most sales they drive), its claimed return × the median real-to-claimed ratio of the media that have experiment evidence. Weight 0.2, 90% range ±60% of the value. It keeps a medium that no test or natural experiment has reached from being shown at, or above, the platform's own claim on the strength of a weak regression alone; any experiment on that medium soon outweighs it. On the demo data it moves Amazon Ads, Flipkart Ads and quick-commerce ads to within 0.4 of their planted returns.
 
 Combined estimate = precision-weighted mean of the available estimates (weight × 1/variance). Interval from the combined variance. Confidence:
 
