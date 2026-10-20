@@ -216,7 +216,8 @@ Both workers share the code; each has its own D1 database, KV namespace and secr
 **Sandbox (`/try`).** The plug-and-play way to try Drishti:
 
 - Files dropped on the page (the filled template `.xlsx`, export CSVs, or a ZIP of them) are read in a Web Worker by `packages/engine`: the same header detection, parsers and models as the sync job (`11-CONNECTORS.md` §3), and the same snapshot builder.
-- Nothing is uploaded and no API is called. The snapshot lives in memory (and IndexedDB, wrapped in try/catch, so a reload keeps it); "Clear my data" deletes it.
+- Nothing is uploaded and no API is called. The parsed facts and snapshot live in memory (and IndexedDB, wrapped in try/catch, so a reload keeps them); "Clear my data" deletes them.
+- Several companies can be kept at once, each under its own id with its files' parsed rows by source. Updating a company replaces only the sources in the new files and rebuilds its snapshot.
 - Screens render exactly as in the demo, with `workspace.demo = true` and a "Your files, this browser only" chip. Actions are simulated as in demo mode (`10-ACTIONS.md` §7).
 - Limits: up to 50 MB of files in total; screens without enough data show the EmptyState with what to add.
 - Cost: zero server work (static assets only).
