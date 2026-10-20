@@ -5,6 +5,7 @@ import { apiError } from './lib/errors';
 import { adminRoutes } from './routes/admin';
 import { authRoutes } from './routes/auth';
 import { sheetRoutes } from './routes/sheet';
+import { syncRoutes } from './routes/sync';
 
 // Worker entry (docs/05 §2). Static assets are served by Cloudflare directly; only /api/* and
 // /internal/* run this code first (wrangler.toml run_worker_first).
@@ -24,6 +25,8 @@ sheetRoutes(app);
 authRoutes(app);
 // Admin: workspace links, users, usage, audit (docs/07 §6).
 adminRoutes(app);
+// Sync: Sheet and Inbox bytes through the service account; the shared snapshot (docs/05 §6, compact).
+syncRoutes(app);
 
 app.notFound((c) => {
   const path = new URL(c.req.url).pathname;

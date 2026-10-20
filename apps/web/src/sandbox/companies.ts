@@ -93,19 +93,21 @@ function engine(): Worker {
   return worker;
 }
 
-function build(c: Company): Promise<BuildResponse> {
+/** Runs the engine in its worker on a set of files (sandbox companies and the signed-in workspace's sync). */
+export function buildFrom(hashKey: string, sources: BuildRequest['sources']): Promise<BuildResponse> {
   const id = ++seq;
-  const req: BuildRequest = {
-    id,
-    hashKey: c.hashKey,
-    generatedAt: new Date().toISOString(),
-    sources: c.sources.filter((s) => s.bytes).map((s) => ({ id: s.id, name: s.name, bytes: s.bytes! })),
-  };
+  const req: BuildRequest = { id, hashKey, generatedAt: new Date().toISOString(), sources };
   return new Promise((resolve) => {
     pending.set(id, resolve);
     engine().postMessage(req);
   });
 }
+
+const build = (c: Company) =>
+  buildFrom(
+    c.hashKey,
+    c.sources.filter((s) => s.bytes).map((s) => ({ id: s.id, name: s.name, bytes: s.bytes! })),
+  );
 
 /** Rebuilds a company's snapshot from its sources and saves it. */
 async function rebuild(c: Company, added: string[] = []): Promise<Company> {

@@ -4,6 +4,11 @@ All notable changes to Drishti. Milestones follow `docs/14-SETUP-RUNBOOK.md` §8
 
 ## [Unreleased]
 
+### M5 · Sync, compact (2026-10-21)
+
+- **Sync now** reads the Workspace Sheet and every file in the Inbox folder through the service account; the browser runs the engine and saves the snapshot for the whole workspace (docs 05 §15). `/app` shows the eight screens on it, with the last sync time and Sync now in the sidebar; before the first sync it offers Sync now or Set up.
+- API: `GET /api/sync/sources`, `GET /api/sync/file/:id` (Workspace Sheet or Inbox files only), `PUT|GET /api/snapshot`, `GET /api/sync/runs`; error `WORKSPACE_NOT_CONFIGURED`. Worker tests for listing, pass-through, refusing files outside the Inbox, saving and reading, and Viewer denied.
+
 ### M4 pages and home page (2026-10-21)
 
 - Sign in with Google (`/signin`), the workspace start page (`/app`), onboarding steps 1–5 (`/onboarding`, live access checks on the Sheet and folders) and Admin (`/admin`: workspace links, users and Reload from Sheet, recent activity, sign everyone out). Signed-out visits go to Sign in; non-Owners go to the start page.

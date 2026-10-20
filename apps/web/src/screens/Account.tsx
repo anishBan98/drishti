@@ -1,8 +1,17 @@
 import { t, type CopyKey } from '@drishti/shared';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useRef, useState, type FormEvent } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router';
-import { api, ApiError, useMe, useSignOut } from '../app/session';
+import { Link, Navigate, Outlet, useNavigate } from 'react-router';
+import { api, ApiError, useMe, useSignOut, type Me } from '../app/session';
+import { Stage } from '../app/stage';
+import { useSync, useWorkspaceSnapshot } from '../app/sync';
+import { useTheme } from '../app/theme';
+import { WorkspaceProvider } from '../app/workspace';
+import { FrameGrid, Sidebar } from '../components/Frame';
+import { ToastProvider, useToast } from '../components/Toast';
+import frame from '../components/frame.module.css';
+import { seedActions } from '../lib/demo-actions';
+import { ago } from '../sandbox/time';
 import ui from '../components/ui.module.css';
 import css from '../sandbox/try.module.css';
 import { Shell } from './Try';
@@ -249,13 +258,37 @@ export function Onboarding() {
   );
 }
 
-/** /app: the signed-in start page until the first sync (M5) brings the eight screens. */
-export function WorkspaceHome() {
-  const me = useMe();
+function SyncButton({ wide }: { wide?: boolean }) {
+  const sync = useSync();
+  const toast = useToast();
+  return (
+    <>
+      <button
+        type="button"
+        className={wide ? ui.btnPrimary : css.sideRefresh}
+        disabled={sync.busy}
+        aria-busy={sync.busy}
+        onClick={async () => {
+          if (await sync.run()) toast(t('app.sync.done'));
+        }}
+      >
+        <Icon name="refresh" />{' '}
+        {sync.step
+          ? t(`app.sync.step.${sync.step}`, { done: sync.progress.done, total: sync.progress.total })
+          : t('app.sync.now')}
+      </button>
+      <div role="alert" className={sync.error ? css.alert : 'sr-only'}>
+        {sync.error}
+      </div>
+    </>
+  );
+}
+
+/** Before the first sync: what to do next (set up, or sync now). */
+function StartPage({ me }: { me: Me }) {
   const signOut = useSignOut();
-  if (me.isLoading) return <Shell>{null}</Shell>;
-  if (!me.data) return <Navigate to="/signin" replace />;
-  const { user, workspace } = me.data;
+  const { user, workspace } = me;
+  const canSync = user.role === 'Owner' || user.role === 'Analyst';
   return (
     <Shell>
       <section className={css.hero}>
@@ -266,19 +299,85 @@ export function WorkspaceHome() {
         <p className={css.lead}>{workspace.configured ? t('app.waiting_sync') : t('app.not_configured')}</p>
       </section>
       <div className={css.row}>
+        {workspace.configured && canSync && <SyncButton wide />}
         {user.role === 'Owner' && (
-          <Link className={ui.btnPrimary} to={workspace.configured ? '/admin' : '/onboarding'}>
+          <Link
+            className={workspace.configured ? ui.btnSecondary : ui.btnPrimary}
+            to={workspace.configured ? '/admin' : '/onboarding'}
+          >
             {workspace.configured ? t('app.admin') : t('app.setup')}
           </Link>
         )}
-        <Link className={ui.btnSecondary} to="/try">
-          {t('home.cta.try')}
-        </Link>
         <button type="button" className={ui.linkBtn} onClick={() => void signOut()}>
           {t('auth.sign_out')}
         </button>
       </div>
     </Shell>
+  );
+}
+
+/** /app: the signed-in workspace — the eight screens on the workspace's latest sync (docs/09 §6). */
+export function WorkspaceLayout() {
+  const me = useMe();
+  const snap = useWorkspaceSnapshot(!!me.data);
+  const signOut = useSignOut();
+  const { theme } = useTheme();
+  useEffect(() => {
+    seedActions([], 'workspace');
+  }, []);
+  if (me.isLoading || (me.data && snap.isLoading))
+    return (
+      <div className="dr-root" data-theme={theme}>
+        <div className={css.loading} role="status">
+          <span className={ui.spinner} aria-hidden="true" /> {t('try.loading')}
+        </div>
+      </div>
+    );
+  if (!me.data) return <Navigate to="/signin" replace />;
+  if (!snap.data) return <StartPage me={me.data} />;
+  const { user, workspace } = me.data;
+  const canSync = user.role === 'Owner' || user.role === 'Analyst';
+  return (
+    <Stage>
+      <ToastProvider>
+        <WorkspaceProvider base="/app" demo users={[{ email: user.email, role: user.role, name: user.name }]}>
+          <FrameGrid>
+            <Sidebar
+              base="/app"
+              workspaceName={workspace.name}
+              demo
+              note={`${user.name} · ${user.role}`}
+              snapshot={snap.data}
+              menu={
+                <>
+                  {user.role === 'Owner' && (
+                    <Link role="menuitem" className={frame.menuItem} to="/admin">
+                      {t('app.admin')}
+                    </Link>
+                  )}
+                  <Link role="menuitem" className={frame.menuItem} to="/try">
+                    {t('home.cta.try')}
+                  </Link>
+                  <Link role="menuitem" className={frame.menuItem} to="/">
+                    {t('ui.workspace.menu.home')}
+                  </Link>
+                  <button type="button" role="menuitem" className={frame.menuItem} onClick={() => void signOut()}>
+                    {t('auth.sign_out')}
+                  </button>
+                </>
+              }
+              footer={
+                <div className={css.sideFoot}>
+                  <p className={frame.footer}>{t('app.sync.last', { when: ago(snap.data.generated_at) })}</p>
+                  {canSync && <SyncButton />}
+                </div>
+              }
+            />
+            <Outlet context={snap.data} />
+          </FrameGrid>
+        </WorkspaceProvider>
+      </ToastProvider>
+    </Stage>
   );
 }
 
