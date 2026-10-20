@@ -228,6 +228,7 @@ One row per source (the 13 file sources and the Sheet tabs): what it feeds, wher
 
 ### 6.12 Sandbox (`/try`, public, no login)
 A drop zone ("Drop your filled template or exports here. Files stay in this browser."), a list of detected files (source, rows, dates, warnings), a coverage checklist of which screens have enough data, and **Show my screens**, which opens the eight screens at `/try/<company>/*` on the locally built snapshot. Header chip "Your files, this browser only"; **Clear my data**. See `05-SYSTEM-DESIGN.md` §14.
+- **Two ways in, side by side:** **Link a Google Sheet** (paste a link; the hint shows how to share it as "Anyone with the link can view") and **Drop files**. A company can mix both. Linked sheets show the sheet name, the tabs Drishti recognised and "Fetched {time}"; **Refresh** (also in the screens' header chip) fetches them again and the screens rebuild. Unrecognised tabs are listed with their headers.
 - **Companies (added 20 Oct 2026):** the sandbox keeps several companies side by side in this browser. **Your companies** lists each one (name, sources, data through, last updated) with Open, Update data, Rename and Delete; **Add a company** starts a new one. **Update data** reopens the drop zone for that company: a dropped file replaces the earlier file of the same source, other sources stay, and the screens rebuild at once. In the screens, the workspace menu switches company and links back to the list; the sidebar logo goes to the home page.
 
 ## 7. Data loading, polling and states

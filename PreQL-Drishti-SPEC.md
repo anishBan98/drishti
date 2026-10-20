@@ -745,6 +745,10 @@ Covered by SYNC-07, CON-06.
 | GITHUB_DISPATCH_FAILED | 502 | Couldn't start a sync. An owner needs to renew the GitHub token. |
 | AI_UNAVAILABLE | 503 | Drafting is unavailable right now. We'll try again later. |
 | FREE_TIER_LIMIT | 503 | Daily free limit nearly reached. This will run tomorrow. |
+| SHEET_LINK_INVALID | 400 | That isn't a Google Sheets link. Copy it from the Share button. |
+| SHEET_NOT_PUBLIC | 403 | Drishti can't open this sheet. In Google Sheets choose Share → General access → Anyone with the link → Viewer, then try again. |
+| SHEET_TOO_LARGE | 413 | This sheet is over 20 MB. Split older months into another sheet. |
+| SHEET_FETCH_FAILED | 502 | Google didn't send the sheet. Try Refresh in a minute. |
 | SNAPSHOT_SCHEMA_MISMATCH | client | Showing the last saved data while we update. |
 | ADAPTER_PARSE_FAILED | client (extension) | Couldn't read the {field} on this page. You can type it. |
 | INTERNAL | 500 | Something went wrong on our side. Try again; if it repeats, tell your analyst (ref {request_id}). |
@@ -1099,6 +1103,7 @@ Both workers share the code; each has its own D1 database, KV namespace and secr
 
 - Files dropped on the page (the filled template `.xlsx`, export CSVs, or a ZIP of them) are read in a Web Worker by `packages/engine`: the same header detection, parsers and models as the sync job (`11-CONNECTORS.md` §3), and the same snapshot builder.
 - Nothing is uploaded and no API is called. The parsed facts and snapshot live in memory (and IndexedDB, wrapped in try/catch, so a reload keeps them); "Clear my data" deletes them.
+- **Linked Google Sheets (added 20 Oct 2026):** besides dropping files, a visitor can paste Google Sheets links shared as "Anyone with the link can view". The browser asks the Worker's `GET /api/sheet` (`07-API.md` §2) for the workbook, reads every tab with the same detection as files, and keeps the link. **Refresh** fetches every linked sheet again and rebuilds the snapshot; opening a company refreshes it too. This is the only sandbox call to the server, and it keeps nothing. Private sheets need the signed-in setup (M4), which reads them with the service account.
 - Several companies can be kept at once, each under its own id with its files' parsed rows by source. Updating a company replaces only the sources in the new files and rebuilds its snapshot.
 - Screens render exactly as in the demo, with `workspace.demo = true` and a "Your files, this browser only" chip. Actions are simulated as in demo mode (`10-ACTIONS.md` §7).
 - Limits: up to 50 MB of files in total; screens without enough data show the EmptyState with what to add.
@@ -1513,7 +1518,12 @@ Per user: 60 writes per minute, 600 reads per minute. Per capture token: 300 per
 | --- | --- | --- |
 | GET | `/api/health` | `{ ok: true, version: "<git sha>", time }` |
 | GET | `/demo/snapshot.json` | Demo snapshot (static) |
+| GET | `/api/sheet?url=<Google Sheets link>` | The whole workbook as XLSX bytes, for the sandbox's linked sheets (below) |
 | GET | `/samples/*` | Template sheet (`Drishti-Workspace-Template.xlsx`), one CSV per Sheet tab, and one sample export per source (static, copied from `sample-data/` at build) |
+
+### GET `/api/sheet?url=` (sandbox linked sheets)
+
+Public, no login. Browsers cannot download a Google Sheet across sites, so the Worker fetches it for the sandbox: it accepts only `https://docs.google.com/spreadsheets/d/<id>/…` links, requests `/spreadsheets/d/<id>/export?format=xlsx` from Google, and streams the bytes back with `Cache-Control: no-store`. It never stores the sheet or logs its contents or link. The sheet must be shared as "Anyone with the link can view" (or published to the web). Up to 20 MB. Errors `SHEET_LINK_INVALID` 400, `SHEET_NOT_PUBLIC` 403 (Google answered with a sign-in page or 401/403), `SHEET_TOO_LARGE` 413, `SHEET_FETCH_FAILED` 502, `RATE_LIMITED` 429 (best effort, 30 per minute per IP, counted in memory so it uses no KV writes). Signed-in workspaces read their Sheet through the Sheets API with the service account instead (`11-CONNECTORS.md` §2).
 
 ## 3. Auth and session
 
@@ -2213,6 +2223,7 @@ One row per source (the 13 file sources and the Sheet tabs): what it feeds, wher
 
 ### 6.12 Sandbox (`/try`, public, no login)
 A drop zone ("Drop your filled template or exports here. Files stay in this browser."), a list of detected files (source, rows, dates, warnings), a coverage checklist of which screens have enough data, and **Show my screens**, which opens the eight screens at `/try/<company>/*` on the locally built snapshot. Header chip "Your files, this browser only"; **Clear my data**. See `05-SYSTEM-DESIGN.md` §14.
+- **Two ways in, side by side:** **Link a Google Sheet** (paste a link; the hint shows how to share it as "Anyone with the link can view") and **Drop files**. A company can mix both. Linked sheets show the sheet name, the tabs Drishti recognised and "Fetched {time}"; **Refresh** (also in the screens' header chip) fetches them again and the screens rebuild. Unrecognised tabs are listed with their headers.
 - **Companies (added 20 Oct 2026):** the sandbox keeps several companies side by side in this browser. **Your companies** lists each one (name, sources, data through, last updated) with Open, Update data, Rename and Delete; **Add a company** starts a new one. **Update data** reopens the drop zone for that company: a dropped file replaces the earlier file of the same source, other sources stay, and the screens rebuild at once. In the screens, the workspace menu switches company and links back to the list; the sidebar logo goes to the home page.
 
 ## 7. Data loading, polling and states
@@ -2707,6 +2718,8 @@ CI must be green before any milestone is marked done.
 - **E2E-22** Onboarding wizard (staging): steps resume after reload; a bad link shows the sharing fix; finishing step 6 starts a sync and ends on This week.
 - **E2E-23** Data guide: every Download sample link returns its file; Check my file on each `sample-data/inbox` file names the right source with no upload request sent.
 - **E2E-24** Sandbox: dropping `Drishti-Workspace-Template.xlsx` plus the inbox samples renders all eight screens; editing a file and dropping it again changes the numbers; no network request other than static assets is made.
+- **E2E-27** Sandbox linked sheet (`/api/sheet` mocked with a workbook of the inbox samples): linking renders the screens; Refresh after the mock changes updates the numbers; a private sheet shows the sharing fix.
+- **API-SHEET** `/api/sheet` rejects non-Google links (400), maps a Google sign-in redirect to `SHEET_NOT_PUBLIC`, stops at 20 MB, and sends `Cache-Control: no-store`.
 
 ## 3. Fixtures
 

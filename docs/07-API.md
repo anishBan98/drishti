@@ -39,7 +39,12 @@ Per user: 60 writes per minute, 600 reads per minute. Per capture token: 300 per
 | --- | --- | --- |
 | GET | `/api/health` | `{ ok: true, version: "<git sha>", time }` |
 | GET | `/demo/snapshot.json` | Demo snapshot (static) |
+| GET | `/api/sheet?url=<Google Sheets link>` | The whole workbook as XLSX bytes, for the sandbox's linked sheets (below) |
 | GET | `/samples/*` | Template sheet (`Drishti-Workspace-Template.xlsx`), one CSV per Sheet tab, and one sample export per source (static, copied from `sample-data/` at build) |
+
+### GET `/api/sheet?url=` (sandbox linked sheets)
+
+Public, no login. Browsers cannot download a Google Sheet across sites, so the Worker fetches it for the sandbox: it accepts only `https://docs.google.com/spreadsheets/d/<id>/…` links, requests `/spreadsheets/d/<id>/export?format=xlsx` from Google, and streams the bytes back with `Cache-Control: no-store`. It never stores the sheet or logs its contents or link. The sheet must be shared as "Anyone with the link can view" (or published to the web). Up to 20 MB. Errors `SHEET_LINK_INVALID` 400, `SHEET_NOT_PUBLIC` 403 (Google answered with a sign-in page or 401/403), `SHEET_TOO_LARGE` 413, `SHEET_FETCH_FAILED` 502, `RATE_LIMITED` 429 (best effort, 30 per minute per IP, counted in memory so it uses no KV writes). Signed-in workspaces read their Sheet through the Sheets API with the service account instead (`11-CONNECTORS.md` §2).
 
 ## 3. Auth and session
 
