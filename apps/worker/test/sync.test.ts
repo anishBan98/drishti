@@ -101,7 +101,7 @@ describe('sync', () => {
   });
 
   it('saves a snapshot for the workspace and every signed-in user reads it; Viewers cannot sync', async () => {
-    const owner = await session(env, env.OWNER_EMAIL ?? 'owner@lumora.example');
+    const owner = await session({ ...env }, env.OWNER_EMAIL ?? 'owner@lumora.example');
     const snap = { version: 'v-test-1', generated_at: '2026-10-21T10:00:00Z', data_through: '2026-10-20' };
     const put = await app.request(
       'https://drishti.test/api/snapshot',
@@ -123,7 +123,7 @@ describe('sync', () => {
     )
       .bind(env.WORKSPACE_ID)
       .run();
-    const viewer = await session(env, 'viewer@lumora.example');
+    const viewer = await session({ ...env }, 'viewer@lumora.example');
     const got = await app.request('https://drishti.test/api/snapshot', { headers: { cookie: viewer.cookie } }, env);
     expect(await got.json()).toMatchObject({ version: 'v-test-1' });
     const denied = await app.request(
@@ -136,7 +136,7 @@ describe('sync', () => {
 
   it('asks to link the workspace first when it is not linked', async () => {
     await env.DB.prepare('UPDATE workspaces SET sheet_id = NULL WHERE id = ?').bind(env.WORKSPACE_ID).run();
-    const s = await session(env, env.OWNER_EMAIL ?? 'owner@lumora.example');
+    const s = await session({ ...env }, env.OWNER_EMAIL ?? 'owner@lumora.example');
     const res = await app.request('https://drishti.test/api/sync/sources', { headers: { cookie: s.cookie } }, env);
     expect(res.status).toBe(409);
     expect((await res.json<{ error: { code: string } }>()).error.code).toBe('WORKSPACE_NOT_CONFIGURED');
