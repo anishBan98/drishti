@@ -296,3 +296,42 @@ export function detectShocks(facts: Facts, tests: PlannedTest[] = []): SpendShoc
       ),
   );
 }
+
+/** Reads each natural experiment (docs/08 §3.3) with synthetic control; poor fits and unreadable events are dropped. */
+export function readShocks(
+  facts: Facts,
+  shocks: SpendShock[],
+  tests: PlannedTest[],
+  through: string,
+): ExperimentRead[] {
+  const series = citySeries(facts);
+  const out: ExperimentRead[] = [];
+  for (const s of shocks) {
+    if (daysBetweenIso(s.start, s.end) + 1 < 5) continue;
+    // Other cities with their own change (event or test) near this window cannot be donors.
+    const busy = new Set([
+      ...shocks
+        .filter((o) => o !== s && o.start <= addDays(s.end, 7) && o.end >= addDays(s.start, -PRE_DAYS))
+        .map((o) => o.city),
+      ...tests
+        .filter((x) => x.start_date <= addDays(s.end, 7) && x.end_date >= addDays(s.start, -PRE_DAYS))
+        .flatMap((x) => x.test_regions),
+    ]);
+    const r = readChange({
+      facts,
+      series,
+      media: s.media,
+      treated: [s.city],
+      start: s.start,
+      end: s.end,
+      through,
+      exclude: busy,
+    });
+    if (!r || r.poorFit) continue;
+    out.push({ kind: 'natural', id: `${s.media}:${s.city}:${s.start}`, ...r });
+  }
+  return out;
+}
+
+const daysBetweenIso = (a: string, b: string) =>
+  Math.round((Date.parse(`${b}T00:00:00Z`) - Date.parse(`${a}T00:00:00Z`)) / 86_400_000);
