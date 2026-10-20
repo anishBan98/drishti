@@ -1,6 +1,6 @@
 import { t, type CopyKey, type Delta, type Kpi, type Snapshot, type Verdict } from '@drishti/shared';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { NavLink, useNavigate } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import { useTheme } from '../app/theme';
 import { formatDelta } from '../lib/display';
 import css from './frame.module.css';
@@ -119,13 +119,15 @@ export function Sidebar({
   useScreenShortcuts(base);
   return (
     <nav aria-label={t('ui.nav.label')} className={css.side}>
-      <div className={css.brand}>
+      {/* The logo goes back to the home page, as on any website. */}
+      <Link to="/" className={css.brand}>
         <Mark />
         <div>
           <Wordmark />
           <div className={css.by}>{t('app.by')}</div>
         </div>
-      </div>
+        <span className="sr-only"> {t('ui.brand.home')}</span>
+      </Link>
       <div className={css.wsWrap} ref={ref}>
         <button
           type="button"
