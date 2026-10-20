@@ -19,7 +19,6 @@ import { buildPerformance } from './sections/performance';
 import { buildVoice, topIssue } from './sections/voice';
 import { buildWeek } from './sections/week';
 import { suggest } from './suggest';
-import { inRange } from './windows';
 import { t } from '@drishti/shared';
 
 // Snapshot builder (docs/05 §4 step 9, docs/06 §6). Deterministic: the same facts give the same version.
