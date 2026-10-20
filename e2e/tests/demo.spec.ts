@@ -43,6 +43,8 @@ test('E2E-03 dark mode toggles every screen and persists across reload', async (
   await page.getByRole('button', { name: '☾ Dark' }).click();
   for (const s of SCREENS) {
     await page.goto(s.path);
+    // Wait for the screen itself, not the loading placeholder (slow networks, e.g. against staging).
+    await expect(page.getByRole('heading', { level: 1, name: s.title })).toBeVisible();
     await expect(page.locator('.dr-root')).toHaveAttribute('data-theme', 'dark');
     const bg = await page.locator('main').evaluate((m) =>
       getComputedStyle(m.closest('.dr-root') as Element)

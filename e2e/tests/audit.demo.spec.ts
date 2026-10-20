@@ -121,3 +121,10 @@ test.describe('small and sideways phones', () => {
     await expect(page.getByText(/best on a laptop or desktop/)).toBeVisible();
   });
 });
+
+test('the logo in the demo goes back to the home page', async ({ page }) => {
+  await open(page, '/demo/market');
+  await page.getByRole('link', { name: /home page/ }).click();
+  await expect(page).toHaveURL(/\/$/);
+  await expect(page.getByRole('heading', { level: 1, name: /See what really worked/ })).toBeVisible();
+});
