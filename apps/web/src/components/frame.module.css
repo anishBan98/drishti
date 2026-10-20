@@ -5,6 +5,7 @@
   overflow: hidden;
   display: grid;
   grid-template-columns: 188px minmax(0, 1fr);
+  grid-template-rows: 900px;
   background: var(--bg);
   color: var(--ink);
 }
@@ -162,6 +163,7 @@
 /* Main column */
 .main {
   min-width: 0;
+  min-height: 0;
   padding: 20px 24px;
   display: grid;
   grid-template-rows: 50px 124px minmax(0, 1fr);

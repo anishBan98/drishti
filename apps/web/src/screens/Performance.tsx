@@ -36,7 +36,9 @@ function WeeklyChart({ p, metric, d28start }: { p: Snapshot['performance']; metr
   const totals = w.weeks.map((_, i) => CHANNELS.reduce((a, c) => a + (w.revenue_by_channel[c]?.[i] ?? 0), 0));
   const single = metric === 'orders' ? w.orders : metric === 'aov' ? w.aov : metric === 'buyers' ? w.buyers : totals;
   const max = niceMax(Math.max(...single));
-  const fmt = (v: number) => (metric === 'revenue' || metric === 'aov' ? formatInr(v, { compact: true }) : kfmt(v));
+  // Axis labels without trailing zeros ("₹5 Cr", "₹2.5 Cr"), as in the design.
+  const fmt = (v: number) =>
+    metric === 'revenue' ? `₹${+(v / 1e7).toFixed(2)} Cr` : metric === 'aov' ? formatInr(v) : kfmt(v);
   return (
     <div className={css.chartArea}>
       <div className={css.yAxis}>
@@ -51,32 +53,32 @@ function WeeklyChart({ p, metric, d28start }: { p: Snapshot['performance']; metr
         role="img"
         aria-label={`${t(TABS.find((x) => x.id === metric)!.label)}, ${w.weeks.length} weeks`}
       >
-        <div className={css.gridLine} style={{ top: '50%' }} />
-        <div className={css.gridLine} style={{ top: 0 }} />
         {w.weeks.map((wk, i) => {
           const faded = addDaysIso(wk, 6) < d28start;
+          // Column height = week total ÷ axis max; channels split the column by share, 2 px apart (design 03).
           return (
             <div
               key={wk}
               className={css.stack}
-              style={{ opacity: faded ? 0.45 : 1 }}
-              title={`${formatShortDate(wk)}: ${fmt(single[i] ?? 0)}`}
+              style={{ opacity: faded ? 0.45 : 1, height: `${((single[i] ?? 0) / max) * 100}%` }}
+              title={`${formatShortDate(addDaysIso(wk, 6))}: ${fmt(single[i] ?? 0)}`}
             >
               {metric === 'revenue' ? (
-                CHANNELS.map((c) => (
+                CHANNELS.map((c, j) => (
                   <div
                     key={c}
                     className={css.seg}
                     style={{
-                      height: `${((w.revenue_by_channel[c]?.[i] ?? 0) / max) * 100}%`,
+                      flex: `0 0 calc(${((w.revenue_by_channel[c]?.[i] ?? 0) / (totals[i] || 1)) * 100}% - 2px)`,
                       background: CHANNEL_COLOR[c],
+                      borderRadius: j === CHANNELS.length - 1 ? '5px 5px 0 0' : 0,
                     }}
                   />
                 ))
               ) : (
                 <div
                   className={css.seg}
-                  style={{ height: `${((single[i] ?? 0) / max) * 100}%`, background: 'var(--primary)' }}
+                  style={{ flex: '1 1 auto', background: 'var(--primary)', borderRadius: '5px 5px 0 0' }}
                 />
               )}
             </div>
@@ -114,7 +116,7 @@ export function Performance({ snapshot }: { snapshot: Snapshot }) {
     channel: CHANNEL_LABEL.quick_commerce,
     share: formatPct(qc?.share_pct ?? 0),
   });
-  const cols = '1.4fr 1fr 0.8fr 0.8fr 0.7fr 0.8fr 0.8fr';
+  const cols = '1.5fr repeat(6, minmax(0, 1fr))';
   const channelOptions = [
     { value: 'all', label: t('ui.filter.all_channels') },
     ...CHANNELS.map((c) => ({ value: c, label: CHANNEL_LABEL[c] })),
@@ -177,7 +179,11 @@ export function Performance({ snapshot }: { snapshot: Snapshot }) {
               <span style={{ color: 'var(--muted-2)' }}>{t('ui.perf.faded')}</span>
             </div>
           </section>
-          <section aria-label={t('ui.perf.channels')} className={`${ui.panel} ${css.tablePanel}`}>
+          <section
+            aria-label={t('ui.perf.channels')}
+            className={`${ui.panel} ${css.tablePanel}`}
+            style={{ padding: '14px 10px 10px' }}
+          >
             <div className={css.tableHead}>
               <h2 className={ui.h2}>{t('ui.perf.channels')}</h2>
               <span className={ui.headNote}>{t('ui.select_hint')}</span>
@@ -198,7 +204,7 @@ export function Performance({ snapshot }: { snapshot: Snapshot }) {
                   type="button"
                   aria-pressed={c.id === selected}
                   className={css.gridRowBtn}
-                  style={{ gridTemplateColumns: cols, minHeight: 40 }}
+                  style={{ gridTemplateColumns: cols, minHeight: 44, padding: '0 12px' }}
                   onClick={() => setSelected(c.id as Channel)}
                 >
                   <span className={css.nameCell}>

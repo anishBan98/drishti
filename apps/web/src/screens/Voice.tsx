@@ -37,8 +37,8 @@ export function Voice({ snapshot }: { snapshot: Snapshot }) {
       </Header>
       <SummaryStrip verdict={v.verdict} kpis={v.kpis} />
       <div className={ui.body}>
-        <div className={css.leftTwo}>
-          <section aria-label={t('ui.voice.title')} className={ui.panel}>
+        <div className={`${css.leftTwo} ${css.bottom248}`}>
+          <section aria-label={t('ui.voice.title')} className={ui.panel} style={{ padding: '16px 22px 12px' }}>
             <div className={ui.panelHead}>
               <h2 className={ui.h2}>{t('ui.voice.title')}</h2>
               <div className={ui.legend}>
@@ -52,11 +52,7 @@ export function Voice({ snapshot }: { snapshot: Snapshot }) {
                 </span>
               </div>
             </div>
-            <div
-              className={css.divRow}
-              style={{ cursor: 'default', minHeight: 20, fontSize: 13, color: 'var(--muted)' }}
-              aria-hidden="true"
-            >
+            <div className={css.divHead} aria-hidden="true">
               <span>{t('ui.voice.col.topic')}</span>
               <span style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span>{t('ui.voice.col.negative')}</span>
@@ -105,7 +101,7 @@ export function Voice({ snapshot }: { snapshot: Snapshot }) {
                   </span>
                   <span
                     className={`${css.r} ${css.b}`}
-                    style={{ fontSize: 17, color: x.us < 0 ? 'var(--bad)' : 'var(--good)' }}
+                    style={{ fontSize: 16, color: x.us < 0 ? 'var(--bad)' : 'var(--good)' }}
                   >
                     {signed(x.us)}
                   </span>
@@ -146,11 +142,13 @@ export function Voice({ snapshot }: { snapshot: Snapshot }) {
         </div>
         <div className={ui.rightCol}>
           <InsightCard title={t('ui.means.colon', { name: a.name })} badge={a.tag} headline={a.headline}>
-            {a.quotes.map((q) => (
-              <p key={q.text} className={ui.quote}>
-                “{q.text}” <span className={ui.quoteSrc}>{q.src}</span>
-              </p>
-            ))}
+            <div className={css.quotes}>
+              {a.quotes.map((q) => (
+                <p key={q.text} className={ui.quote}>
+                  “{q.text}” <span className={ui.quoteSrc}>{q.src}</span>
+                </p>
+              ))}
+            </div>
           </InsightCard>
           <ActionCards suggestions={a.suggestions} screen="voice" forName={a.name} />
         </div>

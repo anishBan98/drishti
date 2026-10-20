@@ -46,3 +46,4 @@ apps/web/public/screens/
 # Playwright output
 e2e/test-results/
 e2e/playwright-report/
+.lighthouseci/

@@ -32,6 +32,51 @@ jobs:
       - run: pnpm build
       - run: pnpm test
 
+  e2e:
+    name: e2e (demo, a11y, visual)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Install Chromium
+        run: pnpm --filter @drishti/e2e exec playwright install --with-deps chromium
+      - name: Demo journeys and accessibility (docs/12 §1)
+        run: pnpm --filter @drishti/e2e exec playwright test --project=demo --project=a11y
+      - name: Visual regression against design/screens (docs/12 §5)
+        run: pnpm --filter @drishti/e2e exec playwright test --project=visual
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-report
+          path: |
+            e2e/playwright-report
+            e2e/test-results
+          retention-days: 7
+
+  lighthouse:
+    name: lighthouse (/demo and /)
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Lighthouse CI (docs/12 §1; thresholds in lighthouserc.json)
+        run: npx -y @lhci/cli@0.15.1 autorun
+
   gitleaks:
     name: gitleaks
     runs-on: ubuntu-latest

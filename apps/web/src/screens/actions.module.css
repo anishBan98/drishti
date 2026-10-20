@@ -1,9 +1,10 @@
 /* Actions screen (design 02-actions). */
 .log {
-  padding: 18px 12px 10px;
+  padding: 14px 12px 8px;
+  gap: 0;
 }
 .log > div:first-child {
-  padding: 0 10px;
+  padding: 0 10px 6px;
 }
 .head {
   display: grid;

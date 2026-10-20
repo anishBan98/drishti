@@ -271,18 +271,18 @@
   padding-left: 18px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   font-size: 14px;
   line-height: 1.45;
   color: var(--insight-evidence);
 }
 .quote {
   margin: 0;
-  padding: 10px 12px;
-  border-radius: 12px;
+  padding: 8px 12px;
+  border-radius: 10px;
   background: var(--primary-2);
   font-size: 14px;
-  line-height: 1.45;
+  line-height: 1.4;
 }
 .quoteSrc {
   color: var(--insight-muted);

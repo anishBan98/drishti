@@ -71,7 +71,7 @@ export function Customers({ snapshot }: { snapshot: Snapshot }) {
       </Header>
       <SummaryStrip verdict={c.verdict} kpis={c.kpis} />
       <div className={ui.body}>
-        <div className={css.leftTwo}>
+        <div className={`${css.leftTwo} ${css.bottom262}`}>
           <section aria-label={t('ui.customers.title')} className={ui.panel}>
             <div className={ui.panelHead}>
               <h2 className={ui.h2}>{t('ui.customers.title')}</h2>

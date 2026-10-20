@@ -14,7 +14,7 @@
 | End-to-end | Playwright (Chromium) | `e2e/*`: the demo suite against the built SPA served statically (`vite preview` of `apps/web/dist`, the files the Worker serves; `wrangler dev` needs a Cloudflare login because Workers AI is remote-only), signed-in flows against staging nightly, production after deploy. Runs with reduced motion | push (demo suite), nightly (full) |
 | Visual regression | Playwright `toHaveScreenshot` vs `design/screens/*.png` | `e2e/visual.spec.ts` | push |
 | Accessibility | `@axe-core/playwright` | `e2e/a11y.spec.ts` | push |
-| Performance | Lighthouse CI on `/demo` | `ci.yml` | push to main |
+| Performance | Lighthouse CI on `/demo` and `/` (performance ≥ 0.8, accessibility ≥ 0.95, best practices ≥ 0.9; `lighthouserc.json`) | `ci.yml` | push to main |
 
 CI must be green before any milestone is marked done.
 

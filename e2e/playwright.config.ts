@@ -33,6 +33,8 @@ export default defineConfig({
     {
       name: 'visual',
       testMatch: /visual\.spec\.ts/,
+      // The design PNGs are the baselines (docs/12 §5).
+      snapshotPathTemplate: '../design/screens/{arg}{ext}',
       use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 } },
     },
     {

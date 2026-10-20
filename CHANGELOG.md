@@ -4,6 +4,18 @@ All notable changes to Drishti. Milestones follow `docs/14-SETUP-RUNBOOK.md` §8
 
 ## [Unreleased]
 
+### M3 · Home page, eight screens, demo actions (2026-10-20)
+
+- Home page (`/`): one screen with no page scroll on desktop and phone. It explains what Drishti is for in one line, shows a live preview built from the demo snapshot, and offers a four-round game, "Spot the real rupee" (XP, streak bonus, three levels, badges, confetti, a score ring and the best score kept in the browser). All motion stops under reduced motion (docs 09 §6.0 and §8 updated; E2E-25 and E2E-26 added).
+- All eight demo screens at `/demo/*` (This week, Actions, Performance, Impact and ROI, Market, Customers, Customer voice, Data sources) in light and dark, on a 1440 × 900 stage scaled to the window. Every string comes from the copy deck and every number from the snapshot.
+- Demo actions (docs/10 §7): every action card goes through its real states (preview, approval when money is at stake, running steps, done with an undo window). Outputs are real downloadable files, such as the coupon CSV. State is kept in the browser session.
+- Engine changes for the screens: approval is based on money at stake, not expected gain (budget moves capped at ₹3 L); creator spend is left out of the weekly bridge; coupons are Amazon-only; segment naming picks the best match; "first seen" for a price change uses a change point.
+- `e2e/fixtures/design-snapshot.json` holds the exact numbers and texts of `design/static-html`, so the visual suite compares layout, not data.
+- Tests: Playwright E2E-01..12, 21, 25 and 26; axe WCAG 2.2 AA on every screen in both themes; visual regression for 8 screens × 2 themes against `design/screens/*.png` (all within 3 %); Lighthouse CI on `/demo` and `/` (1.0 for performance, accessibility and best practices locally). The CI `e2e` job runs demo, a11y and visual; the `lighthouse` job runs on push to `main`.
+- E2E runs against `vite preview` of the built app, with reduced motion, not `wrangler dev`, because the demo needs no API and `wrangler dev` needs a Cloudflare login for the AI binding (docs/12 §1 updated).
+- Accessibility fixes: contrast of muted text on selected rows and in dark insight panels, 24 px target size for market bubbles and customer chips, no `aria-label` on plain divs.
+- Bundle: 156 KB JS and 11 KB CSS gzip (limit 250 KB).
+
 ### Docs 1.2 · Founder framing (2026-10-20)
 
 - Business model and go-to-market (01 §11): open core. Community stays free and self-hosted; Drishti Cloud and measurement studies earn revenue after funding (prices marked as hypotheses to test with design partners). Company goal added to 01 §2; release R5 Cloud; new risks (revenue model, cannibalisation, ownership and IP, measurement credibility).

@@ -199,7 +199,7 @@ export function Market({ snapshot }: { snapshot: Snapshot }) {
       </Header>
       <SummaryStrip verdict={m.verdict} kpis={m.kpis} />
       <div className={ui.body}>
-        <div className={css.leftTwo}>
+        <div className={`${css.leftTwo} ${css.bottom300}`}>
           <section
             aria-label={t(mode === 'price' ? 'market.map.price' : 'market.map.perception')}
             className={`${ui.panel} ${css.mapPanel}`}
