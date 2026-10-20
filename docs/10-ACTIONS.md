@@ -143,3 +143,14 @@ Upload streams to Drive (resumable upload) and dispatches a sync; the action's s
 ## 7. Demo behaviour
 
 In `/demo` every action runs a client-side simulation with the same steps, outputs that can be downloaded (generated from the demo snapshot: coupon CSV, budget sheet CSV, brief as Markdown, audience file with fake hashes), and timing of 600 ms per step. Actions are kept in memory (and sessionStorage when available) and appear on the Actions screen with "Demo" tags. No network writes.
+
+## 8. Compact engine (decided 21 Oct 2026)
+
+For the pitch build (10 to 20 users, docs/05 §15), the browser runs each action's steps, the same as in the demo. Every change is saved through `PUT /api/actions/:id`, which:
+
+- keeps the action in D1 so the whole team sees it;
+- writes its row on the Actions tab of the Workspace Sheet when its status changes;
+- saves each generated file to the Drive Outbox once and returns an "Open in Drive" link;
+- posts to Slack when `SLACK_WEBHOOK_URL` is set.
+
+Shopify execute with undo follows when a development store is connected. Until then, Shopify actions produce their files like prepare actions.

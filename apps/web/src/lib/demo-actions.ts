@@ -56,6 +56,49 @@ export interface DemoAction {
 }
 
 const KEY = 'drishti-demo-actions';
+/** The signed-in workspace saves every change to the Worker (docs/10, compact); demo and sandbox stay in the tab. */
+let live: ((a: DemoAction) => Promise<{ outputs?: DemoOutput[] } | undefined>) | null = null;
+const sent = new Map<string, string>();
+const timers = new Map<string, ReturnType<typeof setTimeout>>();
+
+function persist() {
+  if (!live) return;
+  for (const a of actions) {
+    const json = JSON.stringify(a);
+    if (sent.get(a.id) === json) continue;
+    sent.set(a.id, json);
+    clearTimeout(timers.get(a.id));
+    timers.set(
+      a.id,
+      setTimeout(() => {
+        const cur = getAction(a.id);
+        if (!cur || !live) return;
+        void live(cur)
+          .then((r) => {
+            // The Worker saved new files to the Drive Outbox: add their links to the action.
+            if (r?.outputs) update(a.id, { outputs: r.outputs });
+          })
+          .catch(() => undefined);
+      }, 250),
+    );
+  }
+}
+
+/** Switches the store to the signed-in workspace: seeds from the Worker and saves every change back. */
+export function goLive(seed: DemoAction[], save: NonNullable<typeof live>) {
+  live = save;
+  scope = 'workspace';
+  sent.clear();
+  for (const a of seed) sent.set(a.id, JSON.stringify(a));
+  actions = seed;
+  emit();
+  for (const a of actions) if (a.status === 'running') execute(a.id);
+}
+
+/** Leaves the signed-in workspace (another page seeds its own scope). */
+function leaveLive() {
+  live = null;
+}
 const STEP_MS = 600;
 let actions: DemoAction[] = [];
 /** Which workspace the store holds: "demo", or a sandbox company id. Each keeps its own actions. */
@@ -71,11 +114,13 @@ function emit() {
     /* storage unavailable */
   }
   for (const l of listeners) l();
+  persist();
 }
 
 /** Seeds once per workspace with its existing actions plus anything run earlier in this tab. */
 export function seedActions(seed: DemoAction[], forScope = 'demo') {
   if (scope === forScope) return;
+  leaveLive();
   scope = forScope;
   let saved: DemoAction[] = [];
   try {
@@ -143,7 +188,7 @@ export function runSuggestion(
     steps: s.steps.map((text) => ({ text, done: false })),
     outputs: [],
     created_at: now(),
-    demo: true,
+    demo: !live,
     approver: s.needsApproval ? ctx.approver : undefined,
     undoable: [
       'shopify_discount_cap',

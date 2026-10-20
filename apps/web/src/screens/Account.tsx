@@ -10,7 +10,7 @@ import { WorkspaceProvider } from '../app/workspace';
 import { FrameGrid, Sidebar } from '../components/Frame';
 import { ToastProvider, useToast } from '../components/Toast';
 import frame from '../components/frame.module.css';
-import { seedActions } from '../lib/demo-actions';
+import { goLive, type DemoAction } from '../lib/demo-actions';
 import { ago } from '../sandbox/time';
 import ui from '../components/ui.module.css';
 import css from '../sandbox/try.module.css';
@@ -322,9 +322,21 @@ export function WorkspaceLayout() {
   const snap = useWorkspaceSnapshot(!!me.data);
   const signOut = useSignOut();
   const { theme } = useTheme();
+  const saved = useQuery({
+    queryKey: ['workspace-actions'],
+    enabled: !!me.data,
+    staleTime: Infinity,
+    queryFn: () => api<{ items: DemoAction[] }>('/api/actions'),
+  });
   useEffect(() => {
-    seedActions([], 'workspace');
-  }, []);
+    if (!saved.data) return;
+    goLive(saved.data.items, (a) =>
+      api<{ outputs?: DemoAction['outputs'] }>(`/api/actions/${encodeURIComponent(a.id)}`, {
+        method: 'PUT',
+        body: JSON.stringify(a),
+      }),
+    );
+  }, [saved.data]);
   if (me.isLoading || (me.data && snap.isLoading))
     return (
       <div className="dr-root" data-theme={theme}>

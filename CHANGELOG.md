@@ -4,6 +4,16 @@ All notable changes to Drishti. Milestones follow `docs/14-SETUP-RUNBOOK.md` §8
 
 ## [Unreleased]
 
+### M8 · AI drafts, compact (2026-10-21)
+
+- Draft actions (briefs, QA hold notes, listing copy, reply drafts, packaging and Nykaa requests) get a two-paragraph summary written by Workers AI from the document's own facts before they are saved to the Drive Outbox (docs 08 §11.3). The summary is labelled as AI-drafted, is dropped if it uses any number that is not in the facts, and stops when the daily budget of 8,000 neurons is spent (§11.4, counted in `usage_daily`). Model names and rates in `packages/shared/src/ai.ts`.
+- Tests: the number check, the governor, and the summary added or skipped.
+
+### M7 · Action engine, compact (2026-10-21)
+
+- In the signed-in workspace every action is real and shared: each change is saved (`PUT /api/actions/:id`, `GET /api/actions`), written to the **Actions** tab of the Workspace Sheet (one row per action, updated when its status changes), and each file it produces is saved to the **Drive Outbox** with an “Open in Drive” link on the action. Optional Slack post when `SLACK_WEBHOOK_URL` is set. The demo and sandbox keep their in-tab engine.
+- Worker tests: Sheet append, Outbox upload with the link returned, team list, Viewer refused.
+
 ### M5 · Sync, compact (2026-10-21)
 
 - **Sync now** reads the Workspace Sheet and every file in the Inbox folder through the service account; the browser runs the engine and saves the snapshot for the whole workspace (docs 05 §15). `/app` shows the eight screens on it, with the last sync time and Sync now in the sidebar; before the first sync it offers Sync now or Set up.
