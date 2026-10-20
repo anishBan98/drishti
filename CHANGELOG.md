@@ -4,6 +4,12 @@ All notable changes to Drishti. Milestones follow `docs/14-SETUP-RUNBOOK.md` §8
 
 ## [Unreleased]
 
+### v1.0.1 · Sign-in and setup fixes (2026-10-21)
+
+- Sign in with Google uses redirect mode (`POST /api/auth/google/redirect`): the page goes to Google and back, so it works in embedded browsers and on phones where the popup cannot report back.
+- The service-account key is read even when Windows PowerShell stored it with a byte-order mark.
+- Workspace links: blank optional fields are left out; a wrong link is named in plain words (a folder pasted where the Sheet goes); each box shows the link format it expects.
+
 ### M10 · Hardening and v1.0 (2026-10-21)
 
 - FREE-02: a simulated busy day for 20 people stays under half of every free limit. The snapshot size now uses the 5 MB governor, and the rival-site watcher reads at most 15 sites a run, to stay under 50 subrequests.

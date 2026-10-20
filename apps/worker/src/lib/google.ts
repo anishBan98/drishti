@@ -107,9 +107,12 @@ const b64url = (bytes: Uint8Array | string) =>
 
 export const SA_SCOPES = 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive';
 
+/** The key JSON as stored by wrangler. Windows PowerShell can prefix a byte-order mark when piping the file in. */
+export const parseServiceAccount = (json: string) => JSON.parse(json.replace(/^\uFEFF/, '').trim()) as ServiceAccount;
+
 export function serviceAccountEmail(json: string | undefined): string | null {
   try {
-    return json ? (JSON.parse(json) as ServiceAccount).client_email : null;
+    return json ? (parseServiceAccount(json).client_email ?? null) : null;
   } catch {
     return null;
   }
@@ -123,7 +126,7 @@ export async function serviceAccountToken(
   json: string,
   opts: { kv: KVNamespace; fetcher?: typeof fetch; scopes?: string },
 ): Promise<string | null> {
-  const sa = JSON.parse(json) as ServiceAccount;
+  const sa = parseServiceAccount(json);
   const cacheKey = `google:sa:${sa.client_email}`;
   const cached = await opts.kv.get(cacheKey);
   if (cached) return cached;

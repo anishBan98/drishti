@@ -123,15 +123,23 @@ export function adminRoutes(app: Hono<AppEnv>, fetcher: () => typeof fetch = () 
       sheet: idFromUrl(body.sheet_url, 'sheet'),
       inbox: idFromUrl(body.inbox_url, 'folder'),
       outbox: idFromUrl(body.outbox_url, 'folder'),
-      archive: body.archive_url ? idFromUrl(body.archive_url, 'folder') : null,
+      archive: body.archive_url?.trim() ? idFromUrl(body.archive_url, 'folder') : null,
     };
     const missing = [
       !ids.sheet && 'sheet_url',
       !ids.inbox && 'inbox_url',
       !ids.outbox && 'outbox_url',
-      body.archive_url && !ids.archive && 'archive_url',
+      body.archive_url?.trim() && !ids.archive && 'archive_url',
     ].filter(Boolean);
-    if (missing.length) return apiError(c, 400, 'VALIDATION_FAILED', { fields: missing.join(', ') });
+    // Say which link is wrong in plain words (a folder pasted where the Sheet goes is the common slip).
+    const names: Record<string, string> = {
+      sheet_url: 'Workspace Sheet link (a docs.google.com/spreadsheets/d/… link, not a folder)',
+      inbox_url: 'Inbox folder link (a drive.google.com/drive/folders/… link)',
+      outbox_url: 'Outbox folder link (a drive.google.com/drive/folders/… link)',
+      archive_url: 'Archive folder link',
+    };
+    if (missing.length)
+      return apiError(c, 400, 'VALIDATION_FAILED', { fields: missing.map((m) => names[m as string] ?? m).join('; ') });
     const saEmail = serviceAccountEmail(c.env.GOOGLE_SA_JSON);
     if (!saEmail || !c.env.GOOGLE_SA_JSON)
       return apiError(c, 422, 'CONNECTOR_MISSING', {

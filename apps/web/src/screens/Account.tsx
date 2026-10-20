@@ -1,7 +1,7 @@
 import { t, type CopyKey } from '@drishti/shared';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useRef, useState, type FormEvent } from 'react';
-import { Link, Navigate, Outlet, useNavigate } from 'react-router';
+import { Link, Navigate, Outlet } from 'react-router';
 import { api, ApiError, useMe, useSignOut, type Me } from '../app/session';
 import { Stage } from '../app/stage';
 import { useSync, useWorkspaceSnapshot } from '../app/sync';
@@ -25,7 +25,12 @@ declare global {
     google?: {
       accounts: {
         id: {
-          initialize: (o: { client_id: string; callback: (r: { credential: string }) => void }) => void;
+          initialize: (o: {
+            client_id: string;
+            callback: (r: { credential: string }) => void;
+            ux_mode?: 'popup' | 'redirect';
+            login_uri?: string;
+          }) => void;
           renderButton: (el: HTMLElement, o: Record<string, unknown>) => void;
         };
       };
@@ -39,10 +44,12 @@ const errorText = (e: unknown) => (e instanceof ApiError ? e.message : t('error.
 /** /signin: the Sign in with Google button (Google Identity Services). */
 export function SignIn() {
   const me = useMe();
-  const qc = useQueryClient();
-  const navigate = useNavigate();
   const box = useRef<HTMLDivElement>(null);
-  const [error, setError] = useState('');
+  // A failed redirect sign-in comes back as /signin?error=CODE.
+  const code = new URLSearchParams(location.search).get('error');
+  const [error, setError] = useState(
+    code && /^[A-Z_]+$/.test(code) ? t(`error.${code}` as CopyKey, { email: '', request_id: 'web' }) : '',
+  );
   const config = useQuery({
     queryKey: ['auth-config'],
     queryFn: () => api<{ client_id: string | null }>('/api/auth/config'),
@@ -52,18 +59,13 @@ export function SignIn() {
     const clientId = config.data?.client_id;
     if (!clientId || !box.current) return;
     const render = () => {
+      // Redirect mode: the whole page goes to Google and back, so it works where popups cannot report back
+      // (embedded browsers, some phones). The Worker verifies the token and lands the person on /app.
       window.google!.accounts.id.initialize({
         client_id: clientId,
-        callback: async ({ credential }) => {
-          setError('');
-          try {
-            await api('/api/auth/google', { method: 'POST', body: JSON.stringify({ credential }) });
-            await qc.invalidateQueries({ queryKey: ['me'] });
-            navigate('/app');
-          } catch (e) {
-            setError(errorText(e));
-          }
-        },
+        ux_mode: 'redirect',
+        login_uri: `${location.origin}/api/auth/google/redirect`,
+        callback: () => undefined,
       });
       window.google!.accounts.id.renderButton(box.current!, {
         theme: 'filled_blue',
@@ -79,7 +81,7 @@ export function SignIn() {
     s.onload = render;
     s.onerror = () => setError(t('auth.google_unavailable'));
     document.head.appendChild(s);
-  }, [config.data?.client_id, navigate, qc]);
+  }, [config.data?.client_id]);
 
   if (me.data) return <Navigate to="/app" replace />;
   return (
@@ -134,7 +136,8 @@ function LinksForm({ onSaved }: { onSaved?: () => void }) {
     try {
       const r = await api<{ ok: boolean; checks: Record<string, Check> }>('/api/admin/workspace', {
         method: 'PUT',
-        body: JSON.stringify(Object.fromEntries(f.entries())),
+        // Blank optional fields (Archive) are left out rather than sent empty.
+        body: JSON.stringify(Object.fromEntries([...f.entries()].filter(([, v]) => String(v).trim() !== ''))),
       });
       setChecks(r.checks);
       await qc.invalidateQueries({ queryKey: ['me'] });
@@ -146,10 +149,10 @@ function LinksForm({ onSaved }: { onSaved?: () => void }) {
     }
     setBusy(false);
   };
-  const field = (name: string, label: CopyKey, required = true) => (
+  const field = (name: string, label: CopyKey, required = true, hint = 'https://drive.google.com/drive/folders/…') => (
     <label className={css.label}>
       {t(label)}
-      <input name={name} className={css.input} type="url" required={required} placeholder="https://" />
+      <input name={name} className={css.input} type="url" required={required} placeholder={hint} />
       {checks?.[name.replace('_url', '')] && (
         <span className={checks[name.replace('_url', '')]!.ok ? css.metaSoft : css.err}>
           {checks[name.replace('_url', '')]!.ok
@@ -161,7 +164,7 @@ function LinksForm({ onSaved }: { onSaved?: () => void }) {
   );
   return (
     <form onSubmit={submit} className={css.addForm}>
-      {field('sheet_url', 'onb.links.sheet')}
+      {field('sheet_url', 'onb.links.sheet', true, 'https://docs.google.com/spreadsheets/d/…')}
       {field('inbox_url', 'onb.links.inbox')}
       {field('outbox_url', 'onb.links.outbox')}
       {field('archive_url', 'onb.links.archive', false)}

@@ -58,6 +58,11 @@ export async function audit(env: Env, actor: string, verb: string, object: strin
 }
 
 async function startSession(c: Context<AppEnv>, user: { id: string; email: string; name: string | null; role: Role }) {
+  const csrf = await openSession(c, user);
+  return c.json({ user: { email: user.email, name: user.name ?? user.email, role: user.role }, csrf });
+}
+
+async function openSession(c: Context<AppEnv>, user: { id: string; email: string; name: string | null; role: Role }) {
   const { id } = await createSession(c.env.DB, user.id);
   const csrf = randomToken(24);
   setSessionCookies(c, id, csrf);
@@ -65,7 +70,7 @@ async function startSession(c: Context<AppEnv>, user: { id: string; email: strin
     .bind(new Date().toISOString(), user.id)
     .run();
   await audit(c.env, user.email, 'login', 'session');
-  return c.json({ user: { email: user.email, name: user.name ?? user.email, role: user.role }, csrf });
+  return csrf;
 }
 
 export function authRoutes(app: Hono<AppEnv>) {
@@ -80,6 +85,23 @@ export function authRoutes(app: Hono<AppEnv>) {
     const user = await userFor(c.env, who.email, who.name);
     if (!user) return apiError(c, 403, 'AUTH_NOT_INVITED', { email: who.email });
     return startSession(c, user);
+  });
+
+  // Redirect mode (no popup): Google posts the ID token as a form, then the browser lands on /app. Works in embedded
+  // browsers and on phones, where the popup cannot report back. The ID token is verified the same way.
+  app.post('/api/auth/google/redirect', async (c) => {
+    const form = await c.req.parseBody().catch(() => ({}) as Record<string, string>);
+    const credential = typeof form.credential === 'string' ? form.credential : '';
+    const fail = (code: string) => c.redirect(`/signin?error=${code}`, 303);
+    // Google's double-submit token, checked when the browser sent the cookie back.
+    const cookie = /(?:^|;\s*)g_csrf_token=([^;]+)/.exec(c.req.header('cookie') ?? '')?.[1];
+    if (!credential || (cookie && cookie !== form.g_csrf_token)) return fail('AUTH_TOKEN_INVALID');
+    const who = await verifyIdToken(credential, { clientId: c.env.GOOGLE_CLIENT_ID, kv: c.env.KV });
+    if (typeof who === 'string') return fail(who);
+    const user = await userFor(c.env, who.email, who.name);
+    if (!user) return fail('AUTH_NOT_INVITED');
+    await openSession(c, user);
+    return c.redirect('/app', 303);
   });
 
   app.post('/api/auth/logout', async (c) => {
