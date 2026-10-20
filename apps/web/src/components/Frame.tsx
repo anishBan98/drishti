@@ -28,7 +28,14 @@ export function Mark({ size = 40 }: { size?: number }) {
     <svg width={size} height={size} viewBox="0 0 200 200" aria-hidden="true">
       <g transform="translate(0 -6)">
         <path d="M18 108 Q100 26 182 108" fill="none" stroke="#FFFFFF" strokeWidth="20" strokeLinecap="round" />
-        <path d="M18 108 Q92 168 150 118 L184 80" fill="none" stroke="#FFFFFF" strokeWidth="20" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M18 108 Q92 168 150 118 L184 80"
+          fill="none"
+          stroke="#FFFFFF"
+          strokeWidth="20"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
         <circle cx="100" cy="104" r="25" fill="#FF2E2E" />
       </g>
     </svg>
@@ -69,7 +76,17 @@ function syncedText(snapshot: Snapshot | undefined): { text: string; stale: bool
   return { text: t('nav.footer', { when: t('ui.synced.today', { time }) }), stale: false };
 }
 
-export function Sidebar({ base, workspaceName, demo, snapshot }: { base: string; workspaceName: string; demo: boolean; snapshot?: Snapshot }) {
+export function Sidebar({
+  base,
+  workspaceName,
+  demo,
+  snapshot,
+}: {
+  base: string;
+  workspaceName: string;
+  demo: boolean;
+  snapshot?: Snapshot;
+}) {
   const { theme, setTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const ref = useOutside(open, () => setOpen(false));
@@ -84,7 +101,13 @@ export function Sidebar({ base, workspaceName, demo, snapshot }: { base: string;
         </div>
       </div>
       <div className={css.wsWrap} ref={ref}>
-        <button type="button" className={css.ws} aria-expanded={open} aria-haspopup="menu" onClick={() => setOpen((o) => !o)}>
+        <button
+          type="button"
+          className={css.ws}
+          aria-expanded={open}
+          aria-haspopup="menu"
+          onClick={() => setOpen((o) => !o)}
+        >
           <span className={css.wsName}>{workspaceName} ▾</span>
           {demo && <span className={css.wsNote}>{t('demo.workspace')}</span>}
         </button>
@@ -101,15 +124,30 @@ export function Sidebar({ base, workspaceName, demo, snapshot }: { base: string;
         )}
       </div>
       {SCREENS.map((s) => (
-        <NavLink key={s.id} to={screenHref(base, s.id)} end className={({ isActive }) => `${css.nav} ${isActive ? css.navActive : ''}`}>
+        <NavLink
+          key={s.id}
+          to={screenHref(base, s.id)}
+          end
+          className={({ isActive }) => `${css.nav} ${isActive ? css.navActive : ''}`}
+        >
           {t(s.label)}
         </NavLink>
       ))}
       <div role="group" aria-label={t('ui.theme.group')} className={css.theme}>
-        <button type="button" aria-pressed={theme === 'light'} className={`${css.themeBtn} ${theme === 'light' ? css.themeOn : ''}`} onClick={() => setTheme('light')}>
+        <button
+          type="button"
+          aria-pressed={theme === 'light'}
+          className={`${css.themeBtn} ${theme === 'light' ? css.themeOn : ''}`}
+          onClick={() => setTheme('light')}
+        >
           ☀ {t('theme.light')}
         </button>
-        <button type="button" aria-pressed={theme === 'dark'} className={`${css.themeBtn} ${theme === 'dark' ? css.themeOn : ''}`} onClick={() => setTheme('dark')}>
+        <button
+          type="button"
+          aria-pressed={theme === 'dark'}
+          className={`${css.themeBtn} ${theme === 'dark' ? css.themeOn : ''}`}
+          onClick={() => setTheme('dark')}
+        >
           ☾ {t('theme.dark')}
         </button>
       </div>
@@ -162,7 +200,11 @@ export function Sparkline({ values, tone, label }: { values: number[]; tone: Kpi
 }
 const round1 = (v: number) => Math.round(v * 10) / 10;
 
-const VALUE_TONE: Record<string, string> = { claimed_roas: 'var(--muted-2)', preferred: 'var(--blue-text)', problem: 'var(--orange-text)' };
+const VALUE_TONE: Record<string, string> = {
+  claimed_roas: 'var(--muted-2)',
+  preferred: 'var(--blue-text)',
+  problem: 'var(--orange-text)',
+};
 
 export function KpiCell({ kpi }: { kpi: Kpi }) {
   const noteAsChip = !kpi.delta && kpi.note;
@@ -176,7 +218,9 @@ export function KpiCell({ kpi }: { kpi: Kpi }) {
         {kpi.delta && <DeltaChip delta={kpi.delta} />}
         {kpi.delta && kpi.note && <span className={css.note}>{kpi.note}</span>}
         {noteAsChip && <span className={`${css.delta} ${css[`tone_${kpi.tone ?? 'neutral'}`]}`}>{kpi.note}</span>}
-        {kpi.spark && kpi.spark.length > 1 && !kpi.note && <Sparkline values={kpi.spark} tone={kpi.tone} label={`${kpi.label}, 8 weeks`} />}
+        {kpi.spark && kpi.spark.length > 1 && !kpi.note && (
+          <Sparkline values={kpi.spark} tone={kpi.tone} label={`${kpi.label}, 8 weeks`} />
+        )}
       </div>
     </div>
   );

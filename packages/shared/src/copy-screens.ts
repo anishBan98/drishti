@@ -44,6 +44,7 @@ export const screenCopy = {
   'note.pct_of_revenue': '{pct} of revenue',
   'note.platform_reports': 'Platform reports',
   'note.own_site_only': 'Own site',
+  'note.sample_cohort': 'Sample of buyers',
   'note.median': 'Median {value}',
   'note.category': 'Category {value}',
   'note.rivals': 'Rivals {value}',

@@ -2,7 +2,8 @@
 export const uiCopy = {
   'ui.workspace.menu.home': 'About Drishti',
   'ui.workspace.menu.setup': 'Set up your own workspace',
-  'ui.workspace.menu.demo_note': 'This is the demo with fictional data. Nothing you do here is saved beyond this browser tab.',
+  'ui.workspace.menu.demo_note':
+    'This is the demo with fictional data. Nothing you do here is saved beyond this browser tab.',
   'ui.nav.label': 'Drishti sections',
   'ui.theme.group': 'Colour theme',
   'ui.synced.today': 'today, {time}',
@@ -76,7 +77,7 @@ export const uiCopy = {
 
   'ui.actions.summary.waiting': '{n} waiting on you',
   'ui.actions.summary.none_waiting': 'Nothing waiting',
-  'ui.actions.summary.waiting_text': '{title} needs approval before it can run.',
+  'ui.actions.summary.waiting_text': 'Waiting for approval: {title}.',
   'ui.actions.summary.ok_text': 'Every action is running or measured.',
   'ui.actions.kpi.run': 'Actions run',
   'ui.actions.kpi.expected': 'Expected impact',
@@ -136,6 +137,7 @@ export const uiCopy = {
   'executor.handoff': 'Prepared for you to finish',
 
   'ui.perf.title': 'Revenue by channel by week',
+  'ui.perf.subtitle': 'Last 28 days, against the 28 days before',
   'ui.perf.tab.revenue': 'Revenue',
   'ui.perf.tab.orders': 'Orders',
   'ui.perf.tab.aov': 'Order value',
@@ -170,6 +172,7 @@ export const uiCopy = {
   'ui.impact.day': 'Day {day} of {days}',
   'ui.impact.readout': 'Readout on {date}. {note}',
   'ui.impact.plan_test': 'Plan a test',
+  'ui.impact.qc_short': 'Quick com. ads',
   'ui.mo': '{n} mo',
 
   'ui.market.toggle.price': 'Price and rating',
@@ -276,6 +279,6 @@ export const uiCopy = {
   'home.sample': 'Download the sample sheet',
   'home.guide': 'What data Drishti needs',
   'home.free': 'Free. Your data stays in your own accounts.',
-  'home.screens': 'The eight screens',
+  'home.screens': 'Inside the demo',
   'home.by': 'A PreQL project',
 } as const;

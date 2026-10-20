@@ -14,7 +14,10 @@ function initial(): Theme {
   return typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-const ThemeContext = createContext<{ theme: Theme; setTheme: (t: Theme) => void }>({ theme: 'light', setTheme: () => {} });
+const ThemeContext = createContext<{ theme: Theme; setTheme: (t: Theme) => void }>({
+  theme: 'light',
+  setTheme: () => {},
+});
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, set] = useState<Theme>(initial);

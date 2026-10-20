@@ -90,7 +90,8 @@ export function useActions(): DemoAction[] {
   );
 }
 
-export const actionForSuggestion = (list: DemoAction[], suggestionId: string) => list.find((a) => a.suggestion_id === suggestionId);
+export const actionForSuggestion = (list: DemoAction[], suggestionId: string) =>
+  list.find((a) => a.suggestion_id === suggestionId);
 
 const now = () => new Date().toISOString();
 const update = (id: string, patch: Partial<DemoAction> | ((a: DemoAction) => Partial<DemoAction>)) => {
@@ -100,14 +101,24 @@ const update = (id: string, patch: Partial<DemoAction> | ((a: DemoAction) => Par
 export const getAction = (id: string) => actions.find((a) => a.id === id);
 
 function readoutFor(type: string): string | undefined {
-  const days: Record<string, number> = { amazon_coupon: 21, qa_hold: 42, shopify_discount_cap: 21, budget_shift: 28, budget_change: 28, geo_test: 21 };
+  const days: Record<string, number> = {
+    amazon_coupon: 21,
+    qa_hold: 42,
+    shopify_discount_cap: 21,
+    budget_shift: 28,
+    budget_change: 28,
+    geo_test: 21,
+  };
   const d = days[type];
   if (!d) return undefined;
   return new Date(Date.now() + d * 86_400_000).toISOString().slice(0, 10);
 }
 
 /** Run a suggestion: approval if needed, else tick its steps and finish by executor kind. */
-export function runSuggestion(s: Suggestion, ctx: { screen: string; owner: string; approver: string; snapshotName: string }): string {
+export function runSuggestion(
+  s: Suggestion,
+  ctx: { screen: string; owner: string; approver: string; snapshotName: string },
+): string {
   const id = `ac_demo_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
   const action: DemoAction = {
     id,
@@ -125,8 +136,25 @@ export function runSuggestion(s: Suggestion, ctx: { screen: string; owner: strin
     created_at: now(),
     demo: true,
     approver: s.needsApproval ? ctx.approver : undefined,
-    undoable: ['shopify_discount_cap', 'shopify_segment_offer', 'budget_shift', 'budget_change', 'price_alert', 'price_rule', 'qc_ads_pause', 'source_reminder', 'refill_nudge', 'prepaid_nudge'].includes(s.type),
-    params: { ...s.params, impact: s.impactLabel, why: s.why, confidence: s.confidence, evidence: s.evidence.map((e) => e.label) },
+    undoable: [
+      'shopify_discount_cap',
+      'shopify_segment_offer',
+      'budget_shift',
+      'budget_change',
+      'price_alert',
+      'price_rule',
+      'qc_ads_pause',
+      'source_reminder',
+      'refill_nudge',
+      'prepaid_nudge',
+    ].includes(s.type),
+    params: {
+      ...s.params,
+      impact: s.impactLabel,
+      why: s.why,
+      confidence: s.confidence,
+      evidence: s.evidence.map((e) => e.label),
+    },
   };
   actions = [action, ...actions];
   emit();
@@ -155,7 +183,13 @@ function execute(id: string) {
     const outputs = buildOutputs(cur);
     const readout = readoutFor(cur.type);
     if (cur.executor === 'handoff') update(id, { status: 'waiting_on_user', outputs });
-    else update(id, { status: readout ? 'measuring' : 'done', outputs, readout_date: readout, measured_progress: readout ? 0 : undefined });
+    else
+      update(id, {
+        status: readout ? 'measuring' : 'done',
+        outputs,
+        readout_date: readout,
+        measured_progress: readout ? 0 : undefined,
+      });
   };
   setTimeout(tick, STEP_MS);
 }
@@ -172,21 +206,40 @@ export function confirmHandoff(id: string) {
 }
 
 export function approve(id: string, approver: string) {
-  update(id, (a) => ({ approver, steps: [{ text: t('ui.actions.approve.step', { name: approver }), done: true, at: now() }, ...a.steps] }));
+  update(id, (a) => ({
+    approver,
+    steps: [{ text: t('ui.actions.approve.step', { name: approver }), done: true, at: now() }, ...a.steps],
+  }));
   execute(id);
 }
 
 export function decline(id: string) {
-  update(id, (a) => ({ status: 'declined', steps: [...a.steps, { text: t('ui.actions.decline.step'), done: true, at: now() }] }));
+  update(id, (a) => ({
+    status: 'declined',
+    steps: [...a.steps, { text: t('ui.actions.decline.step'), done: true, at: now() }],
+  }));
 }
 
 export function undo(id: string) {
-  update(id, (a) => ({ status: 'undone', steps: [...a.steps, { text: t('ui.actions.undo.step'), done: true, at: now() }] }));
+  update(id, (a) => ({
+    status: 'undone',
+    steps: [...a.steps, { text: t('ui.actions.undo.step'), done: true, at: now() }],
+  }));
 }
 
-export function assign(id: string | undefined, s: Suggestion | undefined, owner: string, due: string, screen: string): string {
+export function assign(
+  id: string | undefined,
+  s: Suggestion | undefined,
+  owner: string,
+  due: string,
+  screen: string,
+): string {
   if (id) {
-    update(id, (a) => ({ owner, due, steps: [...a.steps, { text: t('ui.action.assigned', { name: owner, date: due }), done: true, at: now() }] }));
+    update(id, (a) => ({
+      owner,
+      due,
+      steps: [...a.steps, { text: t('ui.action.assigned', { name: owner, date: due }), done: true, at: now() }],
+    }));
     return id;
   }
   // Assigning a suggestion that has not run yet creates a task action for the owner.

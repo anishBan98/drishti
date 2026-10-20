@@ -23,7 +23,8 @@ export function useSnapshot() {
   const design = isDesignFixture();
   return useQuery({
     queryKey: ['snapshot', design ? 'design' : 'demo'],
-    queryFn: async (): Promise<Snapshot> => snapshotSchema.parse(await getJson(design ? '/demo/design-snapshot.json' : '/demo/snapshot.json')),
+    queryFn: async (): Promise<Snapshot> =>
+      snapshotSchema.parse(await getJson(design ? '/demo/design-snapshot.json' : '/demo/snapshot.json')),
     staleTime: Infinity,
   });
 }

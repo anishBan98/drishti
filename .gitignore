@@ -12,7 +12,6 @@ blob-report/
 .vite/
 
 # generated demo snapshot (build artifact, not committed: docs/06 §6)
-apps/web/public/demo/snapshot.json
 
 # local env and secrets (never commit)
 .env
@@ -38,3 +37,8 @@ Thumbs.db
 
 # local Claude Code app config
 .claude/
+
+# generated demo data and samples (built by pnpm build:demo)
+apps/web/public/demo/
+apps/web/public/samples/
+apps/web/public/screens/

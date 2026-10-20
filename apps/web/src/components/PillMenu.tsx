@@ -37,7 +37,13 @@ export function PillMenu({
   }, [open]);
   return (
     <div style={{ position: 'relative' }} ref={ref}>
-      <button type="button" className={ui.pill} aria-haspopup="menu" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+      <button
+        type="button"
+        className={ui.pill}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+      >
         {label} ▾
       </button>
       {open && (

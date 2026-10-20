@@ -14,7 +14,9 @@ export interface DemoOutput {
 }
 
 const csv = (rows: (string | number)[][]) =>
-  rows.map((r) => r.map((c) => (/[",\n]/.test(String(c)) ? `"${String(c).replace(/"/g, '""')}"` : String(c))).join(',')).join('\n') + '\n';
+  rows
+    .map((r) => r.map((c) => (/[",\n]/.test(String(c)) ? `"${String(c).replace(/"/g, '""')}"` : String(c))).join(','))
+    .join('\n') + '\n';
 
 const isoIn = (days: number) => new Date(Date.now() + days * 86_400_000).toISOString().slice(0, 10);
 const str = (v: unknown, fallback = '') => (v === undefined || v === null ? fallback : String(v));
@@ -43,7 +45,15 @@ export function buildOutputs(a: DemoAction): DemoOutput[] {
           mime: 'text/csv',
           content: csv([
             ['ASIN', 'Discount type', 'Discount', 'Start date', 'End date', 'Budget (INR)', 'Coupon title'],
-            [str(p.asin), 'Percentage', str(p.discount_pct), isoIn(1), isoIn(1 + weeks * 7), 300000, t('ui.output.coupon_title', { pct: str(p.discount_pct) })],
+            [
+              str(p.asin),
+              'Percentage',
+              str(p.discount_pct),
+              isoIn(1),
+              isoIn(1 + weeks * 7),
+              300000,
+              t('ui.output.coupon_title', { pct: str(p.discount_pct) }),
+            ],
           ]),
         },
         { kind: 'link', label: t('ui.output.seller_central'), url: 'https://sellercentral.amazon.in/coupons/' },
@@ -51,14 +61,19 @@ export function buildOutputs(a: DemoAction): DemoOutput[] {
     }
     case 'budget_shift':
     case 'budget_change': {
-      const moves = (p.moves as Record<string, number> | undefined) ?? (p.medium ? { [str(p.medium)]: Number(p.change_inr_per_month ?? 0) } : {});
+      const moves =
+        (p.moves as Record<string, number> | undefined) ??
+        (p.medium ? { [str(p.medium)]: Number(p.change_inr_per_month ?? 0) } : {});
       return [
         {
           kind: 'download',
           label: t('ui.output.budget'),
           filename: `budget-${slug}.csv`,
           mime: 'text/csv',
-          content: csv([['Medium', 'Change per month (INR)', 'New daily change (INR)'], ...Object.entries(moves).map(([m, v]) => [m, v, Math.round(v / 30)])]),
+          content: csv([
+            ['Medium', 'Change per month (INR)', 'New daily change (INR)'],
+            ...Object.entries(moves).map(([m, v]) => [m, v, Math.round(v / 30)]),
+          ]),
         },
       ];
     }
@@ -69,7 +84,10 @@ export function buildOutputs(a: DemoAction): DemoOutput[] {
           label: t('ui.output.audience'),
           filename: `audience-${slug}.csv`,
           mime: 'text/csv',
-          content: csv([['email', 'phone'], ...Array.from({ length: 20 }, (_, i) => [fakeHash(`e${i}${slug}`), fakeHash(`p${i}${slug}`)])]),
+          content: csv([
+            ['email', 'phone'],
+            ...Array.from({ length: 20 }, (_, i) => [fakeHash(`e${i}${slug}`), fakeHash(`p${i}${slug}`)]),
+          ]),
         },
       ];
     case 'brief':
@@ -89,7 +107,15 @@ export function buildOutputs(a: DemoAction): DemoOutput[] {
         '',
         ...a.steps.map((s, i) => `${i + 1}. ${s.text}`),
       ];
-      return [{ kind: 'download', label: t('ui.output.document'), filename: `${a.type}-${slug}.md`, mime: 'text/markdown', content: lines.join('\n') + '\n' }];
+      return [
+        {
+          kind: 'download',
+          label: t('ui.output.document'),
+          filename: `${a.type}-${slug}.md`,
+          mime: 'text/markdown',
+          content: lines.join('\n') + '\n',
+        },
+      ];
     }
     default:
       return [

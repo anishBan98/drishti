@@ -17,9 +17,25 @@ export interface WorkspaceInfo {
 }
 
 const fallbackUser: WorkspaceUser = { email: 'you@example.com', role: 'Analyst', name: 'You' };
-const WorkspaceContext = createContext<WorkspaceInfo>({ base: '/demo', demo: true, users: [fallbackUser], me: fallbackUser, approver: fallbackUser });
+const WorkspaceContext = createContext<WorkspaceInfo>({
+  base: '/demo',
+  demo: true,
+  users: [fallbackUser],
+  me: fallbackUser,
+  approver: fallbackUser,
+});
 
-export function WorkspaceProvider({ base, demo, users, children }: { base: string; demo: boolean; users: WorkspaceUser[]; children: ReactNode }) {
+export function WorkspaceProvider({
+  base,
+  demo,
+  users,
+  children,
+}: {
+  base: string;
+  demo: boolean;
+  users: WorkspaceUser[];
+  children: ReactNode;
+}) {
   const me = users.find((u) => u.role === 'Analyst') ?? users[0] ?? fallbackUser;
   const approver = users.find((u) => u.role === 'Owner' || u.role === 'Approver') ?? me;
   return <WorkspaceContext.Provider value={{ base, demo, users, me, approver }}>{children}</WorkspaceContext.Provider>;

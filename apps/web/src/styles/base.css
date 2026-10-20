@@ -25,13 +25,13 @@ body[data-theme='dark'] {
 .dr-root *::after {
   box-sizing: border-box;
 }
-.dr-root a {
+.dr-root :where(a) {
   color: var(--link);
 }
-.dr-root a:hover {
+.dr-root :where(a:hover) {
   color: var(--strong);
 }
-.dr-root button {
+.dr-root :where(button) {
   font: inherit;
   color: inherit;
 }
@@ -42,10 +42,7 @@ body[data-theme='dark'] {
   outline: 2px solid #2a78d6;
   outline-offset: 2px;
 }
-.dr-root h1,
-.dr-root h2,
-.dr-root h3,
-.dr-root p {
+.dr-root :where(h1, h2, h3, p) {
   margin: 0;
 }
 

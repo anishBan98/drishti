@@ -107,6 +107,14 @@ export function buildContext(facts: Facts, ws: Workspace, opts: { sampleScale?: 
   };
 }
 
+/**
+ * True when the own-site customer file is a fixed sample of buyers with no first orders in the last 28 days
+ * (the demo files are such a cohort, docs/11 §9): buyer counts then cannot be compared across windows.
+ */
+export function isBuyerCohortSample(ctx: Context): boolean {
+  return ctx.sampleScale > 1 && !ctx.facts.customers_own_site.some((c) => inRange(c.first_order_date, ctx.w.d28));
+}
+
 /** Acquisition spend attributed to the own site ÷ new own-site buyers, for a window (docs/08 §2). */
 export function cacNewBuyers(ctx: Context, range: [string, string]): number {
   // With a sample of buyers a short window can hold too few new buyers: widen to 90, then 365 days (same end).

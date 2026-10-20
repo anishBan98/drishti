@@ -9,7 +9,7 @@ import {
   type Snapshot,
   type Suggestion,
 } from '@drishti/shared';
-import type { Context } from '../context';
+import { isBuyerCohortSample, type Context } from '../context';
 import { salesByChannel, salesTotals } from '../kpi';
 import { inRange, addDays, type Range } from '../windows';
 import { count, delta, kpi, money } from './common';
@@ -139,8 +139,9 @@ export function buildPerformance(
         spark: weekly.aov.slice(-8),
       }),
       kpi('customers', 'kpi.customers', own.buyers * ctx.sampleScale, count(own.buyers * ctx.sampleScale), {
-        delta: delta('buyers', own.buyers, ownPrior.buyers),
-        note: t('note.own_site_only'),
+        ...(isBuyerCohortSample(ctx) ? {} : { delta: delta('buyers', own.buyers, ownPrior.buyers) }),
+        note: isBuyerCohortSample(ctx) ? t('note.sample_cohort') : t('note.own_site_only'),
+        tone: 'neutral',
       }),
       kpi('orders_per_buyer', 'kpi.orders_per_buyer', opb, opb.toFixed(2), { delta: delta('repeat', opb, opbPrior) }),
       kpi('repeat_90d', 'kpi.repeat_90d', rep, formatPct(rep), { delta: delta('repeat', rep, repPrior, 'pts') }),

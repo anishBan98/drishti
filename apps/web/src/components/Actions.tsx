@@ -2,7 +2,14 @@ import { t, type Suggestion } from '@drishti/shared';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { shortName, useWorkspace } from '../app/workspace';
-import { actionForSuggestion, assign, confirmHandoff, runSuggestion, useActions, type DemoAction } from '../lib/demo-actions';
+import {
+  actionForSuggestion,
+  assign,
+  confirmHandoff,
+  runSuggestion,
+  useActions,
+  type DemoAction,
+} from '../lib/demo-actions';
 import { impactTone } from '../lib/display';
 import { download } from '../lib/outputs';
 import { screenHref, type ScreenId } from './Frame';
@@ -50,7 +57,12 @@ function ActionControls({ s, screen, evidence }: { s: Suggestion; screen: Screen
 
   const run = () => {
     setConfirming(false);
-    runSuggestion(s, { screen: t(`nav.${screen}`), owner: shortName(ws.me.name), approver: shortName(ws.approver.name), snapshotName: '' });
+    runSuggestion(s, {
+      screen: t(`nav.${screen}`),
+      owner: shortName(ws.me.name),
+      approver: shortName(ws.approver.name),
+      snapshotName: '',
+    });
   };
 
   let state: JSX.Element;
@@ -79,11 +91,20 @@ function ActionControls({ s, screen, evidence }: { s: Suggestion; screen: Screen
         <button type="button" className={ui.btnPrimary} onClick={() => setConfirming(true)}>
           {s.runLabel}
         </button>
-        <button type="button" className={ui.btnSecondary} aria-expanded={assigning} onClick={() => setAssigning((a) => !a)}>
+        <button
+          type="button"
+          className={ui.btnSecondary}
+          aria-expanded={assigning}
+          onClick={() => setAssigning((a) => !a)}
+        >
           {t('action.assign.run')}
         </button>
         {evidence && EVIDENCE_SCREEN[s.type] && (
-          <button type="button" className={ui.linkBtn} onClick={() => navigate(screenHref(ws.base, EVIDENCE_SCREEN[s.type]!))}>
+          <button
+            type="button"
+            className={ui.linkBtn}
+            onClick={() => navigate(screenHref(ws.base, EVIDENCE_SCREEN[s.type]!))}
+          >
             {t('ui.evidence')}
           </button>
         )}
@@ -172,7 +193,11 @@ export function ActionProgress({ action, viewInActions }: { action: DemoAction; 
         </div>
       );
     case 'failed':
-      return <span className={css.failed}>{t('action.failed', { reason: t('error.INTERNAL', { request_id: action.id }) })}</span>;
+      return (
+        <span className={css.failed}>
+          {t('action.failed', { reason: t('error.INTERNAL', { request_id: action.id }) })}
+        </span>
+      );
     case 'undone':
       return <span className={css.greyPill}>{t('ui.action.undone')}</span>;
     case 'declined':
@@ -194,7 +219,13 @@ function doneLabel(a: DemoAction): string {
   return t(key as Parameters<typeof t>[0]);
 }
 
-export function AssignPicker({ onSave, onCancel }: { onSave: (owner: string, due: string) => void; onCancel: () => void }) {
+export function AssignPicker({
+  onSave,
+  onCancel,
+}: {
+  onSave: (owner: string, due: string) => void;
+  onCancel: () => void;
+}) {
   const ws = useWorkspace();
   const [owner, setOwner] = useState(shortName(ws.users[0]?.name ?? ws.me.name));
   const [due, setDue] = useState(() => new Date(Date.now() + 2 * 86_400_000).toISOString().slice(0, 10));
@@ -211,7 +242,8 @@ export function AssignPicker({ onSave, onCancel }: { onSave: (owner: string, due
         </select>
       </label>
       <label>
-        {t('ui.action.assign.due')} <input type="date" className={css.date} value={due} onChange={(e) => setDue(e.target.value)} />
+        {t('ui.action.assign.due')}{' '}
+        <input type="date" className={css.date} value={due} onChange={(e) => setDue(e.target.value)} />
       </label>
       <button type="button" className={ui.btnPrimary} onClick={() => onSave(owner, due)}>
         {t('ui.action.assign.save')}
@@ -234,7 +266,8 @@ export function ActionList({ suggestions, screen }: { suggestions: Suggestion[];
       <div className={css.head}>
         <h2 className={css.h2}>{t('ui.suggested')}</h2>
         <span className={css.headNote}>
-          {t('ui.suggested.done_of', { done, n: suggestions.length })} · <Link to={screenHref(ws.base, 'actions')}>{t('ui.action_log')}</Link>
+          {t('ui.suggested.done_of', { done, n: suggestions.length })} ·{' '}
+          <Link to={screenHref(ws.base, 'actions')}>{t('ui.action_log')}</Link>
         </span>
       </div>
       <div className={css.list}>
@@ -242,15 +275,26 @@ export function ActionList({ suggestions, screen }: { suggestions: Suggestion[];
           const isOpen = open === s.id;
           return (
             <div key={s.id} className={`${css.item} ${isOpen ? css.itemOpen : ''}`} data-suggestion={s.type}>
-              <button type="button" aria-expanded={isOpen} className={css.row} onClick={() => setOpen(isOpen ? undefined : s.id)}>
-                <span className={css.dot} style={{ background: impactTone(s.impactLabel) === 'bad' ? 'var(--lost)' : 'var(--added)' }} />
+              <button
+                type="button"
+                aria-expanded={isOpen}
+                className={css.row}
+                onClick={() => setOpen(isOpen ? undefined : s.id)}
+              >
+                <span
+                  className={css.dot}
+                  style={{ background: impactTone(s.impactLabel) === 'bad' ? 'var(--lost)' : 'var(--added)' }}
+                />
                 <span className={css.rowTitle}>{s.title}</span>
                 <ImpactTag label={s.impactLabel} />
               </button>
               {isOpen && (
                 <div className={css.detail}>
                   <p className={css.why}>
-                    {s.why} <span className={css.conf}>{t('ui.confidence.value', { value: t(`ui.confidence.${s.confidence}`) })}</span>
+                    {s.why}{' '}
+                    <span className={css.conf}>
+                      {t('ui.confidence.value', { value: t(`ui.confidence.${s.confidence}`) })}
+                    </span>
                   </p>
                   {s.evidence.length > 0 && (
                     <ul className={css.evidence}>
@@ -271,14 +315,25 @@ export function ActionList({ suggestions, screen }: { suggestions: Suggestion[];
 }
 
 /** Other screens: two cards for the selected item, with a footer slot (docs/09 §6.3–6.8). */
-export function ActionCards({ suggestions, screen, forName, footer }: { suggestions: Suggestion[]; screen: ScreenId; forName: string; footer?: JSX.Element }) {
+export function ActionCards({
+  suggestions,
+  screen,
+  forName,
+  footer,
+}: {
+  suggestions: Suggestion[];
+  screen: ScreenId;
+  forName: string;
+  footer?: JSX.Element;
+}) {
   const ws = useWorkspace();
   return (
-    <section aria-label={t('ui.suggested')} className={css.panel}>
+    <section aria-label={t('ui.suggested')} className={`${css.panel} ${css.cardsPanel}`}>
       <div className={css.head}>
         <h2 className={css.h2}>{t('ui.suggested')}</h2>
         <span className={css.headNote}>
-          {t('ui.suggested.for', { name: forName })} · <Link to={screenHref(ws.base, 'actions')}>{t('ui.action_log')}</Link>
+          {t('ui.suggested.for', { name: forName })} ·{' '}
+          <Link to={screenHref(ws.base, 'actions')}>{t('ui.action_log')}</Link>
         </span>
       </div>
       <div className={css.cards}>
@@ -293,7 +348,7 @@ export function ActionCards({ suggestions, screen, forName, footer }: { suggesti
           </div>
         ))}
       </div>
-      {footer}
+      {footer && <div className={css.footer}>{footer}</div>}
     </section>
   );
 }

@@ -19,7 +19,7 @@ export function Bridge({ bridge, channel }: { bridge: Snapshot['week']['bridge']
     return { d, left: pos(Math.min(from, run)), width: Math.abs(pos(run) - pos(from)) };
   });
   const shown = channel === 'all' ? rows : rows.filter((r) => r.d.channel === channel);
-  const mid = Math.round(((a0 + a1) / 2) / 1e6) * 1e6;
+  const mid = Math.round((a0 + a1) / 2 / 1e6) * 1e6;
   return (
     <section aria-label={t('week.bridge.title')} className={ui.panel}>
       <div className={ui.panelHead}>
@@ -37,14 +37,36 @@ export function Bridge({ bridge, channel }: { bridge: Snapshot['week']['bridge']
           </span>
         </div>
       </div>
-      <div className={css.bridgeArea} role="img" aria-label={t('ui.bridge.aria', { prior: formatInr(bridge.prior, { compact: true }), now: formatInr(bridge.current, { compact: true }) })}>
+      <div
+        className={css.bridgeArea}
+        role="img"
+        aria-label={t('ui.bridge.aria', {
+          prior: formatInr(bridge.prior, { compact: true }),
+          now: formatInr(bridge.current, { compact: true }),
+        })}
+      >
         <div className={css.bridgeOverlay}>
           <div className={css.bridgeLine} style={{ left: `${pos(bridge.prior)}%` }} />
           <div className={css.bridgeLine} style={{ left: `${pos(bridge.current)}%` }} />
-          <div className={css.bridgeLabel} style={{ right: `calc(${100 - pos(bridge.prior)}% + 8px)` }}>
+          {/* Labels sit outside the pair of lines so they never collide, whichever way the week moved. */}
+          <div
+            className={css.bridgeLabel}
+            style={
+              bridge.current < bridge.prior
+                ? { left: `calc(${pos(bridge.prior)}% + 8px)` }
+                : { right: `calc(${100 - pos(bridge.prior)}% + 8px)` }
+            }
+          >
             {t('ui.bridge.prior', { value: formatInr(bridge.prior, { compact: true }) })}
           </div>
-          <div className={`${css.bridgeLabel} ${css.bridgeNow}`} style={{ left: `calc(${pos(bridge.current)}% + 8px)` }}>
+          <div
+            className={`${css.bridgeLabel} ${css.bridgeNow}`}
+            style={
+              bridge.current < bridge.prior
+                ? { right: `calc(${100 - pos(bridge.current)}% + 8px)` }
+                : { left: `calc(${pos(bridge.current)}% + 8px)` }
+            }
+          >
             {t('ui.bridge.now', { value: formatInr(bridge.current, { compact: true }) })}
           </div>
         </div>
@@ -96,13 +118,31 @@ export function Bridge({ bridge, channel }: { bridge: Snapshot['week']['bridge']
 export function ThisWeek({ snapshot }: { snapshot: Snapshot }) {
   const w = snapshot.week;
   const [channel, setChannel] = useState('all');
-  const channelOptions = [{ value: 'all', label: t('ui.filter.all_channels') }, ...CHANNELS.map((c) => ({ value: CHANNEL_SHORT[c], label: CHANNEL_SHORT[c] }))];
+  const channelOptions = [
+    { value: 'all', label: t('ui.filter.all_channels') },
+    ...CHANNELS.map((c) => ({ value: CHANNEL_SHORT[c], label: CHANNEL_SHORT[c] })),
+  ];
   return (
     <Main>
       <Header title={t('nav.week')} subtitle={t('week.subtitle', { range: formatRange(snapshot.windows.week) })}>
-        <PillMenu label={t('ui.period.last_week')} options={[{ value: 'w', label: t('ui.period.last_week') }]} value="w" what={t('ui.filter.period')} />
-        <PillMenu label={channelOptions.find((o) => o.value === channel)!.label} options={channelOptions} value={channel} onChange={setChannel} />
-        <PillMenu label={t('ui.filter.all_products')} options={[{ value: 'all', label: t('ui.filter.all_products') }]} value="all" what={t('ui.filter.products')} />
+        <PillMenu
+          label={t('ui.period.last_week')}
+          options={[{ value: 'w', label: t('ui.period.last_week') }]}
+          value="w"
+          what={t('ui.filter.period')}
+        />
+        <PillMenu
+          label={channelOptions.find((o) => o.value === channel)!.label}
+          options={channelOptions}
+          value={channel}
+          onChange={setChannel}
+        />
+        <PillMenu
+          label={t('ui.filter.all_products')}
+          options={[{ value: 'all', label: t('ui.filter.all_products') }]}
+          value="all"
+          what={t('ui.filter.products')}
+        />
       </Header>
       <SummaryStrip verdict={w.verdict} kpis={w.kpis} />
       <div className={ui.body}>

@@ -12,3 +12,4 @@ export { buildSnapshot, stableStringify, type BuildOptions } from './snapshot';
 export { tagReview, tagReviews, ASPECTS } from './voice/lexicon';
 export { kmeans } from './models/kmeans';
 export { fitMmm, nnls } from './models/mmm';
+export { suggest, type SuggestInput } from './suggest';
