@@ -1,0 +1,9 @@
+{
+  "manifest_version": 3,
+  "name": "Drishti Capture",
+  "version": "1.0.0",
+  "description": "Capture the price, rating and stock of the product page you are looking at into your Drishti watchlist.",
+  "action": { "default_popup": "popup.html", "default_title": "Drishti Capture" },
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["https://drishti.preql.workers.dev/*", "https://drishti-staging.preql.workers.dev/*"]
+}

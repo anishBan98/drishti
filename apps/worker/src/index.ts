@@ -5,6 +5,7 @@ import { apiError } from './lib/errors';
 import { actionRoutes } from './routes/actions';
 import { adminRoutes } from './routes/admin';
 import { authRoutes } from './routes/auth';
+import { captureRoutes } from './routes/capture';
 import { sheetRoutes } from './routes/sheet';
 import { syncRoutes } from './routes/sync';
 
@@ -30,6 +31,8 @@ adminRoutes(app);
 syncRoutes(app);
 // Actions: saved for the team, mirrored to the Sheet, files to the Drive Outbox (docs/10, compact).
 actionRoutes(app);
+// Market capture from the extension, and captures for the Market screen (docs/07 §7).
+captureRoutes(app);
 
 app.notFound((c) => {
   const path = new URL(c.req.url).pathname;

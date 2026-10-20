@@ -393,6 +393,54 @@ export function WorkspaceLayout() {
   );
 }
 
+/** A 30-day capture token for the Drishti Capture extension (docs/07 §3). Shown once, never stored here. */
+function CaptureToken() {
+  const [token, setToken] = useState('');
+  const [copied, setCopied] = useState(false);
+  const [error, setError] = useState('');
+  return (
+    <section className={css.panel} aria-labelledby="adm-capture">
+      <h2 id="adm-capture" className={css.h3}>
+        {t('admin.capture')}
+      </h2>
+      <p className={css.help}>{t('admin.capture.help')}</p>
+      {token ? (
+        <>
+          <input className={css.input} readOnly value={token} aria-label={t('admin.capture')} />
+          <button
+            type="button"
+            className={ui.btnSecondary}
+            onClick={() => {
+              void navigator.clipboard?.writeText(token);
+              setCopied(true);
+            }}
+          >
+            {copied ? t('onb.share.copied') : t('admin.capture.copy')}
+          </button>
+        </>
+      ) : (
+        <button
+          type="button"
+          className={ui.btnSecondary}
+          onClick={async () => {
+            setError('');
+            try {
+              setToken((await api<{ token: string }>('/api/extension/token', { method: 'POST' })).token);
+            } catch (e) {
+              setError(errorText(e));
+            }
+          }}
+        >
+          {t('admin.capture.new')}
+        </button>
+      )}
+      <div role="alert" className={error ? css.alert : 'sr-only'}>
+        {error}
+      </div>
+    </section>
+  );
+}
+
 interface UserRow {
   email: string;
   name: string | null;
@@ -461,6 +509,7 @@ export function Admin() {
               {t('admin.sessions.revoke_all')}
             </button>
           </section>
+          <CaptureToken />
         </div>
         <div className={css.col}>
           <section className={css.panel} aria-labelledby="adm-users">

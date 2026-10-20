@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Drishti Capture</title>
+    <style>
+      body {
+        width: 300px;
+        margin: 0;
+        padding: 14px;
+        font:
+          14px/1.4 system-ui,
+          sans-serif;
+        color: #141b45;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+      label {
+        display: block;
+        margin: 8px 0 4px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+      input {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 6px 8px;
+        border: 1px solid #c9cde0;
+        border-radius: 8px;
+      }
+      button {
+        width: 100%;
+        margin-top: 10px;
+        padding: 9px;
+        border: 0;
+        border-radius: 999px;
+        background: #1e2a6e;
+        color: #fff;
+        font-weight: 800;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.6;
+      }
+      #fields {
+        margin-top: 10px;
+        font-size: 13px;
+      }
+      #msg {
+        margin-top: 10px;
+        font-size: 13px;
+      }
+      .err {
+        color: #b00020;
+      }
+      .ok {
+        color: #1a7f4b;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Drishti Capture</h1>
+    <div id="setup">
+      <label for="server">Drishti address</label>
+      <input id="server" value="https://drishti.preql.workers.dev" />
+      <label for="token">Capture token (Admin → Capture token)</label>
+      <input id="token" type="password" autocomplete="off" />
+      <button id="save" type="button">Save</button>
+    </div>
+    <div id="capture" hidden>
+      <div id="fields">Reading this page…</div>
+      <button id="send" type="button" disabled>Capture this page</button>
+      <button id="reset" type="button" style="background: transparent; color: #1e2a6e">Change token</button>
+    </div>
+    <p id="msg" role="status"></p>
+    <script src="popup.js"></script>
+  </body>
+</html>
