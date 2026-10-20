@@ -29,6 +29,11 @@ export interface SuggestInput {
   evidence?: Evidence[];
   params?: Record<string, unknown>;
   stepVars?: Record<string, string | number>;
+  /** Monthly money at stake for the approval check (docs/10 §5: spend moved, discount cost or revenue at risk).
+   * Defaults to the expected effect. */
+  moneyAtStakeInr?: number;
+  /** Copy-deck key for a context-specific button label (default action.<type>.run). */
+  runLabelKey?: CopyKey;
 }
 
 const PER_MONTH = { week: 4.33, month: 1, once: 1 } as const;
@@ -59,9 +64,9 @@ export function suggest(input: SuggestInput, approvalThresholdInr: number): Sugg
     priority: Math.round((monthly * CONFIDENCE_WEIGHT[input.confidence]) / effort(input.type)),
     evidence: input.evidence ?? [],
     params: input.params ?? {},
-    runLabel: t(`action.${input.type}.run` as CopyKey),
+    runLabel: t(input.runLabelKey ?? (`action.${input.type}.run` as CopyKey)),
     doneLabel: t(`action.${input.type}.done` as CopyKey),
-    needsApproval: meta.money && monthly > approvalThresholdInr,
+    needsApproval: meta.money && (input.moneyAtStakeInr ?? monthly) > approvalThresholdInr,
     executor: meta.executor,
     steps,
   };

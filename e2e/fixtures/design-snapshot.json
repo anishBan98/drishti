@@ -1,0 +1,1906 @@
+{
+  "schema": "drishti.snapshot@1",
+  "version": "design-fixture",
+  "generated_at": "2026-10-17T07:10:00+05:30",
+  "data_through": "2026-10-16",
+  "workspace": {
+    "name": "Lumora Skin",
+    "demo": true
+  },
+  "windows": {
+    "week": ["2026-10-05", "2026-10-11"],
+    "prior_week": ["2026-09-28", "2026-10-04"],
+    "d28": ["2026-09-19", "2026-10-16"],
+    "prior_d28": ["2026-08-22", "2026-09-18"]
+  },
+  "sources": [
+    {
+      "id": "shopify",
+      "label": "Own site (Shopify)",
+      "method": "Read-only app key",
+      "cadence": "Live",
+      "status": "ok",
+      "late_days": 0,
+      "last_received_at": "2026-10-16",
+      "feeds": "Own site (Shopify) figures",
+      "how": "Own site (Shopify) arrives live.",
+      "rule": "late files are flagged on this screen."
+    },
+    {
+      "id": "amazon_business_report",
+      "label": "Amazon Seller Central",
+      "method": "Emailed CSV to Drive Inbox",
+      "cadence": "Daily",
+      "status": "ok",
+      "late_days": 0,
+      "last_received_at": "2026-10-16",
+      "feeds": "Amazon Seller Central figures",
+      "how": "Amazon Seller Central arrives daily.",
+      "rule": "late files are flagged on this screen."
+    },
+    {
+      "id": "amazon_brand_analytics",
+      "label": "Amazon Brand Analytics",
+      "method": "CSVs to Drive Inbox",
+      "cadence": "Weekly",
+      "status": "ok",
+      "late_days": 0,
+      "last_received_at": "2026-10-11",
+      "feeds": "Amazon Brand Analytics figures",
+      "how": "Amazon Brand Analytics arrives weekly.",
+      "rule": "late files are flagged on this screen."
+    },
+    {
+      "id": "amazon_ads",
+      "label": "Amazon Ads",
+      "method": "Emailed CSV to Drive Inbox",
+      "cadence": "Daily",
+      "status": "ok",
+      "late_days": 0,
+      "last_received_at": "2026-10-16",
+      "feeds": "Amazon Ads figures",
+      "how": "Amazon Ads arrives daily.",
+      "rule": "late files are flagged on this screen."
+    },
+    {
+      "id": "flipkart_sales",
+      "label": "Flipkart Seller Hub",
+      "method": "CSV to Drive Inbox",
+      "cadence": "Daily",
+      "status": "ok",
+      "late_days": 0,
+      "last_received_at": "2026-10-16",
+      "feeds": "Flipkart Seller Hub figures",
+      "how": "Flipkart Seller Hub arrives daily.",
+      "rule": "late files are flagged on this screen."
+    },
+    {
+      "id": "flipkart_ads",
+      "label": "Flipkart Ads",
+      "method": "CSV to Drive Inbox",
+      "cadence": "Daily",
+      "status": "late",
+      "late_days": 5,
+      "last_received_at": "2026-10-11",
+      "feeds": "Flipkart spend and claimed sales",
+      "how": "The ads report has not been uploaded for 5 days, so Flipkart’s real return on the Impact screen is less certain.",
+      "rule": "until it arrives, Flipkart figures are marked low confidence."
+    },
+    {
+      "id": "nykaa_sales",
+      "label": "Nykaa",
+      "method": "CSV to Drive Inbox",
+      "cadence": "Weekly",
+      "status": "ok",
+      "late_days": 0,
+      "last_received_at": "2026-10-16",
+      "feeds": "Nykaa figures",
+      "how": "Nykaa arrives weekly.",
+      "rule": "late files are flagged on this screen."
+    },
+    {
+      "id": "quick_commerce",
+      "label": "Blinkit, Zepto, Instamart",
+      "method": "Store CSVs to Drive Inbox",
+      "cadence": "Daily",
+      "status": "ok",
+      "late_days": 0,
+      "last_received_at": "2026-10-16",
+      "feeds": "Blinkit, Zepto, Instamart figures",
+      "how": "Blinkit, Zepto, Instamart arrives daily.",
+      "rule": "late files are flagged on this screen."
+    },
+    {
+      "id": "meta_google_ads",
+      "label": "Meta and Google Ads",
+      "method": "Read-only API",
+      "cadence": "Daily",
+      "status": "ok",
+      "late_days": 0,
+      "last_received_at": "2026-10-16",
+      "feeds": "Meta and Google Ads figures",
+      "how": "Meta and Google Ads arrives daily.",
+      "rule": "late files are flagged on this screen."
+    },
+    {
+      "id": "creators",
+      "label": "Creator tracker",
+      "method": "Tab in your Google Sheet",
+      "cadence": "Weekly",
+      "status": "late",
+      "late_days": 12,
+      "last_received_at": "2026-10-05",
+      "feeds": "Creator tracker figures",
+      "how": "Creator tracker arrives weekly.",
+      "rule": "late files are flagged on this screen."
+    },
+    {
+      "id": "watchlist_capture",
+      "label": "Watchlist capture",
+      "method": "Extension and rival sites",
+      "cadence": "Every 6 hours",
+      "status": "ok",
+      "late_days": 0,
+      "last_received_at": "2026-10-16",
+      "feeds": "Watchlist capture figures",
+      "how": "Watchlist capture arrives every 6 hours.",
+      "rule": "late files are flagged on this screen."
+    },
+    {
+      "id": "google_trends",
+      "label": "Google Trends",
+      "method": "CSV to Drive Inbox",
+      "cadence": "Weekly",
+      "status": "ok",
+      "late_days": 0,
+      "last_received_at": "2026-10-11",
+      "feeds": "Google Trends figures",
+      "how": "Google Trends arrives weekly.",
+      "rule": "late files are flagged on this screen."
+    },
+    {
+      "id": "costs",
+      "label": "Costs and margins",
+      "method": "Tab in your Google Sheet",
+      "cadence": "Monthly",
+      "status": "ok",
+      "late_days": 0,
+      "last_received_at": "2026-10-16",
+      "feeds": "Costs and margins figures",
+      "how": "Costs and margins arrives monthly.",
+      "rule": "late files are flagged on this screen."
+    }
+  ],
+  "week": {
+    "verdict": {
+      "tone": "bad",
+      "chip": "Down week",
+      "text": "Revenue fell 6.5% to ₹4.30 Cr. ₹29 L of the drop is fixable."
+    },
+    "kpis": [
+      {
+        "id": "revenue",
+        "label": "Net revenue",
+        "value": 0,
+        "display": "₹4.30 Cr",
+        "delta": {
+          "value": -0.065,
+          "unit": "pct",
+          "direction": "down",
+          "good": false
+        },
+        "spark": [2, 5, 8, 8, 18, 22, 15, 5],
+        "tone": "bad"
+      },
+      {
+        "id": "orders",
+        "label": "Orders",
+        "value": 0,
+        "display": "69.4k",
+        "delta": {
+          "value": -0.052,
+          "unit": "pct",
+          "direction": "down",
+          "good": false
+        },
+        "spark": [2, 7, 9.5, 9.5, 19.5, 22, 15, 5.4],
+        "tone": "bad"
+      },
+      {
+        "id": "aov",
+        "label": "Order value",
+        "value": 0,
+        "display": "₹620",
+        "delta": {
+          "value": -0.014,
+          "unit": "pct",
+          "direction": "down",
+          "good": false
+        },
+        "spark": [6.4, 2, 8.7, 8.7, 16.4, 22, 19.8, 8.7],
+        "tone": "bad"
+      },
+      {
+        "id": "ad_spend",
+        "label": "Ad spend",
+        "value": 0,
+        "display": "₹1.42 Cr",
+        "delta": {
+          "value": 0.02,
+          "unit": "pct",
+          "direction": "up",
+          "good": null
+        },
+        "note": "on plan",
+        "tone": "neutral"
+      },
+      {
+        "id": "true_roas",
+        "label": "True ROAS",
+        "value": 0,
+        "display": "1.9x",
+        "delta": {
+          "value": -0.2,
+          "unit": "x",
+          "direction": "down",
+          "good": false
+        },
+        "note": "claims 4.0x",
+        "tone": "bad"
+      },
+      {
+        "id": "cac",
+        "label": "CAC, new buyers",
+        "value": 0,
+        "display": "₹915",
+        "delta": {
+          "value": 0.03,
+          "unit": "pct",
+          "direction": "up",
+          "good": false
+        },
+        "spark": [5.1, 8.7, 7.5, 11.4, 2, 8.3, 13.9, 22],
+        "tone": "bad"
+      }
+    ],
+    "bridge": {
+      "prior": 46000000,
+      "current": 43000000,
+      "axis": [42000000, 46500000],
+      "explained_pct": 0.92,
+      "drivers": [
+        {
+          "id": "rival",
+          "label": "Rival B price cut",
+          "channel": "Amazon",
+          "value_lakh": -16,
+          "method": "Units against other platforms",
+          "evidence": []
+        },
+        {
+          "id": "rating",
+          "label": "Rating dip",
+          "channel": "Amazon",
+          "value_lakh": -7,
+          "method": "Rating change × conversion",
+          "evidence": []
+        },
+        {
+          "id": "stockouts",
+          "label": "Mumbai stockouts",
+          "channel": "Quick com.",
+          "value_lakh": -6,
+          "method": "Lost units × price",
+          "evidence": []
+        },
+        {
+          "id": "holdout",
+          "label": "Meta holdout test",
+          "channel": "Own site",
+          "value_lakh": -5,
+          "method": "Spend removed × real return",
+          "evidence": []
+        },
+        {
+          "id": "season",
+          "label": "Pre-Diwali lull",
+          "channel": "All channels",
+          "value_lakh": -3,
+          "method": "Same week last year",
+          "evidence": []
+        },
+        {
+          "id": "search",
+          "label": "Search ads scaled",
+          "channel": "Quick com.",
+          "value_lakh": 7,
+          "method": "Change in spend × real return",
+          "evidence": []
+        }
+      ]
+    },
+    "working": [
+      {
+        "title": "Quick-commerce ads +₹7 L",
+        "detail": "₹2.93 of real sales per ₹1, best of any channel."
+      },
+      {
+        "title": "Sunscreen up 12%",
+        "detail": "Led by Bengaluru and Pune on Blinkit."
+      },
+      {
+        "title": "Loyalists holding at 71% repeat",
+        "detail": "14% of customers bring 38% of revenue."
+      }
+    ],
+    "attention": [
+      {
+        "title": "Undercut on your top product",
+        "detail": "Rival B ₹150 per 10 ml, you ₹183, on Amazon."
+      },
+      {
+        "title": "Rating down to 3.9",
+        "detail": "Pump complaints are 11% of new reviews."
+      },
+      {
+        "title": "CAC up three weeks running",
+        "detail": "₹915 per new customer, led by Meta."
+      }
+    ],
+    "inference": "Two thirds of the drop came from outside your ads: a rival’s price cut, a product defect and stockouts. More ad spend won’t fix them.",
+    "suggestions": [
+      {
+        "id": "sg_fb95616a195620a2",
+        "type": "amazon_coupon",
+        "title": "Match Rival B on Amazon, 30 ml only",
+        "why": "Coupon the 30 ml pack to ₹499 on Amazon for three weeks; keep own-site and Nykaa prices.",
+        "impactLabel": "−₹16 L/wk",
+        "confidence": "medium",
+        "priority": 0,
+        "evidence": [
+          {
+            "label": "Rival B now ₹150 per 10 ml against your ₹183."
+          },
+          {
+            "label": "Your Amazon units for this product fell 14% since 3 October."
+          }
+        ],
+        "params": {},
+        "runLabel": "Create coupon",
+        "doneLabel": "Coupon file ready",
+        "needsApproval": false,
+        "executor": "handoff",
+        "steps": [
+          "Build the coupon file: 30 ml serum, 12% off for 3 weeks",
+          "Save it to Drive Outbox and download it",
+          "Open Seller Central Coupons",
+          "Wait for you to confirm it is live, then measure for 21 days"
+        ]
+      },
+      {
+        "id": "sg_126d5a46702448b2",
+        "type": "qa_hold",
+        "title": "Hold the faulty pump batch",
+        "why": "9 in 10 pump complaints trace to batch 0925.",
+        "impactLabel": "−₹7 L/wk",
+        "confidence": "medium",
+        "priority": 0,
+        "evidence": [],
+        "params": {},
+        "runLabel": "Raise QA hold",
+        "doneLabel": "QA hold raised",
+        "needsApproval": false,
+        "executor": "inline",
+        "steps": [
+          "Write the QA hold note: complaints, dates, quotes and the suspected batch",
+          "Assign it to the QA owner, due in 2 days",
+          "Notify them on Slack and in Drishti",
+          "Read out the rating and pump share in 6 weeks"
+        ]
+      },
+      {
+        "id": "sg_ca4532fa5d59b75e",
+        "type": "restock_request",
+        "title": "Restock Mumbai, pause ads there",
+        "why": "38 dark stores ran out of stock while ads kept running.",
+        "impactLabel": "−₹6 L/wk",
+        "confidence": "medium",
+        "priority": 0,
+        "evidence": [],
+        "params": {},
+        "runLabel": "Send restock request",
+        "doneLabel": "Restock request sent",
+        "needsApproval": false,
+        "executor": "inline",
+        "steps": [
+          "List the stores, units needed and days of cover for Mumbai",
+          "Send it to the supply owner on Slack",
+          "Track stockout days until stock is back"
+        ]
+      },
+      {
+        "id": "sg_7ce7911934fe7799",
+        "type": "budget_shift",
+        "title": "Move ₹30 L to stronger channels",
+        "why": "Take it from Meta prospecting and give it to quick-commerce ads and creators.",
+        "impactLabel": "+₹37 L/mo",
+        "confidence": "medium",
+        "priority": 0,
+        "evidence": [],
+        "params": {},
+        "runLabel": "Apply budget shift",
+        "doneLabel": "Budget sheet ready",
+        "needsApproval": true,
+        "executor": "job",
+        "steps": [
+          "Build the budget sheet: current and new spend by medium and city",
+          "Change Meta budgets when Meta is connected",
+          "Give you a checklist with the new daily budgets for the other platforms",
+          "Read it out in 4 weeks"
+        ]
+      },
+      {
+        "id": "sg_f4eddf639705d4ae",
+        "type": "shopify_discount_cap",
+        "title": "Rein in discount-led acquisition",
+        "why": "Deal Hunters cost more than they bring.",
+        "impactLabel": "Margin risk",
+        "confidence": "medium",
+        "priority": 0,
+        "evidence": [],
+        "params": {},
+        "runLabel": "Apply caps",
+        "doneLabel": "Caps applied",
+        "needsApproval": false,
+        "executor": "inline",
+        "steps": [
+          "Find the codes Deal Hunters used in 90 days with more than 15% off",
+          "Change each code to 15% in Shopify",
+          "Save the old values so you can undo",
+          "Measure margin and repeat for 3 weeks"
+        ]
+      }
+    ]
+  },
+  "performance": {
+    "verdict": {
+      "tone": "good",
+      "chip": "Growing",
+      "text": "Up 6.2% on more orders and bigger baskets. Repeat buying is slipping."
+    },
+    "kpis": [
+      {
+        "id": "revenue",
+        "label": "Net revenue",
+        "value": 0,
+        "display": "₹18.4 Cr",
+        "delta": {
+          "value": 0.062,
+          "unit": "pct",
+          "direction": "up",
+          "good": true
+        }
+      },
+      {
+        "id": "orders",
+        "label": "Orders",
+        "value": 0,
+        "display": "2.97 L",
+        "delta": {
+          "value": 0.041,
+          "unit": "pct",
+          "direction": "up",
+          "good": true
+        }
+      },
+      {
+        "id": "aov",
+        "label": "Order value",
+        "value": 0,
+        "display": "₹620",
+        "delta": {
+          "value": 0.02,
+          "unit": "pct",
+          "direction": "up",
+          "good": true
+        }
+      },
+      {
+        "id": "customers",
+        "label": "Customers",
+        "value": 0,
+        "display": "1.27 L",
+        "delta": {
+          "value": 0.05,
+          "unit": "pct",
+          "direction": "up",
+          "good": true
+        }
+      },
+      {
+        "id": "orders_per_buyer",
+        "label": "Orders per buyer",
+        "value": 0,
+        "display": "1.21",
+        "delta": {
+          "value": 0,
+          "unit": "pct",
+          "direction": "flat",
+          "good": null
+        }
+      },
+      {
+        "id": "repeat_90d",
+        "label": "90-day repeat",
+        "value": 0,
+        "display": "26%",
+        "delta": {
+          "value": -0.01,
+          "unit": "pts",
+          "direction": "down",
+          "good": false
+        }
+      }
+    ],
+    "weekly": {
+      "weeks": [
+        "2026-07-20",
+        "2026-07-27",
+        "2026-08-03",
+        "2026-08-10",
+        "2026-08-17",
+        "2026-08-24",
+        "2026-08-31",
+        "2026-09-07",
+        "2026-09-14",
+        "2026-09-21",
+        "2026-09-28",
+        "2026-10-05"
+      ],
+      "revenue_by_channel": {
+        "own_site": [
+          10530000, 10680000, 10865000, 10480000, 10878000, 11051000, 11176000, 11044000, 11656000, 11808000, 11178000,
+          10320000
+        ],
+        "amazon": [
+          11700000, 12000000, 12300000, 12000000, 12600000, 12900000, 13200000, 13200000, 14100000, 14400000, 13800000,
+          12900000
+        ],
+        "quick_commerce": [
+          6240000, 6560000, 6929000, 6920000, 7476000, 7869000, 8228000, 8404000, 9212000, 9648000, 9430000, 8987000
+        ],
+        "nykaa": [
+          5460000, 5600000, 5740000, 5600000, 5880000, 6020000, 6160000, 6160000, 6580000, 6720000, 6440000, 6020000
+        ],
+        "flipkart": [
+          5070000, 5120000, 5166000, 5000000, 5166000, 5203000, 5236000, 5148000, 5452000, 5472000, 5152000, 4730000
+        ]
+      },
+      "orders": [62903, 64516, 66129, 64516, 67742, 69355, 70968, 70968, 75806, 77419, 74194, 69355],
+      "aov": [620, 620, 620, 620, 620, 620, 620, 620, 620, 620, 620, 620],
+      "buyers": [26419, 27097, 27774, 27097, 28452, 29129, 29806, 29806, 31839, 32516, 31161, 29129]
+    },
+    "channels": [
+      {
+        "id": "own_site",
+        "label": "Own site",
+        "color": "#2A78D6",
+        "revenue": 46000000,
+        "growth_pct": 0.04,
+        "orders": 61300,
+        "aov": 750,
+        "buyers": 48100,
+        "return_pct": 0.051,
+        "share_pct": 0.25,
+        "headline": "Own site grew 4% and brings 25% of revenue.",
+        "notes": ["25% of revenue in the last 28 days."],
+        "suggestions": [
+          {
+            "id": "sg_4d4e28798517164f",
+            "type": "prepaid_nudge",
+            "title": "Offer 20 rupees off prepaid orders",
+            "why": "Cash orders come back far more often than prepaid ones.",
+            "impactLabel": "Margin risk",
+            "confidence": "medium",
+            "priority": 0,
+            "evidence": [],
+            "params": {},
+            "runLabel": "Turn on offer",
+            "doneLabel": "Offer live",
+            "needsApproval": false,
+            "executor": "inline",
+            "steps": [
+              "Create the PREPAID20 code in Shopify",
+              "Draft the checkout banner",
+              "Give you the checklist to limit it to prepaid orders"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "amazon",
+        "label": "Amazon",
+        "color": "#EB6834",
+        "revenue": 55000000,
+        "growth_pct": 0.09,
+        "orders": 92000,
+        "aov": 598,
+        "buyers": 78400,
+        "return_pct": 0.074,
+        "share_pct": 0.3,
+        "headline": "Your largest channel, but your top serum is losing to Rival B’s price cut.",
+        "notes": [
+          "Purchase share for “vitamin c serum” fell 1.2 points to 8.4%.",
+          "Pump complaints cluster in Amazon orders after 20 September.",
+          "Buyer counts come from Amazon Brand Analytics."
+        ],
+        "suggestions": [
+          {
+            "id": "sg_8d4d4befafb13cc2",
+            "type": "amazon_coupon",
+            "title": "Coupon the 30 ml serum to ₹499",
+            "why": "Closes most of the gap to Rival B for three weeks without touching other channels.",
+            "impactLabel": "+₹16 L/wk",
+            "confidence": "medium",
+            "priority": 0,
+            "evidence": [],
+            "params": {},
+            "runLabel": "Create coupon",
+            "doneLabel": "Coupon file ready",
+            "needsApproval": false,
+            "executor": "handoff",
+            "steps": [
+              "Build the coupon file: {product}, {discount_pct}% off for {weeks} weeks",
+              "Save it to Drive Outbox and download it",
+              "Open Seller Central Coupons",
+              "Wait for you to confirm it is live, then measure for 21 days"
+            ]
+          },
+          {
+            "id": "sg_48c5442d44fdf7e6",
+            "type": "listing_update",
+            "title": "Add a pump fix note to the listing",
+            "why": "Tells shoppers the September batch issue is fixed and replacements are free.",
+            "impactLabel": "Rating",
+            "confidence": "medium",
+            "priority": 0,
+            "evidence": [],
+            "params": {},
+            "runLabel": "Update listing",
+            "doneLabel": "Listing copy ready",
+            "needsApproval": false,
+            "executor": "job",
+            "steps": [
+              "Write the new title, bullets and image text for each platform",
+              "Save them to a Doc in Drive Outbox",
+              "Link each listing editor"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "quick_commerce",
+        "label": "Quick commerce",
+        "color": "#1BAF7A",
+        "revenue": 36000000,
+        "growth_pct": 0.11,
+        "orders": 67500,
+        "aov": 533,
+        "return_pct": 0.011,
+        "share_pct": 0.2,
+        "headline": "Quick commerce grew 11%.",
+        "notes": [],
+        "suggestions": []
+      },
+      {
+        "id": "nykaa",
+        "label": "Nykaa",
+        "color": "#EDA100",
+        "revenue": 26000000,
+        "growth_pct": 0.06,
+        "orders": 37100,
+        "aov": 701,
+        "return_pct": 0.042,
+        "share_pct": 0.14,
+        "headline": "Nykaa grew 6%.",
+        "notes": [],
+        "suggestions": []
+      },
+      {
+        "id": "flipkart",
+        "label": "Flipkart",
+        "color": "#E87BA4",
+        "revenue": 21000000,
+        "growth_pct": -0.03,
+        "orders": 38900,
+        "aov": 540,
+        "return_pct": 0.098,
+        "share_pct": 0.11,
+        "headline": "Flipkart fell 3%.",
+        "notes": [],
+        "suggestions": []
+      }
+    ]
+  },
+  "impact": {
+    "verdict": {
+      "tone": "bad",
+      "chip": "Over-credited",
+      "text": "Platforms claim ₹22.5 Cr in an ₹18.4 Cr month. Ads really added ₹11.0 Cr."
+    },
+    "kpis": [
+      {
+        "id": "ad_spend",
+        "label": "Ad spend",
+        "value": 0,
+        "display": "₹5.6 Cr",
+        "note": "30% of revenue",
+        "tone": "neutral"
+      },
+      {
+        "id": "claimed_roas",
+        "label": "Claimed ROAS",
+        "value": 0,
+        "display": "4.0x",
+        "note": "Platform reports",
+        "tone": "neutral"
+      },
+      {
+        "id": "true_roas",
+        "label": "True ROAS",
+        "value": 0,
+        "display": "2.0x",
+        "delta": {
+          "value": -0.1,
+          "unit": "x",
+          "direction": "down",
+          "good": false
+        }
+      },
+      {
+        "id": "real_sales",
+        "label": "Real ad sales",
+        "value": 0,
+        "display": "₹11.0 Cr",
+        "note": "60% of revenue",
+        "tone": "neutral"
+      },
+      {
+        "id": "cac",
+        "label": "CAC, new buyers",
+        "value": 0,
+        "display": "₹888",
+        "delta": {
+          "value": 0.04,
+          "unit": "pct",
+          "direction": "up",
+          "good": false
+        }
+      },
+      {
+        "id": "ltv_cac",
+        "label": "Value to CAC",
+        "value": 0,
+        "display": "2.6x",
+        "note": "Target 3x",
+        "tone": "warn"
+      }
+    ],
+    "channels": [
+      {
+        "id": "meta",
+        "label": "Meta",
+        "spend": 19000000,
+        "claimed": 76000000,
+        "real": 29000000,
+        "real_low": 24000000,
+        "real_high": 34000000,
+        "claimed_per100": 400,
+        "real_per100": 153,
+        "confidence": "high",
+        "evidence": "three natural experiments and a live holdout in Pune and Ahmedabad.",
+        "headline": "Meta claims ₹4 for every ₹1; the real figure is ₹1.53. Most retargeting sales would have happened anyway.",
+        "suggestions": [
+          {
+            "id": "sg_49de5390c21cada6",
+            "type": "budget_change",
+            "title": "Cut prospecting by ₹12 L a month",
+            "why": "Prospecting brings mostly one-time trialists with a value-to-cost of 0.4x.",
+            "impactLabel": "+₹4 L margin",
+            "confidence": "medium",
+            "priority": 0,
+            "evidence": [],
+            "params": {},
+            "runLabel": "Apply cut",
+            "doneLabel": "Budget change ready",
+            "needsApproval": false,
+            "executor": "job",
+            "steps": [
+              "Build the budget sheet for Meta: current and new daily budgets",
+              "Change budgets in Meta when it is connected, else give you a checklist",
+              "Read it out in 4 weeks"
+            ]
+          },
+          {
+            "id": "sg_74e121d6b89294d7",
+            "type": "geo_test",
+            "title": "Extend the holdout test to 28 days",
+            "why": "Nine more days narrows the estimate from ±₹40 to ±₹20 per ₹100.",
+            "impactLabel": "Confidence",
+            "confidence": "medium",
+            "priority": 0,
+            "evidence": [],
+            "params": {},
+            "runLabel": "Extend test",
+            "doneLabel": "Test planned",
+            "needsApproval": false,
+            "executor": "job",
+            "steps": [
+              "Pick test and control cities and the duration",
+              "Export the location exclusions for each platform",
+              "Add start, mid-check and readout dates to the calendar",
+              "Track it daily and read it out"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "google",
+        "label": "Google",
+        "spend": 9000000,
+        "claimed": 45540000,
+        "real": 14850000,
+        "real_low": 11550000,
+        "real_high": 18150000,
+        "claimed_per100": 506,
+        "real_per100": 165,
+        "confidence": "medium",
+        "evidence": "natural experiments and regression.",
+        "headline": "Google claims ₹5.06 for every ₹1; the real figure is ₹1.65.",
+        "suggestions": []
+      },
+      {
+        "id": "amazon_ads",
+        "label": "Amazon Ads",
+        "spend": 9000000,
+        "claimed": 39780000,
+        "real": 19530000,
+        "real_low": 15190000,
+        "real_high": 23870000,
+        "claimed_per100": 442,
+        "real_per100": 217,
+        "confidence": "medium",
+        "evidence": "natural experiments and regression.",
+        "headline": "Amazon Ads claims ₹4.42 for every ₹1; the real figure is ₹2.17.",
+        "suggestions": []
+      },
+      {
+        "id": "flipkart_ads",
+        "label": "Flipkart Ads",
+        "spend": 9000000,
+        "claimed": 31500000,
+        "real": 13500000,
+        "real_low": 10500000,
+        "real_high": 16500000,
+        "claimed_per100": 350,
+        "real_per100": 150,
+        "confidence": "medium",
+        "evidence": "natural experiments and regression.",
+        "headline": "Flipkart Ads claims ₹3.5 for every ₹1; the real figure is ₹1.5.",
+        "suggestions": []
+      },
+      {
+        "id": "qc_ads",
+        "label": "Quick com. ads",
+        "spend": 9000000,
+        "claimed": 42030000,
+        "real": 26370000,
+        "real_low": 20510000,
+        "real_high": 32230000,
+        "claimed_per100": 467,
+        "real_per100": 293,
+        "confidence": "medium",
+        "evidence": "natural experiments and regression.",
+        "headline": "Quick com. ads claims ₹4.67 for every ₹1; the real figure is ₹2.93.",
+        "suggestions": []
+      },
+      {
+        "id": "creators",
+        "label": "Creators",
+        "spend": 9000000,
+        "claimed": 7200000,
+        "real": 23400000,
+        "real_low": 18200000,
+        "real_high": 28600000,
+        "claimed_per100": 80,
+        "real_per100": 260,
+        "confidence": "medium",
+        "evidence": "natural experiments and regression.",
+        "headline": "Creators claims ₹0.8 for every ₹1; the real figure is ₹2.6. It is under-credited.",
+        "suggestions": []
+      }
+    ],
+    "acquisition": [
+      {
+        "source": "Meta",
+        "cac": 1050,
+        "value_12m": 1680,
+        "ltv_cac": 1.6,
+        "payback_months": 8.2
+      },
+      {
+        "source": "Google",
+        "cac": 720,
+        "value_12m": 1730,
+        "ltv_cac": 2.4,
+        "payback_months": 5.1
+      },
+      {
+        "source": "Creators",
+        "cac": 610,
+        "value_12m": 1890,
+        "ltv_cac": 3.1,
+        "payback_months": 3.6
+      },
+      {
+        "source": "Referrals",
+        "cac": 240,
+        "value_12m": 1250,
+        "ltv_cac": 5.2,
+        "payback_months": 1.9
+      }
+    ],
+    "tests": [
+      {
+        "id": "T-01",
+        "name": "Holdout test, Pune and Ahmedabad",
+        "day": 19,
+        "days": 28,
+        "readout": "2026-10-26",
+        "note": "Meta and Google numbers firm up after it."
+      }
+    ]
+  },
+  "market": {
+    "verdict": {
+      "tone": "bad",
+      "chip": "Losing share",
+      "text": "Rival B cut its price 18% and took 1.2 points of your search share."
+    },
+    "kpis": [
+      {
+        "id": "per10",
+        "label": "Price per 10 ml",
+        "value": 0,
+        "display": "₹183",
+        "note": "Median ₹175",
+        "tone": "warn"
+      },
+      {
+        "id": "rating",
+        "label": "Rating",
+        "value": 0,
+        "display": "4.1 ★",
+        "note": "Category 4.1",
+        "tone": "neutral"
+      },
+      {
+        "id": "reviews",
+        "label": "Reviews",
+        "value": 0,
+        "display": "18.2k",
+        "note": "▲ 900 this month",
+        "tone": "good"
+      },
+      {
+        "id": "search_share",
+        "label": "Search share",
+        "value": 0,
+        "display": "8.4%",
+        "delta": {
+          "value": -0.012,
+          "unit": "pts",
+          "direction": "down",
+          "good": false
+        }
+      },
+      {
+        "id": "discount",
+        "label": "Discount",
+        "value": 0,
+        "display": "22%",
+        "note": "Rivals 27%",
+        "tone": "neutral"
+      },
+      {
+        "id": "stockout_days",
+        "label": "Stockout days",
+        "value": 0,
+        "display": "3",
+        "note": "On Flipkart",
+        "tone": "bad"
+      }
+    ],
+    "category_label": "Vitamin C serums",
+    "median_per10": 175,
+    "category_rating": 4.1,
+    "products": [
+      {
+        "id": "lumora",
+        "label": "Lumora (you)",
+        "brand": "Lumora",
+        "platforms": "All 3",
+        "is_us": true,
+        "price": 549,
+        "per10": 183,
+        "change_14d_pct": 0,
+        "rating": 4.1,
+        "reviews": 18200,
+        "perception": {
+          "gentle_clinical": -0.4,
+          "value_premium": 0.2
+        },
+        "says": "Gentle",
+        "threat": "You",
+        "headline": "You are at ₹183 per 10 ml against a median of ₹175.",
+        "suggestions": []
+      },
+      {
+        "id": "rival_a",
+        "label": "Rival A",
+        "brand": "Aurelle",
+        "platforms": "Nykaa",
+        "is_us": false,
+        "price": 899,
+        "per10": 300,
+        "change_14d_pct": 0,
+        "rating": 4.4,
+        "reviews": 4100,
+        "perception": {
+          "gentle_clinical": -0.2,
+          "value_premium": 0.8
+        },
+        "says": "Premium",
+        "threat": "Low threat",
+        "headline": "Rival A has not changed its price recently.",
+        "suggestions": []
+      },
+      {
+        "id": "rival_b",
+        "label": "Rival B",
+        "brand": "Glowvia",
+        "platforms": "Amazon",
+        "is_us": false,
+        "price": 449,
+        "per10": 150,
+        "change_14d_pct": -0.18,
+        "rating": 4.2,
+        "reviews": 26000,
+        "perception": {
+          "gentle_clinical": 0.3,
+          "value_premium": -0.4
+        },
+        "says": "Value",
+        "threat": "High threat",
+        "headline": "Rival B cut its price 18% on 2 Oct and took 1.2 points of your Amazon search share. Its rating is also higher.",
+        "suggestions": [
+          {
+            "id": "sg_5d343f72a6f18626",
+            "type": "amazon_coupon",
+            "title": "Match with a 12% Amazon coupon",
+            "why": "Closes most of the gap without changing your list price on other platforms.",
+            "impactLabel": "+₹9 L/wk",
+            "confidence": "medium",
+            "priority": 0,
+            "evidence": [],
+            "params": {},
+            "runLabel": "Create coupon",
+            "doneLabel": "Coupon file ready",
+            "needsApproval": false,
+            "executor": "handoff",
+            "steps": [
+              "Build the coupon file: {product}, {discount_pct}% off for {weeks} weeks",
+              "Save it to Drive Outbox and download it",
+              "Open Seller Central Coupons",
+              "Wait for you to confirm it is live, then measure for 21 days"
+            ]
+          },
+          {
+            "id": "sg_8481f89fb0bd5895",
+            "type": "price_alert",
+            "title": "Alert me if Rival B drops again",
+            "why": "Two cuts in a quarter usually means a price war, not a sale.",
+            "impactLabel": "Watch",
+            "confidence": "medium",
+            "priority": 0,
+            "evidence": [],
+            "params": {},
+            "runLabel": "Set alert",
+            "doneLabel": "Alert set",
+            "needsApproval": false,
+            "executor": "inline",
+            "steps": [
+              "Add a rule: tell you when Rival B cuts its price again",
+              "Check it at every sync",
+              "Notify you on Slack and in Drishti"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rival_c",
+        "label": "Rival C",
+        "brand": "Dermiq Lab",
+        "platforms": "Amazon +1",
+        "is_us": false,
+        "price": 699,
+        "per10": 233,
+        "change_14d_pct": 0,
+        "rating": 4.3,
+        "reviews": 9400,
+        "perception": {
+          "gentle_clinical": 0.6,
+          "value_premium": 0.5
+        },
+        "says": "Results",
+        "threat": "Low threat",
+        "headline": "Rival C has not changed its price recently.",
+        "suggestions": []
+      },
+      {
+        "id": "rival_d",
+        "label": "Rival D",
+        "brand": "Sublime Skin",
+        "platforms": "All 3",
+        "is_us": false,
+        "price": 349,
+        "per10": 175,
+        "change_14d_pct": 0.05,
+        "rating": 3.9,
+        "reviews": 12000,
+        "perception": {
+          "gentle_clinical": 0.4,
+          "value_premium": -0.1
+        },
+        "says": "Value",
+        "threat": "Opportunity",
+        "headline": "Rival D raised its price 5% on 11 Oct.",
+        "suggestions": []
+      },
+      {
+        "id": "rival_e",
+        "label": "Rival E",
+        "brand": "BudgetGlow",
+        "platforms": "Amazon +1",
+        "is_us": false,
+        "price": 299,
+        "per10": 100,
+        "change_14d_pct": -0.05,
+        "rating": 3.8,
+        "reviews": 31000,
+        "perception": {
+          "gentle_clinical": 0.2,
+          "value_premium": -0.8
+        },
+        "says": "Value",
+        "threat": "Different buyer",
+        "headline": "Rival E sells to a different buyer.",
+        "suggestions": []
+      },
+      {
+        "id": "rival_f",
+        "label": "Rival F",
+        "brand": "Pure Petal",
+        "platforms": "Flipkart",
+        "is_us": false,
+        "price": 479,
+        "per10": 160,
+        "change_14d_pct": -0.1,
+        "rating": 4,
+        "reviews": 7200,
+        "perception": {
+          "gentle_clinical": -0.5,
+          "value_premium": -0.3
+        },
+        "says": "Gentle",
+        "threat": "Medium threat",
+        "headline": "Rival F cut its price 10% on 9 Oct on Flipkart.",
+        "suggestions": []
+      }
+    ],
+    "price_changes": [
+      {
+        "label": "Rival B",
+        "platform": "Amazon",
+        "pct": -0.18,
+        "date": "2026-10-02"
+      },
+      {
+        "label": "Rival F",
+        "platform": "Flipkart",
+        "pct": -0.1,
+        "date": "2026-10-09"
+      },
+      {
+        "label": "Rival D",
+        "platform": "Amazon",
+        "pct": 0.05,
+        "date": "2026-10-11"
+      }
+    ],
+    "open_space": {
+      "quadrant": "gentle_premium",
+      "label": "Open space: gentle and premium"
+    }
+  },
+  "customers": {
+    "verdict": {
+      "tone": "warn",
+      "chip": "Mixed base",
+      "text": "Deal Hunters: 31% of buyers, only 17% of revenue."
+    },
+    "kpis": [
+      {
+        "id": "buyers",
+        "label": "Buyers",
+        "value": 0,
+        "display": "1.27 L",
+        "delta": {
+          "value": 0.05,
+          "unit": "pct",
+          "direction": "up",
+          "good": true
+        }
+      },
+      {
+        "id": "bought_again",
+        "label": "Bought again",
+        "value": 0,
+        "display": "34%",
+        "delta": {
+          "value": -0.02,
+          "unit": "pts",
+          "direction": "down",
+          "good": false
+        }
+      },
+      {
+        "id": "value_12m",
+        "label": "12-month value",
+        "value": 0,
+        "display": "₹1,960",
+        "delta": {
+          "value": 0.031,
+          "unit": "pct",
+          "direction": "up",
+          "good": true
+        }
+      },
+      {
+        "id": "preferred",
+        "label": "Loyalists",
+        "value": 0,
+        "display": "14%",
+        "delta": {
+          "value": 0.015,
+          "unit": "pts",
+          "direction": "up",
+          "good": true
+        }
+      },
+      {
+        "id": "problem",
+        "label": "Deal Hunters",
+        "value": 0,
+        "display": "31%",
+        "delta": {
+          "value": 0.02,
+          "unit": "pts",
+          "direction": "up",
+          "good": false
+        }
+      },
+      {
+        "id": "undelivered",
+        "label": "Undelivered",
+        "value": 0,
+        "display": "9.2%",
+        "delta": {
+          "value": 0.011,
+          "unit": "pts",
+          "direction": "up",
+          "good": false
+        }
+      }
+    ],
+    "method": "Grouped with k-means (5 groups, 6 buying signals) on own-site buyers. Marketplaces do not share who bought, so they are left out.",
+    "segments": [
+      {
+        "id": "routine_loyalists",
+        "name": "Routine Loyalists",
+        "kind": "preferred",
+        "buyers_pct": 0.14,
+        "revenue_pct": 0.37,
+        "aov": 980,
+        "orders_per_year": 4.6,
+        "repeat_pct": 0.71,
+        "cac": 610,
+        "ltv_12m": 4500,
+        "ltv_cac": 7.4,
+        "discount_pct": 0.12,
+        "cod_pct": 0.18,
+        "rto_pct": 0.03,
+        "centroid": {
+          "orders": 4.6,
+          "aov": 1088
+        },
+        "sample": [
+          [4.33, 930],
+          [4.64, 977],
+          [4.38, 910],
+          [4.38, 1054],
+          [4.62, 925],
+          [4.3, 1007],
+          [4.22, 976],
+          [4.39, 995],
+          [4.81, 901],
+          [3.87, 1019],
+          [4.78, 1024],
+          [4.32, 917],
+          [4.92, 1182],
+          [4.96, 852],
+          [4.44, 1055],
+          [4.16, 984],
+          [4.93, 962],
+          [4.35, 990],
+          [4.81, 905],
+          [3.91, 1032],
+          [4.06, 884]
+        ],
+        "tag": "Preferred",
+        "headline": "14% of buyers bring 37% of revenue.",
+        "suggestions": []
+      },
+      {
+        "id": "ingredient_explorers",
+        "name": "Ingredient Explorers",
+        "kind": "other",
+        "buyers_pct": 0.18,
+        "revenue_pct": 0.24,
+        "aov": 1050,
+        "orders_per_year": 2.2,
+        "repeat_pct": 0.48,
+        "cac": 780,
+        "ltv_12m": 2340,
+        "ltv_cac": 3,
+        "discount_pct": 0.2,
+        "cod_pct": 0.25,
+        "rto_pct": 0.05,
+        "centroid": {
+          "orders": 2.2,
+          "aov": 1158
+        },
+        "sample": [
+          [1.98, 962],
+          [2.04, 1139],
+          [2.27, 1018],
+          [1.52, 950],
+          [2.11, 1112],
+          [2.31, 1153],
+          [2.68, 1070],
+          [2.64, 1218],
+          [2.19, 1067],
+          [2.52, 1146],
+          [1.84, 1104],
+          [1.93, 938],
+          [2.2, 1002],
+          [2.07, 1121],
+          [2.11, 1117],
+          [1.75, 991],
+          [1.57, 1094],
+          [2.15, 900],
+          [2.32, 935],
+          [2.09, 1024],
+          [2.62, 1166],
+          [1.57, 1187],
+          [1.88, 1085],
+          [1.49, 1207],
+          [1.78, 1282],
+          [1.26, 1218],
+          [1.5, 1253],
+          [1.45, 1213],
+          [1.07, 1204]
+        ],
+        "tag": "Launch audience",
+        "headline": "18% of buyers, 24% of revenue.",
+        "suggestions": []
+      },
+      {
+        "id": "festive_gifters",
+        "name": "Festive Gifters",
+        "kind": "other",
+        "buyers_pct": 0.12,
+        "revenue_pct": 0.14,
+        "aov": 1320,
+        "orders_per_year": 1.5,
+        "repeat_pct": 0.22,
+        "cac": 690,
+        "ltv_12m": 2000,
+        "ltv_cac": 2.9,
+        "discount_pct": 0.3,
+        "cod_pct": 0.3,
+        "rto_pct": 0.06,
+        "centroid": {
+          "orders": 1.5,
+          "aov": 1428
+        },
+        "sample": [
+          [1.62, 1310],
+          [1.68, 1315],
+          [1.43, 1360],
+          [1.32, 1313],
+          [1.78, 1306],
+          [1.32, 1264],
+          [1.44, 1286],
+          [1.2, 1453],
+          [1.29, 1464],
+          [1.41, 1345],
+          [1.2, 1386],
+          [1.08, 1326],
+          [1.66, 1356],
+          [1.5, 1294]
+        ],
+        "tag": "Seasonal",
+        "headline": "12% of buyers, 14% of revenue.",
+        "suggestions": []
+      },
+      {
+        "id": "deal_hunters",
+        "name": "Deal Hunters",
+        "kind": "problem",
+        "buyers_pct": 0.31,
+        "revenue_pct": 0.17,
+        "aov": 420,
+        "orders_per_year": 2.3,
+        "repeat_pct": 0.39,
+        "cac": 540,
+        "ltv_12m": 970,
+        "ltv_cac": 1.8,
+        "discount_pct": 0.61,
+        "cod_pct": 0.72,
+        "rto_pct": 0.18,
+        "centroid": {
+          "orders": 2.3,
+          "aov": 528
+        },
+        "sample": [
+          [2.26, 389],
+          [2.41, 401],
+          [2.11, 353],
+          [2.02, 419],
+          [2.12, 425],
+          [3.09, 368],
+          [2.94, 427],
+          [2.32, 426],
+          [1.92, 362],
+          [2.37, 414],
+          [2.37, 406],
+          [1.9, 422],
+          [1.63, 379],
+          [2.23, 362],
+          [1.72, 461],
+          [2.72, 410],
+          [1.95, 474],
+          [2.69, 389],
+          [2.32, 419],
+          [2.14, 475],
+          [2.18, 470],
+          [2.41, 493],
+          [2.19, 455],
+          [2.16, 355],
+          [1.68, 370],
+          [2.06, 336],
+          [1.98, 392],
+          [2.76, 401],
+          [2.43, 347],
+          [2.29, 497],
+          [2.36, 497],
+          [2.63, 437],
+          [2.44, 403],
+          [2.45, 396],
+          [2.01, 504]
+        ],
+        "tag": "Problem",
+        "headline": "31% of buyers, 17% of revenue. They wait for discounts, pay cash, and 18% of orders come back.",
+        "suggestions": [
+          {
+            "id": "sg_465eb9df9f46cbcf",
+            "type": "shopify_discount_cap",
+            "title": "Cap discounts at 15% for this group",
+            "why": "Their repeat rate barely changes between 15% and 30% off.",
+            "impactLabel": "+₹11 L margin",
+            "confidence": "medium",
+            "priority": 0,
+            "evidence": [],
+            "params": {},
+            "runLabel": "Apply caps",
+            "doneLabel": "Caps applied",
+            "needsApproval": false,
+            "executor": "inline",
+            "steps": [
+              "Find the codes Deal Hunters used in 90 days with more than 15% off",
+              "Change each code to 15% in Shopify",
+              "Save the old values so you can undo",
+              "Measure margin and repeat for 3 weeks"
+            ]
+          },
+          {
+            "id": "sg_be0b8761a42de39c",
+            "type": "cod_otp",
+            "title": "Ask for an OTP on cash orders over ₹500",
+            "why": "Unconfirmed cash orders are 3 in 4 of the undelivered returns.",
+            "impactLabel": "-₹6 L returns",
+            "confidence": "medium",
+            "priority": 0,
+            "evidence": [],
+            "params": {},
+            "runLabel": "Turn on",
+            "doneLabel": "Checklist ready",
+            "needsApproval": false,
+            "executor": "handoff",
+            "steps": [
+              "List the checkout or shipping-partner settings to change",
+              "Estimate the drop in undelivered orders",
+              "Wait for you to confirm it is on"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "one_time_trialists",
+        "name": "One-time Trialists",
+        "kind": "other",
+        "buyers_pct": 0.25,
+        "revenue_pct": 0.08,
+        "aov": 560,
+        "orders_per_year": 1,
+        "repeat_pct": 0.06,
+        "cac": 910,
+        "ltv_12m": 560,
+        "ltv_cac": 0.6,
+        "discount_pct": 0.35,
+        "cod_pct": 0.4,
+        "rto_pct": 0.08,
+        "centroid": {
+          "orders": 1.46,
+          "aov": 668
+        },
+        "sample": [
+          [2.09, 839],
+          [1.07, 485],
+          [1.05, 461],
+          [0.76, 629],
+          [0.97, 402],
+          [0.91, 512],
+          [0.97, 521],
+          [1.14, 428],
+          [1.06, 527],
+          [1.08, 671],
+          [0.85, 712],
+          [1.11, 505],
+          [1.11, 490],
+          [0.85, 665],
+          [1.06, 593],
+          [1.03, 565],
+          [1.11, 582],
+          [0.93, 497],
+          [1.24, 604],
+          [0.92, 462],
+          [1.08, 511],
+          [0.99, 460],
+          [1, 599],
+          [0.76, 490],
+          [0.64, 571],
+          [0.99, 698],
+          [1.09, 577],
+          [1.3, 500],
+          [0.89, 469],
+          [1.32, 481],
+          [0.77, 540]
+        ],
+        "tag": "Losing money",
+        "headline": "25% of buyers, 8% of revenue.",
+        "suggestions": []
+      }
+    ],
+    "stability": {
+      "ari_vs_last": null,
+      "k": 5,
+      "silhouette": 0.31
+    }
+  },
+  "voice": {
+    "verdict": {
+      "tone": "bad",
+      "chip": "Rating slipping",
+      "text": "Pump complaints from one batch are pulling the rating down."
+    },
+    "kpis": [
+      {
+        "id": "rating_90d",
+        "label": "Rating, 90 days",
+        "value": 0,
+        "display": "3.9 ★",
+        "delta": {
+          "value": -0.4,
+          "unit": "x",
+          "direction": "down",
+          "good": false
+        }
+      },
+      {
+        "id": "reviews_read",
+        "label": "Reviews read",
+        "value": 0,
+        "display": "4,860",
+        "note": "4 platforms",
+        "tone": "neutral"
+      },
+      {
+        "id": "positive",
+        "label": "Positive",
+        "value": 0,
+        "display": "64%",
+        "delta": {
+          "value": -0.05,
+          "unit": "pts",
+          "direction": "down",
+          "good": false
+        }
+      },
+      {
+        "id": "negative",
+        "label": "Negative",
+        "value": 0,
+        "display": "21%",
+        "delta": {
+          "value": 0.06,
+          "unit": "pts",
+          "direction": "up",
+          "good": false
+        }
+      },
+      {
+        "id": "pump_mentions",
+        "label": "Pump mentions",
+        "value": 0,
+        "display": "11%",
+        "delta": {
+          "value": 0.08,
+          "unit": "pts",
+          "direction": "up",
+          "good": false
+        }
+      },
+      {
+        "id": "replied",
+        "label": "You replied to",
+        "value": 0,
+        "display": "18%",
+        "note": "Target 60%",
+        "tone": "warn"
+      }
+    ],
+    "aspects": [
+      {
+        "id": "pump_packaging",
+        "name": "Pump and packaging",
+        "mentions": 1180,
+        "us": -38,
+        "category": 5,
+        "tag": "Fix now",
+        "headline": "412 pump complaints in 30 days, nearly all from the September batch. It is the main reason the rating fell.",
+        "quotes": [
+          {
+            "text": "Pump stopped working after a week, had to pour it out.",
+            "src": "Amazon, 2★"
+          },
+          {
+            "text": "Love the serum, hate the pump. Second bottle, same problem.",
+            "src": "Nykaa, 3★"
+          }
+        ],
+        "suggestions": [
+          {
+            "id": "sg_3a3bb6c3d3bd6fd4",
+            "type": "qa_hold",
+            "title": "Put the September batch on QA hold",
+            "why": "9 in 10 pump complaints trace to batch 0925; 14,000 units are still in warehouses.",
+            "impactLabel": "+0.2 ★ in 6 wks",
+            "confidence": "medium",
+            "priority": 0,
+            "evidence": [],
+            "params": {},
+            "runLabel": "Raise QA hold",
+            "doneLabel": "QA hold raised",
+            "needsApproval": false,
+            "executor": "inline",
+            "steps": [
+              "Write the QA hold note: complaints, dates, quotes and the suspected batch",
+              "Assign it to the QA owner, due in 2 days",
+              "Notify them on Slack and in Drishti",
+              "Read out the rating and pump share in 6 weeks"
+            ]
+          },
+          {
+            "id": "sg_49914351e86a46b4",
+            "type": "reply_drafts",
+            "title": "Reply to 380 pump reviews with a free replacement",
+            "why": "Replied reviews are updated upward 1 time in 4 on Amazon.",
+            "impactLabel": "Rating",
+            "confidence": "medium",
+            "priority": 0,
+            "evidence": [],
+            "params": {},
+            "runLabel": "Draft replies",
+            "doneLabel": "Replies drafted",
+            "needsApproval": false,
+            "executor": "job",
+            "steps": [
+              "Pick negative pump reviews without a reply",
+              "Draft a short reply for each; your team posts them",
+              "Save the sheet to Drive Outbox"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gentle",
+        "name": "Gentle on skin",
+        "mentions": 1640,
+        "us": 62,
+        "category": 31,
+        "tag": "Strength",
+        "headline": "Gentle on skin: you +62, category +31.",
+        "quotes": [],
+        "suggestions": []
+      },
+      {
+        "id": "results",
+        "name": "Results",
+        "mentions": 1320,
+        "us": 18,
+        "category": 24,
+        "tag": "Behind",
+        "headline": "Results: you +18, category +24.",
+        "quotes": [],
+        "suggestions": []
+      },
+      {
+        "id": "texture",
+        "name": "Texture",
+        "mentions": 980,
+        "us": 40,
+        "category": 22,
+        "tag": "Strength",
+        "headline": "Texture: you +40, category +22.",
+        "quotes": [],
+        "suggestions": []
+      },
+      {
+        "id": "value",
+        "name": "Value for money",
+        "mentions": 760,
+        "us": 8,
+        "category": 14,
+        "tag": "Watch",
+        "headline": "Value for money: you +8, category +14.",
+        "quotes": [],
+        "suggestions": []
+      },
+      {
+        "id": "delivery",
+        "name": "Delivery",
+        "mentions": 640,
+        "us": 20,
+        "category": 22,
+        "tag": "At par",
+        "headline": "Delivery: you +20, category +22.",
+        "quotes": [],
+        "suggestions": []
+      }
+    ],
+    "issues": [
+      {
+        "title": "Pump stops working",
+        "mentions": 412,
+        "change_pct": 3.1,
+        "is_new": false,
+        "platforms": "Amazon, Nykaa",
+        "first_seen": "2026-09-21"
+      },
+      {
+        "title": "Bottle leaks in transit",
+        "mentions": 96,
+        "change_pct": 0.45,
+        "is_new": false,
+        "platforms": "Flipkart",
+        "first_seen": "2026-10-02"
+      },
+      {
+        "title": "Serum turned orange",
+        "mentions": 74,
+        "change_pct": 0.2,
+        "is_new": false,
+        "platforms": "All platforms",
+        "first_seen": "2026-08-01"
+      },
+      {
+        "title": "Sunscreen looks bigger",
+        "mentions": 58,
+        "change_pct": null,
+        "is_new": true,
+        "platforms": "Flipkart",
+        "first_seen": "2026-10-05"
+      }
+    ]
+  },
+  "data": {
+    "verdict": {
+      "tone": "warn",
+      "chip": "Two gaps",
+      "text": "Flipkart ads and the creator tracker are late, so their numbers are less certain."
+    },
+    "kpis": [
+      {
+        "id": "up_to_date",
+        "label": "Up to date",
+        "value": 0,
+        "display": "11 of 13",
+        "note": "2 need a file",
+        "tone": "bad"
+      },
+      {
+        "id": "revenue_covered",
+        "label": "Revenue covered",
+        "value": 0,
+        "display": "98%",
+        "note": "All channels",
+        "tone": "good"
+      },
+      {
+        "id": "history",
+        "label": "History",
+        "value": 0,
+        "display": "18 mo",
+        "note": "Since Apr 2025",
+        "tone": "neutral"
+      },
+      {
+        "id": "rows_stored",
+        "label": "Rows stored",
+        "value": 0,
+        "display": "4.2 M",
+        "note": "310 MB",
+        "tone": "neutral"
+      },
+      {
+        "id": "third_parties",
+        "label": "Third parties",
+        "value": 0,
+        "display": "None",
+        "note": "Your accounts only",
+        "tone": "good"
+      },
+      {
+        "id": "cost",
+        "label": "Cost",
+        "value": 0,
+        "display": "₹0",
+        "note": "No paid APIs",
+        "tone": "good"
+      }
+    ]
+  },
+  "rules_fired": []
+}

@@ -73,6 +73,7 @@ export const actionCopy = {
     'Build the Amazon Ads bulk sheet with the changes | Save it to Drive Outbox | Link Bulk operations in Amazon Ads',
   'action.geo_test.run': 'Launch test',
   'action.geo_test.done': 'Test planned',
+  'action.geo_test.run_extend': 'Extend test',
   'action.geo_test.steps':
     'Pick test and control cities and the duration | Export the location exclusions for each platform | Add start, mid-check and readout dates to the calendar | Track it daily and read it out',
   'action.price_alert.run': 'Set alert',

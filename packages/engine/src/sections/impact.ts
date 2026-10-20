@@ -158,6 +158,7 @@ export function buildImpact(ctx: Context): {
       suggest(
         {
           type: 'geo_test',
+          ...(test ? { runLabelKey: 'action.geo_test.run_extend' as const } : {}),
           context: `media=${m}`,
           title: test
             ? t('impact.sg.extend.title', { name: test.name })

@@ -156,11 +156,15 @@ Demo mode runs the same states with simulated timings (600 ms per step) and stor
 
 Each screen: Summary strip → Visual → Analysis → Inference → Suggested actions. Heights are for 1440 × 900.
 
-### 6.0 Home (`/` when signed out)
-No design PNG; uses the same tokens, type scale and both themes, and fits 1440 × 900 with no page scroll.
-- Left (navy, like the sidebar): mark, wordmark, tagline "See what really worked.", one paragraph on what Drishti is, the three questions it answers (from `00-README.md`).
-- Right: "How it works" in three numbered steps (connect your sheet and exports; Drishti measures what really worked; act from every screen and see if it paid off), a strip of screen thumbnails (from `design/screens`, light or dark to match the theme) linking into the demo, and "Free. Your data stays in your own accounts."
-- Three buttons: **Open the demo** (primary, `/demo`), **Try with your own data** (`/try`), **Set up your workspace** (`/onboarding`, which signs in first). Links: "Download the sample sheet" (`/samples/Drishti-Workspace-Template.xlsx`) and "What data Drishti needs" (`/guide`).
+### 6.0 Home (`/` when signed out) — revised 20 Oct 2026
+No design PNG; uses the same tokens and both themes. **One screen, no page scroll, on desktop and on phones**: the page fills the window (`100dvh`) instead of the scaled 1440 × 900 stage, and checks no scroll at 1440 × 900, 1280 × 720 and 390 × 844.
+- **Top bar:** the lift-eye mark (its red pupil follows the pointer and it blinks), wordmark, "A PreQL project", Light/Dark switch, Open the demo.
+- **Hero:** eyebrow, the title "See what really worked." with "really" animated, a rotating line naming the four jobs (measures what each ad rupee really earned; watches rival prices, ratings and stockouts; turns every insight into a one-click action; proves whether each action paid off), one-paragraph lead, and **claims vs reality**: animated bars and counting numbers for what ad platforms claimed against what the brand sold (demo snapshot, labelled fictional).
+- **Game, "Spot the real rupee":** four quick rounds built from the demo snapshot (real return of the most over-claimed medium; the biggest driver of the week; the problem customer type; the high-threat rival). Each answer reveals the measured fact with a "See it in the demo" link. Gamification: XP per right answer, a streak bonus, three levels (Curious, Sharp-eyed, Drishti-sighted), one badge per skill that lights up when earned, confetti on a right answer, a score ring at the end and the best score kept in `localStorage` (try/catch). The game only chooses which facts to ask; every number comes from the snapshot. A round is skipped when its data is missing (for example a placeholder segment name).
+- **Footer strip (desktop):** How it works in three steps (Connect, Measure, Act and prove), a marquee of the channels Drishti covers, "Free. No card. Your data stays in your own accounts."
+- **Buttons and links:** **Open the demo** (`/demo`), **Set up your workspace** (the setup guide until `/onboarding` ships in M4), **Download the sample sheet** (`/samples/Drishti-Workspace-Template.xlsx`), **What data Drishti needs** (`/guide` from M5). Try with your own data (`/try`) joins in M5.
+- **Phones:** the hero, claims card, Open the demo and the game stack in one screen; the footer strip and secondary links hide; after an answer the question and wrong options fold away so the explanation and Next fit. The note "The full workspace is best on a laptop or desktop." sits under the button, since the eight screens stay a desktop layout.
+- **Motion:** entrance fades, the shimmer, rotator, bar race, card flips, confetti, pulsing Play and marquee are decorative. All of it stops under `prefers-reduced-motion`, and the tests run with reduced motion.
 - Signed-in users at `/` see This week instead.
 
 ### 6.1 This week (`/` when signed in, `/demo` in the demo, `snapshot.week`) — design `01-this-week-*.png`
@@ -239,7 +243,7 @@ A drop zone ("Drop your filled template or exports here. Files stay in this brow
 - Visible focus ring: 2 px `#2A78D6`, offset 2.
 - Contrast: all text ≥ 4.5:1 in both themes (checked by axe in CI); chip text uses the strong token on the tinted background.
 - Charts: each SVG/chart has `role="img"` with an `aria-label` summary, and the same numbers are present in an adjacent table or list (the screens already pair every chart with a table).
-- Reduced motion: no animation beyond 150 ms transitions; respects `prefers-reduced-motion`.
+- Reduced motion: on the eight screens, no animation beyond 150 ms transitions. The home page (§6.0) is the one place with decorative motion. Everything respects `prefers-reduced-motion`.
 - Keyboard: `g` then `1`–`8` jumps to screens (shown in a help popover); no global single-key shortcuts.
 
 ## 9. Formatting rules

@@ -35,7 +35,7 @@ describe('numbers, rates and dates', () => {
     expect(formatPct(0.065)).toBe('6.5%');
     expect(formatPct(0.21)).toBe('21%');
     expect(formatPct(-0.044, { signed: true })).toBe('−4.4%');
-    expect(formatPct(0.02, { signed: true })).toBe('+2%');
+    expect(formatPct(0.02, { signed: true })).toBe('+2.0%');
   });
   it('points, ROAS and dates', () => {
     expect(formatPoints(0.012)).toBe('1.2 points');

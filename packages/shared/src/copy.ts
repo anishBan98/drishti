@@ -1,5 +1,6 @@
 import { actionCopy } from './copy-actions';
 import { screenCopy } from './copy-screens';
+import { uiCopy } from './copy-ui';
 
 // Copy deck: every user-facing string, keyed (docs/09-FRONTEND.md §10).
 // Placeholders use {name}; fill them with t(key, vars).
@@ -104,7 +105,7 @@ const baseCopy = {
   'error.INTERNAL': 'Something went wrong on our side. Try again; if it repeats, tell your analyst (ref {request_id}).',
 } as const;
 
-export const copy = { ...baseCopy, ...actionCopy, ...screenCopy } as const;
+export const copy = { ...baseCopy, ...actionCopy, ...screenCopy, ...uiCopy } as const;
 
 export type CopyKey = keyof typeof copy;
 

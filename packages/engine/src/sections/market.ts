@@ -171,6 +171,8 @@ export function buildMarket(ctx: Context): { section: Snapshot['market']; change
         suggest(
           {
             type: 'amazon_coupon',
+            // The coupon's money at stake is its budget: discount cost on baseline units, capped at ₹3 L (docs/10 §4.1).
+            moneyAtStakeInr: Math.min(300_000, weeklyUs * us.price * (discount / 100) * 3),
             context: `rival=${r.label}`,
             title: t('market.sg.coupon.title', { pct: discount, platform: cut.platform }),
             why: t('market.sg.coupon.why'),

@@ -1,0 +1,193 @@
+/* Actions screen (design 02-actions). */
+.log {
+  padding: 14px 12px 8px;
+  gap: 0;
+}
+.log > div:first-child {
+  padding: 0 10px 6px;
+}
+.head {
+  display: grid;
+  gap: 10px;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+.r {
+  text-align: right;
+}
+.rows {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  flex: 1 1 0;
+  min-height: 0;
+  max-height: 72px;
+  display: grid;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+.row[aria-pressed='true'],
+.row:hover {
+  background: var(--sel);
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.25;
+}
+.titleText {
+  font-weight: 700;
+  font-size: 15px;
+}
+.demoTag {
+  margin-left: 6px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--chip);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  vertical-align: middle;
+}
+.how {
+  font-size: 12px;
+  color: var(--muted);
+}
+.cell {
+  font-size: 14px;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.selTitle {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.35;
+  font-weight: 700;
+  text-wrap: pretty;
+}
+.lifecycle {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+}
+.stage {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.stageBar {
+  height: 6px;
+  border-radius: 999px;
+}
+.stageLabel {
+  font-size: 12px;
+}
+.measured {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--primary-2);
+}
+.measuredLabel {
+  font-size: 12px;
+  color: var(--insight-muted);
+}
+.measuredRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.measuredValue {
+  font-size: 20px;
+  font-weight: 700;
+}
+.expected {
+  font-size: 14px;
+  color: var(--insight-evidence);
+}
+.track {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+.fill {
+  height: 100%;
+  background: #5fe39a;
+}
+.readout {
+  font-size: 13px;
+  color: var(--insight-evidence);
+}
+.did {
+  padding: 18px 20px;
+  gap: 10px;
+}
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+  overflow: auto;
+}
+.step {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  font-size: 15px;
+  line-height: 1.35;
+}
+.tick,
+.todo {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+.tick {
+  background: var(--good-bg);
+  color: var(--good);
+}
+.todo {
+  background: var(--chip);
+}
+.at {
+  font-size: 13px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.footer {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}

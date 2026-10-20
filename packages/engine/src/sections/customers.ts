@@ -1,5 +1,5 @@
 import { formatPct, formatRoas, round, t, type CopyKey, type Snapshot, type Suggestion } from '@drishti/shared';
-import type { Context } from '../context';
+import { isBuyerCohortSample, type Context } from '../context';
 import { segmentCustomers, type SegmentStats } from '../models/segments';
 import { suggest } from '../suggest';
 import { addDays, inRange } from '../windows';
@@ -193,7 +193,15 @@ export function buildCustomers(ctx: Context): {
           }
         : { tone: 'good', chip: t('verdict.healthy_base'), text: t('customers.verdict.healthy') },
       kpis: [
-        kpi('buyers', 'kpi.buyers', buyers, count(buyers), { delta: delta('buyers', buyers, priorBuyers) }),
+        kpi(
+          'buyers',
+          'kpi.buyers',
+          buyers,
+          count(buyers),
+          isBuyerCohortSample(ctx)
+            ? { note: t('note.sample_cohort'), tone: 'neutral' }
+            : { delta: delta('buyers', buyers, priorBuyers) },
+        ),
         kpi('bought_again', 'kpi.bought_again', repeatShare, formatPct(repeatShare), { tone: 'neutral' }),
         kpi('value_12m', 'kpi.value_12m', value12, money(value12), { tone: 'neutral' }),
         kpi('preferred', 'kpi.preferred_share', preferred?.buyers_pct ?? 0, formatPct(preferred?.buyers_pct ?? 0), {

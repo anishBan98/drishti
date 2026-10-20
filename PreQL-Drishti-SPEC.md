@@ -2138,11 +2138,15 @@ Demo mode runs the same states with simulated timings (600 ms per step) and stor
 
 Each screen: Summary strip → Visual → Analysis → Inference → Suggested actions. Heights are for 1440 × 900.
 
-### 6.0 Home (`/` when signed out)
-No design PNG; uses the same tokens, type scale and both themes, and fits 1440 × 900 with no page scroll.
-- Left (navy, like the sidebar): mark, wordmark, tagline "See what really worked.", one paragraph on what Drishti is, the three questions it answers (from `00-README.md`).
-- Right: "How it works" in three numbered steps (connect your sheet and exports; Drishti measures what really worked; act from every screen and see if it paid off), a strip of screen thumbnails (from `design/screens`, light or dark to match the theme) linking into the demo, and "Free. Your data stays in your own accounts."
-- Three buttons: **Open the demo** (primary, `/demo`), **Try with your own data** (`/try`), **Set up your workspace** (`/onboarding`, which signs in first). Links: "Download the sample sheet" (`/samples/Drishti-Workspace-Template.xlsx`) and "What data Drishti needs" (`/guide`).
+### 6.0 Home (`/` when signed out) — revised 20 Oct 2026
+No design PNG; uses the same tokens and both themes. **One screen, no page scroll, on desktop and on phones**: the page fills the window (`100dvh`) instead of the scaled 1440 × 900 stage, and checks no scroll at 1440 × 900, 1280 × 720 and 390 × 844.
+- **Top bar:** the lift-eye mark (its red pupil follows the pointer and it blinks), wordmark, "A PreQL project", Light/Dark switch, Open the demo.
+- **Hero:** eyebrow, the title "See what really worked." with "really" animated, a rotating line naming the four jobs (measures what each ad rupee really earned; watches rival prices, ratings and stockouts; turns every insight into a one-click action; proves whether each action paid off), one-paragraph lead, and **claims vs reality**: animated bars and counting numbers for what ad platforms claimed against what the brand sold (demo snapshot, labelled fictional).
+- **Game, "Spot the real rupee":** four quick rounds built from the demo snapshot (real return of the most over-claimed medium; the biggest driver of the week; the problem customer type; the high-threat rival). Each answer reveals the measured fact with a "See it in the demo" link. Gamification: XP per right answer, a streak bonus, three levels (Curious, Sharp-eyed, Drishti-sighted), one badge per skill that lights up when earned, confetti on a right answer, a score ring at the end and the best score kept in `localStorage` (try/catch). The game only chooses which facts to ask; every number comes from the snapshot. A round is skipped when its data is missing (for example a placeholder segment name).
+- **Footer strip (desktop):** How it works in three steps (Connect, Measure, Act and prove), a marquee of the channels Drishti covers, "Free. No card. Your data stays in your own accounts."
+- **Buttons and links:** **Open the demo** (`/demo`), **Set up your workspace** (the setup guide until `/onboarding` ships in M4), **Download the sample sheet** (`/samples/Drishti-Workspace-Template.xlsx`), **What data Drishti needs** (`/guide` from M5). Try with your own data (`/try`) joins in M5.
+- **Phones:** the hero, claims card, Open the demo and the game stack in one screen; the footer strip and secondary links hide; after an answer the question and wrong options fold away so the explanation and Next fit. The note "The full workspace is best on a laptop or desktop." sits under the button, since the eight screens stay a desktop layout.
+- **Motion:** entrance fades, the shimmer, rotator, bar race, card flips, confetti, pulsing Play and marquee are decorative. All of it stops under `prefers-reduced-motion`, and the tests run with reduced motion.
 - Signed-in users at `/` see This week instead.
 
 ### 6.1 This week (`/` when signed in, `/demo` in the demo, `snapshot.week`) — design `01-this-week-*.png`
@@ -2221,7 +2225,7 @@ A drop zone ("Drop your filled template or exports here. Files stay in this brow
 - Visible focus ring: 2 px `#2A78D6`, offset 2.
 - Contrast: all text ≥ 4.5:1 in both themes (checked by axe in CI); chip text uses the strong token on the tinted background.
 - Charts: each SVG/chart has `role="img"` with an `aria-label` summary, and the same numbers are present in an adjacent table or list (the screens already pair every chart with a table).
-- Reduced motion: no animation beyond 150 ms transitions; respects `prefers-reduced-motion`.
+- Reduced motion: on the eight screens, no animation beyond 150 ms transitions. The home page (§6.0) is the one place with decorative motion. Everything respects `prefers-reduced-motion`.
 - Keyboard: `g` then `1`–`8` jumps to screens (shown in a help popover); no global single-key shortcuts.
 
 ## 9. Formatting rules
@@ -2612,10 +2616,10 @@ Design screens show illustrative numbers close to, but not identical with, the n
 | Worker API tests | Vitest with `@cloudflare/vitest-plugin` (local D1 and KV; renamed from `@cloudflare/vitest-pool-workers`) | `apps/worker/test/*` | every push |
 | Sync job integration (mock Google, Shopify, rival sites) | Vitest + msw | `apps/sync/test/*` | every push |
 | Extension adapters (fixture HTML) | Vitest + happy-dom | `apps/extension/test/*` | every push |
-| End-to-end | Playwright (Chromium) | `e2e/*` against local (`wrangler dev`) in CI, staging nightly, production after deploy | push (demo suite), nightly (full) |
+| End-to-end | Playwright (Chromium) | `e2e/*`: the demo suite against the built SPA served statically (`vite preview` of `apps/web/dist`, the files the Worker serves; `wrangler dev` needs a Cloudflare login because Workers AI is remote-only), signed-in flows against staging nightly, production after deploy. Runs with reduced motion | push (demo suite), nightly (full) |
 | Visual regression | Playwright `toHaveScreenshot` vs `design/screens/*.png` | `e2e/visual.spec.ts` | push |
 | Accessibility | `@axe-core/playwright` | `e2e/a11y.spec.ts` | push |
-| Performance | Lighthouse CI on `/demo` | `ci.yml` | push to main |
+| Performance | Lighthouse CI on `/demo` and `/` (performance ≥ 0.8, accessibility ≥ 0.95, best practices ≥ 0.9; `lighthouserc.json`) | `ci.yml` | push to main |
 
 CI must be green before any milestone is marked done.
 
@@ -2693,7 +2697,9 @@ CI must be green before any milestone is marked done.
 - **E2E-12** Assign opens owner picker and logs the assignment.
 - **E2E-13..16** Staging (signed-in test user via a test-only Google token mock in staging): coupon handoff, geo test plan, QA hold, discount cap on the Shopify development store.
 - **E2E-20** Staging onboarding: workspace links validated, first sync completes and screens render real data.
-- **E2E-21** Home page: signed out `/` shows the home page with no page scroll at 1440 × 900 in both themes; each of the three buttons and two links opens the right page or downloads the template.
+- **E2E-21** Home page: signed out `/` shows the home page with no page scroll at 1440 × 900 in both themes; Open the demo, Set up your workspace, Download the sample sheet and What data Drishti needs open the right page or download the template.
+- **E2E-25** Home game: every round can be answered, shows the measured answer with a link into the demo, and ends on the score card.
+- **E2E-26** Home on a phone (390 × 844): no scroll before or after answering a round; Next and Open the demo stay on screen.
 - **E2E-22** Onboarding wizard (staging): steps resume after reload; a bad link shows the sharing fix; finishing step 6 starts a sync and ends on This week.
 - **E2E-23** Data guide: every Download sample link returns its file; Check my file on each `sample-data/inbox` file names the right source with no upload request sent.
 - **E2E-24** Sandbox: dropping `Drishti-Workspace-Template.xlsx` plus the inbox samples renders all eight screens; editing a file and dropping it again changes the numbers; no network request other than static assets is made.
@@ -2715,6 +2721,7 @@ CI must be green before any milestone is marked done.
 - For each of the 8 screens × 2 themes, render the demo at 1440 × 900 with fonts loaded and compare with `design/screens/<nn>-<screen>-<theme>.png` using `maxDiffPixelRatio: 0.03`.
 - Expected differences: the demo snapshot's numbers differ slightly from the illustrative design numbers. To compare layout fairly, the visual suite runs with `?fixture=design`, which loads `e2e/fixtures/design-snapshot.json`: a snapshot hand-built to contain exactly the design's numbers and texts (generate it once from the static HTML text content; check it in).
 - Update baselines only with an explicit `pnpm test:visual --update` and a reviewed PR.
+- CI runs the visual suite on a Windows runner (`windows-latest`, free for public repos): the design PNGs were rendered on Windows, and Linux font smoothing alone differs by about 4 %, over the tolerance.
 
 ## 6. Product analytics (first-party, D1 `events`)
 
