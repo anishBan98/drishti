@@ -7,11 +7,19 @@ import { EyeMark } from '../components/EyeMark';
 import { GUIDE_URL, SETUP_URL } from '../components/Frame';
 import { buildRounds, levelFor, STREAK_BONUS, XP_PER_ROUND, type GameRound } from '../lib/home-game';
 import css from './home.module.css';
+import { Showcase } from './Showcase';
+import { Icon, type IconName } from '../components/Icon';
 
 // Home (docs/09 §6.0): one screen, no scroll, desktop and phone. What Drishti is, what it does, and a short game
 // on the demo brand's real (fictional) numbers. Motion is decorative and stops under prefers-reduced-motion.
 
 const reduced = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FEATURES: [IconName, CopyKey][] = [
+  ['chart', 'home.feature.roi'],
+  ['pulse', 'home.feature.week'],
+  ['eye', 'home.feature.market'],
+  ['users', 'home.feature.customers'],
+];
 const ROTATOR: CopyKey[] = ['home.rotator.1', 'home.rotator.2', 'home.rotator.3', 'home.rotator.4'];
 const BEST_KEY = 'drishti-best-xp';
 const EXTRA_CHANNELS = ['Blinkit', 'Zepto', 'Instamart', 'Meta', 'Google', 'Shopify', 'Creators'];
@@ -209,24 +217,28 @@ function Game({ s, failed, retry }: { s: Snapshot | undefined; failed: boolean; 
       </div>
 
       {phase === 'intro' && (
-        <div className={css.card} key="intro">
-          <p className={css.gameSub}>{t('home.game.sub')}</p>
-          <Badges rounds={rounds} earned={earned} intro />
-          {failed && !rounds.length ? (
-            <>
-              <p className={css.gameSub} role="alert">
-                {t('home.game.error')}
-              </p>
-              <button type="button" className={css.play} onClick={retry}>
-                ↻ {t('ui.retry')}
+        <div className={`${css.card} ${css.intro}`} key="intro">
+          {s ? <Showcase s={s} /> : <p className={css.gameSub}>{t('home.game.sub')}</p>}
+          <div className={css.playRow}>
+            <p className={css.playPrompt}>
+              {t('home.game.sub')}
+              {best > 0 && <span className={css.best}> {t('home.game.best', { xp: best })}</span>}
+            </p>
+            {failed && !rounds.length ? (
+              <>
+                <p className={css.gameSub} role="alert">
+                  {t('home.game.error')}
+                </p>
+                <button type="button" className={css.play} onClick={retry}>
+                  <Icon name="refresh" /> {t('ui.retry')}
+                </button>
+              </>
+            ) : (
+              <button type="button" className={css.play} disabled={!rounds.length} onClick={() => setPhase('play')}>
+                {rounds.length ? `▶ ${t('home.game.start')}` : t('home.game.loading')}
               </button>
-            </>
-          ) : (
-            <button type="button" className={css.play} disabled={!rounds.length} onClick={() => setPhase('play')}>
-              {rounds.length ? `▶ ${t('home.game.start')}` : t('home.game.loading')}
-            </button>
-          )}
-          {best > 0 && <p className={css.best}>{t('home.game.best', { xp: best })}</p>}
+            )}
+          </div>
         </div>
       )}
 
@@ -266,7 +278,7 @@ function Game({ s, failed, retry }: { s: Snapshot | undefined; failed: boolean; 
                 <span>{round.reveal}</span>
                 <div className={css.feedbackActions}>
                   <button type="button" className={css.next} onClick={next}>
-                    {i + 1 < rounds.length ? t('home.game.next') : t('home.game.finish')} →
+                    {i + 1 < rounds.length ? t('home.game.next') : t('home.game.finish')} <Icon name="arrowRight" />
                   </button>
                   <Link to={round.path} className={css.see}>
                     {t('home.game.see')}
@@ -286,10 +298,10 @@ function Game({ s, failed, retry }: { s: Snapshot | undefined; failed: boolean; 
           <Badges rounds={rounds} earned={earned} />
           <div className={css.feedbackActions}>
             <Link to="/demo" className={css.next}>
-              {t('home.cta.demo')} →
+              {t('home.cta.demo')} <Icon name="arrowRight" />
             </Link>
             <button type="button" className={css.see} onClick={restart}>
-              ↻ {t('home.game.again')}
+              <Icon name="refresh" /> {t('home.game.again')}
             </button>
           </div>
           <p className={css.best}>{t('home.game.best', { xp: Math.max(best, xp) })}</p>
@@ -411,24 +423,40 @@ export function Home() {
             </h1>
             <Rotator />
             <p className={css.lead}>{t('home.lead')}</p>
+            <ul className={css.features} aria-label={t('home.features')}>
+              {FEATURES.map(([icon, k]) => (
+                <li key={k} className={css.feature}>
+                  <span className={css.featureIcon}>
+                    <Icon name={icon} size={18} />
+                  </span>
+                  <span>
+                    <strong>{t(k)}</strong>
+                    <span className={css.featureDetail}>{t(`${k}.detail` as CopyKey)}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
             <ClaimBars s={data} />
             <div className={css.ctas}>
               <Link to="/demo" className={css.primary}>
-                {t('home.cta.demo')} →
+                {t('home.cta.demo')} <Icon name="arrowRight" />
               </Link>
               <Link to="/try" className={css.secondary}>
                 {t('home.cta.try')}
               </Link>
             </div>
             <div className={css.links}>
+              <Link to="/signin">
+                <Icon name="signIn" /> {t('auth.sign_in')}
+              </Link>
               <a href={SETUP_URL} target="_blank" rel="noreferrer">
-                {t('home.cta.setup')}
+                <Icon name="external" /> {t('home.cta.setup')}
               </a>
               <a href="/samples/Drishti-Workspace-Template.xlsx" download>
-                ⬇ {t('home.sample')}
+                <Icon name="download" /> {t('home.sample')}
               </a>
               <a href={GUIDE_URL} target="_blank" rel="noreferrer">
-                {t('home.guide')}
+                <Icon name="external" /> {t('home.guide')}
               </a>
             </div>
             <p className={css.mobileNote}>{t('home.mobile_note')}</p>

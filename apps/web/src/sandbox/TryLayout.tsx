@@ -14,6 +14,7 @@ import { coverageFor } from './coverage';
 import type { Company } from './protocol';
 import css from './try.module.css';
 import { ago } from './time';
+import { Icon } from '../components/Icon';
 
 // A sandbox company's eight screens (docs/09 §6.12): the demo frame on the company's own snapshot. Opening it
 // refreshes linked sheets; the sidebar chip refreshes on demand.
@@ -49,7 +50,7 @@ function RefreshChip({ company }: { company: Company }) {
       </p>
       {linked && (
         <button type="button" className={css.sideRefresh} onClick={refresh} disabled={busy} aria-busy={busy}>
-          {busy ? t('try.refreshing') : `↻ ${t('try.refresh')}`}
+          <Icon name="refresh" /> {busy ? t('try.refreshing') : t('try.refresh')}
         </button>
       )}
     </div>

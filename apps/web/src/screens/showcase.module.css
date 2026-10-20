@@ -1,0 +1,411 @@
+/* The home card's rotating banner: before Drishti against with Drishti. Sits on the dark game card in both themes. */
+
+.show {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+}
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(143, 166, 255, 0.16);
+  color: #c9d4ff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.dot {
+  position: relative;
+  width: 22px;
+  height: 6px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: width 260ms;
+}
+.dot::before {
+  /* A 24-pixel touch target around the thin pill. */
+  content: '';
+  position: absolute;
+  inset: -9px -1px;
+}
+.dotOn {
+  width: 34px;
+  background: rgba(255, 255, 255, 0.35);
+}
+.dotFill {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  transform-origin: left;
+  animation: fill linear both;
+}
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.pause {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  margin-left: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+.pause:hover,
+.dot:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+.dot:focus-visible,
+.pause:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.slide {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: slideIn 560ms cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+}
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: 8px;
+}
+.before,
+.after {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 11px 13px;
+  border-radius: 14px;
+}
+.before p,
+.after p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+.before {
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.7);
+}
+.after {
+  background: linear-gradient(150deg, rgba(95, 227, 154, 0.18), rgba(143, 166, 255, 0.14));
+  border: 1px solid rgba(95, 227, 154, 0.45);
+  color: #fff;
+  font-weight: 700;
+  animation: glow 900ms 300ms both;
+}
+@keyframes glow {
+  from {
+    box-shadow: 0 0 0 0 rgba(95, 227, 154, 0.5);
+  }
+  to {
+    box-shadow: 0 0 0 10px rgba(95, 227, 154, 0);
+  }
+}
+.stat {
+  font-size: clamp(22px, 2.1vw, 30px);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.before .stat {
+  color: rgba(255, 255, 255, 0.75);
+}
+.strike {
+  text-decoration: line-through;
+  text-decoration-color: rgba(255, 46, 46, 0.8);
+  text-decoration-thickness: 2px;
+}
+.after .stat {
+  color: #5fe39a;
+}
+.caption {
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0.8;
+}
+.before p,
+.after p {
+  margin-top: 4px !important;
+}
+.chart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+.when {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+.after .when {
+  color: #5fe39a;
+  opacity: 1;
+}
+.arrow {
+  align-self: center;
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.chartTitle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 12px;
+  margin: 2px 0 0;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+.legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.legend i {
+  display: inline-block;
+  width: 12px;
+  height: 6px;
+  margin-left: 6px;
+  border-radius: 3px;
+}
+.keyGhost {
+  background: rgba(255, 46, 46, 0.45);
+}
+.keyReal {
+  background: #5fe39a;
+}
+.bars {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 168px) 1fr 84px;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  animation: rowIn 420ms both;
+}
+@keyframes rowIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+.rowLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.85);
+}
+.track {
+  position: relative;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+.ghost,
+.fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  transform-origin: left;
+  animation: grow 900ms cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+.ghost {
+  background: rgba(255, 46, 46, 0.45);
+}
+@keyframes grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+.good {
+  background: linear-gradient(90deg, #2fbf71, #5fe39a);
+}
+.bad {
+  background: linear-gradient(90deg, #d91f1f, #ff5a5a);
+}
+.neutral {
+  background: linear-gradient(90deg, #5c73e6, #8fa6ff);
+}
+.mark {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 2px;
+  margin-left: -1px;
+  background: #fff;
+  opacity: 0.8;
+}
+.rowValue {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  text-align: right;
+  white-space: nowrap;
+}
+.goodText {
+  color: #5fe39a;
+}
+.badText {
+  color: #ff7a7a;
+}
+.neutralText {
+  color: #c9d4ff;
+}
+.markNote {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.markKey {
+  width: 2px;
+  height: 12px;
+  background: #fff;
+}
+
+@media (max-height: 760px) and (min-width: 761px) {
+  .before p,
+  .after p {
+    font-size: 12.5px;
+  }
+  .bars {
+    gap: 5px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .row,
+  .ghost,
+  .fill,
+  .after,
+  .dotFill {
+    animation: none;
+  }
+}
+
+/* Phones and short screens: the page never scrolls, so the banner keeps the numbers and drops the detail. */
+.show {
+  overflow: hidden;
+}
+@media (max-width: 760px), (max-height: 620px) {
+  .before p,
+  .after p,
+  .chart {
+    display: none;
+  }
+  .compare {
+    grid-template-columns: 1fr auto 1fr;
+  }
+  .arrow {
+    transform: none;
+  }
+  .before,
+  .after {
+    padding: 8px 10px;
+  }
+  .stat {
+    font-size: 20px;
+  }
+}
+@media (max-width: 760px) and (max-height: 700px), (max-height: 520px) {
+  .caption {
+    display: none;
+  }
+}
+/* Tall phones have room for a short chart. */
+@media (max-width: 760px) and (min-height: 760px) {
+  .chart {
+    display: flex;
+  }
+  .row {
+    grid-template-columns: minmax(0, 104px) 1fr 64px;
+    font-size: 12px;
+  }
+  .chart {
+    gap: 6px;
+    padding: 8px 12px;
+  }
+  .bars {
+    justify-content: flex-start;
+    gap: 6px;
+  }
+  .slide {
+    gap: 10px;
+  }
+  .row:nth-child(n + 3),
+  .legend,
+  .markNote {
+    display: none;
+  }
+}

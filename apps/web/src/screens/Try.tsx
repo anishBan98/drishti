@@ -22,6 +22,7 @@ import { coverageFor } from '../sandbox/coverage';
 import type { Company } from '../sandbox/protocol';
 import css from '../sandbox/try.module.css';
 import { ago, sizeLabel } from '../sandbox/time';
+import { Icon } from '../components/Icon';
 
 // Sandbox pages (docs/09 §6.12): your companies, and one company's data (link sheets, drop files, what was found,
 // which screens are ready). One fluid page, not the 1440 × 900 stage, so it works on phones too.
@@ -61,6 +62,9 @@ function TopBar() {
         </div>
         <Link to="/demo" className={css.ghost}>
           {t('home.cta.demo')}
+        </Link>
+        <Link to="/signin" className={css.ghost}>
+          <Icon name="signIn" /> {t('auth.sign_in')}
         </Link>
       </div>
     </header>
@@ -175,7 +179,7 @@ export function TryHome() {
       </section>
       <p className={css.links}>
         <a href="/samples/Drishti-Workspace-Template.xlsx" download>
-          ⬇ {t('try.template')}
+          <Icon name="download" /> {t('try.template')}
         </a>
         <a href={GUIDE_URL} target="_blank" rel="noreferrer">
           {t('try.guide')}
@@ -327,7 +331,7 @@ function Sources({ c, onError }: { c: Company; onError: (m: string) => void }) {
         </h2>
         {hasLinks(c) && (
           <button type="button" className={ui.btnSecondary} onClick={refresh} disabled={busy} aria-busy={busy}>
-            {busy ? t('try.refreshing') : `↻ ${t('try.refresh_all')}`}
+            <Icon name="refresh" /> {busy ? t('try.refreshing') : t('try.refresh_all')}
           </button>
         )}
       </div>
@@ -436,11 +440,11 @@ function Ready({ c }: { c: Company }) {
       </ul>
       {c.snapshot && cover.some((x) => x.ok && x.screen !== 'actions' && x.screen !== 'data') ? (
         <Link className={`${ui.btnPrimary} ${css.show}`} to={screenHref(`/try/${c.id}`, 'week')}>
-          {t('try.show')} →
+          {t('try.show')} <Icon name="arrowRight" />
         </Link>
       ) : (
         <button type="button" className={`${ui.btnPrimary} ${css.show}`} disabled>
-          {t('try.show')} →
+          {t('try.show')} <Icon name="arrowRight" />
         </button>
       )}
     </section>
@@ -458,7 +462,9 @@ export function TryManage() {
   return (
     <Shell>
       <nav className={css.crumbs} aria-label={t('try.back')}>
-        <Link to="/try">← {t('try.back')}</Link>
+        <Link to="/try">
+          <Icon name="arrowLeft" /> {t('try.back')}
+        </Link>
       </nav>
       <div className={css.titleRow}>
         <label className="sr-only" htmlFor="company-name">

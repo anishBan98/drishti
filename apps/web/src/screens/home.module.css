@@ -209,7 +209,7 @@
 }
 .lead {
   margin: 0;
-  max-width: 560px;
+  max-width: 660px;
   font-size: clamp(14px, 1.15vw, 17px);
   line-height: 1.5;
   color: var(--muted);
@@ -334,9 +334,69 @@
 .links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 22px;
+  align-items: center;
+  gap: 8px 24px;
   font-size: 14px;
   font-weight: 700;
+  animation: rise 700ms 460ms both;
+}
+.links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+  text-decoration: none;
+  color: var(--link);
+}
+.links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.primary svg,
+.secondary svg {
+  margin-left: 8px;
+  transition: transform 200ms;
+}
+.primary:hover svg {
+  transform: translateX(3px);
+}
+
+/* What Drishti shows you */
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 20px;
+  max-width: 620px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: rise 700ms 320ms both;
+}
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+.feature strong {
+  display: block;
+  font-weight: 800;
+}
+.featureIcon {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--link) 14%, transparent);
+  color: var(--link);
+}
+.featureDetail {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
 }
 .mobileNote {
   display: none;
@@ -1045,5 +1105,65 @@
   .home *::after {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+/* The feature grid: one column on phones; titles only on short screens. */
+@media (max-width: 760px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-height: 760px) {
+  .featureDetail {
+    display: none;
+  }
+  .featureIcon {
+    width: 26px;
+    height: 26px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .features,
+  .links {
+    animation: none;
+  }
+}
+
+/* The start card fills the whole column: the banner grows, Play sits at the bottom. */
+.game:has(.intro) {
+  align-self: stretch;
+}
+.intro {
+  flex: 1;
+}
+.playRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.playRow .play {
+  flex: none;
+  align-self: center;
+}
+.playPrompt {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
+}
+@media (max-width: 760px), (max-height: 620px) {
+  .features {
+    display: none;
+  }
+  .playRow {
+    padding-top: 8px;
+  }
+  .playPrompt {
+    display: none;
   }
 }
