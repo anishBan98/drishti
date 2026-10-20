@@ -745,6 +745,11 @@ Covered by SYNC-07, CON-06.
 | GITHUB_DISPATCH_FAILED | 502 | Couldn't start a sync. An owner needs to renew the GitHub token. |
 | AI_UNAVAILABLE | 503 | Drafting is unavailable right now. We'll try again later. |
 | FREE_TIER_LIMIT | 503 | Daily free limit nearly reached. This will run tomorrow. |
+| SANDBOX_FULL | client | This browser keeps up to 50 MB per company. Remove a file or split it by month. |
+| SHEET_LINK_INVALID | 400 | That isn't a Google Sheets link. Copy it from the Share button. |
+| SHEET_NOT_PUBLIC | 403 | Drishti can't open this sheet. In Google Sheets choose Share → General access → Anyone with the link → Viewer, then try again. |
+| SHEET_TOO_LARGE | 413 | This sheet is over 20 MB. Split older months into another sheet. |
+| SHEET_FETCH_FAILED | 502 | Google didn't send the sheet. Try Refresh in a minute. |
 | SNAPSHOT_SCHEMA_MISMATCH | client | Showing the last saved data while we update. |
 | ADAPTER_PARSE_FAILED | client (extension) | Couldn't read the {field} on this page. You can type it. |
 | INTERNAL | 500 | Something went wrong on our side. Try again; if it repeats, tell your analyst (ref {request_id}). |
@@ -1098,7 +1103,9 @@ Both workers share the code; each has its own D1 database, KV namespace and secr
 **Sandbox (`/try`).** The plug-and-play way to try Drishti:
 
 - Files dropped on the page (the filled template `.xlsx`, export CSVs, or a ZIP of them) are read in a Web Worker by `packages/engine`: the same header detection, parsers and models as the sync job (`11-CONNECTORS.md` §3), and the same snapshot builder.
-- Nothing is uploaded and no API is called. The snapshot lives in memory (and IndexedDB, wrapped in try/catch, so a reload keeps it); "Clear my data" deletes it.
+- Nothing is uploaded and no API is called. The parsed facts and snapshot live in memory (and IndexedDB, wrapped in try/catch, so a reload keeps them); "Clear my data" deletes them.
+- **Linked Google Sheets (added 20 Oct 2026):** besides dropping files, a visitor can paste Google Sheets links shared as "Anyone with the link can view". The browser asks the Worker's `GET /api/sheet` (`07-API.md` §2) for the workbook, reads every tab with the same detection as files, and keeps the link. **Refresh** fetches every linked sheet again and rebuilds the snapshot; opening a company refreshes it too. This is the only sandbox call to the server, and it keeps nothing. Private sheets need the signed-in setup (M4), which reads them with the service account.
+- Several companies can be kept at once, each under its own id with its files' parsed rows by source. Updating a company replaces only the sources in the new files and rebuilds its snapshot.
 - Screens render exactly as in the demo, with `workspace.demo = true` and a "Your files, this browser only" chip. Actions are simulated as in demo mode (`10-ACTIONS.md` §7).
 - Limits: up to 50 MB of files in total; screens without enough data show the EmptyState with what to add.
 - Cost: zero server work (static assets only).
@@ -1512,7 +1519,12 @@ Per user: 60 writes per minute, 600 reads per minute. Per capture token: 300 per
 | --- | --- | --- |
 | GET | `/api/health` | `{ ok: true, version: "<git sha>", time }` |
 | GET | `/demo/snapshot.json` | Demo snapshot (static) |
+| GET | `/api/sheet?url=<Google Sheets link>` | The whole workbook as XLSX bytes, for the sandbox's linked sheets (below) |
 | GET | `/samples/*` | Template sheet (`Drishti-Workspace-Template.xlsx`), one CSV per Sheet tab, and one sample export per source (static, copied from `sample-data/` at build) |
+
+### GET `/api/sheet?url=` (sandbox linked sheets)
+
+Public, no login. Browsers cannot download a Google Sheet across sites, so the Worker fetches it for the sandbox: it accepts only `https://docs.google.com/spreadsheets/d/<id>/…` links, requests `/spreadsheets/d/<id>/export?format=xlsx` from Google, and streams the bytes back with `Cache-Control: no-store`. It never stores the sheet or logs its contents or link. The sheet must be shared as "Anyone with the link can view" (or published to the web). Up to 20 MB. Errors `SHEET_LINK_INVALID` 400, `SHEET_NOT_PUBLIC` 403 (Google answered with a sign-in page or 401/403), `SHEET_TOO_LARGE` 413, `SHEET_FETCH_FAILED` 502, `RATE_LIMITED` 429 (best effort, 30 per minute per IP, counted in memory so it uses no KV writes). Signed-in workspaces read their Sheet through the Sheets API with the service account instead (`11-CONNECTORS.md` §2).
 
 ## 3. Auth and session
 
@@ -1918,6 +1930,8 @@ Each insight type has a rule that emits zero or more suggestions with parameters
 | Low-confidence medium | `geo_test` | value of information = P(decision flips) × |budget at stake × ROAS gap| (shown as "Confidence") |
 | Source late | `source_reminder` | data quality (no rupee value) |
 
+**No duplicates of open actions.** A suggestion is not shown while an action with the same type and target is waiting for approval, running, waiting on the user or measuring. Its money is already counted in that action, and showing both double-counts expected impact. The target is the medium pair for `budget_shift` and `budget_change` (any open budget action counts, since they move the same budget), the SKU and platform for price and coupon actions, the segment for discount and offer actions, the city for `restock_request` and `qc_ads_pause`, the batch and aspect for `qa_hold` and `reply_drafts`, and the source for `source_reminder`. The next suggestion moves up into its slot, so This week still shows five when five exist; the open action stays visible on the Actions screen. Declined, undone and expired actions do not block a suggestion; assigned ones do, until they are done or 14 days old.
+
 ### 9.2 Budget optimiser (for `budget_shift`)
 Greedy reallocation in ₹1 L steps: repeatedly move ₹1 L from the medium with the lowest marginal return to the highest until marginal returns are within 10% or the per-medium change limit (±30% of current) is reached, or the total moved reaches the suggestion size (default ₹30 L). Expected impact = Σ step gains.
 
@@ -2144,7 +2158,7 @@ No design PNG; uses the same tokens and both themes. **One screen, no page scrol
 - **Hero:** eyebrow, the title "See what really worked." with "really" animated, a rotating line naming the four jobs (measures what each ad rupee really earned; watches rival prices, ratings and stockouts; turns every insight into a one-click action; proves whether each action paid off), one-paragraph lead, and **claims vs reality**: animated bars and counting numbers for what ad platforms claimed against what the brand sold (demo snapshot, labelled fictional).
 - **Game, "Spot the real rupee":** four quick rounds built from the demo snapshot (real return of the most over-claimed medium; the biggest driver of the week; the problem customer type; the high-threat rival). Each answer reveals the measured fact with a "See it in the demo" link. Gamification: XP per right answer, a streak bonus, three levels (Curious, Sharp-eyed, Drishti-sighted), one badge per skill that lights up when earned, confetti on a right answer, a score ring at the end and the best score kept in `localStorage` (try/catch). The game only chooses which facts to ask; every number comes from the snapshot. A round is skipped when its data is missing (for example a placeholder segment name).
 - **Footer strip (desktop):** How it works in three steps (Connect, Measure, Act and prove), a marquee of the channels Drishti covers, "Free. No card. Your data stays in your own accounts."
-- **Buttons and links:** **Open the demo** (`/demo`), **Set up your workspace** (the setup guide until `/onboarding` ships in M4), **Download the sample sheet** (`/samples/Drishti-Workspace-Template.xlsx`), **What data Drishti needs** (`/guide` from M5). Try with your own data (`/try`) joins in M5.
+- **Buttons and links:** **Open the demo** (`/demo`), **Set up your workspace** (the setup guide until `/onboarding` ships in M4), **Download the sample sheet** (`/samples/Drishti-Workspace-Template.xlsx`), **What data Drishti needs** (`/guide` from M5), and **Analyse your company** (`/try`, decided 20 Oct 2026: built straight after M3).
 - **Phones:** the hero, claims card, Open the demo and the game stack in one screen; the footer strip and secondary links hide; after an answer the question and wrong options fold away so the explanation and Next fit. The note "The full workspace is best on a laptop or desktop." sits under the button, since the eight screens stay a desktop layout.
 - **Motion:** entrance fades, the shimmer, rotator, bar race, card flips, confetti, pulsing Play and marquee are decorative. All of it stops under `prefers-reduced-motion`, and the tests run with reduced motion.
 - Signed-in users at `/` see This week instead.
@@ -2209,7 +2223,9 @@ Same frame as the screens (sidebar + content). Left: a step list with ✓ for do
 One row per source (the 13 file sources and the Sheet tabs): what it feeds, where to export it on the platform (menu path), how often, required columns with accepted aliases (from `11-CONNECTORS.md` §3), and **Download sample** (`/samples/<file>`). **Check my file:** drop a file and the engine (in the browser, nothing uploaded) says which source it is, how many rows parsed, the date range, and any missing columns with the fix. Signed-in Editors and above also get **Upload to Inbox** (`upload_file`).
 
 ### 6.12 Sandbox (`/try`, public, no login)
-A drop zone ("Drop your filled template or exports here. Files stay in this browser."), a list of detected files (source, rows, dates, warnings), a coverage checklist of which screens have enough data, and **Show my screens**, which opens the eight screens at `/try/*` on the locally built snapshot. Header chip "Your files, this browser only"; **Clear my data**. See `05-SYSTEM-DESIGN.md` §14.
+A drop zone ("Drop your filled template or exports here. Files stay in this browser."), a list of detected files (source, rows, dates, warnings), a coverage checklist of which screens have enough data, and **Show my screens**, which opens the eight screens at `/try/<company>/*` on the locally built snapshot. Header chip "Your files, this browser only"; **Clear my data**. See `05-SYSTEM-DESIGN.md` §14.
+- **Two ways in, side by side:** **Link a Google Sheet** (paste a link; the hint shows how to share it as "Anyone with the link can view") and **Drop files**. A company can mix both. Linked sheets show the sheet name, the tabs Drishti recognised and "Fetched {time}"; **Refresh** (also in the screens' header chip) fetches them again and the screens rebuild. Unrecognised tabs are listed with their headers.
+- **Companies (added 20 Oct 2026):** the sandbox keeps several companies side by side in this browser. **Your companies** lists each one (name, sources, data through, last updated) with Open, Update data, Rename and Delete; **Add a company** starts a new one. **Update data** reopens the drop zone for that company: a dropped file replaces the earlier file of the same source, other sources stay, and the screens rebuild at once. In the screens, the workspace menu switches company and links back to the list; the sidebar logo goes to the home page.
 
 ## 7. Data loading, polling and states
 
@@ -2272,7 +2288,7 @@ All user-facing strings, keyed. Examples (full deck generated from the designs; 
 | signin.demo | Or open the demo with fictional data |
 | home.lead | A free marketing intelligence workspace for D2C brands that sell on their own site, Amazon, Flipkart, Nykaa and quick commerce. |
 | home.how.title / steps | How it works / Connect your sheet and exports. · Drishti measures what really worked. · Act from every screen and see if it paid off. |
-| home.cta.demo / try / setup | Open the demo / Try with your own data / Set up your workspace |
+| home.cta.demo / try / setup | Open the demo / Analyse your company / Set up your workspace |
 | home.sample / guide / free | Download the sample sheet / What data Drishti needs / Free. Your data stays in your own accounts. |
 | onboarding.title | Set up your workspace |
 | guide.title / subtitle | What data Drishti needs / Every source, where to export it, and a sample file for each. |
@@ -2703,6 +2719,8 @@ CI must be green before any milestone is marked done.
 - **E2E-22** Onboarding wizard (staging): steps resume after reload; a bad link shows the sharing fix; finishing step 6 starts a sync and ends on This week.
 - **E2E-23** Data guide: every Download sample link returns its file; Check my file on each `sample-data/inbox` file names the right source with no upload request sent.
 - **E2E-24** Sandbox: dropping `Drishti-Workspace-Template.xlsx` plus the inbox samples renders all eight screens; editing a file and dropping it again changes the numbers; no network request other than static assets is made.
+- **E2E-27** Sandbox linked sheet (`/api/sheet` mocked with a workbook of the inbox samples): linking renders the screens; Refresh after the mock changes updates the numbers; a private sheet shows the sharing fix.
+- **API-SHEET** `/api/sheet` rejects non-Google links (400), maps a Google sign-in redirect to `SHEET_NOT_PUBLIC`, stops at 20 MB, and sends `Cache-Control: no-store`.
 
 ## 3. Fixtures
 
@@ -3185,7 +3203,7 @@ For production (a real brand), the brand's owner does the same with their own Sh
 | M9 | Extension, rival sites, approvals, notifications | Extension adapters (EXT tests), rival site watcher (SITE-01), approvals and expiry, Slack and Calendar notifications, Monday summary |
 | M10 | Hardening and release | FREE-01..03; gitleaks; nightly E2E green twice; tag `v1.0.0`; production smoke E2E; README with demo link, screenshots and architecture |
 
-**Order of work (decided 20 Oct 2026, `01-PRD.md` §11.7):** M0 → M1 → M2 → **M3** (This week, Impact and ROI, Market and Actions polished first, then the other four screens) → **M6 on demo data** (synthetic control, natural experiments, MMM calibration; MOD-01..08 and VOICE-01 on `sample-data`) → M4 → M5 (M6's checks re-run on synced data to complete M6) → M7 → M8 → M9 → M10. Measurement credibility comes before breadth because it is the core of the investor and design-partner story.
+**Order of work (decided 20 Oct 2026, `01-PRD.md` §11.7; updated the same day):** M0 → M1 → M2 → **M3** (This week, Impact and ROI, Market and Actions polished first, then the other four screens) → **Sandbox** (`/try`: the file parsers and Check my file from M5, several companies, update by dropping files again, plus a UI polish pass that keeps the eight screens' layouts; E2E-24) → **M6 on demo data** (synthetic control, natural experiments, MMM calibration; MOD-01..08 and VOICE-01 on `sample-data`) → M4 → M5 (M6's checks re-run on synced data to complete M6) → M7 → M8 → M9 → M10. Measurement credibility comes before breadth because it is the core of the investor and design-partner story.
 
 ## 9. Prompts for Claude Code
 

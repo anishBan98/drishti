@@ -668,3 +668,19 @@
 .switch[aria-checked='true'] .knob {
   left: 25px;
 }
+
+/* Hover states fade in (150 ms; none under reduced motion). */
+.cvr,
+.gridRowBtn,
+.divRow {
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cvr,
+  .gridRowBtn,
+  .divRow {
+    transition: none;
+  }
+}

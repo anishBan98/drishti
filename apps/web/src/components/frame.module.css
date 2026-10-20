@@ -319,3 +319,17 @@
   font-size: 13px;
   color: var(--muted-2);
 }
+
+/* Hover states fade in (150 ms; none under reduced motion). */
+.nav,
+.menuItem {
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav,
+  .menuItem {
+    transition: none;
+  }
+}

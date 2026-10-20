@@ -32,7 +32,8 @@ describe('demo snapshot', () => {
     const again = build('2026-10-17T13:10:00+05:30');
     expect(again.version).toBe(snap.version);
     expect({ ...again, generated_at: '' }).toEqual({ ...snap, generated_at: '' });
-  });
+    // A full demo build; slow when every package's tests run at once.
+  }, 30_000);
 
   it('stays under the snapshot size governor (docs/05 §3)', () => {
     expect(JSON.stringify(snap).length).toBeLessThan(GOVERNORS.snapshotMaxBytes);

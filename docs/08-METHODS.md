@@ -217,6 +217,8 @@ Each insight type has a rule that emits zero or more suggestions with parameters
 | Low-confidence medium | `geo_test` | value of information = P(decision flips) × |budget at stake × ROAS gap| (shown as "Confidence") |
 | Source late | `source_reminder` | data quality (no rupee value) |
 
+**No duplicates of open actions.** A suggestion is not shown while an action with the same type and target is waiting for approval, running, waiting on the user or measuring. Its money is already counted in that action, and showing both double-counts expected impact. The target is the medium pair for `budget_shift` and `budget_change` (any open budget action counts, since they move the same budget), the SKU and platform for price and coupon actions, the segment for discount and offer actions, the city for `restock_request` and `qc_ads_pause`, the batch and aspect for `qa_hold` and `reply_drafts`, and the source for `source_reminder`. The next suggestion moves up into its slot, so This week still shows five when five exist; the open action stays visible on the Actions screen. Declined, undone and expired actions do not block a suggestion; assigned ones do, until they are done or 14 days old.
+
 ### 9.2 Budget optimiser (for `budget_shift`)
 Greedy reallocation in ₹1 L steps: repeatedly move ₹1 L from the medium with the lowest marginal return to the highest until marginal returns are within 10% or the per-medium change limit (±30% of current) is reached, or the total moved reaches the suggestion size (default ₹30 L). Expected impact = Σ step gains.
 

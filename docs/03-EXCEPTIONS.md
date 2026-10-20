@@ -113,6 +113,11 @@
 | GITHUB_DISPATCH_FAILED | 502 | Couldn't start a sync. An owner needs to renew the GitHub token. |
 | AI_UNAVAILABLE | 503 | Drafting is unavailable right now. We'll try again later. |
 | FREE_TIER_LIMIT | 503 | Daily free limit nearly reached. This will run tomorrow. |
+| SANDBOX_FULL | client | This browser keeps up to 50 MB per company. Remove a file or split it by month. |
+| SHEET_LINK_INVALID | 400 | That isn't a Google Sheets link. Copy it from the Share button. |
+| SHEET_NOT_PUBLIC | 403 | Drishti can't open this sheet. In Google Sheets choose Share → General access → Anyone with the link → Viewer, then try again. |
+| SHEET_TOO_LARGE | 413 | This sheet is over 20 MB. Split older months into another sheet. |
+| SHEET_FETCH_FAILED | 502 | Google didn't send the sheet. Try Refresh in a minute. |
 | SNAPSHOT_SCHEMA_MISMATCH | client | Showing the last saved data while we update. |
 | ADAPTER_PARSE_FAILED | client (extension) | Couldn't read the {field} on this page. You can type it. |
 | INTERNAL | 500 | Something went wrong on our side. Try again; if it repeats, tell your analyst (ref {request_id}). |

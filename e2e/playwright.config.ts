@@ -26,6 +26,13 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 } },
     },
     {
+      // The sandbox parses real files in a worker; it runs on its own so it doesn't slow the other suites.
+      name: 'sandbox',
+      testMatch: /sandbox.spec.ts/,
+      fullyParallel: false,
+      use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: 'a11y',
       testMatch: /a11y\.spec\.ts/,
       use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 } },

@@ -122,8 +122,16 @@ export function reviewStats(reviews: Review[], w: Windows): ReviewStats {
 }
 
 /** Last date with any sales row: the snapshot's data_through. */
+/**
+ * The last date every live channel has data for: the earliest of each channel's latest date, ignoring channels whose
+ * data stopped more than 14 days before the newest (a weekly file must not push the week past the daily ones).
+ */
 export function dataThrough(rows: SalesCityDaily[]): string {
-  let max = '';
-  for (const r of rows) if (r.date > max) max = r.date;
-  return max;
+  const last = new Map<string, string>();
+  for (const r of rows) if (r.date > (last.get(r.channel) ?? '')) last.set(r.channel, r.date);
+  const ends = [...last.values()].sort();
+  const max = ends.at(-1) ?? '';
+  if (!max) return '';
+  const cutoff = new Date(Date.parse(`${max}T00:00:00Z`) - 14 * 86_400_000).toISOString().slice(0, 10);
+  return ends.find((d) => d >= cutoff) ?? max;
 }

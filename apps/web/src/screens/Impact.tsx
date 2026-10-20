@@ -71,7 +71,7 @@ export function Impact({ snapshot }: { snapshot: Snapshot }) {
                   <span
                     className={css.cvrBars}
                     role="img"
-                    aria-label={`${c.label}: claims ₹${Math.round(c.claimed_per100)}, real ₹${Math.round(c.real_per100)} per ₹100`}
+                    aria-label={`${c.label}: claims ₹${Math.round(c.claimed_per100)}, real ${c.measured === false ? t('ui.not_measured') : `₹${Math.round(c.real_per100)}`} per ₹100`}
                   >
                     <span className={css.barClaim} style={{ width: `${(c.claimed_per100 / scale) * 100}%` }} />
                     <span className={css.barReal} style={{ width: `${(c.real_per100 / scale) * 100}%` }} />
@@ -80,10 +80,15 @@ export function Impact({ snapshot }: { snapshot: Snapshot }) {
                     <span className={css.small}>₹{Math.round(c.claimed_per100)}</span>
                     <span
                       className={css.strongVal}
-                      style={{ color: realColor(c.real_per100) }}
-                      title={t('ui.impact.range', { low: money(c.real_low), high: money(c.real_high) })}
+                      style={{ color: c.measured === false ? 'var(--muted)' : realColor(c.real_per100) }}
+                      title={
+                        c.measured === false
+                          ? undefined
+                          : t('ui.impact.range', { low: money(c.real_low), high: money(c.real_high) })
+                      }
                     >
-                      ₹{Math.round(c.real_per100)}
+                      {/* Not enough history to measure yet (docs/08 §3.4): no number is invented. */}
+                      {c.measured === false ? '—' : `₹${Math.round(c.real_per100)}`}
                     </span>
                   </span>
                 </button>
@@ -133,7 +138,7 @@ export function Impact({ snapshot }: { snapshot: Snapshot }) {
             cells={[
               { label: t('ui.impact.cell.spend'), value: money(ch.spend) },
               { label: t('ui.impact.cell.claimed'), value: money(ch.claimed) },
-              { label: t('ui.impact.cell.real'), value: money(ch.real) },
+              { label: t('ui.impact.cell.real'), value: ch.measured === false ? '—' : money(ch.real) },
             ]}
           >
             <EvidenceLine evidence={ch.evidence} />

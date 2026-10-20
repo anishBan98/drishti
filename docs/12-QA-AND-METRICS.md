@@ -98,6 +98,8 @@ CI must be green before any milestone is marked done.
 - **E2E-22** Onboarding wizard (staging): steps resume after reload; a bad link shows the sharing fix; finishing step 6 starts a sync and ends on This week.
 - **E2E-23** Data guide: every Download sample link returns its file; Check my file on each `sample-data/inbox` file names the right source with no upload request sent.
 - **E2E-24** Sandbox: dropping `Drishti-Workspace-Template.xlsx` plus the inbox samples renders all eight screens; editing a file and dropping it again changes the numbers; no network request other than static assets is made.
+- **E2E-27** Sandbox linked sheet (`/api/sheet` mocked with a workbook of the inbox samples): linking renders the screens; Refresh after the mock changes updates the numbers; a private sheet shows the sharing fix.
+- **API-SHEET** `/api/sheet` rejects non-Google links (400), maps a Google sign-in redirect to `SHEET_NOT_PUBLIC`, stops at 20 MB, and sends `Cache-Control: no-store`.
 
 ## 3. Fixtures
 

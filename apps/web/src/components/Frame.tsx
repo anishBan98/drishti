@@ -106,11 +106,20 @@ export function Sidebar({
   workspaceName,
   demo,
   snapshot,
+  note,
+  menu,
+  footer,
 }: {
   base: string;
   workspaceName: string;
   demo: boolean;
   snapshot?: Snapshot;
+  /** Line under the workspace name (default: the demo note). */
+  note?: string;
+  /** Workspace menu items (default: home and setup links). */
+  menu?: ReactNode;
+  /** Replaces the "Synced" footer (the sandbox shows its Refresh chip). */
+  footer?: ReactNode;
 }) {
   const { theme, setTheme } = useTheme();
   const [open, setOpen] = useState(false);
@@ -137,18 +146,24 @@ export function Sidebar({
           onClick={() => setOpen((o) => !o)}
         >
           <span className={css.wsName}>{workspaceName} ▾</span>
-          {demo && <span className={css.wsNote}>{t('demo.workspace')}</span>}
+          {(note ?? (demo ? t('demo.workspace') : '')) && (
+            <span className={css.wsNote}>{note ?? t('demo.workspace')}</span>
+          )}
         </button>
         {open && (
           <div className={css.menu} role="menu">
-            {demo && <p className={css.menuNote}>{t('ui.workspace.menu.demo_note')}</p>}
+            {menu ?? (
+              <>
+                {demo && <p className={css.menuNote}>{t('ui.workspace.menu.demo_note')}</p>}
+                <a role="menuitem" className={css.menuItem} href="/">
+                  {t('ui.workspace.menu.home')}
+                </a>
+                <a role="menuitem" className={css.menuItem} href={SETUP_URL} target="_blank" rel="noreferrer">
+                  {t('ui.workspace.menu.setup')}
+                </a>
+              </>
+            )}
             <p className={css.menuNote}>{t('ui.shortcuts.hint')}</p>
-            <a role="menuitem" className={css.menuItem} href="/">
-              {t('ui.workspace.menu.home')}
-            </a>
-            <a role="menuitem" className={css.menuItem} href={SETUP_URL} target="_blank" rel="noreferrer">
-              {t('ui.workspace.menu.setup')}
-            </a>
           </div>
         )}
       </div>
@@ -181,7 +196,7 @@ export function Sidebar({
           ☾ {t('theme.dark')}
         </button>
       </div>
-      <p className={`${css.footer} ${synced.stale ? css.stale : ''}`}>{synced.text}</p>
+      {footer ?? <p className={`${css.footer} ${synced.stale ? css.stale : ''}`}>{synced.text}</p>}
     </nav>
   );
 }

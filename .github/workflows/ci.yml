@@ -33,7 +33,7 @@ jobs:
       - run: pnpm test
 
   e2e:
-    name: e2e (demo, a11y)
+    name: e2e (demo, a11y, sandbox)
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -49,6 +49,8 @@ jobs:
         run: pnpm --filter @drishti/e2e exec playwright install --with-deps chromium
       - name: Demo journeys and accessibility (docs/12 §1)
         run: pnpm --filter @drishti/e2e exec playwright test --project=demo --project=a11y
+      - name: Sandbox with your own files and linked sheets (E2E-24, E2E-27)
+        run: pnpm --filter @drishti/e2e exec playwright test --project=sandbox
       - uses: actions/upload-artifact@v7
         if: failure()
         with:

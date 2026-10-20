@@ -4,6 +4,16 @@ All notable changes to Drishti. Milestones follow `docs/14-SETUP-RUNBOOK.md` §8
 
 ## [Unreleased]
 
+### Sandbox · Analyse your own company (2026-10-20)
+
+- `/try`: keep several companies in this browser. Each one can **link Google Sheets** (shared as "Anyone with the link can view") and **drop files** (the filled template, any of the 13 exports, or a ZIP). Every tab and file is detected by its columns, read in a Web Worker, and turned into the same eight screens as the demo. **Refresh** fetches linked sheets again (also on opening a company); dropping a newer export replaces the older file of the same source. Nothing is stored on a server (docs 05 §14, 09 §6.12).
+- `GET /api/sheet`: the Worker fetches a link-shared Google Sheet as XLSX for the sandbox; Google Sheets links only, 20 MB limit, nothing stored or logged, errors with the sharing fix (`SHEET_NOT_PUBLIC`) (docs 07 §2, 03).
+- Engine: parsers for all 13 sources with header detection, aliases and per-source Mappings (CON-01..16); an XLSX reader; assembly that maps ASIN, FSN and Nykaa codes to SKUs, turns creator posts into creator spend, and spreads city-less rows by the national city mix (docs 06 §1.2).
+- Engine honesty on short or partial data: under 120 days of history, real returns are "not measured yet" (shown as "—") instead of estimated (docs 08 §3.4); any mix of sources builds a valid snapshot with no NaN; screens without their data say what to add. The demo-only "Pump mentions" KPI became "{issue} complaints", following each brand's top complaint.
+- Home: **Analyse your company** button. Build order updated: sandbox first, then M6 (docs 14 §8).
+- UI polish within the design layouts: hover and press feedback on buttons, hover fades on rows and nav, disabled controls read as unavailable, a loading skeleton for the demo (docs 09 §7, §8).
+- Tests: CON-01..16, partial-data builds, API-SHEET, E2E-24 (files), E2E-27 (linked sheet with Refresh and the private-sheet fix), sandbox accessibility. CI runs the sandbox suite as its own step.
+
 ### M3 · Home page, eight screens, demo actions (2026-10-20)
 
 - Home page (`/`): one screen with no page scroll on desktop and phone. It explains what Drishti is for in one line, shows a live preview built from the demo snapshot, and offers a four-round game, "Spot the real rupee" (XP, streak bonus, three levels, badges, confetti, a score ring and the best score kept in the browser). All motion stops under reduced motion (docs 09 §6.0 and §8 updated; E2E-25 and E2E-26 added).

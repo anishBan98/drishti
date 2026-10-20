@@ -11,16 +11,14 @@ import { bytesToHex, utf8ToBytes } from '@noble/hashes/utils.js';
 import { buildContext } from './context';
 import type { Facts } from './facts/types';
 import type { Workspace } from './facts/workspace';
-import { PUMP_MENTION } from './kpi';
 import { buildCustomers } from './sections/customers';
 import { buildData, buildSources } from './sections/data';
 import { buildImpact } from './sections/impact';
 import { buildMarket } from './sections/market';
 import { buildPerformance } from './sections/performance';
-import { buildVoice } from './sections/voice';
+import { buildVoice, topIssue } from './sections/voice';
 import { buildWeek } from './sections/week';
 import { suggest } from './suggest';
-import { inRange } from './windows';
 import { t } from '@drishti/shared';
 
 // Snapshot builder (docs/05 §4 step 9, docs/06 §6). Deterministic: the same facts give the same version.
@@ -46,7 +44,7 @@ export function stableStringify(v: unknown): string {
 }
 
 export function buildSnapshot(facts: Facts, ws: Workspace, opts: BuildOptions): Snapshot {
-  const ctx = buildContext(facts, ws, { sampleScale: opts.sampleScale ?? 1 });
+  const ctx = buildContext(facts, ws, { sampleScale: opts.sampleScale ?? 1, today: opts.generatedAt.slice(0, 10) });
   const threshold = ws.settings.approval_threshold_inr;
 
   const sources = buildSources(ctx);
@@ -57,8 +55,7 @@ export function buildSnapshot(facts: Facts, ws: Workspace, opts: BuildOptions): 
 
   // Channel suggestions for Performance: the market coupon on its platform, plus one move per channel.
   const coupon = market.section.products.flatMap((p) => p.suggestions).find((s) => s.type === 'amazon_coupon');
-  const r30 = facts.reviews.filter((r) => inRange(r.review_date, ctx.w.d30));
-  const pumpShare = r30.length ? r30.filter((r) => PUMP_MENTION.test(r.text)).length / r30.length : 0;
+  const issue = topIssue(ctx);
   const perChannel: Partial<Record<Channel, Suggestion[]>> = {};
   for (const c of CHANNELS) {
     const list: Suggestion[] = [];
@@ -96,7 +93,7 @@ export function buildSnapshot(facts: Facts, ws: Workspace, opts: BuildOptions): 
     ...customers.segments.flatMap((s) => s.suggestions.filter((x) => x.type === 'shopify_discount_cap')),
     ...impact.section.channels.flatMap((c) => c.suggestions.filter((s) => s.type === 'budget_change')),
   ];
-  const week = buildWeek(ctx, { changes: market.changes, candidates, sources, pumpShare });
+  const week = buildWeek(ctx, { changes: market.changes, candidates, sources, issue });
 
   const body: Omit<Snapshot, 'version'> = {
     schema: SNAPSHOT_SCHEMA,

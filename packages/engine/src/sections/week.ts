@@ -163,7 +163,7 @@ function holdoutDrivers(ctx: Context): Driver[] {
       }
     }
     const removed = Math.max(0, (preAll ? (preT / preAll) * nowAll : 0) - nowT);
-    if (!removed) continue;
+    if (!removed || !ctx.measured) continue;
     out.push({
       id: `test_${test.test_id}`,
       label: t('bridge.holdout', { medium: MEDIA_LABEL[m] }),
@@ -207,7 +207,12 @@ function mediaDrivers(ctx: Context, exclude: Set<Media>): Driver[] {
 
 export function buildWeek(
   ctx: Context,
-  input: { changes: PriceChange[]; candidates: Suggestion[]; sources: Snapshot['sources']; pumpShare?: number },
+  input: {
+    changes: PriceChange[];
+    candidates: Suggestion[];
+    sources: Snapshot['sources'];
+    issue?: { label: string; share: number };
+  },
 ): Snapshot['week'] {
   const { w, sales, ws } = ctx;
   const threshold = ws.settings.approval_threshold_inr;
@@ -233,7 +238,11 @@ export function buildWeek(
   const explainedSum = drivers.reduce((a, d) => a + d.value, 0);
   const unexplained = change - explainedSum;
   const explained = change ? Math.max(0, 1 - Math.abs(unexplained) / Math.abs(change)) : 1;
-  const shown = [...drivers].sort((a, b) => Math.abs(b.value) - Math.abs(a.value)).slice(0, 6);
+  // A driver that rounds to ₹0.0 L says nothing; leave it out.
+  const shown = [...drivers]
+    .filter((d) => Math.abs(d.value) >= 5_000)
+    .sort((a, b) => Math.abs(b.value) - Math.abs(a.value))
+    .slice(0, 6);
   if (Math.abs(unexplained) >= 100_000)
     shown.push({
       id: 'unexplained',
@@ -329,10 +338,14 @@ export function buildWeek(
     })
     .sort((a, b) => b.g - a.g);
   const working = [
-    {
-      title: t('week.working.media', { medium: MEDIA_LABEL[best] }),
-      detail: t('week.working.media.detail', { roas: `₹${ctx.real[best].roas.toFixed(2)}` }),
-    },
+    ...(ctx.measured
+      ? [
+          {
+            title: t('week.working.media', { medium: MEDIA_LABEL[best] }),
+            detail: t('week.working.media.detail', { roas: `₹${ctx.real[best].roas.toFixed(2)}` }),
+          },
+        ]
+      : []),
     {
       title: t('week.working.channel', {
         channel: CHANNEL_SHORT[channelGrowth[0]!.c],
@@ -355,10 +368,13 @@ export function buildWeek(
           title: t('week.attention.channel', { channel: CHANNEL_SHORT[channelGrowth.at(-1)!.c] }),
           detail: t('week.attention.channel.detail', { pct: formatPct(channelGrowth.at(-1)!.g) }),
         },
-    input.pumpShare !== undefined && input.pumpShare > 0.05
+    input.issue && input.issue.share > 0.05
       ? {
-          title: t('week.attention.pump'),
-          detail: t('week.attention.pump.detail', { pct: formatPct(input.pumpShare) }),
+          title: t('week.attention.issue', { aspect: input.issue.label }),
+          detail: t('week.attention.issue.detail', {
+            aspect: input.issue.label.toLowerCase(),
+            pct: formatPct(input.issue.share),
+          }),
         }
       : { title: t('week.attention.cac'), detail: t('week.attention.cac.detail', { cac: money(cac) }) },
     late.length
@@ -418,10 +434,12 @@ export function buildWeek(
         delta: { ...delta('spend', spend, spendPrior), good: null },
         tone: 'neutral',
       }),
-      kpi('true_roas', 'kpi.true_roas', tr, formatRoas(tr), {
-        delta: delta('true_roas', tr, trPrior, 'x'),
-        note: t('note.claims', { value: formatRoas(spend ? claimed / spend : 0) }),
-      }),
+      ctx.measured
+        ? kpi('true_roas', 'kpi.true_roas', tr, formatRoas(tr), {
+            delta: delta('true_roas', tr, trPrior, 'x'),
+            note: t('note.claims', { value: formatRoas(spend ? claimed / spend : 0) }),
+          })
+        : kpi('true_roas', 'kpi.true_roas', 0, '—', { note: t('note.needs_history'), tone: 'neutral' }),
       kpi('cac', 'kpi.cac', cac, money(cac), { delta: delta('cac', cac, cacPrior) }),
     ],
     bridge: {

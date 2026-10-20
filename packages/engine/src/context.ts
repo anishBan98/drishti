@@ -3,12 +3,14 @@ import type { Facts, OwnSiteCustomer } from './facts/types';
 import type { Workspace } from './facts/workspace';
 import { dataThrough, mediaTotals, salesTotals, type MediaTotals, type SalesTotals } from './kpi';
 import { fitMmm, type MmmResult } from './models/mmm';
-import { inRange, windowsFor, addDays, type Windows } from './windows';
+import { inRange, windowsFor, addDays, daysBetween, type Windows } from './windows';
 
 // Everything the sections share, computed once per snapshot.
 
 /** Share of each acquisition medium's real lift that lands on the own site (docs/08 §2 CAC defaults). */
 export const OWN_SITE_SHARE: Partial<Record<Media, number>> = { meta: 0.5, google: 0.6, creators: 0.3 };
+/** Minimum history for the media-mix regression (docs/08 §3.4). */
+export const MIN_HISTORY_DAYS = 120;
 /** The demo own-site files are a 5% sample of buyers (docs/11 §9): scale counts by 20 for totals. */
 export const DEMO_SAMPLE_SCALE = 20;
 
@@ -26,6 +28,10 @@ export interface Context {
   ws: Workspace;
   w: Windows;
   through: string;
+  /** Days from the first sales or spend row to the data-through date. */
+  historyDays: number;
+  /** false when history is under 120 days: real returns are not estimated and screens say so (docs/08 §3.4). */
+  measured: boolean;
   sampleScale: number;
   sales: { week: SalesTotals; prior_week: SalesTotals; d28: SalesTotals; prior_d28: SalesTotals };
   media: {
@@ -39,16 +45,42 @@ export interface Context {
   cacBySource: Partial<Record<OwnSiteCustomer['acquisition_source'], number>>;
 }
 
-export function buildContext(facts: Facts, ws: Workspace, opts: { sampleScale?: number } = {}): Context {
-  const through = dataThrough(facts.sales_city_daily);
+export function buildContext(
+  facts: Facts,
+  ws: Workspace,
+  opts: { sampleScale?: number; today?: string } = {},
+): Context {
+  // No sales yet (a sandbox company with only ads or reviews): the latest date of any data, else the sync day.
+  const through =
+    dataThrough(facts.sales_city_daily) ||
+    [
+      ...facts.spend_city_daily.map((r) => r.date),
+      ...facts.reviews.map((r) => r.review_date),
+      ...facts.market_captures.map((r) => r.captured_at.slice(0, 10)),
+      ...facts.search_share_weekly.map((r) => r.week_ending),
+    ]
+      .filter(Boolean)
+      .sort()
+      .at(-1) ||
+    addDays(opts.today ?? new Date().toISOString().slice(0, 10), -1);
   const w = windowsFor(addDays(through, 1), ws.settings.week_starts_on);
   const s = (r: [string, string]) => salesTotals(facts.sales_city_daily, r);
   const m = (r: [string, string]) => mediaTotals(facts.spend_city_daily, r);
   const media = { week: m(w.week), prior_week: m(w.prior_week), d28: m(w.d28), prior_d28: m(w.prior_d28) };
-  const mmm = fitMmm(facts.sales_city_daily, facts.spend_city_daily, through);
+  // History = days with both sales and paid media (creator posts alone do not count).
+  let firstSale = through;
+  let firstSpend = through;
+  for (const r of facts.sales_city_daily) if (r.date && r.date < firstSale) firstSale = r.date;
+  for (const r of facts.spend_city_daily)
+    if (r.media !== 'creators' && r.date && r.date < firstSpend) firstSpend = r.date;
+  const first = firstSale > firstSpend ? firstSale : firstSpend;
+  const historyDays = through ? daysBetween(first, through) + 1 : 0;
+  const measured = historyDays >= MIN_HISTORY_DAYS;
+  const mmm = fitMmm(measured ? facts.sales_city_daily : [], measured ? facts.spend_city_daily : [], through);
 
   const real = Object.fromEntries(
     MEDIA.map((md) => {
+      if (!measured) return [md, { roas: 0, low: 0, high: 0, confidence: 'low', identified: false }];
       const b = mmm.beta[md];
       const claimed = media.d28[md].claimed_roas ?? 0;
       const identified = b.low > 0;
@@ -98,6 +130,8 @@ export function buildContext(facts: Facts, ws: Workspace, opts: { sampleScale?: 
     ws,
     w,
     through,
+    historyDays,
+    measured,
     sampleScale,
     sales: { week: s(w.week), prior_week: s(w.prior_week), d28: s(w.d28), prior_d28: s(w.prior_d28) },
     media,

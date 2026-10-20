@@ -13,3 +13,19 @@ export { tagReview, tagReviews, ASPECTS } from './voice/lexicon';
 export { kmeans } from './models/kmeans';
 export { fitMmm, nnls } from './models/mmm';
 export { suggest, type SuggestInput } from './suggest';
+export {
+  assemble,
+  detect,
+  parseFile,
+  mappingsBySource,
+  type SourceMappings,
+  readXlsx,
+  isXlsx,
+  expandArchive,
+  SOURCES,
+  type Assembled,
+  type Detected,
+  type ParsedTable,
+  type ParseOptions,
+} from './parsers';
+export { MIN_HISTORY_DAYS } from './context';
