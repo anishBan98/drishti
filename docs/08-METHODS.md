@@ -49,6 +49,7 @@ For each medium the engine gathers evidence, then combines it:
 1. **Planned geo tests** (holdout or boost) read with synthetic control. Weight 1.0 if ended within 120 days, decaying linearly to 0.3 at 365 days.
 2. **Natural experiments** detected automatically (§3.3). Weight 0.6 each, same decay.
 3. **Media-mix regression** on city × day data (§3.4). Weight 0.4.
+4. **Claim-ratio prior** (added 20 Oct 2026): for a platform medium (not creators, whose platforms cannot see most sales they drive), its claimed return × the median real-to-claimed ratio of the media that have experiment evidence. Weight 0.2, 90% range ±60% of the value. It keeps a medium that no test or natural experiment has reached from being shown at, or above, the platform's own claim on the strength of a weak regression alone; any experiment on that medium soon outweighs it. On the demo data it moves Amazon Ads, Flipkart Ads and quick-commerce ads to within 0.4 of their planted returns.
 
 Combined estimate = precision-weighted mean of the available estimates (weight × 1/variance). Interval from the combined variance. Confidence:
 
@@ -63,8 +64,8 @@ The Impact screen shows the estimate as "₹153 per ₹100" with the interval on
 Inputs: daily total net revenue per city (all channels, `sales_city_daily`), test cities T (aggregated into one series y_T), donor cities D (cities not affected by the change and not in another live test; exclude cities with allocated rows > 30%).
 
 1. **Pre-period:** 56 days before the change (minimum 28). Normalise each series by its pre-period mean.
-2. **Weights:** w ∈ ℝ^|D|, w ≥ 0, Σw = 1, minimising Σ_pre (y_T − Σ w_d y_d)² + λ‖w‖² with λ = 0.01 × mean squared y_T. Solve by projected gradient descent onto the simplex (Duchi et al. projection), 2,000 iterations, tolerance 1e-9. Deterministic start w = 1/|D|.
-3. **Fit check:** pre-period RMSPE; require R² ≥ 0.6, else the estimate is flagged `poor_fit` and confidence capped at low.
+2. **Weights:** w ∈ ℝ^|D|, w ≥ 0, Σw = 1, minimising Σ_pre (y_T − Σ w_d y_d)² + λ‖w‖² with λ = 0.01 × mean squared y_T, on 7-day rolling sums of the normalised series (day-to-day noise that cities do not share is smoothed out; trend and seasonality remain). Solve by accelerated projected gradient (FISTA) onto the simplex (Duchi et al. projection), at most 2,000 iterations, tolerance 1e-9. Deterministic start w = 1/|D|.
+3. **Fit check (revised 20 Oct 2026):** pre-period RMSPE on the 7-day sums as a share of the treated level; require ≤ 8%, else the estimate is flagged `poor_fit` and confidence capped at low. R² is reported but not used: it is low whenever the pre-period is flat, and on the demo data it rewards shorter windows that move the estimate away from the truth (56 days: RMSPE 6%, ₹1.36 per ₹1, range contains the planted 1.53; 42 days: R² 0.80 but ₹1.03, range misses it).
 4. **Effect:** during the test, gap_t = y_T,t − ŷ_T,t (in rupees after de-normalising). Total effect = Σ gap_t over the test plus a carryover tail of 7 days after the test ends (for holdouts the tail captures slow-decaying effects).
 5. **Return:** for a holdout (spend removed), real revenue per rupee = −total effect ÷ spend removed, where spend removed = Σ over test days of expected spend in T (pre-period spend share × total media spend) minus actual spend in T. For a boost, = total effect ÷ extra spend.
 6. **Interval:** placebo-in-space: run steps 2–5 treating each donor as if it were treated; the distribution of placebo effects (scaled to the same spend) gives a 90% interval around the estimate (5th–95th percentile of estimate + placebo noise). If fewer than 6 donors, use a block bootstrap over weeks of the pre-period residuals.
@@ -76,10 +77,10 @@ Expected on demo data: the Pune and Ahmedabad Meta holdout (from 26 Sep 2026) gi
 
 Scan `spend_city_daily` per medium and city:
 
-- **Spend shock:** 7-day rolling spend drops below 40% or rises above 180% of the trailing 28-day median for at least 5 consecutive days, while national spend for that medium stays within ±25%. Example in the demo: Meta in Kolkata 2–15 Mar 2026 (billing lapse), Meta burst in Hyderabad 1–10 Dec 2025, Google brand-search cut in Jaipur 4–17 Aug 2026.
+- **Spend shock:** 7-day rolling spend falls by at least 40% (below 60% of the trailing 28-day median) or rises above 180% of it, for at least 5 consecutive days, while national spend for that medium stays within ±25%. After an event the same city and medium are not scanned for 28 days, so the return to normal is not a second event. (Clarified 20 Oct 2026: "below 40%" could not find the Jaipur brand-search cut that MOD-04 requires, a 45% drop; with this rule the detector finds exactly the three planted events.) Example in the demo: Meta in Kolkata 2–15 Mar 2026 (billing lapse), Meta burst in Hyderabad 1–10 Dec 2025, Google brand-search cut in Jaipur 4–17 Aug 2026.
 - **Stockout window** (quick-commerce ads): for stores with stockout = yes, ad spend that ran during stockout days delivered nothing; the share of QC revenue lost vs same-store forecast quantifies the stockout cost (used by the bridge) and the comparison of in-stock vs out-of-stock stores with similar ad spend gives a QC-ads estimate.
 
-Each detected event is read with §3.2 (city as T). Events shorter than 5 days or with pre-fit R² < 0.6 are dropped.
+Each detected event is read with §3.2 (city as T). Events shorter than 5 days or with pre-fit RMSPE above 8% are dropped.
 
 ### 3.4 Media-mix regression (MMM-lite)
 
@@ -167,7 +168,7 @@ Weekly purchase share for tracked queries from Brand Analytics; change vs 4-week
 | days since last order | log1p, then negated (recency) |
 | days between orders (median, for ≥ 2 orders) | log1p; 365 if one order |
 
-Standardise each feature (z-score). Winsorise at ±3.
+The three shares are shrunk toward the population rate, (count + 2 × rate) ÷ (orders + 2), because most customers have one or two orders a year and raw shares would be only 0 or 1 (added 20 Oct 2026; on the demo data agreement with the planted types rises from 0.18 to 0.21 adjusted Rand). Standardise each feature (z-score). Winsorise at ±3.
 
 ### 7.2 Clustering
 - k-means++ initialisation with a seeded PRNG (mulberry32, seed 7), 10 restarts, max 300 iterations, tolerance 1e-6; keep the lowest inertia.
@@ -178,9 +179,9 @@ Standardise each feature (z-score). Winsorise at ±3.
 Per cluster compute buyers %, revenue %, AOV, orders a year, repeat %, discount %, COD %, RTO %, CAC (by acquisition source mix), 12-month value, LTV:CAC.
 
 - **Preferred** = highest LTV:CAC (ties: higher revenue %).
-- **Problem** = highest (discount % + COD % + 2 × RTO %) among clusters with LTV:CAC < 2.
-- Names by rule (first match): orders ≥ 3 and repeat ≥ 60% → "Routine Loyalists"; AOV in top 2 and orders ≥ 1.8 → "Ingredient Explorers"; ≥ 50% of orders in festival windows → "Festive Gifters"; discount ≥ 50% and COD ≥ 50% → "Deal Hunters"; orders ≈ 1 and repeat < 10% → "One-time Trialists"; else "Type N". Names are editable per workspace (Settings key `segment_names`).
-- Acceptance on demo data: the preferred cluster has mean orders ≥ 2.5 and AOV ≥ ₹850; the problem cluster has discount ≥ 0.6 and COD ≥ 0.6.
+- **Problem** = highest (discount customers % + COD customers % + 2 × RTO %) among clusters with LTV:CAC < 2. "Discount customers %" is the share of the type's customers with at least one discounted order this year (likewise COD); the order-based discount % and COD % stay for money estimates.
+- Names by rule (first match): orders ≥ 3 and repeat ≥ 60% → "Routine Loyalists"; AOV in top 2 and orders ≥ 1.8 → "Ingredient Explorers"; ≥ 50% of orders in festival windows → "Festive Gifters"; discount customers ≥ 50% and COD customers ≥ 50% → "Deal Hunters"; COD customers ≥ 60% and RTO ≥ 50% → "COD Returners" (added 20 Oct 2026); orders ≈ 1 and repeat < 10% → "One-time Trialists"; else "Type N". Names are editable per workspace (Settings key `segment_names`).
+- Acceptance on demo data: the preferred cluster has mean orders ≥ 2.5 and AOV ≥ ₹850; the problem cluster has discount customers ≥ 0.6 and COD customers ≥ 0.6.
 
 ### 7.4 Map
 x = orders a year (0.5–6.5), y = average order (₹300–₹1,500). Up to 120 sampled customers (stratified by cluster, deterministic) jittered ±0.08 orders; centroid label chips.

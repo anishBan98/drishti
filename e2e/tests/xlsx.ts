@@ -37,6 +37,12 @@ function csvRows(text: string): string[][] {
   return rows;
 }
 
+/** Plain numbers become number cells (so a spreadsheet shows them as numbers); everything else is text. */
+const cell = (v: string, ref: string, header: boolean) =>
+  !header && /^-?d+(.d+)?$/.test(v) && v.length < 15
+    ? `<c r="${ref}"><v>${v}</v></c>`
+    : `<c r="${ref}" t="inlineStr"><is><t>${esc(v)}</t></is></c>`;
+
 export function makeXlsx(tabs: Record<string, string>): Buffer {
   const names = Object.keys(tabs);
   const files: Record<string, Uint8Array> = {
@@ -67,10 +73,7 @@ export function makeXlsx(tabs: Record<string, string>): Buffer {
   };
   names.forEach((n, i) => {
     const rows = csvRows(tabs[n]!)
-      .map(
-        (r, ri) =>
-          `<row r="${ri + 1}">${r.map((c, ci) => `<c r="${col(ci)}${ri + 1}" t="inlineStr"><is><t>${esc(c)}</t></is></c>`).join('')}</row>`,
-      )
+      .map((r, ri) => `<row r="${ri + 1}">${r.map((c, ci) => cell(c, `${col(ci)}${ri + 1}`, ri === 0)).join('')}</row>`)
       .join('');
     files[`xl/worksheets/sheet${i + 1}.xml`] = strToU8(
       `<?xml version="1.0" encoding="UTF-8"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetData>${rows}</sheetData></worksheet>`,

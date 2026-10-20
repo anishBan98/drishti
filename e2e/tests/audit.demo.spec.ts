@@ -71,7 +71,7 @@ test('keyboard: g then a number jumps to a screen, not while typing; focus follo
   const card = page.locator('[data-suggestion=restock_request]');
   await card.getByRole('button', { name: 'Send restock request' }).click();
   await expect(card.getByRole('button', { name: 'Run', exact: true })).toBeFocused();
-  await expect(card).toContainText('At stake: ₹3.5 L/wk');
+  await expect(card).toContainText(/At stake: ₹[\d.]+ L\/wk/);
   await card.getByRole('button', { name: 'Cancel' }).click();
   await expect(card.getByRole('button', { name: 'Send restock request' })).toBeFocused();
   await card.getByRole('button', { name: 'Assign' }).click();

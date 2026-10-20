@@ -2,6 +2,7 @@ import {
   MEDIA,
   MEDIA_LABEL,
   formatPct,
+  formatShortDate,
   formatRoas,
   joinList,
   round,
@@ -99,13 +100,25 @@ export function buildImpact(ctx: Context): {
     const claimedPer100 = sp ? (100 * cl) / sp : 0;
     const realPer100 = 100 * r.roas;
     const test = runningTests.find((x) => x.media === m);
+    // What the estimate rests on (docs/08 §3.1), strongest first.
+    const naturals = ctx.experiments.filter((e) => e.media === m && e.kind === 'natural');
     const evidence = !ctx.measured
       ? t('impact.evidence.not_enough_history', { days: ctx.historyDays })
-      : test
-        ? t('impact.evidence.test', { cities: joinList(test.test_regions) })
-        : r.identified
-          ? t('impact.evidence.regression')
-          : t('impact.evidence.unidentified');
+      : test && naturals.length
+        ? t('impact.evidence.test_natural', { cities: joinList(test.test_regions), n: naturals.length })
+        : test
+          ? t('impact.evidence.test', { cities: joinList(test.test_regions) })
+          : naturals.length > 1
+            ? t('impact.evidence.natural.many', { n: naturals.length })
+            : naturals.length === 1
+              ? t('impact.evidence.natural.one', {
+                  what: `${naturals[0]!.cities[0]}, ${formatShortDate(naturals[0]!.start)}`,
+                })
+              : r.sources.includes('prior')
+                ? t('impact.evidence.prior')
+                : r.identified
+                  ? t('impact.evidence.regression')
+                  : t('impact.evidence.unidentified');
     const under = realPer100 > claimedPer100;
     const headline = !ctx.measured
       ? t('impact.headline.unmeasured', {
@@ -189,7 +202,8 @@ export function buildImpact(ctx: Context): {
       real_high: Math.round(sp * r.high),
       claimed_per100: round(claimedPer100, 1),
       real_per100: round(realPer100, 1),
-      confidence: test && r.identified ? 'medium' : r.confidence,
+      // Confidence comes from the evidence itself (docs/08 §3.1).
+      confidence: r.confidence,
       measured: ctx.measured,
       evidence,
       headline,

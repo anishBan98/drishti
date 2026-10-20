@@ -75,8 +75,18 @@ export interface Target {
   target: number;
 }
 
+/** A row of the Actions tab that is still open (docs/06 §2): used so suggestions do not repeat it (docs/08 §9.1). */
+export interface OpenAction {
+  type: string;
+  status: string;
+  /** What it acts on, when the row says (a segment, a city); budget actions all share "budget". */
+  target?: string;
+  created_at: string;
+}
+
 export interface Workspace {
   settings: Settings;
+  actions: OpenAction[];
   channels: ChannelCost[];
   watchlist: WatchItem[];
   tests: PlannedTest[];
@@ -146,6 +156,17 @@ export function loadWorkspace(read: ReadTab): Workspace {
       is_us: parseBool(r.is_us),
       capture_method: r.capture_method === 'site_json' ? 'site_json' : 'extension',
     })),
+    actions: tab('actions').map((r) => {
+      const type = r.type === 'coupon_prepare' ? 'amazon_coupon' : (r.type ?? '');
+      const title = r.title ?? '';
+      const target = /^budget_/.test(type) ? 'budget' : /for (.+)$/.exec(title)?.[1]?.trim();
+      return {
+        type,
+        status: (r.status ?? '').toLowerCase(),
+        ...(target ? { target } : {}),
+        created_at: r.created_at ?? '',
+      };
+    }),
     tests: tab('tests').map((r) => ({
       test_id: r.test_id ?? '',
       name: r.name ?? '',

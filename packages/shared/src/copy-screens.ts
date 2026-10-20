@@ -153,8 +153,14 @@ export const screenCopy = {
   'impact.headline.unmeasured':
     '{medium} claims ₹{claimed} for every ₹1. Drishti needs 120 days of history, or a test, to measure the real figure.',
   'note.needs_history': 'Needs 120 days',
-  'impact.evidence.test': 'regression on city-weeks and a live holdout in {cities}.',
-  'impact.evidence.regression': 'regression on city-weeks; tests and natural experiments arrive next.',
+  'impact.evidence.test': 'a live holdout in {cities}, read against matched cities, with the regression.',
+  'impact.evidence.test_natural':
+    'a live holdout in {cities} and {n} natural experiments, read against matched cities, with the regression.',
+  'impact.evidence.natural.one': 'a natural experiment ({what}), read against matched cities, with the regression.',
+  'impact.evidence.natural.many': '{n} natural experiments, read against matched cities, with the regression.',
+  'impact.evidence.regression': 'regression on city-weeks.',
+  'impact.evidence.prior':
+    'the regression, weighed with what tests found for the other platforms. Run a test to measure it directly.',
   'impact.evidence.unidentified':
     'not enough variation to measure yet, so shown at no more than the platform claim. Run a test.',
   'impact.test.name': '{name}, {cities}',

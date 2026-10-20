@@ -2,6 +2,8 @@ import { MEDIA, type Media } from '@drishti/shared';
 import type { Facts, OwnSiteCustomer } from './facts/types';
 import type { Workspace } from './facts/workspace';
 import { dataThrough, mediaTotals, salesTotals, type MediaTotals, type SalesTotals } from './kpi';
+import { claimPrior, combine, experimentWeight, MMM_WEIGHT, PRIOR_WEIGHT, type Estimate } from './models/evidence';
+import { detectShocks, readShocks, readTests, type ExperimentRead } from './models/incrementality';
 import { fitMmm, type MmmResult } from './models/mmm';
 import { inRange, windowsFor, addDays, daysBetween, type Windows } from './windows';
 
@@ -21,6 +23,8 @@ export interface RealReturn {
   confidence: 'high' | 'medium' | 'low';
   /** false when the regression could not separate this medium (its 90% range reaches zero). */
   identified: boolean;
+  /** What the estimate rests on (docs/08 §3.1). */
+  sources: Estimate['source'][];
 }
 
 export interface Context {
@@ -41,6 +45,8 @@ export interface Context {
     prior_d28: Record<Media, MediaTotals>;
   };
   mmm: MmmResult;
+  /** Planned tests and natural experiments read with synthetic control (docs/08 §3.2–3.3). */
+  experiments: ExperimentRead[];
   real: Record<Media, RealReturn>;
   cacBySource: Partial<Record<OwnSiteCustomer['acquisition_source'], number>>;
 }
@@ -78,25 +84,52 @@ export function buildContext(
   const measured = historyDays >= MIN_HISTORY_DAYS;
   const mmm = fitMmm(measured ? facts.sales_city_daily : [], measured ? facts.spend_city_daily : [], through);
 
+  // Evidence hierarchy (docs/08 §3.1): tests, natural experiments and the regression, by precision; a weak prior from
+  // the measured media's real-to-claimed ratio covers media no experiment has reached.
+  const experiments = measured
+    ? [...readTests(facts, ws.tests, through), ...readShocks(facts, detectShocks(facts, ws.tests), ws.tests, through)]
+    : [];
+  const claimedRoas = (md: Media) => media.d28[md].claimed_roas ?? 0;
+  const expFor = (md: Media) => experiments.filter((e) => e.media === md);
+  const ratios = MEDIA.filter((md) => md !== 'creators' && claimedRoas(md) > 0 && expFor(md).length).map((md) => {
+    const c = combine(
+      expFor(md).map((e) => ({ source: e.kind, est: e.roas, low: e.low, high: e.high, weight: 1 })),
+      { recentTest: false },
+    );
+    return (c?.roas ?? 0) / claimedRoas(md);
+  });
   const real = Object.fromEntries(
     MEDIA.map((md) => {
-      if (!measured) return [md, { roas: 0, low: 0, high: 0, confidence: 'low', identified: false }];
+      if (!measured)
+        return [
+          md,
+          { roas: 0, low: 0, high: 0, confidence: 'low', identified: false, sources: [] } satisfies RealReturn,
+        ];
       const b = mmm.beta[md];
-      const claimed = media.d28[md].claimed_roas ?? 0;
-      const identified = b.low > 0;
-      // v1 display rule: a medium the regression cannot separate is shown at no more than its platform claim.
-      const roas = identified ? b.est : Math.min(b.est, claimed);
-      const width = b.high - b.low;
-      const confidence: RealReturn['confidence'] = !identified ? 'low' : width < 0.6 * roas ? 'medium' : 'low';
+      const estimates: Estimate[] = [
+        { source: 'mmm', est: b.est, low: b.low, high: b.high, weight: MMM_WEIGHT },
+        ...expFor(md).map((e) => ({
+          source: e.kind,
+          est: e.roas,
+          low: e.low,
+          high: e.high,
+          weight: experimentWeight(e.kind, Math.max(0, daysBetween(e.end, through))),
+        })),
+      ];
+      const prior = md === 'creators' ? null : claimPrior(claimedRoas(md), ratios);
+      if (prior) estimates.push({ source: 'prior', ...prior, weight: PRIOR_WEIGHT });
+      const recentTest = expFor(md).some((e) => e.kind === 'test' && daysBetween(e.end, through) <= 120);
+      const c = combine(estimates, { recentTest })!;
       return [
         md,
         {
-          roas,
-          low: Math.min(b.low, roas),
-          high: identified ? b.high : Math.max(roas, Math.min(b.high, claimed)),
-          confidence,
-          identified,
-        },
+          roas: c.roas,
+          low: c.low,
+          high: c.high,
+          confidence: c.confidence,
+          identified: b.low > 0 || c.tests + c.naturals > 0,
+          sources: c.sources,
+        } satisfies RealReturn,
       ];
     }),
   ) as Record<Media, RealReturn>;
@@ -136,6 +169,7 @@ export function buildContext(
     sales: { week: s(w.week), prior_week: s(w.prior_week), d28: s(w.d28), prior_d28: s(w.prior_d28) },
     media,
     mmm,
+    experiments,
     real,
     cacBySource,
   };
