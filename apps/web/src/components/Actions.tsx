@@ -1,5 +1,5 @@
-import { t, type Suggestion } from '@drishti/shared';
-import { useState } from 'react';
+import { formatShortDate, t, type Suggestion } from '@drishti/shared';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { shortName, useWorkspace } from '../app/workspace';
 import {
@@ -46,9 +46,21 @@ function ActionControls({ s, screen, evidence }: { s: Suggestion; screen: Screen
   const navigate = useNavigate();
   const toast = useToast();
   const actions = useActions();
-  const action = actionForSuggestion(actions, s.id);
+  const latest = actionForSuggestion(actions, s.id);
+  // An assignment is a task for a person: the card keeps its Run button and notes who has it.
+  const assignedTo = latest?.status === 'assigned' ? latest : undefined;
+  const action = assignedTo ? undefined : latest;
   const [confirming, setConfirming] = useState(false);
   const [assigning, setAssigning] = useState(false);
+  // Keyboard focus follows the card as it changes state (the clicked button is replaced each time).
+  const focusNext = useRef<'run' | 'idle' | 'progress' | null>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const target = focusNext.current;
+    if (!target || !rootRef.current) return;
+    focusNext.current = null;
+    rootRef.current.querySelector<HTMLElement>(`[data-focus="${target}"]`)?.focus();
+  });
   const viewInActions = (
     <Link to={screenHref(ws.base, 'actions') + (action ? `?id=${action.id}` : '')} className={ui.linkBtn}>
       {t('action.done_link')}
@@ -56,6 +68,7 @@ function ActionControls({ s, screen, evidence }: { s: Suggestion; screen: Screen
   );
 
   const run = () => {
+    focusNext.current = 'progress';
     setConfirming(false);
     runSuggestion(s, {
       screen: t(`nav.${screen}`),
@@ -75,20 +88,42 @@ function ActionControls({ s, screen, evidence }: { s: Suggestion; screen: Screen
             <li key={step}>{step}</li>
           ))}
         </ol>
-        {s.impactLabel && <span className={css.note}>{t('ui.action.expected', { value: s.impactLabel })}</span>}
+        {s.impactLabel && (
+          <span className={css.note}>
+            {/* A negative label is money being lost now, which the action stops: "At stake", not "Expected". */}
+            {/^[−-]/.test(s.impactLabel)
+              ? t('ui.action.at_stake', { value: s.impactLabel.replace(/^[−-]/, '') })
+              : t('ui.action.expected', { value: s.impactLabel })}
+          </span>
+        )}
         {s.needsApproval && <span className={css.warnNote}>{t('ui.action.approval_note')}</span>}
         <div className={css.buttons}>
-          <button type="button" className={ui.btnPrimary} onClick={run}>
+          <button type="button" className={ui.btnPrimary} onClick={run} data-focus="run">
             {t('action.run')}
           </button>
-          <button type="button" className={ui.btnSecondary} onClick={() => setConfirming(false)}>
+          <button
+            type="button"
+            className={ui.btnSecondary}
+            onClick={() => {
+              focusNext.current = 'idle';
+              setConfirming(false);
+            }}
+          >
             {t('action.cancel')}
           </button>
         </div>
       </div>
     ) : (
       <div className={css.buttons}>
-        <button type="button" className={ui.btnPrimary} onClick={() => setConfirming(true)}>
+        <button
+          type="button"
+          className={ui.btnPrimary}
+          data-focus="idle"
+          onClick={() => {
+            focusNext.current = 'run';
+            setConfirming(true);
+          }}
+        >
           {s.runLabel}
         </button>
         <button
@@ -115,19 +150,24 @@ function ActionControls({ s, screen, evidence }: { s: Suggestion; screen: Screen
   }
 
   return (
-    <>
+    <div ref={rootRef} className={css.controls}>
       {state}
+      {assignedTo && !confirming && <span className={css.note}>{assignedTo.how}</span>}
       {assigning && !action && (
         <AssignPicker
           onSave={(owner, due) => {
             setAssigning(false);
+            focusNext.current = 'idle';
             assign(undefined, s, owner, due, t(`nav.${screen}`));
-            toast(t('ui.action.assigned', { name: owner, date: due }));
+            toast(t('ui.action.assigned', { name: owner, date: formatShortDate(due) }));
           }}
-          onCancel={() => setAssigning(false)}
+          onCancel={() => {
+            focusNext.current = 'idle';
+            setAssigning(false);
+          }}
         />
       )}
-    </>
+    </div>
   );
 }
 
@@ -162,7 +202,7 @@ export function ActionProgress({ action, viewInActions }: { action: DemoAction; 
   switch (action.status) {
     case 'running':
       return (
-        <div className={css.confirm}>
+        <div className={css.confirm} tabIndex={-1} data-focus="progress" aria-live="polite">
           <div className={css.buttons}>
             <button type="button" className={ui.btnPrimary} disabled aria-busy="true">
               <span className={ui.spinner} aria-hidden="true" />
@@ -227,14 +267,26 @@ export function AssignPicker({
   onCancel: () => void;
 }) {
   const ws = useWorkspace();
-  const [owner, setOwner] = useState(shortName(ws.users[0]?.name ?? ws.me.name));
+  // Viewers can't act on anything (docs/10 §5), so they can't be given a task.
+  const people = ws.users.filter((u) => u.role !== 'Viewer');
+  const [owner, setOwner] = useState(shortName(people[0]?.name ?? ws.me.name));
+  const today = new Date().toISOString().slice(0, 10);
   const [due, setDue] = useState(() => new Date(Date.now() + 2 * 86_400_000).toISOString().slice(0, 10));
+  const valid = /^\d{4}-\d{2}-\d{2}$/.test(due) && due >= today;
+  const selectRef = useRef<HTMLSelectElement>(null);
+  useEffect(() => selectRef.current?.focus(), []);
   return (
-    <div className={css.assign} data-testid="assign-picker">
+    <div
+      className={css.assign}
+      data-testid="assign-picker"
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') onCancel();
+      }}
+    >
       <label>
         {t('ui.action.assign.title')}{' '}
-        <select className={css.select} value={owner} onChange={(e) => setOwner(e.target.value)}>
-          {ws.users.map((u) => (
+        <select ref={selectRef} className={css.select} value={owner} onChange={(e) => setOwner(e.target.value)}>
+          {people.map((u) => (
             <option key={u.email} value={shortName(u.name)}>
               {shortName(u.name)} · {u.role}
             </option>
@@ -243,9 +295,17 @@ export function AssignPicker({
       </label>
       <label>
         {t('ui.action.assign.due')}{' '}
-        <input type="date" className={css.date} value={due} onChange={(e) => setDue(e.target.value)} />
+        <input
+          type="date"
+          className={css.date}
+          value={due}
+          min={today}
+          required
+          aria-invalid={!valid}
+          onChange={(e) => setDue(e.target.value)}
+        />
       </label>
-      <button type="button" className={ui.btnPrimary} onClick={() => onSave(owner, due)}>
+      <button type="button" className={ui.btnPrimary} disabled={!valid} onClick={() => valid && onSave(owner, due)}>
         {t('ui.action.assign.save')}
       </button>
       <button type="button" className={ui.btnSecondary} onClick={onCancel}>

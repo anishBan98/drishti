@@ -281,3 +281,8 @@
   padding-top: 12px;
   border-top: 1px solid var(--line);
 }
+
+/* Wraps one card's controls without adding a box, so focus can follow state changes. */
+.controls {
+  display: contents;
+}

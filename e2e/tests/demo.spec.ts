@@ -174,7 +174,7 @@ test('E2E-12 Assign opens the owner picker and logs the assignment', async ({ pa
   await expect(picker).toBeVisible();
   await picker.getByRole('combobox').selectOption({ index: 2 });
   const owner = (await picker.getByRole('combobox').locator('option:checked').innerText()).split(' · ')[0]!;
-  await picker.getByRole('button', { name: 'Assign' }).click();
+  await picker.getByRole('button', { name: 'Save' }).click();
   await expect(page.getByRole('status')).toContainText(`Assigned to ${owner}`);
   await page
     .getByRole('navigation', { name: 'Drishti sections' })

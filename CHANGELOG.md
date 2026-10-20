@@ -15,6 +15,8 @@ All notable changes to Drishti. Milestones follow `docs/14-SETUP-RUNBOOK.md` §8
 - E2E runs against `vite preview` of the built app, with reduced motion, not `wrangler dev`, because the demo needs no API and `wrangler dev` needs a Cloudflare login for the AI binding (docs/12 §1 updated).
 - Accessibility fixes: contrast of muted text on selected rows and in dark insight panels, 24 px target size for market bubbles and customer chips, no `aria-label` on plain divs.
 - Bundle: 156 KB JS and 11 KB CSS gzip (limit 250 KB).
+- UI audit on the running app (`docs/audits/2026-10-20-m3-ui-audit.md`): 22 findings, 20 fixed, each with a regression test in `e2e/tests/audit.demo.spec.ts`. Fixed: actions resume after a reload; load errors show a message and Retry (demo and home game); home fits sideways and 320 px phones; assignments have their own Assigned status and no longer count as runs; Assign checks the due date and skips Viewers; focus follows action cards; `g` then 1–8 shortcuts (docs/09 §8); seeded action steps and owners; a phone note on `/demo`; game progress shows misses; smaller copy fixes.
+- CI: the visual suite runs on `windows-latest`, where the design PNGs were rendered (Linux font smoothing alone differs by about 4 %).
 
 ### Docs 1.2 · Founder framing (2026-10-20)
 

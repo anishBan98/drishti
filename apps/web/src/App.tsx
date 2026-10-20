@@ -38,10 +38,26 @@ function DemoLayout() {
             <Sidebar base="/demo" workspaceName={name} demo snapshot={snapshot.data} />
             {snapshot.data && workspace.data ? (
               <Outlet context={snapshot.data} />
+            ) : snapshot.isError || workspace.isError ? (
+              <main style={{ display: 'grid', placeItems: 'center', alignContent: 'center', gap: 16 }}>
+                <p className={ui.empty} role="alert">
+                  {t('ui.demo.error')}
+                </p>
+                <button
+                  type="button"
+                  className={ui.btnPrimary}
+                  onClick={() => {
+                    if (snapshot.isError) void snapshot.refetch();
+                    if (workspace.isError) void workspace.refetch();
+                  }}
+                >
+                  {t('ui.retry')}
+                </button>
+              </main>
             ) : (
-              <main style={{ display: 'grid', placeItems: 'center' }}>
-                <p className={ui.empty}>
-                  {snapshot.isError || workspace.isError ? t('error.SNAPSHOT_SCHEMA_MISMATCH') : ''}
+              <main style={{ display: 'grid', placeItems: 'center' }} aria-busy="true">
+                <p className={ui.empty} role="status">
+                  <span className={ui.spinner} aria-hidden="true" /> {t('ui.demo.loading')}
                 </p>
               </main>
             )}
@@ -72,6 +88,8 @@ const router = createBrowserRouter([
       { path: 'customers', Component: screen(Customers) },
       { path: 'voice', Component: screen(Voice) },
       { path: 'data', Component: screen(DataSources) },
+      // A mistyped demo link lands on the demo, not the home page.
+      { path: '*', element: <Navigate to="/demo" replace /> },
     ],
   },
   { path: '*', element: <Navigate to="/" replace /> },

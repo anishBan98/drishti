@@ -61,6 +61,28 @@ body[data-theme='dark'] {
   zoom: var(--stage-zoom, 1);
 }
 
+.stage-note {
+  display: none;
+}
+@media (max-width: 760px) {
+  .stage-note {
+    display: block;
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    margin: 0;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: center;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

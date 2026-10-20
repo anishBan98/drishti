@@ -63,8 +63,8 @@ const actions = parseCsvObjects(readTab('actions') ?? '').rows.map((r) => {
   const title = r.title ?? '';
   const vars = {
     product: facts.products.find((p) => p.hero)?.name ?? '',
-    discount_pct: /(d+)%/.exec(title)?.[1] ?? '',
-    cap_pct: /(d+)%/.exec(title)?.[1] ?? '',
+    discount_pct: /(\d+)%/.exec(title)?.[1] ?? '',
+    cap_pct: /(\d+)%/.exec(title)?.[1] ?? '',
     weeks: 3,
     segment: /for (.+)$/.exec(title)?.[1] ?? '',
   };
@@ -81,7 +81,8 @@ const actions = parseCsvObjects(readTab('actions') ?? '').rows.map((r) => {
     title: r.title,
     how: t(`executor.${EXECUTOR[type] ?? 'inline'}` as CopyKey),
     screen: r.screen,
-    owner: r.owner,
+    // The Sheet may name a role ("Analyst") as owner; show the person who holds it.
+    owner: users.find((u) => u.role === r.owner)?.name.replace(/\s*\(.*\)$/, '') ?? r.owner,
     status,
     executor: EXECUTOR[type] ?? 'inline',
     expected_label: label(expected),

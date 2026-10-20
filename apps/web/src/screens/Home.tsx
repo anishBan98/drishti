@@ -119,7 +119,7 @@ function readBest(): number {
   }
 }
 
-function Game({ s }: { s: Snapshot | undefined }) {
+function Game({ s, failed, retry }: { s: Snapshot | undefined; failed: boolean; retry: () => void }) {
   const rounds = useMemo<GameRound[]>(() => (s ? buildRounds(s) : []), [s]);
   const [phase, setPhase] = useState<'intro' | 'play' | 'done'>('intro');
   const [i, setI] = useState(0);
@@ -127,6 +127,8 @@ function Game({ s }: { s: Snapshot | undefined }) {
   const [xp, setXp] = useState(0);
   const [streak, setStreak] = useState(0);
   const [right, setRight] = useState(0);
+  // Right or wrong per round, so the progress pips show how each call went.
+  const [results, setResults] = useState<boolean[]>([]);
   const [earned, setEarned] = useState<string[]>([]);
   const [burst, setBurst] = useState(0);
   const [bonus, setBonus] = useState(0);
@@ -138,6 +140,7 @@ function Game({ s }: { s: Snapshot | undefined }) {
   const answer = (k: number) => {
     if (picked !== null || !round) return;
     setPicked(k);
+    setResults((r) => [...r, !!round.options[k]?.correct]);
     if (round.options[k]?.correct) {
       const b = streak >= 1 ? STREAK_BONUS : 0;
       setBonus(b);
@@ -175,6 +178,7 @@ function Game({ s }: { s: Snapshot | undefined }) {
     setStreak(0);
     setRight(0);
     setEarned([]);
+    setResults([]);
   };
 
   return (
@@ -194,7 +198,7 @@ function Game({ s }: { s: Snapshot | undefined }) {
         {rounds.map((r, k) => (
           <span
             key={r.id}
-            className={`${css.pip} ${k < i || phase === 'done' ? css.pipDone : k === i && phase === 'play' ? css.pipNow : ''}`}
+            className={`${css.pip} ${results[k] === true ? css.pipDone : results[k] === false ? css.pipMiss : k === i && phase === 'play' ? css.pipNow : ''}`}
           >
             <span>{r.skill}</span>
           </span>
@@ -207,10 +211,21 @@ function Game({ s }: { s: Snapshot | undefined }) {
       {phase === 'intro' && (
         <div className={css.card} key="intro">
           <p className={css.gameSub}>{t('home.game.sub')}</p>
-          <Badges rounds={rounds} earned={earned} />
-          <button type="button" className={css.play} disabled={!rounds.length} onClick={() => setPhase('play')}>
-            {rounds.length ? `▶ ${t('home.game.start')}` : t('home.game.loading')}
-          </button>
+          <Badges rounds={rounds} earned={earned} intro />
+          {failed && !rounds.length ? (
+            <>
+              <p className={css.gameSub} role="alert">
+                {t('home.game.error')}
+              </p>
+              <button type="button" className={css.play} onClick={retry}>
+                ↻ {t('ui.retry')}
+              </button>
+            </>
+          ) : (
+            <button type="button" className={css.play} disabled={!rounds.length} onClick={() => setPhase('play')}>
+              {rounds.length ? `▶ ${t('home.game.start')}` : t('home.game.loading')}
+            </button>
+          )}
           {best > 0 && <p className={css.best}>{t('home.game.best', { xp: best })}</p>}
         </div>
       )}
@@ -287,9 +302,9 @@ function Game({ s }: { s: Snapshot | undefined }) {
 const GLYPH: Record<GameRound['id'], string> = { impact: '₹', week: '⇅', customers: '◕', market: '◎' };
 
 /** One badge per skill; earned badges light up (gamification, docs/09 §6.0). */
-function Badges({ rounds, earned }: { rounds: GameRound[]; earned: string[] }) {
+function Badges({ rounds, earned, intro }: { rounds: GameRound[]; earned: string[]; intro?: boolean }) {
   return (
-    <ul className={css.badges} aria-label={t('home.game.badges')}>
+    <ul className={`${css.badges} ${intro ? css.badgesIntro : ''}`} aria-label={t('home.game.badges')}>
       {rounds.map((r, k) => {
         const on = earned.includes(r.id);
         return (
@@ -334,7 +349,7 @@ function ScoreRing({ value, total }: { value: number; total: number }) {
 
 export function Home() {
   const { theme, setTheme } = useTheme();
-  const { data } = useSnapshot();
+  const { data, isError, refetch } = useSnapshot();
   const ref = useRef<HTMLDivElement>(null);
   const [title1, title2] = t('home.title').split(t('home.title.emphasis'));
   const channels = [...CHANNELS.map((c) => CHANNEL_LABEL[c]), ...EXTRA_CHANNELS];
@@ -358,10 +373,20 @@ export function Home() {
           </div>
           <div className={css.topRight}>
             <div className={css.theme} role="group" aria-label={t('ui.theme.group')}>
-              <button type="button" aria-pressed={theme === 'light'} onClick={() => setTheme('light')}>
+              <button
+                type="button"
+                aria-pressed={theme === 'light'}
+                aria-label={t('theme.light')}
+                onClick={() => setTheme('light')}
+              >
                 ☀<span className={css.hideSm}> {t('theme.light')}</span>
               </button>
-              <button type="button" aria-pressed={theme === 'dark'} onClick={() => setTheme('dark')}>
+              <button
+                type="button"
+                aria-pressed={theme === 'dark'}
+                aria-label={t('theme.dark')}
+                onClick={() => setTheme('dark')}
+              >
                 ☾<span className={css.hideSm}> {t('theme.dark')}</span>
               </button>
             </div>
@@ -405,7 +430,7 @@ export function Home() {
             </div>
             <p className={css.mobileNote}>{t('home.mobile_note')}</p>
           </section>
-          <Game s={data} />
+          <Game s={data} failed={isError} retry={() => void refetch()} />
         </main>
         <footer className={css.foot}>
           <ol className={css.steps} aria-label={t('home.how.title')}>

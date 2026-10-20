@@ -1,4 +1,4 @@
-import { ACTION_TYPES, t, type ActionType, type Suggestion } from '@drishti/shared';
+import { ACTION_TYPES, formatShortDate, t, type ActionType, type Suggestion } from '@drishti/shared';
 import { useSyncExternalStore } from 'react';
 import { buildOutputs, type DemoOutput } from './outputs';
 
@@ -17,6 +17,8 @@ export type ActionStatus =
   | 'declined'
   | 'expired'
   | 'undone'
+  // Handed to a person to do; not run by Drishti, so not counted as an action run.
+  | 'assigned'
   // Display-only states for rows that come from the Sheet (scheduled campaigns, overdue tasks).
   | 'scheduled'
   | 'overdue';
@@ -81,6 +83,8 @@ export function seedActions(seed: DemoAction[]) {
   }
   actions = [...saved, ...seed.filter((s) => !saved.some((a) => a.id === s.id))];
   emit();
+  // A reload stops the step timers; pick up any action that was mid-run where it left off.
+  for (const a of actions) if (a.demo && a.status === 'running') execute(a.id);
 }
 
 export function useActions(): DemoAction[] {
@@ -172,7 +176,9 @@ function execute(id: string) {
   const total = a.steps.length;
   // A handoff's last step is the person's own ("Wait for you to confirm"), so it stays open.
   const autoSteps = a.executor === 'handoff' ? Math.max(1, total - 1) : total;
-  let i = 0;
+  // Start at the first open step: an approval step is already done, and a resumed run keeps its progress.
+  const first = a.steps.findIndex((st) => !st.done);
+  let i = first === -1 ? total : first;
   const tick = () => {
     const cur = getAction(id);
     if (!cur || cur.status !== 'running') return;
@@ -237,11 +243,12 @@ export function assign(
   due: string,
   screen: string,
 ): string {
+  const assigned = t('ui.action.assigned', { name: owner, date: formatShortDate(due) });
   if (id) {
     update(id, (a) => ({
       owner,
       due,
-      steps: [...a.steps, { text: t('ui.action.assigned', { name: owner, date: due }), done: true, at: now() }],
+      steps: [...a.steps, { text: assigned, done: true, at: now() }],
     }));
     return id;
   }
@@ -253,13 +260,13 @@ export function assign(
       suggestion_id: s?.id,
       type: 'assign',
       title: s?.title ?? '',
-      how: t('executor.inline'),
+      how: assigned,
       screen,
       owner,
-      status: 'done',
+      status: 'assigned',
       executor: 'inline',
       expected_label: s?.impactLabel ?? '',
-      steps: [{ text: t('ui.action.assigned', { name: owner, date: due }), done: true, at: now() }],
+      steps: [{ text: assigned, done: true, at: now() }],
       outputs: [],
       created_at: now(),
       demo: true,
@@ -281,6 +288,7 @@ export function isActionType(type: string): type is ActionType {
 export function stageOf(a: DemoAction): number {
   switch (a.status) {
     case 'suggested':
+    case 'assigned':
     case 'awaiting_approval':
     case 'declined':
     case 'expired':

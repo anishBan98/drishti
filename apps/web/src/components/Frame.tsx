@@ -1,6 +1,6 @@
 import { t, type CopyKey, type Delta, type Kpi, type Snapshot, type Verdict } from '@drishti/shared';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import { useTheme } from '../app/theme';
 import { formatDelta } from '../lib/display';
 import css from './frame.module.css';
@@ -66,6 +66,31 @@ function useOutside(open: boolean, close: () => void) {
   return ref;
 }
 
+/** "g" then 1–8 jumps to a screen (docs/09 §8). Ignored while typing in a field or with a modifier held. */
+function useScreenShortcuts(base: string) {
+  const navigate = useNavigate();
+  useEffect(() => {
+    let armedAt = 0;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      const el = e.target as HTMLElement | null;
+      if (el && (el.isContentEditable || /^(INPUT|SELECT|TEXTAREA)$/.test(el.tagName))) return;
+      if (e.key === 'g') {
+        armedAt = Date.now();
+        return;
+      }
+      const n = Number(e.key);
+      if (armedAt && Date.now() - armedAt < 1500 && n >= 1 && n <= SCREENS.length) {
+        e.preventDefault();
+        navigate(screenHref(base, SCREENS[n - 1]!.id));
+      }
+      armedAt = 0;
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [base, navigate]);
+}
+
 function syncedText(snapshot: Snapshot | undefined): { text: string; stale: boolean } {
   if (!snapshot) return { text: t('nav.footer', { when: '…' }), stale: false };
   const at = new Date(snapshot.generated_at);
@@ -91,6 +116,7 @@ export function Sidebar({
   const [open, setOpen] = useState(false);
   const ref = useOutside(open, () => setOpen(false));
   const synced = syncedText(snapshot);
+  useScreenShortcuts(base);
   return (
     <nav aria-label={t('ui.nav.label')} className={css.side}>
       <div className={css.brand}>
@@ -114,6 +140,7 @@ export function Sidebar({
         {open && (
           <div className={css.menu} role="menu">
             {demo && <p className={css.menuNote}>{t('ui.workspace.menu.demo_note')}</p>}
+            <p className={css.menuNote}>{t('ui.shortcuts.hint')}</p>
             <a role="menuitem" className={css.menuItem} href="/">
               {t('ui.workspace.menu.home')}
             </a>
@@ -123,10 +150,11 @@ export function Sidebar({
           </div>
         )}
       </div>
-      {SCREENS.map((s) => (
+      {SCREENS.map((s, i) => (
         <NavLink
           key={s.id}
           to={screenHref(base, s.id)}
+          aria-keyshortcuts={`g ${i + 1}`}
           end
           className={({ isActive }) => `${css.nav} ${isActive ? css.navActive : ''}`}
         >

@@ -80,7 +80,8 @@ const when = (iso?: string) =>
     : '';
 
 function summary(actions: DemoAction[], today: string): { verdict: Verdict; kpis: Kpi[] } {
-  const live = actions.filter((a) => !['declined', 'undone', 'expired'].includes(a.status));
+  // Declined, undone and expired actions no longer count; assignments are tasks for a person, not runs.
+  const live = actions.filter((a) => !['declined', 'undone', 'expired', 'assigned'].includes(a.status));
   const waiting = live.filter((a) => a.status === 'awaiting_approval' || a.status === 'waiting_on_user');
   const run = live.filter((a) => a.status !== 'awaiting_approval');
   const expected = live.reduce((s, a) => s + Math.max(0, monthlyFromLabel(a.expected_label)), 0);
@@ -93,7 +94,8 @@ function summary(actions: DemoAction[], today: string): { verdict: Verdict; kpis
     .map((a) => a.readout_date ?? '')
     .filter(Boolean)
     .sort()[0];
-  const overdue = live.filter((a) => (a.due && a.due < today && a.status !== 'done') || a.overdue);
+  const open = actions.filter((a) => !['declined', 'undone', 'expired'].includes(a.status));
+  const overdue = open.filter((a) => (a.due && a.due < today && a.status !== 'done') || a.overdue);
   const first = waiting[0];
   const neutral = (
     id: string,

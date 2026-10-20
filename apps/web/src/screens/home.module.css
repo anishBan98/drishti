@@ -304,21 +304,22 @@
 .primary::after {
   content: '';
   position: absolute;
-  inset: -4px;
+  inset: -2px;
   border-radius: inherit;
   border: 2px solid var(--primary);
   opacity: 0;
   animation: ping 2.4s 1.2s infinite;
 }
+/* The ring grows by the same few pixels on every side, so a full-width phone button stays inside the screen. */
 @keyframes ping {
   0% {
     opacity: 0.6;
-    transform: scale(1);
+    inset: -2px;
   }
   70%,
   100% {
     opacity: 0;
-    transform: scale(1.18);
+    inset: -10px;
   }
 }
 .primary:hover,
@@ -443,6 +444,9 @@
 }
 .pipDone::before {
   background: #5fe39a;
+}
+.pipMiss::before {
+  background: #ff8a8a;
 }
 @keyframes glow {
   to {
@@ -985,6 +989,53 @@
 @media (max-width: 760px) and (max-height: 700px) {
   .claims {
     display: none;
+  }
+}
+
+/* Smallest phones (320 × 568): badges show on the score card only, so Play stays on screen */
+@media (max-width: 760px) and (max-height: 600px) {
+  .mobileNote,
+  .gameSub {
+    display: none;
+  }
+  .badgesIntro {
+    display: none;
+  }
+}
+
+/* Phones held sideways and very short windows: one column of essentials beside the game */
+@media (max-height: 520px) and (min-width: 761px) {
+  .foot,
+  .lead,
+  .claims,
+  .links,
+  .eyebrow,
+  .gameSub,
+  .best {
+    display: none;
+  }
+  .top {
+    padding-top: 8px;
+    padding-bottom: 4px;
+  }
+  .title {
+    font-size: clamp(28px, 9vh, 44px);
+  }
+  .game {
+    min-height: 0;
+    padding: 12px 16px;
+    gap: 6px;
+  }
+  .card {
+    overflow-y: auto;
+  }
+  .badges,
+  .doneBody {
+    display: none;
+  }
+  .ring {
+    width: 64px;
+    height: 64px;
   }
 }
 

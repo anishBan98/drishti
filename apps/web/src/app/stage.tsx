@@ -1,3 +1,4 @@
+import { t } from '@drishti/shared';
 import { useEffect, type ReactNode } from 'react';
 import { useTheme } from './theme';
 
@@ -16,6 +17,8 @@ export function Stage({ children }: { children: ReactNode }) {
   return (
     <div className="stage-outer dr-root" data-theme={theme}>
       <div className="stage">{children}</div>
+      {/* Phones: the eight screens stay a desktop layout (docs/09 §6.0), so say so in the letterbox. */}
+      <p className="stage-note">{t('ui.demo.phone_note')}</p>
     </div>
   );
 }
