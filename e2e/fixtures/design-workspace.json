@@ -1,0 +1,230 @@
+{
+  "users": [
+    {
+      "email": "owner@lumora.example",
+      "role": "Owner",
+      "name": "Aditi (CMO)"
+    },
+    {
+      "email": "analyst@lumora.example",
+      "role": "Analyst",
+      "name": "You"
+    },
+    {
+      "email": "priya@lumora.example",
+      "role": "Editor",
+      "name": "Priya (Category)"
+    },
+    {
+      "email": "arjun@lumora.example",
+      "role": "Editor",
+      "name": "Arjun (CRM)"
+    },
+    {
+      "email": "rahul@lumora.example",
+      "role": "Viewer",
+      "name": "Rahul (QA)"
+    }
+  ],
+  "actions": [
+    {
+      "id": "A-0001",
+      "type": "amazon_coupon",
+      "title": "Match Rival B with a 12% Amazon coupon",
+      "how": "Prepared for Amazon, sent live by you",
+      "screen": "Market",
+      "owner": "Priya",
+      "status": "measuring",
+      "executor": "handoff",
+      "expected_label": "+₹9 L/wk",
+      "measured_label": "+₹6.1 L/wk",
+      "steps": [
+        {
+          "text": "Built the coupon file: 30 ml serum, 12% off, 3 weeks",
+          "done": true,
+          "at": "2026-10-08T10:02:00+05:30"
+        },
+        {
+          "text": "Opened Seller Central Coupons with the file ready to upload",
+          "done": true,
+          "at": "2026-10-08T10:02:00+05:30"
+        },
+        {
+          "text": "Priya confirmed the coupon is live",
+          "done": true,
+          "at": "2026-10-08T11:40:00+05:30"
+        },
+        {
+          "text": "Logged to the Actions sheet; readout booked on the team calendar",
+          "done": true,
+          "at": "2026-10-08T11:40:00+05:30"
+        },
+        {
+          "text": "Readout: compare coupon weeks with the forecast",
+          "done": false,
+          "at": "2026-10-29T09:00:00+05:30"
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "download",
+          "label": "coupon file",
+          "filename": "coupon-A-0001.csv",
+          "mime": "text/csv",
+          "content": "ASIN,Discount type,Discount\n"
+        }
+      ],
+      "created_at": "2026-10-08T10:02:00+05:30",
+      "demo": false,
+      "undoable": true,
+      "params": {},
+      "measured_progress": 0.68,
+      "readout_date": "2026-10-29",
+      "readout_text": "Day 9 of 21. Units on the 30 ml pack are up 19% against the cities with no coupon."
+    },
+    {
+      "id": "A-0002",
+      "type": "brief",
+      "title": "Shift ₹30 L to quick com. and creators",
+      "how": "Needs approval: over ₹10 L",
+      "screen": "Weekly",
+      "owner": "You",
+      "status": "awaiting_approval",
+      "executor": "inline",
+      "expected_label": "+₹37 L/mo",
+      "steps": [],
+      "outputs": [],
+      "created_at": "2026-10-08T10:02:00+05:30",
+      "demo": false,
+      "undoable": false,
+      "params": {},
+      "approver": "Aditi"
+    },
+    {
+      "id": "A-0003",
+      "type": "brief",
+      "title": "Cap discounts at 15% for Deal Hunters",
+      "how": "Ran in Shopify",
+      "screen": "Customers",
+      "owner": "Arjun",
+      "status": "measuring",
+      "executor": "inline",
+      "expected_label": "+₹11 L",
+      "measured_label": "+₹7.8 L",
+      "steps": [],
+      "outputs": [],
+      "created_at": "2026-10-08T10:02:00+05:30",
+      "demo": false,
+      "undoable": false,
+      "params": {},
+      "measured_progress": 0.71,
+      "readout_date": "2026-11-02"
+    },
+    {
+      "id": "A-0004",
+      "type": "brief",
+      "title": "Put pump batch 0925 on QA hold",
+      "how": "Task for the QA team",
+      "screen": "Voice",
+      "owner": "Rahul",
+      "status": "done",
+      "executor": "inline",
+      "expected_label": "+0.2 ★",
+      "measured_label": "+0.1 ★",
+      "steps": [],
+      "outputs": [],
+      "created_at": "2026-10-08T10:02:00+05:30",
+      "demo": false,
+      "undoable": false,
+      "params": {}
+    },
+    {
+      "id": "A-0005",
+      "type": "brief",
+      "title": "Auto-pause ads in empty dark stores",
+      "how": "Rule, checked every 6 hours",
+      "screen": "Impact",
+      "owner": "Auto",
+      "status": "running",
+      "executor": "inline",
+      "expected_label": "₹1 L/wk",
+      "measured_label": "₹0.8 L/wk",
+      "steps": [],
+      "outputs": [],
+      "created_at": "2026-10-08T10:02:00+05:30",
+      "demo": false,
+      "undoable": false,
+      "params": {}
+    },
+    {
+      "id": "A-0006",
+      "type": "brief",
+      "title": "Pause brand search in 4 test cities",
+      "how": "Test with holdout cities",
+      "screen": "Impact",
+      "owner": "Neha",
+      "status": "running",
+      "executor": "inline",
+      "expected_label": "Confidence",
+      "measured_label": "Day 6 of 14",
+      "steps": [],
+      "outputs": [],
+      "created_at": "2026-10-08T10:02:00+05:30",
+      "demo": false,
+      "undoable": false,
+      "params": {}
+    },
+    {
+      "id": "A-0007",
+      "type": "brief",
+      "title": "Schedule Diwali gift-set campaign",
+      "how": "Brief and audience prepared",
+      "screen": "Customers",
+      "owner": "Meera",
+      "status": "scheduled",
+      "executor": "inline",
+      "expected_label": "+₹22 L",
+      "steps": [],
+      "outputs": [],
+      "created_at": "2026-10-08T10:02:00+05:30",
+      "demo": false,
+      "undoable": false,
+      "params": {}
+    },
+    {
+      "id": "A-0008",
+      "type": "brief",
+      "title": "Lead listings with “gentle”",
+      "how": "Listing copy prepared",
+      "screen": "Market",
+      "owner": "Content",
+      "status": "waiting_on_user",
+      "executor": "inline",
+      "expected_label": "+0.6 pt",
+      "steps": [],
+      "outputs": [],
+      "created_at": "2026-10-08T10:02:00+05:30",
+      "demo": false,
+      "undoable": false,
+      "params": {}
+    },
+    {
+      "id": "A-0009",
+      "type": "brief",
+      "title": "Upload Flipkart ads reports",
+      "how": "Task, reminder every morning",
+      "screen": "Data",
+      "owner": "Ads team",
+      "status": "overdue",
+      "executor": "inline",
+      "expected_label": "Data",
+      "measured_label": "5 days late",
+      "steps": [],
+      "outputs": [],
+      "created_at": "2026-10-08T10:02:00+05:30",
+      "demo": false,
+      "undoable": false,
+      "params": {}
+    }
+  ]
+}

@@ -16,7 +16,10 @@ export type ActionStatus =
   | 'failed'
   | 'declined'
   | 'expired'
-  | 'undone';
+  | 'undone'
+  // Display-only states for rows that come from the Sheet (scheduled campaigns, overdue tasks).
+  | 'scheduled'
+  | 'overdue';
 
 export interface ActionStep {
   text: string;

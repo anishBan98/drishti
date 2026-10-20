@@ -269,7 +269,7 @@ export function Market({ snapshot }: { snapshot: Snapshot }) {
                     <span className={`${ui.chip} ${tone} ${css.end}`} style={{ fontSize: 13, fontWeight: 700 }}>
                       {ch === null || Math.abs(ch) < 0.005
                         ? t('ui.no_change')
-                        : `${ch < 0 ? '▼' : '▲'} ${formatPct(Math.abs(ch))}`}
+                        : `${ch < 0 ? '▼' : '▲'} ${formatPct(Math.abs(ch), { whole: true })}`}
                     </span>
                     <span className={css.r}>₹{Math.round(x.per10)}</span>
                     <span className={css.r}>{x.rating.toFixed(1)}</span>
@@ -306,7 +306,10 @@ export function Market({ snapshot }: { snapshot: Snapshot }) {
                       </span>
                       <span style={{ color: c.pct < 0 ? 'var(--bad)' : 'var(--good)', fontWeight: 700 }}>
                         {c.pct < 0 ? '▼' : '▲'}{' '}
-                        {t('ui.market.change_on', { pct: formatPct(Math.abs(c.pct)), date: formatShortDate(c.date) })}
+                        {t('ui.market.change_on', {
+                          pct: formatPct(Math.abs(c.pct), { whole: true }),
+                          date: formatShortDate(c.date),
+                        })}
                       </span>
                     </div>
                   ))}

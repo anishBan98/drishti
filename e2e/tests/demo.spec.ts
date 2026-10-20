@@ -183,7 +183,7 @@ test('E2E-12 Assign opens the owner picker and logs the assignment', async ({ pa
   await expect(page.getByRole('region', { name: 'Action log' }).getByRole('button').first()).toContainText(owner);
 });
 
-test('E2E-21 Home page: no scroll in both themes; buttons and links go to the right place', async ({ page }) => {
+test('E2E-21 Home page: one screen in both themes; buttons and links go to the right place', async ({ page }) => {
   for (const theme of ['light', 'dark'] as const) {
     await open(page, '/', { theme });
     const { h, w } = await page.evaluate(() => ({
@@ -196,8 +196,49 @@ test('E2E-21 Home page: no scroll in both themes; buttons and links go to the ri
   await expect(page.getByRole('link', { name: 'Set up your workspace' })).toHaveAttribute('href', /SETUP-RUNBOOK/);
   await expect(page.getByRole('link', { name: 'What data Drishti needs' })).toHaveAttribute('href', /CONNECTORS/);
   const download = page.waitForEvent('download');
-  await page.getByRole('link', { name: 'Download the sample sheet' }).click();
+  await page.getByRole('link', { name: /Download the sample sheet/ }).click();
   expect((await download).suggestedFilename()).toBe('Drishti-Workspace-Template.xlsx');
-  await page.getByRole('link', { name: 'Open the demo' }).click();
+  await page
+    .getByRole('main')
+    .getByRole('link', { name: /Open the demo/ })
+    .click();
   await expect(page.getByRole('heading', { level: 1, name: 'This week' })).toBeVisible();
+});
+
+test('E2E-25 Home game: every round is answerable, scores XP and ends on the score card', async ({ page }) => {
+  await open(page, '/');
+  const game = page.getByRole('region', { name: 'Spot the real rupee' });
+  await game.getByRole('button', { name: /Play/ }).click();
+  let rounds = 0;
+  for (;;) {
+    const options = game.locator('button[aria-pressed]');
+    if ((await options.count()) === 0) break;
+    await options.first().click();
+    await expect(game.getByRole('status')).toContainText(/Spot on|Not quite/);
+    await expect(game.getByRole('link', { name: 'See it in the demo' })).toHaveAttribute('href', /^\/demo/);
+    rounds++;
+    await game.getByRole('button', { name: /Next round|See my score/ }).click();
+  }
+  expect(rounds).toBeGreaterThanOrEqual(3);
+  await expect(game).toContainText(new RegExp(`of ${rounds} right`));
+  await expect(game.getByRole('link', { name: /Open the demo/ })).toBeVisible();
+});
+
+test.describe('on a phone', () => {
+  test.use({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+  test('E2E-26 Home fits one phone screen and the game plays', async ({ page }) => {
+    await open(page, '/');
+    const fits = () =>
+      page.evaluate(
+        () =>
+          document.documentElement.scrollHeight <= innerHeight && document.documentElement.scrollWidth <= innerWidth,
+      );
+    expect(await fits()).toBe(true);
+    const game = page.getByRole('region', { name: 'Spot the real rupee' });
+    await game.getByRole('button', { name: /Play/ }).click();
+    await game.locator('button[aria-pressed]').first().click();
+    await expect(game.getByRole('button', { name: /Next round/ })).toBeInViewport();
+    expect(await fits()).toBe(true);
+    await expect(page.getByRole('link', { name: /Open the demo/ })).toBeVisible();
+  });
 });

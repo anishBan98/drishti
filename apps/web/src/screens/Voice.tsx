@@ -135,7 +135,7 @@ export function Voice({ snapshot }: { snapshot: Snapshot }) {
                   <span className={css.b}>{i.title}</span>
                   <span className={css.r}>{i.mentions}</span>
                   <span className={`${ui.tag} ${ui.bad} ${css.end}`}>
-                    {i.is_new || i.change_pct === null ? t('ui.new') : `▲ ${formatPct(i.change_pct)}`}
+                    {i.is_new || i.change_pct === null ? t('ui.new') : `▲ ${formatPct(i.change_pct, { whole: true })}`}
                   </span>
                   <span>{i.platforms}</span>
                   <span>{formatShortDate(i.first_seen)}</span>

@@ -15,6 +15,8 @@ export default defineConfig({
     viewport: { width: 1440, height: 900 },
     deviceScaleFactor: 1,
     acceptDownloads: true,
+    // Decorative motion off: elements are stable for clicks and screenshots, and the reduced-motion path is tested.
+    contextOptions: { reducedMotion: 'reduce' },
     trace: 'retain-on-failure',
   },
   projects: [

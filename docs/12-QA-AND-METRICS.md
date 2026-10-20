@@ -11,7 +11,7 @@
 | Worker API tests | Vitest with `@cloudflare/vitest-plugin` (local D1 and KV; renamed from `@cloudflare/vitest-pool-workers`) | `apps/worker/test/*` | every push |
 | Sync job integration (mock Google, Shopify, rival sites) | Vitest + msw | `apps/sync/test/*` | every push |
 | Extension adapters (fixture HTML) | Vitest + happy-dom | `apps/extension/test/*` | every push |
-| End-to-end | Playwright (Chromium) | `e2e/*` against local (`wrangler dev`) in CI, staging nightly, production after deploy | push (demo suite), nightly (full) |
+| End-to-end | Playwright (Chromium) | `e2e/*`: the demo suite against the built SPA served statically (`vite preview` of `apps/web/dist`, the files the Worker serves; `wrangler dev` needs a Cloudflare login because Workers AI is remote-only), signed-in flows against staging nightly, production after deploy. Runs with reduced motion | push (demo suite), nightly (full) |
 | Visual regression | Playwright `toHaveScreenshot` vs `design/screens/*.png` | `e2e/visual.spec.ts` | push |
 | Accessibility | `@axe-core/playwright` | `e2e/a11y.spec.ts` | push |
 | Performance | Lighthouse CI on `/demo` | `ci.yml` | push to main |
@@ -92,7 +92,9 @@ CI must be green before any milestone is marked done.
 - **E2E-12** Assign opens owner picker and logs the assignment.
 - **E2E-13..16** Staging (signed-in test user via a test-only Google token mock in staging): coupon handoff, geo test plan, QA hold, discount cap on the Shopify development store.
 - **E2E-20** Staging onboarding: workspace links validated, first sync completes and screens render real data.
-- **E2E-21** Home page: signed out `/` shows the home page with no page scroll at 1440 × 900 in both themes; each of the three buttons and two links opens the right page or downloads the template.
+- **E2E-21** Home page: signed out `/` shows the home page with no page scroll at 1440 × 900 in both themes; Open the demo, Set up your workspace, Download the sample sheet and What data Drishti needs open the right page or download the template.
+- **E2E-25** Home game: every round can be answered, shows the measured answer with a link into the demo, and ends on the score card.
+- **E2E-26** Home on a phone (390 × 844): no scroll before or after answering a round; Next and Open the demo stay on screen.
 - **E2E-22** Onboarding wizard (staging): steps resume after reload; a bad link shows the sharing fix; finishing step 6 starts a sync and ends on This week.
 - **E2E-23** Data guide: every Download sample link returns its file; Check my file on each `sample-data/inbox` file names the right source with no upload request sent.
 - **E2E-24** Sandbox: dropping `Drishti-Workspace-Template.xlsx` plus the inbox samples renders all eight screens; editing a file and dropping it again changes the numbers; no network request other than static assets is made.

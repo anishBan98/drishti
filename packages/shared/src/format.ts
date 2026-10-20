@@ -26,11 +26,12 @@ export function formatInr(value: number, opts: { compact?: boolean } = {}): stri
 }
 
 /** Ratio → "6.5%" (one decimal under 10), "21%" at 10 and above. */
-export function formatPct(ratio: number, opts: { signed?: boolean } = {}): string {
+/** Ratio → "6.5%" (one decimal under 10), "21%" at 10 and above; `whole` rounds every value (tables). */
+export function formatPct(ratio: number, opts: { signed?: boolean; whole?: boolean } = {}): string {
   const p = ratio * 100;
   const a = Math.abs(p);
-  const body = a >= 10 ? String(Math.round(a)) : trim(a.toFixed(1));
-  const sign = p < 0 && body !== '0' ? '−' : opts.signed && p > 0 ? '+' : '';
+  const body = a >= 10 || opts.whole ? String(Math.round(a)) : a.toFixed(1);
+  const sign = p < 0 && body !== '0.0' ? '−' : opts.signed && p > 0 ? '+' : '';
   return `${sign}${body}%`;
 }
 

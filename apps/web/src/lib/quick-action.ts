@@ -15,7 +15,7 @@ export function screenSuggestion(
   stepVars: Record<string, string | number> = {},
 ): Suggestion {
   return suggest(
-    { type, context, title, why, impactLabel: t('impact.label.data'), confidence: 'high', params, stepVars },
+    { type, context, title, why, impactLabel: '', confidence: 'high', params, stepVars },
     Number.MAX_SAFE_INTEGER,
   );
 }

@@ -31,20 +31,24 @@ function DemoLayout() {
   }, [workspace.data]);
   const name = snapshot.data?.workspace.name ?? '';
   return (
-    <WorkspaceProvider base="/demo" demo users={workspace.data?.users ?? []}>
-      <FrameGrid>
-        <Sidebar base="/demo" workspaceName={name} demo snapshot={snapshot.data} />
-        {snapshot.data && workspace.data ? (
-          <Outlet context={snapshot.data} />
-        ) : (
-          <main style={{ display: 'grid', placeItems: 'center' }}>
-            <p className={ui.empty}>
-              {snapshot.isError || workspace.isError ? t('error.SNAPSHOT_SCHEMA_MISMATCH') : ''}
-            </p>
-          </main>
-        )}
-      </FrameGrid>
-    </WorkspaceProvider>
+    <Stage>
+      <ToastProvider>
+        <WorkspaceProvider base="/demo" demo users={workspace.data?.users ?? []}>
+          <FrameGrid>
+            <Sidebar base="/demo" workspaceName={name} demo snapshot={snapshot.data} />
+            {snapshot.data && workspace.data ? (
+              <Outlet context={snapshot.data} />
+            ) : (
+              <main style={{ display: 'grid', placeItems: 'center' }}>
+                <p className={ui.empty}>
+                  {snapshot.isError || workspace.isError ? t('error.SNAPSHOT_SCHEMA_MISMATCH') : ''}
+                </p>
+              </main>
+            )}
+          </FrameGrid>
+        </WorkspaceProvider>
+      </ToastProvider>
+    </Stage>
   );
 }
 
@@ -77,11 +81,7 @@ export function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <Stage>
-          <ToastProvider>
-            <RouterProvider router={router} />
-          </ToastProvider>
-        </Stage>
+        <RouterProvider router={router} />
       </ThemeProvider>
     </QueryClientProvider>
   );

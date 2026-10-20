@@ -27,7 +27,7 @@ export function Customers({ snapshot }: { snapshot: Snapshot }) {
   // Centroid chips of nearby groups would overlap: stack each later one lower.
   // Chip size as a share of the plot (about 830 × 300 px at 1440 × 900): width from the name, height 34 px.
   const chipPos = new Map<string, { left: number; top: number; w: number }>();
-  const H = 13;
+  const H = 11;
   for (const x of c.segments) {
     const w = ((x.name.length * 8.5 + 48) / 830) * 100;
     const left = Math.min(100 - w / 2 - 1, Math.max(w / 2 + 1, xPos(x.centroid.orders)));
@@ -105,7 +105,7 @@ export function Customers({ snapshot }: { snapshot: Snapshot }) {
                           left: `${xPos(o)}%`,
                           top: `${yPos(aov)}%`,
                           background: KIND_COLOR[x.kind],
-                          opacity: x.id === selected ? 0.95 : 0.45,
+                          opacity: x.id === selected ? 0.85 : 0.3,
                         }}
                       />
                     )),
@@ -161,11 +161,11 @@ export function Customers({ snapshot }: { snapshot: Snapshot }) {
                     <span className={ui.dotSwatch} style={{ background: KIND_COLOR[x.kind] }} />
                     {x.name}
                   </span>
-                  <span className={css.r}>{formatPct(x.buyers_pct)}</span>
-                  <span className={css.r}>{formatPct(x.revenue_pct)}</span>
+                  <span className={css.r}>{formatPct(x.buyers_pct, { whole: true })}</span>
+                  <span className={css.r}>{formatPct(x.revenue_pct, { whole: true })}</span>
                   <span className={css.r}>{formatInr(x.aov)}</span>
                   <span className={css.r}>{x.orders_per_year.toFixed(1)}</span>
-                  <span className={css.r}>{formatPct(x.repeat_pct)}</span>
+                  <span className={css.r}>{formatPct(x.repeat_pct, { whole: true })}</span>
                   <span className={css.r}>{formatInr(x.cac)}</span>
                   <span className={`${ui.tag} ${ratioTone(x.ltv_cac)} ${css.end}`}>{formatRoas(x.ltv_cac)}</span>
                 </button>

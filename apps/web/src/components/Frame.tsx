@@ -215,8 +215,8 @@ export function KpiCell({ kpi }: { kpi: Kpi }) {
         {kpi.display}
       </div>
       <div className={`${css.kpiFoot} ${kpi.spark ? '' : css.kpiFootLeft}`}>
-        {kpi.delta && <DeltaChip delta={kpi.delta} />}
-        {kpi.delta && kpi.note && <span className={css.note}>{kpi.note}</span>}
+        {kpi.delta && <DeltaChip delta={kpi.delta} suffix={kpi.delta.good === null ? kpi.note : undefined} />}
+        {kpi.delta && kpi.note && kpi.delta.good !== null && <span className={css.note}>{kpi.note}</span>}
         {noteAsChip && <span className={`${css.delta} ${css[`tone_${kpi.tone ?? 'neutral'}`]}`}>{kpi.note}</span>}
         {kpi.spark && kpi.spark.length > 1 && !kpi.note && (
           <Sparkline values={kpi.spark} tone={kpi.tone} label={`${kpi.label}, 8 weeks`} />

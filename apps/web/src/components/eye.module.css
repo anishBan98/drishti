@@ -1,0 +1,26 @@
+.eye {
+  overflow: visible;
+}
+.lid {
+  transform-origin: 100px 104px;
+  animation: blink 5.5s infinite;
+}
+.pupil {
+  transition: transform 120ms ease-out;
+  filter: drop-shadow(0 0 10px rgba(255, 46, 46, 0.7));
+}
+@keyframes blink {
+  0%,
+  92%,
+  100% {
+    transform: translate(0, -6px) scaleY(1);
+  }
+  95% {
+    transform: translate(0, -6px) scaleY(0.08);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lid {
+    animation: none;
+  }
+}

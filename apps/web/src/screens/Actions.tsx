@@ -60,6 +60,8 @@ const STATUS_TONE: Record<string, string> = {
   declined: ui.neutral!,
   expired: ui.neutral!,
   suggested: ui.neutral!,
+  scheduled: ui.neutral!,
+  overdue: ui.bad!,
 };
 const STAGES = ['stage.suggested', 'stage.approved', 'stage.running', 'stage.measuring', 'stage.result'] as const;
 
@@ -231,7 +233,10 @@ export function Actions({ snapshot }: { snapshot: Snapshot }) {
                 <span className={`${css.cell} ${css.r}`}>{x.expected_label}</span>
                 <span
                   className={`${css.cell} ${css.r}`}
-                  style={{ fontWeight: 700, color: x.measured_label ? 'var(--good)' : 'var(--muted)' }}
+                  style={{
+                    fontWeight: 700,
+                    color: x.status === 'overdue' ? 'var(--bad)' : x.measured_label ? 'var(--good)' : 'var(--muted)',
+                  }}
                 >
                   {x.measured_label ?? '—'}
                 </span>
@@ -280,10 +285,14 @@ export function Actions({ snapshot }: { snapshot: Snapshot }) {
                     style={{ width: `${Math.min(100, Math.max(0, (a.measured_progress ?? 0) * 100))}%` }}
                   />
                 </div>
-                {a.readout_date && (
-                  <div className={css.readout}>
-                    {t('ui.actions.readout', { text: formatShortDate(a.readout_date) })}
-                  </div>
+                {a.readout_text ? (
+                  <div className={css.readout}>{a.readout_text}</div>
+                ) : (
+                  a.readout_date && (
+                    <div className={css.readout}>
+                      {t('ui.actions.readout', { text: formatShortDate(a.readout_date) })}
+                    </div>
+                  )
                 )}
               </div>
             </section>

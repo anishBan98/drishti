@@ -112,6 +112,10 @@ for (const dir of ['workspace', 'inbox'])
   for (const f of readdirSync(path.join(sample, dir)))
     if (f.endsWith('.csv')) copyFileSync(path.join(sample, dir, f), path.join(outDir, 'samples', f));
 
+// The visual suite's design fixture (docs/12 §5), served at /demo/design-*.json for ?fixture=design.
+for (const f of ['design-snapshot.json', 'design-workspace.json'])
+  copyFileSync(path.join(root, 'e2e/fixtures', f), path.join(outDir, 'demo', f));
+
 // Screen thumbnails for the home page (the four investor screens, light and dark).
 mkdirSync(path.join(outDir, 'screens'), { recursive: true });
 for (const f of readdirSync(path.join(root, 'design/screens')))

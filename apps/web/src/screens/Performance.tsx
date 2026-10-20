@@ -86,7 +86,7 @@ function WeeklyChart({ p, metric, d28start }: { p: Snapshot['performance']; metr
       <div />
       <div className={css.xLabels}>
         {w.weeks.map((wk) => (
-          <span key={wk}>{formatShortDate(wk)}</span>
+          <span key={wk}>{formatShortDate(addDaysIso(wk, 6))}</span>
         ))}
       </div>
     </div>
@@ -210,7 +210,7 @@ export function Performance({ snapshot }: { snapshot: Snapshot }) {
                     className={`${css.r} ${css.b}`}
                     style={{ color: c.growth_pct < 0 ? 'var(--bad)' : 'var(--good)' }}
                   >
-                    {c.growth_pct < 0 ? '▼' : '▲'} {formatPct(Math.abs(c.growth_pct))}
+                    {c.growth_pct < 0 ? '▼' : '▲'} {formatPct(Math.abs(c.growth_pct), { whole: true })}
                   </span>
                   <span className={css.r}>{kfmt(c.orders)}</span>
                   <span className={css.r}>{formatInr(c.aov)}</span>
