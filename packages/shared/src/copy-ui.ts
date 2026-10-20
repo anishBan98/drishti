@@ -75,6 +75,7 @@ export const uiCopy = {
   'ui.toast.demo_saved': 'Saved in this demo tab only.',
   'ui.retry': 'Retry',
   'ui.not_measured': 'not measured yet',
+  'ui.brand.home': '(home page)',
   'ui.shortcuts.hint': 'Keyboard: press g, then 1–8, to jump between screens.',
   'ui.demo.loading': 'Loading the demo…',
   'ui.demo.error': "Couldn't load the demo data. Check your connection and try again.",
