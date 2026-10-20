@@ -110,6 +110,47 @@ describe('actions', () => {
     expect(items.find((a) => a.id === 'ac_test_1')?.status).toBe('waiting_on_user');
   });
 
+  it('adds an AI summary to a draft document, and skips it when the draft invents a number or the budget is spent', async () => {
+    const draftAction = (id: string) =>
+      action('done', {
+        id,
+        type: 'qa_hold',
+        outputs: [
+          {
+            kind: 'download',
+            label: 'Document',
+            filename: `${id}.md`,
+            mime: 'text/markdown',
+            content: '# QA hold: pump\n\n- 142 reviews mention the pump\n- Rating fell from 4.3 to 3.9\n',
+          },
+        ],
+      });
+    const run = async (id: string, reply: string) => {
+      const calls = fakeGoogle();
+      const e = { ...env, GOOGLE_SA_JSON: saJson, AI: { run: async () => ({ response: reply }) } };
+      const s = await session(e, 'owner@lumora.example');
+      await app.request(
+        `https://drishti.test/api/actions/${id}`,
+        {
+          method: 'PUT',
+          headers: { cookie: s.cookie, 'x-csrf-token': s.csrf, 'content-type': 'application/json' },
+          body: JSON.stringify(draftAction(id)),
+        },
+        e,
+      );
+      vi.restoreAllMocks();
+      return calls.find((c) => c.url.includes('/upload/drive/'))!.body;
+    };
+    expect(await run('ac_ai_1', 'Customers keep reporting the pump. 142 reviews mention it.')).toContain('## Summary');
+    expect(await run('ac_ai_2', 'Over 300 customers are angry.')).not.toContain('## Summary');
+    await env.DB.prepare("INSERT OR REPLACE INTO usage_daily (day, metric, value) VALUES (?, 'ai_neurons', 7999)")
+      .bind(new Date().toISOString().slice(0, 10))
+      .run();
+    expect(await run('ac_ai_3', 'Customers keep reporting the pump. 142 reviews mention it.')).not.toContain(
+      '## Summary',
+    );
+  });
+
   it('refuses Viewers', async () => {
     await env.DB.prepare(
       "INSERT OR IGNORE INTO users (id, workspace_id, email, name, role, created_at) VALUES ('u-v2', ?, 'v2@lumora.example', 'V', 'Viewer', '2026-10-21')",

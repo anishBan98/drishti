@@ -1,5 +1,6 @@
 import type { Hono } from 'hono';
 import type { AppEnv, Env } from '../env';
+import { draftSummary } from '../lib/ai';
 import { apiError } from '../lib/errors';
 import { serviceAccountToken } from '../lib/google';
 import { requireRole } from '../lib/rbac';
@@ -55,6 +56,8 @@ interface ActionBody {
 }
 
 const DONE = new Set(['waiting_on_user', 'done', 'measuring', 'result']);
+/** Draft actions get a summary written by Workers AI from the document's facts (docs/08 §11.3). */
+const DRAFTS = new Set(['brief', 'qa_hold', 'listing_update', 'reply_drafts', 'packaging_request', 'nykaa_request']);
 
 async function google(env: Env, fetcher: typeof fetch) {
   if (!env.GOOGLE_SA_JSON) return null;
@@ -154,6 +157,15 @@ export function actionRoutes(app: Hono<AppEnv>, fetcher: () => typeof fetch = ()
     if (g?.outbox)
       for (const o of a.outputs ?? [])
         if (o.kind === 'download' && !o.saved) {
+          if (DRAFTS.has(a.type) && o.mime === 'text/markdown' && o.content) {
+            const summary = await draftSummary(c.env, o.content);
+            // After the title line: the AI summary, labelled as such.
+            if (summary)
+              o.content = o.content.replace(
+                '\n',
+                `\n\n## Summary\n\n${summary}\n\n_Drafted by AI from the facts below; every number comes from Drishti's data._\n`,
+              );
+          }
           const url = await saveToOutbox({ token: g.token, outbox: g.outbox }, o, f);
           o.saved = true;
           if (url) added.push({ kind: 'link', label: `Open ${o.filename ?? o.label} in Drive`, url, saved: true });
