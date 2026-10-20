@@ -191,3 +191,15 @@
   padding-top: 12px;
   border-top: 1px solid var(--line);
 }
+
+/* Hover states fade in (150 ms; none under reduced motion). */
+.row {
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .row {
+    transition: none;
+  }
+}

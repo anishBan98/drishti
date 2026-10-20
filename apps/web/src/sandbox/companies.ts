@@ -108,13 +108,13 @@ function build(c: Company): Promise<BuildResponse> {
 }
 
 /** Rebuilds a company's snapshot from its sources and saves it. */
-async function rebuild(c: Company, newest?: string): Promise<Company> {
+async function rebuild(c: Company, added: string[] = []): Promise<Company> {
   let res = await build(c);
-  // A newly added file replaces older files that carried only the same sources (docs/09 §6.12 Update data).
-  if (res.ok && newest) {
-    const fresh = new Set(res.tables.filter((t) => t.input === newest && t.source).map((t) => t.source));
+  // Newly added files replace older files that carried only the same sources (docs/09 §6.12 Update data).
+  if (res.ok && added.length) {
+    const fresh = new Set(res.tables.filter((t) => added.includes(t.input) && t.source).map((t) => t.source));
     const stale = c.sources.filter((s) => {
-      if (s.id === newest || s.kind !== 'file') return false;
+      if (added.includes(s.id) || s.kind !== 'file') return false;
       const own = res.ok ? res.tables.filter((t) => t.input === s.id && t.source) : [];
       return own.length > 0 && own.every((t) => fresh.has(t.source));
     });
@@ -182,23 +182,27 @@ export class SandboxError extends Error {
   }
 }
 
+/** Adds dropped files and rebuilds once for the whole drop. */
 export async function addFiles(id: string, files: File[]): Promise<Company> {
-  let c = getCompany(id);
+  const c = getCompany(id);
   if (!c) throw new SandboxError('NOT_FOUND');
-  for (const f of files) {
-    if (!/\.(csv|xlsx|zip)$/i.test(f.name)) throw new SandboxError('UPLOAD_TYPE_UNSUPPORTED');
-    if (totalBytes(c) + f.size > MAX_TOTAL_BYTES) throw new SandboxError('SANDBOX_FULL');
-    const src: CompanySource = {
+  if (files.some((f) => !/\.(csv|xlsx|zip)$/i.test(f.name))) throw new SandboxError('UPLOAD_TYPE_UNSUPPORTED');
+  if (totalBytes(c) + files.reduce((a, f) => a + f.size, 0) > MAX_TOTAL_BYTES) throw new SandboxError('SANDBOX_FULL');
+  const now = new Date().toISOString();
+  const added: CompanySource[] = await Promise.all(
+    files.map(async (f) => ({
       id: uid(),
-      kind: 'file',
+      kind: 'file' as const,
       name: f.name,
       bytes: await f.arrayBuffer(),
       size: f.size,
-      addedAt: new Date().toISOString(),
-    };
-    c = await rebuild({ ...c, sources: [...c.sources, src] }, src.id);
-  }
-  return c;
+      addedAt: now,
+    })),
+  );
+  return rebuild(
+    { ...c, sources: [...c.sources, ...added] },
+    added.map((s) => s.id),
+  );
 }
 
 /** GET /api/sheet → the workbook bytes and its name, or a copy-deck error code. */

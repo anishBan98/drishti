@@ -64,10 +64,23 @@ function DemoLayout() {
                 </button>
               </main>
             ) : (
-              <main style={{ display: 'grid', placeItems: 'center' }} aria-busy="true">
-                <p className={ui.empty} role="status">
-                  <span className={ui.spinner} aria-hidden="true" /> {t('ui.demo.loading')}
+              <main aria-busy="true">
+                <p className="sr-only" role="status">
+                  {t('ui.demo.loading')}
                 </p>
+                {/* Skeleton in the frame's shapes, so nothing jumps when the data arrives (docs/09 §7). */}
+                <div className={ui.skeleton} aria-hidden="true">
+                  <div className={ui.skelBlock} style={{ width: '40%' }} />
+                  <div className={ui.skelRow} style={{ gridTemplateColumns: '1.6fr repeat(6, 1fr)' }}>
+                    {Array.from({ length: 7 }, (_, i) => (
+                      <div key={i} className={ui.skelBlock} />
+                    ))}
+                  </div>
+                  <div className={ui.skelRow} style={{ gridTemplateColumns: '1.9fr 1fr' }}>
+                    <div className={ui.skelBlock} />
+                    <div className={ui.skelBlock} />
+                  </div>
+                </div>
               </main>
             )}
           </FrameGrid>

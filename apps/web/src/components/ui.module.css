@@ -345,3 +345,81 @@
   font-weight: 600;
   box-shadow: 0 12px 32px rgba(20, 27, 69, 0.3);
 }
+
+/* Interaction polish (docs/09 §8: transitions only, at most 150 ms; none under reduced motion). Hover and press
+   give immediate feedback; disabled controls read as unavailable. */
+.btnPrimary,
+.btnSecondary,
+.btn,
+.rowBtn {
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    transform 100ms ease-out;
+}
+.btnPrimary:hover:not(:disabled) {
+  background: var(--primary-2);
+  box-shadow: 0 6px 16px rgba(30, 42, 110, 0.25);
+}
+.btnSecondary:hover:not(:disabled) {
+  background: var(--sel);
+  border-color: var(--link);
+}
+.btnPrimary:active:not(:disabled),
+.btnSecondary:active:not(:disabled) {
+  transform: scale(0.97);
+}
+.btnPrimary:disabled:not([aria-busy='true']),
+.btnSecondary:disabled:not([aria-busy='true']) {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.linkBtn {
+  transition: color 150ms ease;
+}
+.linkBtn:hover {
+  color: var(--strong);
+}
+
+/* Skeleton for loading screens (docs/09 §7): the frame's shapes, with a soft shimmer. */
+.skeleton {
+  display: grid;
+  grid-template-rows: 56px 112px minmax(0, 1fr);
+  gap: 16px;
+  padding: 22px 26px;
+  height: 100%;
+  box-sizing: border-box;
+}
+.skelRow {
+  display: grid;
+  gap: 16px;
+}
+.skelBlock {
+  border-radius: 14px;
+  background: linear-gradient(90deg, var(--chip) 0%, var(--line-soft) 50%, var(--chip) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btnPrimary,
+  .btnSecondary,
+  .btn,
+  .rowBtn,
+  .linkBtn {
+    transition: none;
+  }
+  .btnPrimary:active:not(:disabled),
+  .btnSecondary:active:not(:disabled) {
+    transform: none;
+  }
+  .skelBlock {
+    animation: none;
+  }
+}

@@ -8,12 +8,14 @@
     "test:visual": "playwright test --project=visual",
     "test:a11y": "playwright test --project=a11y",
     "typecheck": "tsc -p tsconfig.json",
-    "fixture:design": "tsx fixtures/build-design-fixture.ts"
+    "fixture:design": "tsx fixtures/build-design-fixture.ts",
+    "test:sandbox": "playwright test --project=sandbox"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",
-    "@playwright/test": "1.64.1",
     "@drishti/engine": "workspace:*",
-    "@drishti/shared": "workspace:*"
+    "@drishti/shared": "workspace:*",
+    "@playwright/test": "1.64.1",
+    "fflate": "0.8.2"
   }
 }
