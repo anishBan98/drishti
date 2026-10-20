@@ -40,10 +40,9 @@ const scoreOf = (headers: string[], required: readonly (readonly string[])[]) =>
 
 /** Detection order (docs/11 §3): filename prefix, then the header signature with the most required columns. */
 export function detect(name: string, rawHeaders: string[], mapping: Record<string, string> = {}): Detected {
-  const headers = rawHeaders.map((h) => {
-    const n = normHeader(h);
-    return mapping[n] ? normHeader(mapping[n]) : n;
-  });
+  // Both the file's own names and their mapped Drishti field names count.
+  const original = rawHeaders.map(normHeader);
+  const headers = [...original, ...original.filter((n) => mapping[n]).map((n) => normHeader(mapping[n]!))];
   const base = strip(name.split('›').pop() ?? name);
   // Informational template tabs (README, Source status, Sync log) are known but carry no data.
   if (INFO_TABS.includes(base)) return { kind: 'tab', tab: base };
