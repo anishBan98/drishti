@@ -2721,6 +2721,7 @@ CI must be green before any milestone is marked done.
 - For each of the 8 screens × 2 themes, render the demo at 1440 × 900 with fonts loaded and compare with `design/screens/<nn>-<screen>-<theme>.png` using `maxDiffPixelRatio: 0.03`.
 - Expected differences: the demo snapshot's numbers differ slightly from the illustrative design numbers. To compare layout fairly, the visual suite runs with `?fixture=design`, which loads `e2e/fixtures/design-snapshot.json`: a snapshot hand-built to contain exactly the design's numbers and texts (generate it once from the static HTML text content; check it in).
 - Update baselines only with an explicit `pnpm test:visual --update` and a reviewed PR.
+- CI runs the visual suite on a Windows runner (`windows-latest`, free for public repos): the design PNGs were rendered on Windows, and Linux font smoothing alone differs by about 4 %, over the tolerance.
 
 ## 6. Product analytics (first-party, D1 `events`)
 

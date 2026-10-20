@@ -33,7 +33,7 @@ jobs:
       - run: pnpm test
 
   e2e:
-    name: e2e (demo, a11y, visual)
+    name: e2e (demo, a11y)
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -49,12 +49,37 @@ jobs:
         run: pnpm --filter @drishti/e2e exec playwright install --with-deps chromium
       - name: Demo journeys and accessibility (docs/12 §1)
         run: pnpm --filter @drishti/e2e exec playwright test --project=demo --project=a11y
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-report-e2e
+          path: |
+            e2e/playwright-report
+            e2e/test-results
+          retention-days: 7
+
+  visual:
+    name: visual (design/screens)
+    # The design PNGs were rendered on Windows; Linux font smoothing alone differs by about 4 %, over the 3 % tolerance.
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Install Chromium
+        run: pnpm --filter @drishti/e2e exec playwright install chromium
       - name: Visual regression against design/screens (docs/12 §5)
         run: pnpm --filter @drishti/e2e exec playwright test --project=visual
       - uses: actions/upload-artifact@v7
         if: failure()
         with:
-          name: playwright-report
+          name: playwright-report-visual
           path: |
             e2e/playwright-report
             e2e/test-results
