@@ -11,6 +11,7 @@ This runbook is written for Claude Code to follow, with the human (you) logging 
 | Google account (Gmail) | Google Cloud project (no billing), Sheets, Drive, Sign-In, Calendar | Free; **do not create a billing account** | You |
 | Shopify Partners | Free development store for staging and the showcase | Free | You (Phase 1, M7) |
 | Slack (optional) | Notifications via incoming webhook | Free workspace | You |
+| Vercel (optional mirror) | A second address for the public pages (home, demo, sandbox) | Hobby (free, no card; non-commercial use only) | You (sign up with GitHub) |
 | Meta for Developers (optional, Phase 2) | Ads API in development mode | Free | You |
 
 Use a club email (for example `preql.drishti@…`) for Cloudflare and Google so the club owns the deployment (`04-ADMIN.md` §9).
@@ -27,6 +28,7 @@ Use a club email (for example `preql.drishti@…`) for Cloudflare and Google so 
 | GitHub fine-grained PAT for sync dispatch | github.com → Settings → Developer settings | You | Stores it with `wrangler secret put GITHUB_DISPATCH_TOKEN` |
 | Shopify development store and custom app | partners.shopify.com | You | Seeds the store; you paste the token in Drishti Admin |
 | Slack webhook | api.slack.com/apps | You | You paste the URL in Drishti Admin |
+| Vercel login (optional mirror) | Terminal → browser | You approve | Runs `npx vercel login`, then `npx vercel deploy --prod` |
 
 ## 3. Local prerequisites
 
@@ -238,7 +240,8 @@ design/ and brand/. The docs are the source of truth. Read docs/00-README.md, th
 before writing code, and skim the rest.
 
 Rules: free tiers only, never add a payment method or upgrade any plan. Allowed services: GitHub, Cloudflare
-Workers/D1/KV/Workers AI, Google APIs with no billing account, Shopify development store, optional Slack webhook.
+Workers/D1/KV/Workers AI, Google APIs with no billing account, Shopify development store, optional Slack webhook,
+and Vercel Hobby as a mirror of the public pages only.
 No automated visits to marketplaces. All numbers from code; AI only for review tagging and drafts.
 Every user-facing string comes from the copy deck. Every button must do something real (docs/10-ACTIONS.md).
 Match design/screens/*.png and design/static-html/*.html in light and dark.
