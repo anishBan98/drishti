@@ -214,12 +214,13 @@ async function fetchSheet(url: string): Promise<{ bytes: ArrayBuffer; name: stri
     throw new SandboxError(body?.error?.code ?? 'SHEET_FETCH_FAILED');
   }
   const raw = res.headers.get('x-sheet-name') ?? '';
-  let name = '';
-  try {
-    name = decodeURIComponent(raw);
-  } catch {
-    name = raw;
-  }
+  const name = (() => {
+    try {
+      return decodeURIComponent(raw);
+    } catch {
+      return raw;
+    }
+  })();
   return { bytes: await res.arrayBuffer(), name };
 }
 

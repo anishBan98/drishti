@@ -1,5 +1,5 @@
 import { formatShortDate, t, type CopyKey } from '@drishti/shared';
-import { useEffect, useRef, useState, type DragEvent, type FormEvent } from 'react';
+import { useRef, useState, type DragEvent, type FormEvent } from 'react';
 import { Link, Navigate, useNavigate, useParams } from 'react-router';
 import { useTheme } from '../app/theme';
 import { EyeMark } from '../components/EyeMark';
@@ -451,8 +451,6 @@ export function TryManage() {
   const { companies, ready } = useCompanies();
   const c = companies.find((x) => x.id === id);
   const [message, setMessage] = useState('');
-  const [name, setName] = useState(c?.name ?? '');
-  useEffect(() => setName(c?.name ?? ''), [c?.name]);
   if (!ready) return <Shell>{null}</Shell>;
   if (!c) return <Navigate to="/try" replace />;
   return (
@@ -466,11 +464,11 @@ export function TryManage() {
         </label>
         <input
           id="company-name"
+          key={c.name}
           className={css.nameInput}
-          value={name}
+          defaultValue={c.name}
           maxLength={60}
-          onChange={(e) => setName(e.target.value)}
-          onBlur={() => name !== c.name && void renameCompany(c.id, name)}
+          onBlur={(e) => e.target.value !== c.name && void renameCompany(c.id, e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && (e.target as HTMLInputElement).blur()}
         />
         <span className={css.chip}>🔒 {t('try.chip')}</span>
