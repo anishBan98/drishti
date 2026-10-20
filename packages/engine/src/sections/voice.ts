@@ -1,7 +1,6 @@
 import { formatPct, formatShortDate, round, t, type CopyKey, type Snapshot, type Suggestion } from '@drishti/shared';
 import type { Context } from '../context';
 import type { AspectId, Review } from '../facts/types';
-import { PUMP_MENTION } from '../kpi';
 import { suggest } from '../suggest';
 import { ASPECTS, tagReviews } from '../voice/lexicon';
 import { addDays, daysBetween, inRange } from '../windows';
@@ -44,6 +43,28 @@ function platformsOf(list: Review[]): string {
     .sort((a, b) => b[1] - a[1])
     .map(([p]) => p);
   return top.length >= 4 ? t('voice.platforms.all') : top.join(', ');
+}
+
+/**
+ * The brand's top complaint: the aspect with the largest share of last-30-day reviews that complain about it
+ * (for the demo brand, the pump). Used by the sixth Voice KPI and This week's attention card.
+ */
+export function topIssue(ctx: Context): { aspect: AspectId; label: string; share: number; before: number } {
+  const reviews = tagReviews(ctx.facts.reviews);
+  const r30 = reviews.filter((r) => inRange(r.review_date, ctx.w.d30));
+  const prior30 = reviews.filter((r) => inRange(r.review_date, ctx.w.prior_d30));
+  const shareOf = (list: Review[], a: AspectId) =>
+    list.length
+      ? list.filter((r) => r.aspects.some((x) => x.aspect === a && x.sentiment === -1)).length / list.length
+      : 0;
+  const ranked = ASPECTS.map((a) => ({ a, s: shareOf(r30, a) })).sort((x, y) => y.s - x.s);
+  const aspect = ranked[0]?.s ? ranked[0].a : 'pump_packaging';
+  return {
+    aspect,
+    label: t(`voice.aspect.short.${aspect}` as CopyKey),
+    share: shareOf(r30, aspect),
+    before: shareOf(prior30, aspect),
+  };
 }
 
 export function buildVoice(ctx: Context): Snapshot['voice'] {
@@ -206,8 +227,7 @@ export function buildVoice(ctx: Context): Snapshot['voice'] {
   const ratingBefore = avg(prior30.map((r) => r.rating));
   const posShare = share(r30, 1);
   const negShare = share(r30, -1);
-  const pumpShare = r30.length ? r30.filter((r) => PUMP_MENTION.test(r.text)).length / r30.length : 0;
-  const pumpBefore = prior30.length ? prior30.filter((r) => PUMP_MENTION.test(r.text)).length / prior30.length : 0;
+  const issue = topIssue(ctx);
   const replied = r90.length ? r90.filter((r) => r.brand_replied).length / r90.length : 0;
   const platforms = new Set(r90.map((r) => r.platform)).size;
   const fix = aspects.find((x) => x.tag === t('voice.tag.fix_now'));
@@ -235,9 +255,12 @@ export function buildVoice(ctx: Context): Snapshot['voice'] {
       kpi('negative', 'kpi.negative', negShare, formatPct(negShare), {
         delta: delta('negative_share', negShare, share(prior30, -1), 'pts'),
       }),
-      kpi('pump_mentions', 'kpi.pump_mentions', pumpShare, formatPct(pumpShare), {
-        delta: delta('negative_share', pumpShare, pumpBefore, 'pts'),
-      }),
+      {
+        ...kpi('issue_mentions', 'kpi.issue_mentions', issue.share, formatPct(issue.share), {
+          delta: delta('negative_share', issue.share, issue.before, 'pts'),
+        }),
+        label: t('kpi.issue_mentions', { aspect: issue.label }),
+      },
       kpi('replied', 'kpi.replied', replied, formatPct(replied), {
         note: t('note.target', { value: formatPct(ws.settings.target_reply_rate) }),
         tone: replied >= ws.settings.target_reply_rate ? 'good' : 'warn',

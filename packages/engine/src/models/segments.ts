@@ -48,6 +48,9 @@ interface CustomerRow {
   source: OwnSiteCustomer['acquisition_source'];
 }
 
+/** Fewer customers than this in 365 days and no types are formed (10 per type for k = 5). */
+export const MIN_CUSTOMERS = 50;
+
 export function segmentCustomers(input: {
   orders: OwnSiteOrder[];
   lines: OwnSiteOrderLine[];
@@ -79,6 +82,8 @@ export function segmentCustomers(input: {
     byCustomer.set(o.customer_key, row);
   }
   const rows = [...byCustomer.values()].sort((a, b) => (a.key < b.key ? -1 : 1));
+  // Too few own-site customers to form k types: no types rather than unstable ones (docs/08 §7.2).
+  if (rows.length < MIN_CUSTOMERS) return { k, signals: 0, silhouette: 0, segments: [] };
   for (const r of rows) r.orders.sort((a, b) => (a.created_at < b.created_at ? -1 : 1));
 
   // §7.1 features

@@ -157,3 +157,32 @@ describe('sandbox build (docs/05 §14)', () => {
     expect(snap.week.suggestions.some((s) => s.type === 'budget_shift')).toBe(false);
   });
 });
+
+describe('partial data (a sandbox company with only some sources)', () => {
+  const combos: Record<string, string[]> = {
+    nothing: [],
+    shopify: ['shopify_orders_export.csv'],
+    amazon: ['amazon_business_report_daily.csv'],
+    meta: ['meta_ads_daily.csv'],
+    reviews: ['reviews_export.csv'],
+    captures: ['watchlist_captures.csv'],
+    'quick commerce': ['quick_commerce_store_daily.csv'],
+    nykaa: ['nykaa_sales_weekly.csv'],
+    'shopify + meta': ['shopify_orders_export.csv', 'meta_ads_daily.csv'],
+  };
+  for (const [name, files] of Object.entries(combos)) {
+    it(`${name}: builds a valid snapshot with no NaN or Infinity anywhere`, () => {
+      const a = assemble(files.flatMap((f) => parseFile(f, inbox(f), opts)));
+      const snap = buildSnapshot(a.facts, a.ws, { demo: true, generatedAt: '2026-10-17T07:10:00+05:30' });
+      expect(snapshotSchema.safeParse(snap).success).toBe(true);
+      const bad: string[] = [];
+      const walk = (v: unknown, at: string) => {
+        if (typeof v === 'number' && !Number.isFinite(v)) bad.push(at);
+        else if (typeof v === 'string' && /NaN|Infinity/.test(v)) bad.push(`${at}: ${v}`);
+        else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) walk(x, `${at}.${k}`);
+      };
+      walk(snap, 'snapshot');
+      expect(bad).toEqual([]);
+    });
+  }
+});

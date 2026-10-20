@@ -207,7 +207,12 @@ function mediaDrivers(ctx: Context, exclude: Set<Media>): Driver[] {
 
 export function buildWeek(
   ctx: Context,
-  input: { changes: PriceChange[]; candidates: Suggestion[]; sources: Snapshot['sources']; pumpShare?: number },
+  input: {
+    changes: PriceChange[];
+    candidates: Suggestion[];
+    sources: Snapshot['sources'];
+    issue?: { label: string; share: number };
+  },
 ): Snapshot['week'] {
   const { w, sales, ws } = ctx;
   const threshold = ws.settings.approval_threshold_inr;
@@ -359,10 +364,13 @@ export function buildWeek(
           title: t('week.attention.channel', { channel: CHANNEL_SHORT[channelGrowth.at(-1)!.c] }),
           detail: t('week.attention.channel.detail', { pct: formatPct(channelGrowth.at(-1)!.g) }),
         },
-    input.pumpShare !== undefined && input.pumpShare > 0.05
+    input.issue && input.issue.share > 0.05
       ? {
-          title: t('week.attention.pump'),
-          detail: t('week.attention.pump.detail', { pct: formatPct(input.pumpShare) }),
+          title: t('week.attention.issue', { aspect: input.issue.label }),
+          detail: t('week.attention.issue.detail', {
+            aspect: input.issue.label.toLowerCase(),
+            pct: formatPct(input.issue.share),
+          }),
         }
       : { title: t('week.attention.cac'), detail: t('week.attention.cac.detail', { cac: money(cac) }) },
     late.length

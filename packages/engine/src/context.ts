@@ -45,8 +45,24 @@ export interface Context {
   cacBySource: Partial<Record<OwnSiteCustomer['acquisition_source'], number>>;
 }
 
-export function buildContext(facts: Facts, ws: Workspace, opts: { sampleScale?: number } = {}): Context {
-  const through = dataThrough(facts.sales_city_daily);
+export function buildContext(
+  facts: Facts,
+  ws: Workspace,
+  opts: { sampleScale?: number; today?: string } = {},
+): Context {
+  // No sales yet (a sandbox company with only ads or reviews): the latest date of any data, else the sync day.
+  const through =
+    dataThrough(facts.sales_city_daily) ||
+    [
+      ...facts.spend_city_daily.map((r) => r.date),
+      ...facts.reviews.map((r) => r.review_date),
+      ...facts.market_captures.map((r) => r.captured_at.slice(0, 10)),
+      ...facts.search_share_weekly.map((r) => r.week_ending),
+    ]
+      .filter(Boolean)
+      .sort()
+      .at(-1) ||
+    addDays(opts.today ?? new Date().toISOString().slice(0, 10), -1);
   const w = windowsFor(addDays(through, 1), ws.settings.week_starts_on);
   const s = (r: [string, string]) => salesTotals(facts.sales_city_daily, r);
   const m = (r: [string, string]) => mediaTotals(facts.spend_city_daily, r);

@@ -215,10 +215,10 @@ export function buildImpact(ctx: Context): {
           },
       kpis: [
         kpi('ad_spend', 'kpi.ad_spend', spend, money(spend), {
-          note: t('note.pct_of_revenue', { pct: formatPct(spend / revenue) }),
+          note: t('note.pct_of_revenue', { pct: formatPct(revenue ? spend / revenue : 0) }),
           tone: 'neutral',
         }),
-        kpi('claimed_roas', 'kpi.claimed_roas', claimed / spend, formatRoas(claimed / spend), {
+        kpi('claimed_roas', 'kpi.claimed_roas', spend ? claimed / spend : 0, formatRoas(spend ? claimed / spend : 0), {
           note: t('note.platform_reports'),
           tone: 'neutral',
         }),
@@ -227,7 +227,7 @@ export function buildImpact(ctx: Context): {
           : kpi('true_roas', 'kpi.true_roas', 0, '—', { note: t('note.needs_history'), tone: 'neutral' }),
         ctx.measured
           ? kpi('real_sales', 'kpi.real_sales', realSales, money(realSales), {
-              note: t('note.pct_of_revenue', { pct: formatPct(realSales / revenue) }),
+              note: t('note.pct_of_revenue', { pct: formatPct(revenue ? realSales / revenue : 0) }),
               tone: 'neutral',
             })
           : kpi('real_sales', 'kpi.real_sales', 0, '—', { note: t('note.needs_history'), tone: 'neutral' }),

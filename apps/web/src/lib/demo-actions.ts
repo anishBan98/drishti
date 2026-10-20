@@ -58,26 +58,28 @@ export interface DemoAction {
 const KEY = 'drishti-demo-actions';
 const STEP_MS = 600;
 let actions: DemoAction[] = [];
-let seeded = false;
+/** Which workspace the store holds: "demo", or a sandbox company id. Each keeps its own actions. */
+let scope = '';
+const storageKey = () => (scope === 'demo' ? KEY : `${KEY}:${scope}`);
 const listeners = new Set<() => void>();
 
 function emit() {
   actions = [...actions];
   try {
-    sessionStorage.setItem(KEY, JSON.stringify(actions.filter((a) => a.demo)));
+    sessionStorage.setItem(storageKey(), JSON.stringify(actions.filter((a) => a.demo)));
   } catch {
     /* storage unavailable */
   }
   for (const l of listeners) l();
 }
 
-/** Seeds once with the workspace's existing actions plus anything run earlier in this tab. */
-export function seedActions(seed: DemoAction[]) {
-  if (seeded) return;
-  seeded = true;
+/** Seeds once per workspace with its existing actions plus anything run earlier in this tab. */
+export function seedActions(seed: DemoAction[], forScope = 'demo') {
+  if (scope === forScope) return;
+  scope = forScope;
   let saved: DemoAction[] = [];
   try {
-    saved = JSON.parse(sessionStorage.getItem(KEY) ?? '[]') as DemoAction[];
+    saved = JSON.parse(sessionStorage.getItem(storageKey()) ?? '[]') as DemoAction[];
   } catch {
     saved = [];
   }
