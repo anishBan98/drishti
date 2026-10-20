@@ -43,14 +43,15 @@ export interface Table {
 
 export function makeTable(raw: string[][], mapping: Record<string, string> = {}): Table {
   const [head = [], ...rows] = raw;
-  const headers = head.map((h) => {
-    const n = normHeader(h);
-    return mapping[n] ? normHeader(mapping[n]) : n;
-  });
+  const original = head.map(normHeader);
+  // A Mappings row names the Drishti field a column holds ("Total" → net_inr). The column answers to both names.
+  const headers = original.map((n) => (mapping[n] ? normHeader(mapping[n]) : n));
   const index = (names: readonly string[]) => {
     for (const n of names) {
       const i = headers.indexOf(n);
       if (i !== -1) return i;
+      const j = original.indexOf(n);
+      if (j !== -1) return j;
     }
     return -1;
   };
